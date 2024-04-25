@@ -43,11 +43,11 @@
     {
         public string Name;
         public ProtoPackedEntity Owner;
-        public List<int> Abilities;
+        public List<ProtoEntity> Abilities;
         
         public void AutoReset(ref CreateAbilitySequenceSelfRequest c)
         {
-            c.Abilities ??= new List<int>();
+            c.Abilities ??= new List<ProtoEntity>();
             c.Abilities.Clear();
             c.Name = string.Empty;
         }

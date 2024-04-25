@@ -1,10 +1,11 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.Area.Behaviours
 {
     using System;
-    using Code.Configuration.Runtime.Ability.Description;
     using Components;
-     
+    using Game.Code.Configuration.Runtime.Ability.Description;
+    using Leopotam.EcsProto;
     using Target.Components;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
     using UserInput.Components;
 
@@ -16,7 +17,7 @@
         [SerializeField]
         private GameObject _areaView;
         
-        public void Compose(ProtoWorld world, int abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
         {
             var targetsPool = world.GetPool<AbilityTargetsComponent>();
             targetsPool.Add(abilityEntity);

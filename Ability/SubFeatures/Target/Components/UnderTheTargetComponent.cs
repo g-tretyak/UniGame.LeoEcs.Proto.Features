@@ -1,7 +1,8 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Components
 {
     using System.Runtime.CompilerServices;
-     
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using TargetSelection;
     using Unity.Mathematics;
 

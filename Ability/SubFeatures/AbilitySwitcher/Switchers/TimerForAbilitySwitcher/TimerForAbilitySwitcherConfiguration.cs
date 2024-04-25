@@ -3,7 +3,7 @@
 	using System;
 	using Abstracts;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using Sirenix.OdinInspector;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
@@ -19,7 +19,7 @@
 		public bool isUnscaledTime;
 
 		#endregion
-		public void Compose(ProtoWorld world, int abilityEntity)
+		public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
 		{
 			ref var timer = ref world.AddComponent<TimerForAbilitySwitcherComponent>(abilityEntity);
 			timer.Delay = delay;

@@ -1,7 +1,8 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySequence.Components
 {
     using System;
-     
+    using Leopotam.EcsProto;
+
 
     /// <summary>
     /// ability sequence node
@@ -17,6 +18,6 @@
     public struct AbilitySequenceNodeComponent
     {
         public int Order;
-        public int SequenceEntity;
+        public ProtoEntity SequenceEntity;
     }
 }

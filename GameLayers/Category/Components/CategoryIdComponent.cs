@@ -1,6 +1,6 @@
 namespace unigame.ecs.proto.GameLayers.Category.Components
 {
-    using Code.GameLayers.Category;
+    using Game.Code.GameLayers.Category;
 
     /// <summary>
     /// Компонент с категорией сущности.

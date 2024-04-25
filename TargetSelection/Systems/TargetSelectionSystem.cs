@@ -2,19 +2,17 @@
 {
     using System.Collections.Generic;
     using System.Runtime.CompilerServices;
-    using Code.GameLayers.Category;
-    using Code.GameLayers.Layer;
-    using Core;
-    using Core.Components;
-    using Core.Death.Components;
-    using GameLayers.Category.Components;
-    using GameLayers.Layer.Components;
-     
+    using Game.Code.GameLayers.Category;
+    using Game.Code.GameLayers.Layer;
+    using Game.Ecs.TargetSelection;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using TargetSelection;
     using TargetSelection.Aspects;
     using TargetSelection.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Components;
+    using UniGame.LeoEcs.Shared.Extensions;
     using Unity.Mathematics;
 
 #if ENABLE_IL2CPP
@@ -25,11 +23,11 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [ECSDI]
-    public class TargetSelectionSystem : IProtoInitSystem,IEcsDestroySystem
+    public class TargetSelectionSystem : IProtoInitSystem,IProtoDestroySystem
     {
         private EntityFloat[] _selectionBuffer = new EntityFloat[TargetSelectionData.MaxTargets];
         private ProtoPackedEntity[] _packedBuffer = new ProtoPackedEntity[TargetSelectionData.MaxTargets];
-        private int[] _entitiesBuffer = new int[TargetSelectionData.MaxTargets];
+        private ProtoEntity[] _entitiesBuffer = new ProtoEntity[TargetSelectionData.MaxTargets];
         
         private TargetSelectionAspect _targetSelectionAspect;
         private TargetAspect _targetAspect;
@@ -53,7 +51,7 @@
                 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int SelectEntitiesInArea(
-            int[] resultContainer, 
+            ProtoEntity[] resultContainer, 
             float radius, 
             ref float3 sourcePosition, 
             ref LayerId layerId, 
@@ -113,7 +111,7 @@
                 if ((layerId & layer) != layer ||
                     (categoryId & category) != category) continue;
 
-                if(entity < 0) continue;
+                if((int)entity < 0) continue;
                 
                 result[counter] = packedEntity;
                 counter++;
@@ -123,7 +121,7 @@
         }
         
         public int SelectEntitiesInArea(
-            int[] result, 
+            ProtoEntity[] result, 
             ProtoPackedEntity[] packedResult,
             float radius,
             ref float3 sourcePosition)
@@ -182,11 +180,11 @@
             if ((layerId & layer) != layer ||
                 (categoryId & category) != category) return -1;
 
-            return entity;
+            return (int)entity;
         }
         
 
-        public void Destroy(IProtoSystems systems)
+        public void Destroy()
         {
             
         }

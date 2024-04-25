@@ -2,14 +2,14 @@
 {
 	using System;
 	using Aspects;
-	using Code.GameTools.Runtime;
 	using Components;
-	using Core.Components;
-	 
+	using Game.Ecs.Core.Components;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using TargetSelection;
 	using UniGame.Core.Runtime;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-	using UniGame.LeoEcs.Shared.Components;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using Unity.Collections;
 	/// <summary>

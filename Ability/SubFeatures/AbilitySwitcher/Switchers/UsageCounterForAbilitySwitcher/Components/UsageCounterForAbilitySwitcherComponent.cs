@@ -1,7 +1,7 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySwitcher.Switchers.UsageCounterForAbilitySwitcher.Components
 {
 	using System;
-	using Code.Configuration.Runtime.Ability.Description;
+	using Game.Code.Configuration.Runtime.Ability.Description;
 
 	/// <summary>
 	/// Says that ability can be used after count of usages

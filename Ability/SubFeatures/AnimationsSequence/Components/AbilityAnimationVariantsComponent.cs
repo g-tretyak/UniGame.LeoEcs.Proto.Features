@@ -2,7 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
-     
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+
 
     /// <summary>
     /// list of animation variants

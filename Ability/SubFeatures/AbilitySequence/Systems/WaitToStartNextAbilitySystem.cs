@@ -55,7 +55,7 @@
                 foreach (var sequenceEntity in _abilitySequenceFilter)
                 {
                     ref var activeComponent = ref _aspect.Active.Get(sequenceEntity);
-                    if(activeComponent.Value != abilityEntity) continue;
+                    if(!activeComponent.Value.Equals(abilityEntity)) continue;
                     _aspect.ActivateNextInSequence.GetOrAddComponent(sequenceEntity);
                     
                     break;

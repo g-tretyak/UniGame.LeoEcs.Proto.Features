@@ -372,7 +372,7 @@ namespace unigame.ecs.proto.Ability.Tools
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int EquipAbilityById(ref ProtoPackedEntity owner, ref AbilityId abilityId)
+        public ProtoEntity EquipAbilityById(ref ProtoPackedEntity owner, ref AbilityId abilityId)
         {
             return EquipAbilityById(ref owner, abilityId, AbilitySlotId.EmptyAbilitySlot);
         }
@@ -383,11 +383,11 @@ namespace unigame.ecs.proto.Ability.Tools
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int EquipAbilityById(ref ProtoPackedEntity owner, AbilityId abilityId,
+        public ProtoEntity EquipAbilityById(ref ProtoPackedEntity owner, AbilityId abilityId,
             AbilitySlotId slot, bool isDefault = false)
         {
             var activeAbility = GetActiveAbility(ref owner, ref abilityId);
-            if (activeAbility > 0) return activeAbility;
+            if (activeAbility > 0) return (ProtoEntity)activeAbility;
 
             var requestEntity = _world.NewEntity();
             ref var request = ref _eqiupAbilityPool.Add(requestEntity);
@@ -397,7 +397,7 @@ namespace unigame.ecs.proto.Ability.Tools
             request.IsDefault = isDefault;
             request.IsUserInput = false;
 
-            return (int)requestEntity;
+            return requestEntity;
         }
         
         
@@ -407,7 +407,7 @@ namespace unigame.ecs.proto.Ability.Tools
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int EquipAbilityByReference(ref ProtoPackedEntity owner, 
+        public ProtoEntity EquipAbilityByReference(ref ProtoPackedEntity owner, 
             AbilityConfiguration configuration,
             AbilitySlotId slot, bool isDefault = false)
         {
@@ -419,7 +419,7 @@ namespace unigame.ecs.proto.Ability.Tools
             request.IsUserInput = false;
             request.Reference = configuration;
 
-            return (int)requestEntity;
+            return requestEntity;
         }
 
 #if ENABLE_IL2CPP
@@ -619,9 +619,9 @@ namespace unigame.ecs.proto.Ability.Tools
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ActivateAbility(ProtoWorld world, ProtoEntity entity, int abilityEntity)
+        public void ActivateAbility(ProtoWorld world, ProtoEntity entity, ProtoEntity abilityEntity)
         {
-            var packedAbilityEntity = world.PackedEntity(abilityEntity);
+            var packedAbilityEntity = world.PackEntity(abilityEntity);
             ref var setInHand = ref world.GetOrAddComponent<SetInHandAbilitySelfRequest>(entity);
             setInHand.Value = packedAbilityEntity;
 
@@ -635,7 +635,7 @@ namespace unigame.ecs.proto.Ability.Tools
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ActivateAbility(ProtoWorld world, int abilityEntity)
+        public void ActivateAbility(ProtoWorld world, ProtoEntity abilityEntity)
         {
             if (!world.HasComponent<OwnerComponent>(abilityEntity)) return;
 

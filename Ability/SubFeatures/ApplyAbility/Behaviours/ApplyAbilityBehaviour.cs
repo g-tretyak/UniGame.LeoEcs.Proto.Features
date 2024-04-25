@@ -2,7 +2,7 @@
 {
     using System;
     using Game.Code.Configuration.Runtime.Ability.Description;
-     
+    using Leopotam.EcsProto;
     using Tools;
     using UniGame.LeoEcs.Shared.Extensions;
 
@@ -13,7 +13,7 @@
     public class CriticalAnimationsBehaviour : IAbilityBehaviour
     {
         
-        public void Compose(ProtoWorld world, int abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
         {
             var tools = world.GetGlobal<AbilityTools>();
         }

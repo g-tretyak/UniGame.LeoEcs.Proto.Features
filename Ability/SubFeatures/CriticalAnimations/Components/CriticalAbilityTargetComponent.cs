@@ -1,9 +1,7 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.CriticalAnimations.Components
 {
     using System;
-    using Code.Configuration.Runtime.Ability.Description;
-     
-    using UnityEngine.Serialization;
+    using Game.Code.Configuration.Runtime.Ability.Description;
 
     /// <summary>
     /// mark ability suitable for critical animation

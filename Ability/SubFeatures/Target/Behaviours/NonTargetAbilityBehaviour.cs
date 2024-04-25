@@ -1,10 +1,8 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Behaviours
 {
     using System;
-    using Code.Configuration.Runtime.Ability.Description;
     using Components;
-     
-    using UniGame.LeoEcs.Converter.Runtime;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Extensions;
 
     [Serializable]

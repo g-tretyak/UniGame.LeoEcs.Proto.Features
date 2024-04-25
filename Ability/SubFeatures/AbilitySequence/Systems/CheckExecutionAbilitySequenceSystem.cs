@@ -58,13 +58,13 @@
                 foreach (var sequenceEntity in _sequenceFilter)
                 {
                     ref var sequenceOwnerComponent = ref _sequenceAspect.Owner.Get(sequenceEntity);
-                    if(!sequenceOwnerComponent.Value.EqualsTo(abilityOwnerComponent.Value)) continue;
+                    if(!sequenceOwnerComponent.Value.Equals(abilityOwnerComponent.Value)) continue;
                     
                     ref var activeComponent = ref _sequenceAspect.Active.Get(sequenceEntity);
                     ref var lastComponent = ref _sequenceAspect.Last.Get(sequenceEntity);
                     
-                    if(activeComponent.Value == abilityEntity && 
-                       lastComponent.Value != abilityEntity)
+                    if(activeComponent.Value.Equals(abilityEntity) && 
+                       !lastComponent.Value.Equals(abilityEntity) )
                         continue;
 
                     _sequenceAspect.Complete.GetOrAddComponent(sequenceEntity);

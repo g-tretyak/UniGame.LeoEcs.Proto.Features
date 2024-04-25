@@ -3,7 +3,7 @@
     using System;
     using Abstract;
     using Components;
-     
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
@@ -19,7 +19,7 @@
     [Serializable]
     public class LinearAnimationSelectionBehavior : IAbilityAnimationBehavior
     {
-        public void Compose(ProtoWorld world, int abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
         {
             world.GetOrAddComponent<LinearAbilityAnimationSelectionComponent>(abilityEntity);
         }

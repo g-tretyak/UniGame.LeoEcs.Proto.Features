@@ -1,11 +1,11 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.Area
 {
     using System;
-    using System.Collections.Generic;
     using Cysharp.Threading.Tasks;
     using Systems;
      
     using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [Serializable]

@@ -2,14 +2,16 @@
 {
     using System;
     using Aspects;
-    using Code.GameLayers.Relationship;
     using Common.Components;
     using Components;
-    using Core.Components;
-    using Ecs.Selection;
+    using Game.Code.GameLayers.Relationship;
+    using Game.Ecs.Core.Components;
     using GameLayers.Category.Components;
     using GameLayers.Relationship.Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+    using proto.Selection;
     using Target.Components;
     using TargetSelection;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;

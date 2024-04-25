@@ -4,12 +4,14 @@
 	using AbilitySwitcher.Components;
 	using Aspects;
 	using Components;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using unigame.ecs.proto.Ability.Common.Components;
 	 
 	using Tools;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 	using UniGame.LeoEcs.Shared.Extensions;
-	using UnityEngine;
 
 	/// <summary>
 	/// Counts usages of ability and switches it to another ability after count of usages.
@@ -63,7 +65,7 @@
 					ref var usageCounter = ref _aspect.UsageCounterForAbilitySwitcher.Get(counterEntity);
 					if (!_abilityTools.TryGetAbilityById(ref owner.Value, usageCounter.abilityId, out var currentAbilityEntity))
 						continue;
-					if (currentAbilityEntity != abilityEntity)
+					if (!currentAbilityEntity.Equals(abilityEntity))
 						continue;
 					usageCounter.count++;
 					if (usageCounter.count < usageCounter.baseCount)
@@ -71,8 +73,8 @@
 					usageCounter.count = 0;
 					var requestEntity = _world.NewEntity();
 					ref var request = ref _aspect.AbilitySwitchRequest.Add(requestEntity);
-					request.OldAbility = currentAbilityEntity.PackedEntity(_world);
-					request.NewAbility = counterEntity.PackedEntity(_world);
+					request.OldAbility = currentAbilityEntity.PackEntity(_world);
+					request.NewAbility = counterEntity.PackEntity(_world);
 				}
 			}
 		}

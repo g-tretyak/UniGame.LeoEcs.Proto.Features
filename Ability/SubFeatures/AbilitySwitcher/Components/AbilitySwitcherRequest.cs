@@ -1,7 +1,8 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySwitcher.Components
 {
 	using System;
-	 
+	using Leopotam.EcsProto.QoL;
+
 
 	/// <summary>
 	/// Request to switch ability.

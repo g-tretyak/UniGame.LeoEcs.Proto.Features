@@ -1,15 +1,12 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.CriticalAnimations.Systems
 {
     using System;
-    using Ability.Components.Requests;
-    using AbilitySequence.Tools;
     using Aspects;
     using Common.Components;
     using Components;
-    using Core.Components;
-    using Gameplay.CriticalAttackChance.Components;
-     
-    using Target.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Target.Tools;
     using Tools;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;

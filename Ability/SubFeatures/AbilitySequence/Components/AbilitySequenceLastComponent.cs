@@ -1,6 +1,7 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySequence.Components
 {
     using System;
+    using Leopotam.EcsProto;
 
     /// <summary>
     /// link to last ability in sequence
@@ -15,6 +16,6 @@
     [Serializable]
     public struct AbilitySequenceLastComponent
     {
-        public int Value;
+        public ProtoEntity Value;
     }
 }

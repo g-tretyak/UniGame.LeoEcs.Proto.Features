@@ -61,7 +61,7 @@
 
                 dataComponent.Index = activeAbility;
                 dataComponent.NextAbilityIndex = nextAbility;
-                dataComponent.ActiveAbility = activeAbilityEntity;
+                dataComponent.ActiveAbility = (int)activeAbilityEntity;
 
                 ref var abilityOwner = ref _aspect.Owner.Get(activeAbilityEntity);
                 abilityOwner.Value.Unpack(_world, out var ownerEntity);

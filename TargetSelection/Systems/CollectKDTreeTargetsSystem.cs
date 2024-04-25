@@ -2,12 +2,13 @@
 {
     using System;
     using Aspects;
-    using Characteristics.Health.Components;
     using Components;
-    using Core.Components;
-    using Core.Death.Components;
     using DataStructures.ViliWonka.KDTree;
-     
+    using Game.Ecs.Core.Components;
+    using Game.Ecs.Core.Death.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Selection;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;

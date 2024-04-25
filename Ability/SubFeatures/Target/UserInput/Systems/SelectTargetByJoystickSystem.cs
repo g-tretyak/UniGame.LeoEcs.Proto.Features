@@ -7,8 +7,11 @@
     using Characteristics.Radius.Component;
     using Common.Components;
     using Components;
-    using Core.Components;
-     
+    using Game.Ecs.Core.Components;
+    using Game.Ecs.TargetSelection;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Selection.Components;
     using TargetSelection;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;

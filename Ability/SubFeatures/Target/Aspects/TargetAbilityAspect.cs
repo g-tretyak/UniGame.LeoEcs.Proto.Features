@@ -3,9 +3,9 @@
 	using System;
 	using Characteristics.SplashDamage.Components;
 	using Components;
-	using Core.Components;
-	using Core.Death.Components;
-	 
+	using Game.Ecs.Core.Components;
+	using Game.Ecs.Core.Death.Components;
+	using Leopotam.EcsProto;
 	using Movement.Components;
 	using Selection.Components;
 	using UniGame.LeoEcs.Shared.Components;

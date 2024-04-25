@@ -1,6 +1,7 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Abstract
 {
-	 
+	using Leopotam.EcsProto;
+
 
 	public interface IZoneTargetsDetector
 	{

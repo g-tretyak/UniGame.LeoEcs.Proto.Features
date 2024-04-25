@@ -1,13 +1,10 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.CriticalAnimations
 {
     using System;
-    using System.Collections.Generic;
     using AbilitySequence.Tools;
     using Cysharp.Threading.Tasks;
-     
+    using Leopotam.EcsProto;
     using Systems;
-    using Target.Tools;
-    using Tools;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 

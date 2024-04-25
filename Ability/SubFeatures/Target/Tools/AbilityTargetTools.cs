@@ -4,9 +4,8 @@
     using System.Runtime.CompilerServices;
     using Ability.Aspects;
     using Aspects;
-    using Common.Components;
-    using Components;
-     
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using TargetSelection;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -39,7 +38,7 @@
 	    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ActivateAbilityForTarget(int entity, int targetEntity, int slot)
+        public void ActivateAbilityForTarget(ProtoEntity entity, int targetEntity, int slot)
         {
             var packedEntity = _world.PackEntity(targetEntity);
             ActivateAbilityForTarget( entity, packedEntity, slot);
@@ -51,7 +50,7 @@
 	    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ClearAbilityTargets(int entity, int slot)
+        public void ClearAbilityTargets(ProtoEntity entity, int slot)
         {
             if (!TryGetAbility(entity, slot, out var abilityEntity))
                 return;
@@ -65,7 +64,7 @@
 	    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ClearAbilityTargets(int abilityEntity)
+        public void ClearAbilityTargets(ProtoEntity abilityEntity)
         {
             //set ability target
             ref var targetsComponent = ref _targetAbilityAspect
@@ -80,7 +79,7 @@
 	    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 	    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
-        public void SetAbilityTarget(int entity, ProtoPackedEntity targetEntity, int slot)
+        public void SetAbilityTarget(ProtoEntity entity, ProtoPackedEntity targetEntity, int slot)
         {
             if (!TryGetAbility(entity, slot, out var abilityEntity)) return;
 
@@ -97,12 +96,12 @@
         [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
-        public void ActivateAbilityForTarget(int entity, ProtoPackedEntity targetEntity, int slot)
+        public void ActivateAbilityForTarget(ProtoEntity entity, ProtoPackedEntity targetEntity, int slot)
         {
             if (!TryGetAbility(entity, slot, out var abilityEntity))
                 return;
 
-            ActivateAbilityWithTarget(entity, abilityEntity,ref targetEntity);
+            ActivateAbilityWithTarget(entity, (ProtoEntity)abilityEntity,ref targetEntity);
         }
         
 #if ENABLE_IL2CPP
@@ -111,7 +110,7 @@
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ActivateAbilityWithTarget(int entity,int abilityEntity,ref ProtoPackedEntity targetEntity)
+        public void ActivateAbilityWithTarget(ProtoEntity entity,ProtoEntity abilityEntity,ref ProtoPackedEntity targetEntity)
         {
             //set ability target
             ref var targetsComponent = ref _targetAbilityAspect
@@ -130,8 +129,8 @@
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ActivateAbilityWithTargets(ProtoWorld world, int entity,
-            int abilityEntity,ProtoPackedEntity[] targets,int count)
+        public void ActivateAbilityWithTargets(ProtoWorld world, ProtoEntity entity,
+            ProtoEntity abilityEntity,ProtoPackedEntity[] targets,int count)
         {
             for (var i = 0; i < count; i++)
                 _buffer[i] = targets[i];
@@ -154,7 +153,7 @@
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ActivateAbilityWithTargets(int entity, int abilityEntity,IReadOnlyList<ProtoPackedEntity> targets)
+        public void ActivateAbilityWithTargets(ProtoEntity entity, ProtoEntity abilityEntity,IReadOnlyList<ProtoPackedEntity> targets)
         {
             var count = targets.Count;
             for (var i = 0; i < targets.Count; i++)
@@ -176,7 +175,7 @@
         [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
-        public void ActivateAbility(int ownerEntity, int abilityEntity)
+        public void ActivateAbility(ProtoEntity ownerEntity, ProtoEntity abilityEntity)
         {
             var packedAbilityEntity = _world.PackEntity(abilityEntity);
             ref var setInHand = ref _ownerAspect.SetInHandAbility.GetOrAddComponent(ownerEntity);
@@ -192,9 +191,9 @@
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetAbility(int entity, int slot, out int abilityEntity)
+        public bool TryGetAbility(ProtoEntity entity, int slot, out ProtoEntity abilityEntity)
         {
-            abilityEntity = -1;
+            abilityEntity = default;
             var minLength = slot + 1;
 
             if (!_ownerAspect.AbilityMap.Has(entity))

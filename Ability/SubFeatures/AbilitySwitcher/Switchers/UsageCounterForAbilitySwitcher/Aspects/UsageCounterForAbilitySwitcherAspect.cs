@@ -4,8 +4,8 @@
 	using AbilitySwitcher.Components;
 	using Common.Components;
 	using Components;
-	using Core.Components;
-	 
+	using Game.Ecs.Core.Components;
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
 	/// <summary>

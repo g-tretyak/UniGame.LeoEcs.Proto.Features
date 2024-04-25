@@ -6,7 +6,10 @@
     using Common.Components;
     using Components;
     using Core.Components;
-     
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 
@@ -66,7 +69,7 @@
                     if(!optionOwnerComponent.Value.Unpack(_world,out var optionOwner))
                         continue;
                     
-                    if(optionOwner != entity) continue;
+                    if(!optionOwner.Equals(entity)) continue;
                     
                     _aspect.AbilityAnimationOption.GetOrAddComponent(optionEntity);
                 }

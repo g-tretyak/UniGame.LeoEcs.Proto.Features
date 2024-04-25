@@ -3,7 +3,10 @@
     using Aspects;
     using Common.Components;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     public sealed class RemoveAreaForNonHandAbilitySystem : IProtoRunSystem,IProtoInitSystem
     {

@@ -1,12 +1,13 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.CriticalAnimations.Systems
 {
     using System;
-    using Ability.Components;
     using AbilityAnimation.Components;
     using Common.Components;
     using Components;
-    using Core.Components;
-     
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 

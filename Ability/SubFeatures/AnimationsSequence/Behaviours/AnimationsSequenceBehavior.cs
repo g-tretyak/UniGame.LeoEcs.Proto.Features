@@ -5,12 +5,12 @@
     using Ability.Components;
     using Abstract;
     using Components;
-    using Core.Components;
     using Cysharp.Threading.Tasks;
     using Game.Code.Configuration.Runtime.Ability.Description;
-     
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Tools;
-    using UniGame.AddressableTools.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
@@ -28,7 +28,7 @@
         [NonSerialized]
         private AbilityTools _tools;
         
-        public void Compose(ProtoWorld world, int abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
         {
             _tools = world.GetGlobal<AbilityTools>();
 
@@ -43,7 +43,7 @@
             foreach (var animation in animations)
             {
                 var animationEntity = world.NewEntity();
-                var packedAnimationEntity = world.PackEntity(animationEntity);
+                var packedAnimationEntity = animationEntity.PackEntity(world);
                 ref var ownerComponent = ref world.AddComponent<OwnerComponent>(animationEntity);
                 ref var abilityAnimationComponent = ref world.AddComponent<AbilityAnimationComponent>(animationEntity);
                 ref var animationVariantComponent = ref world.AddComponent<AbilityAnimationVariantComponent>(animationEntity);

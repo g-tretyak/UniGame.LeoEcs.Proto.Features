@@ -1,7 +1,7 @@
 ﻿namespace unigame.ecs.proto.TargetSelection
 {
     using Cysharp.Threading.Tasks;
-     
+    using Leopotam.EcsProto;
     using Selection;
     using Systems;
     using UniGame.LeoEcs.Bootstrap.Runtime;

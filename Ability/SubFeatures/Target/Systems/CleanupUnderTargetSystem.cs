@@ -3,13 +3,11 @@
     using System;
     using Aspects;
     using Components;
-    using Core.Components;
-     
-    using TargetSelection;
-    using UniGame.Core.Runtime;
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
-    using Unity.Collections;
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 

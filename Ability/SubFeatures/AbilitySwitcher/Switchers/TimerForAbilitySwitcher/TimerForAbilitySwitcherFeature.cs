@@ -3,8 +3,9 @@
 	using System;
 	using Abstracts;
 	using Cysharp.Threading.Tasks;
-	 
+	using Leopotam.EcsProto;
 	using Systems;
+	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
 	/// <summary>

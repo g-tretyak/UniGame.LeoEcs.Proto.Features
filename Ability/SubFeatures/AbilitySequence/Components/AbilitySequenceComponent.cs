@@ -19,14 +19,14 @@
     public struct AbilitySequenceComponent : IProtoAutoReset<AbilitySequenceComponent>
     {
         public int Id;
-        public List<int> Abilities;
+        public List<ProtoEntity> Abilities;
         public int Index;
         public int NextAbilityIndex;
         public int ActiveAbility;
         
         public void AutoReset(ref AbilitySequenceComponent c)
         {
-            c.Abilities ??= new List<int>();
+            c.Abilities ??= new List<ProtoEntity>();
             c.Abilities.Clear();
             c.Index = 0;
             c.ActiveAbility = -1;

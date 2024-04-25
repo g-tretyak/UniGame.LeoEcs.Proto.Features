@@ -1,17 +1,13 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySwitcher.Systems
 {
 	using System;
-	using System.Linq;
 	using Aspects;
 	using Components;
-	 
-	using Target.Tools;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using Tools;
-	using UniGame.Core.Runtime.Extension;
 	using UniGame.LeoEcs.Shared.Extensions;
-	using UniGame.Runtime.ObjectPool.Extensions;
-	using UnityEngine;
-	using UnityEngine.Pool;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 
 	/// <summary>

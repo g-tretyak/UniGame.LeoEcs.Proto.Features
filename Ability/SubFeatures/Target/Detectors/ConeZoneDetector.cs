@@ -3,9 +3,9 @@
     using System;
     using System.Collections.Generic;
     using Abstract;
-    using Code.GameTools.Runtime;
-     
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Components;
+    using UniGame.LeoEcs.Shared.Extensions;
 
     [Serializable]
     public class ConeZoneDetector : IZoneTargetsDetector

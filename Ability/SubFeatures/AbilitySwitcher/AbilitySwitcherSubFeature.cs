@@ -5,11 +5,10 @@
 	using Abstracts;
 	using Components;
 	using Cysharp.Threading.Tasks;
-	 
-	using Leopotam.EcsLite.ExtendedSystems;
+	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using Sirenix.OdinInspector;
 	using Systems;
-	using Target.Tools;
 	using Tools;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;

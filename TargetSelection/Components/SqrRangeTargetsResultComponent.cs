@@ -1,8 +1,10 @@
 ﻿namespace unigame.ecs.proto.TargetSelection.Components
 {
     using System;
-     
-    
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+
+
     /// <summary>
     /// cache for range selection
     /// </summary>

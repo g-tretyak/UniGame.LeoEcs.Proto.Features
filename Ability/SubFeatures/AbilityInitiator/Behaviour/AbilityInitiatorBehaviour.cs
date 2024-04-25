@@ -39,7 +39,7 @@ namespace unigame.ecs.proto.Ability.SubFeatures.AbilityInitiator.Behaviour
             var entityAgent = world.NewEntity();
 
             ref var agentUnitOwnerComponent = ref world.AddComponent<AbilityAgentUnitOwnerComponent>(entityAgent);
-            agentUnitOwnerComponent.Value = unitEntity.PackedEntity(world);
+            agentUnitOwnerComponent.Value = unitEntity.PackEntity(world);
 
             ref var abilityAgentComponent = ref world.AddComponent<AbilityAgentComponent>(entityAgent);
             abilityAgentComponent.Value = targetAbility;

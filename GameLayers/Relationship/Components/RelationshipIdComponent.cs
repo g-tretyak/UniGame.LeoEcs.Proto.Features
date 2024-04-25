@@ -1,6 +1,6 @@
 ﻿namespace unigame.ecs.proto.GameLayers.Relationship.Components
 {
-    using Code.GameLayers.Relationship;
+    using Game.Code.GameLayers.Relationship;
 
     /// <summary>
     /// Компонент отношения между слоями сущности.

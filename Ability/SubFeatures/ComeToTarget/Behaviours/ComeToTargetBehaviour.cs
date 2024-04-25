@@ -1,15 +1,15 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.ComeToTarget.Behaviours
 {
     using System;
-    using Code.Configuration.Runtime.Ability.Description;
     using ComeToTarget.Components;
-     
-    using UnityEngine;
+    using Game.Code.Configuration.Runtime.Ability.Description;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
 
     [Serializable]
     public sealed class ComeToTargetBehaviour : IAbilityBehaviour
     {
-        public void Compose(ProtoWorld world, int abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
         {
             var comeToPool = world.GetPool<CanComeToTargetComponent>();
             comeToPool.Add(abilityEntity);

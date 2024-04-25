@@ -2,11 +2,11 @@
 {
     using Common.Components;
     using Components;
-    using Core.Components;
-    using Ecs.Effects;
-    using Ecs.Effects.Components;
-     
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
 
     [ECSDI]
     public sealed class InstantlyApplyAbilityEffectsSystem : IProtoRunSystem,IProtoInitSystem

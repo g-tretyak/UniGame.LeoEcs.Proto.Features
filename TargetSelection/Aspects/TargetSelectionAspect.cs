@@ -3,12 +3,12 @@
     using System;
     using Characteristics.Radius.Component;
     using Components;
-    using Core.Components;
-    using Core.Death.Components;
+    using Game.Ecs.Core.Components;
+    using Game.Ecs.Core.Death.Components;
     using GameLayers.Category.Components;
     using GameLayers.Layer.Components;
     using GameLayers.Relationship.Components;
-     
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 

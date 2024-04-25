@@ -27,7 +27,7 @@
         {
             var requestEntity = _world.NewEntity();
             ref var createRequest = ref sequenceAspect.CreateById.Add(requestEntity);
-            createRequest.Owner = ownerEntity.PackedEntity(_world);
+            createRequest.Owner = ownerEntity.PackEntity(_world);
             createRequest.Abilities.Clear();
             createRequest.Abilities.AddRange(abilityIds);
             createRequest.Name = name;

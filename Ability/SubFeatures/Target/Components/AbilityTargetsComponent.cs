@@ -6,7 +6,6 @@
     using Leopotam.EcsProto.QoL;
     using TargetSelection;
     using Unity.Mathematics;
-    using UnityEngine.Serialization;
 
     /// <summary>
     /// Цели для применения умения.

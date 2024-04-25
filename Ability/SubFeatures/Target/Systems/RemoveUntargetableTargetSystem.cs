@@ -1,18 +1,14 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Systems
 {
 	using System;
-	using System.Collections.Generic;
-	using System.Linq;
 	using Aspects;
 	using Components;
-	 
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using TargetSelection;
 	using UniGame.Core.Runtime;
-	using UniGame.Core.Runtime.Extension;
 	using UniGame.LeoEcs.Shared.Extensions;
-	using UniGame.Runtime.ObjectPool.Extensions;
-	using UnityEngine;
-	using UnityEngine.Pool;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 	using Unity.Collections;
 

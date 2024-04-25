@@ -1,7 +1,6 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySwitcher.Components
 {
 	using System;
-	using Code.Configuration.Runtime.Ability.Description;
 
 	/// <summary>
 	/// Says that this ability can switch between other abilities.

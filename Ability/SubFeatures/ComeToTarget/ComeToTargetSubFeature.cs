@@ -1,10 +1,10 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.ComeToTarget
 {
     using System;
-    using System.Collections.Generic;
     using Cysharp.Threading.Tasks;
+    using Leopotam.EcsProto;
     using Systems;
-     
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
     using UserInput.Systems;
 

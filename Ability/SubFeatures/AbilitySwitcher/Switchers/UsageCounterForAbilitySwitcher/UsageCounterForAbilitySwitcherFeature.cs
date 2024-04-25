@@ -3,6 +3,7 @@
 	using System;
 	using AbilitySequence.Tools;
 	using Cysharp.Threading.Tasks;
+	using Leopotam.EcsProto;
 	using unigame.ecs.proto.Ability.SubFeatures.AbilitySwitcher.Abstracts;
 	 
 	using Systems;

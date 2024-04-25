@@ -33,7 +33,7 @@
                     var hideRequestEntity = _world.NewEntity();
                     ref var hideRequest = ref hideHighlightPool.Add(hideRequestEntity);
                     
-                    hideRequest.Source = entity.PackedEntity(_world);
+                    hideRequest.Source = entity.PackEntity(_world);
                     hideRequest.Destination = packedEntity.Key;
                 }
             }

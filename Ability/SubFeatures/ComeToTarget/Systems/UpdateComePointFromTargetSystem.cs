@@ -5,15 +5,15 @@
     using Characteristics.Radius.Component;
     using Common.Components;
     using Components;
-    using Core;
-    using Core.Components;
-    using Core.Death.Components;
-    using Ecs.Movement.Components;
-     
+    using Game.Ecs.Core;
+    using Game.Ecs.Core.Components;
+    using Game.Ecs.TargetSelection;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Target.Components;
     using TargetSelection;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;
     using Unity.Mathematics;
     using UnityEngine;

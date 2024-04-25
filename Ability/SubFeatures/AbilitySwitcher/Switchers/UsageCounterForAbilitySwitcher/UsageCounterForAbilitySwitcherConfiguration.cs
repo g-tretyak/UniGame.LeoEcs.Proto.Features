@@ -1,11 +1,10 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySwitcher.Switchers.UsageCounterForAbilitySwitcher
 {
 	using System;
-	using AbilitySwitcher.Components;
 	using Abstracts;
-	using Code.Configuration.Runtime.Ability.Description;
 	using Components;
-	 
+	using Game.Code.Configuration.Runtime.Ability.Description;
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
 
 	[Serializable]
@@ -17,7 +16,7 @@
 		public int count;
 
 		#endregion
-		public void Compose(ProtoWorld world, int abilityEntity)
+		public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
 		{
 			ref var counterForAbilitySwitcherComponent = ref world.AddComponent<UsageCounterForAbilitySwitcherComponent>(abilityEntity);
 			counterForAbilitySwitcherComponent.abilityId = abilityId;

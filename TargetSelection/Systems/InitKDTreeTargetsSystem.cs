@@ -5,13 +5,9 @@ using Unity.Mathematics;
 namespace unigame.ecs.proto.TargetSelection.Systems
 {
     using System;
-    using System.Linq;
-     
-    using UniGame.Core.Runtime.Extension;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Extensions;
-    using UniGame.Runtime.ObjectPool.Extensions;
-    using UnityEngine;
-    using UnityEngine.Pool;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 
 

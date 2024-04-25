@@ -1,10 +1,8 @@
 ﻿namespace unigame.ecs.proto.GameLayers.Relationship.Systems
 {
     using System;
-    using Code.GameLayers.Layer;
-    using Code.GameLayers.Relationship;
-     
-    using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using Game.Code.GameLayers.Layer;
+    using Game.Code.GameLayers.Relationship;
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 #endif

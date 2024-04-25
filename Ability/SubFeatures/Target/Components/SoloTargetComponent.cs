@@ -1,7 +1,8 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Components
 {
 	using System;
-	 
+	using Leopotam.EcsProto.QoL;
+
 
 	/// <summary>
 	/// Storage for target entity.

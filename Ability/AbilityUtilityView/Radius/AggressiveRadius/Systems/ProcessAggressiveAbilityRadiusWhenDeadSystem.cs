@@ -36,7 +36,7 @@
                     var hideRequestEntity = _world.NewEntity();
                     ref var hideRequest = ref hideRadiusPool.Add(hideRequestEntity);
 
-                    hideRequest.Source = entity.PackedEntity(_world);
+                    hideRequest.Source = entity.PackEntity(_world);
                     hideRequest.Destination = packedEntity;
                 }
             }

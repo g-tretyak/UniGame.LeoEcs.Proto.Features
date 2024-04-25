@@ -1,12 +1,12 @@
 ﻿namespace unigame.ecs.proto.TargetSelection.Components
 {
     using System;
-    using Code.GameLayers.Category;
-    using Code.GameLayers.Layer;
-    using Code.GameLayers.Relationship;
-    using GameLayers.Category.Components;
-     
-    
+    using Game.Code.GameLayers.Category;
+    using Game.Code.GameLayers.Layer;
+    using Game.Code.GameLayers.Relationship;
+    using Leopotam.EcsProto.QoL;
+
+
     /// <summary>
     /// mark entity as target for range selection
     /// </summary>

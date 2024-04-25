@@ -2,7 +2,7 @@
 {
     using System;
     using System.Linq;
-     
+    using Leopotam.EcsProto;
     using UniGame.Core.Runtime.Extension;
     using UniGame.LeoEcs.Shared.Extensions;
     using UniGame.Runtime.ObjectPool.Extensions;

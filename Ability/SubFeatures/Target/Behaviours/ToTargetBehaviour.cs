@@ -2,9 +2,8 @@
 {
     using System;
     using Ability.UserInput.Components;
-    using Code.Configuration.Runtime.Ability.Description;
     using Components;
-     
+    using Leopotam.EcsProto;
     using Selection.Components;
     using UniGame.LeoEcs.Shared.Extensions;
 

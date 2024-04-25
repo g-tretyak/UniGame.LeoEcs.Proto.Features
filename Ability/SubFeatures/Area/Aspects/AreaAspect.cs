@@ -2,11 +2,11 @@
 {
     using System;
     using Components;
-    using Core.Components;
+    using Game.Ecs.Core.Components;
     using GameLayers.Category.Components;
     using GameLayers.Layer.Components;
     using GameLayers.Relationship.Components;
-     
+    using Leopotam.EcsProto;
     using Target.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
     using UniGame.LeoEcs.Shared.Components;

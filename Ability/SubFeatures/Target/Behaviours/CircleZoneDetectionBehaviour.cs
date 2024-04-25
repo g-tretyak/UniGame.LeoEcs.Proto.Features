@@ -1,14 +1,10 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Behaviours
 {
 	using System;
-	using Code.Configuration.Runtime.Ability.Description;
-	using Code.GameTools.Runtime;
 	using Components;
-	 
-	using UniGame.LeoEcs.Converter.Runtime.Abstract;
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
-	using UnityEngine.Serialization;
 
 	[Serializable]
 	public sealed class CircleZoneDetectionBehaviour : IAbilityBehaviour, ILeoEcsGizmosDrawer

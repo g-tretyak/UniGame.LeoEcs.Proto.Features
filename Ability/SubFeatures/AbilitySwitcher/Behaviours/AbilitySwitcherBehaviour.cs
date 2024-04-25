@@ -2,12 +2,11 @@
 {
 	using System;
 	using Abstracts;
-	using Code.Configuration.Runtime.Ability.Description;
 	using Components;
-	 
+	using Game.Code.Configuration.Runtime.Ability.Description;
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
-	using UnityEngine.Serialization;
 
 	/// <summary>
 	/// Adds ability capability to switch between abilities.  
@@ -21,7 +20,7 @@
 		public IAbilitySwitcherConfiguration configuration;
 
 		#endregion
-		public void Compose(ProtoWorld world, int abilityEntity, bool isDefault)
+		public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
 		{
 			world.AddComponent<AbilitySwitcherComponent>(abilityEntity);
 			configuration.Compose(world, abilityEntity);

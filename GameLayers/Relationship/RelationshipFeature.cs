@@ -1,12 +1,10 @@
 namespace unigame.ecs.proto.GameLayers.Relationship
 {
     using System;
-    using Code.GameLayers.Layer;
-    using Code.GameLayers.Relationship;
     using Cysharp.Threading.Tasks;
-     
+    using Game.Code.GameLayers.Layer;
+    using Game.Code.GameLayers.Relationship;
     using Systems;
-    using UniGame.LeoEcs.Bootstrap.Runtime;
     using UnityEngine;
 
     [Serializable]

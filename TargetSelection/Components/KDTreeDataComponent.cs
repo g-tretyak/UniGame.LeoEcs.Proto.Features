@@ -1,9 +1,10 @@
 ﻿namespace unigame.ecs.proto.TargetSelection.Components
 {
     using System;
-     
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Unity.Mathematics;
-    using UnityEngine;
+
     /// <summary>
     /// points cound for KD Tree
     /// </summary>

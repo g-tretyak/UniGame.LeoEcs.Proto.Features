@@ -1,7 +1,7 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.CriticalAnimations.Behaviours
 {
     using System;
-    using Code.Animations;
+    using Game.Code.Animations;
     using UnityEngine.AddressableAssets;
 
     [Serializable]

@@ -1,10 +1,9 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Behaviours
 {
     using System;
-    using Code.Configuration.Runtime.Ability.Description;
     using Components;
-     
-    using UnityEngine;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
 
     [Serializable]
     public sealed class InstantlyApplyEffects : IAbilityBehaviour

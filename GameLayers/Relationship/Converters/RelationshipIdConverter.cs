@@ -1,13 +1,8 @@
 ﻿namespace unigame.ecs.proto.GameLayers.Relationship.Converters
 {
     using System;
-    using System.Threading;
-    using Code.GameLayers.Relationship;
     using Components;
-     
-    using UniGame.LeoEcs.Converter.Runtime;
-    using UniGame.LeoEcs.Converter.Runtime.Abstract;
-    using UniGame.LeoEcs.Shared.Extensions;
+    using Game.Code.GameLayers.Relationship;
     using UnityEngine;
 
     [Serializable]

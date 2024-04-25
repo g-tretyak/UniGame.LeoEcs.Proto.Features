@@ -1,13 +1,8 @@
 namespace unigame.ecs.proto.GameLayers.Category.Converters
 {
     using System;
-    using System.Threading;
-    using Code.GameLayers.Category;
     using Components;
-     
-    using UniGame.LeoEcs.Converter.Runtime;
-    using UniGame.LeoEcs.Converter.Runtime.Abstract;
-    using UniGame.LeoEcs.Shared.Extensions;
+    using Game.Code.GameLayers.Category;
     using UnityEngine;
 
     [Serializable]

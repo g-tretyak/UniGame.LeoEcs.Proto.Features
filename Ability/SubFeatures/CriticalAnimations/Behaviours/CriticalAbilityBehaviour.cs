@@ -2,9 +2,10 @@
 {
     using System;
     using Components;
-    using Core.Components;
     using Game.Code.Configuration.Runtime.Ability.Description;
-     
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Tools;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
@@ -17,7 +18,7 @@
     {
         public AbilityId criticalAbilityId;
 
-        public void Compose(ProtoWorld world, int abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
         {
             var tools = world.GetGlobal<AbilityTools>();
             ref var targetComponent = ref world.GetOrAddComponent<CriticalAbilityTargetComponent>(abilityEntity);

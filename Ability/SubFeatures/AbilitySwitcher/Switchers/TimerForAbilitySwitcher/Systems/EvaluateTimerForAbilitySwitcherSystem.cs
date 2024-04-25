@@ -4,7 +4,8 @@
 	using System.Linq;
 	using Aspects;
 	using Components;
-	 
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
 	using UniGame.Core.Runtime.Extension;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UniGame.Runtime.ObjectPool.Extensions;

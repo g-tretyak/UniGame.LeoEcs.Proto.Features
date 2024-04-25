@@ -1,12 +1,11 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target
 {
     using System;
-    using System.Collections.Generic;
     using Systems;
     using Components;
     using Cysharp.Threading.Tasks;
-     
-    using Leopotam.EcsLite.ExtendedSystems;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using SubFeatures;
     using Tools;
     using UniGame.LeoEcs.Shared.Extensions;

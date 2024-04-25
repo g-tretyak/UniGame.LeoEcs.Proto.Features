@@ -1,10 +1,8 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Converters
 {
-    using System.Threading;
     using Components;
-     
-    using UniGame.LeoEcs.Converter.Runtime;
-    using UniGame.LeoEcs.Converter.Runtime.Abstract;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     public sealed class LookAtWhenAbilityApplyMonoConverter : MonoLeoEcsConverter

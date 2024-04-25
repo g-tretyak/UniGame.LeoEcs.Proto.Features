@@ -3,10 +3,9 @@
 	using System;
 	using System.Collections.Generic;
 	using Abstract;
-	using Code.Configuration.Runtime.Ability.Description;
-	using Code.Configuration.Runtime.Effects.Abstract;
 	using Components;
-	 
+	using Leopotam.EcsProto;
+	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
 	[Serializable]

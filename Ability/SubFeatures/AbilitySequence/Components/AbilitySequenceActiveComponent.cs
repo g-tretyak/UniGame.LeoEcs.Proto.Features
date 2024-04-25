@@ -1,6 +1,7 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySequence.Components
 {
     using System;
+    using Leopotam.EcsProto;
 
     /// <summary>
     /// mark ability sequence as ready to activate
@@ -15,6 +16,6 @@
     [Serializable]
     public struct AbilitySequenceActiveComponent
     {
-        public int Value;
+        public ProtoEntity Value;
     }
 }

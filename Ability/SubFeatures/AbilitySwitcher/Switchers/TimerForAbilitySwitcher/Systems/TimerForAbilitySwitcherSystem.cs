@@ -5,7 +5,9 @@
 	using Aspects;
 	using Common.Components;
 	using Components;
-	 
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using Tools;
 	using UniGame.Core.Runtime.Extension;
 	using UniGame.LeoEcs.Shared.Extensions;
@@ -57,22 +59,25 @@
 					ref var applyAbilitySelfRequest = ref _aspect.ApplyAbilitySelfRequest.Get(requestEntity);
 					if (!applyAbilitySelfRequest.Value.Unpack(_world, out var requestAbilityEntity))
 						continue;
-					if (requestAbilityEntity == entity)
+					if (requestAbilityEntity.Equals(entity))
 						continue;
 					
 					ref var timerAbilityOwnerComponent = ref _aspect.OwnerComponent.Get(entity);
 					var timerAbilityOwner = timerAbilityOwnerComponent.Value;
+					
 					if (!timerAbilityOwner.Unpack(_world, out var timerAbilityOwnerEntity))
 						continue;
-					if (requestEntity != timerAbilityOwnerEntity)
+					
+					if (!requestEntity.Equals(timerAbilityOwnerEntity))
 						continue;
+					
 					var delay = timerData.Delay;
 					timerData.DumpTime = time + delay;
 					
 					var switchEntity = _world.NewEntity();
 					ref var request = ref _aspect.AbilitySwitchRequest.Add(switchEntity);
-					request.OldAbility = requestAbilityEntity.PackedEntity(_world);
-					request.NewAbility = entity.PackedEntity(_world);
+					request.OldAbility = requestAbilityEntity.PackEntity(_world);
+					request.NewAbility = entity.PackEntity(_world);
 					_aspect.TimerForAbilitySwitcherReadyComponent.TryRemove(entity);
 					break;
 				}

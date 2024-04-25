@@ -2,7 +2,8 @@
 {
     using Common.Components;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using Target.Components;
     using UniGame.LeoEcs.Shared.Extensions;
 

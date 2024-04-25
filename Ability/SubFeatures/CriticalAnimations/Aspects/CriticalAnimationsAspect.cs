@@ -5,9 +5,9 @@
 	using AbilityAnimation.Components;
 	using Common.Components;
 	using Components;
-	using Core.Components;
+	using Game.Ecs.Core.Components;
 	using Gameplay.CriticalAttackChance.Components;
-	 
+	using Leopotam.EcsProto;
 	using Target.Components;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 

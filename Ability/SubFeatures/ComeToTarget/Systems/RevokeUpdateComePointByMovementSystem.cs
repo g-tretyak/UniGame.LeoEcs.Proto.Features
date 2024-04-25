@@ -1,10 +1,14 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.ComeToTarget.Systems
 {
     using Components;
-    using Core.Components;
-    using Ecs.Movement.Components;
+    using Game.Ecs.Core.Components;
     using Input.Components.Direction;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+    using Movement.Components;
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     public sealed class RevokeUpdateComePointByMovementSystem : IProtoRunSystem,IProtoInitSystem
     {

@@ -3,12 +3,12 @@
     using System;
     using System.Collections.Generic;
     using Ability.Components;
-    using Code.Animations;
     using Components;
-    using Core.Components;
-    using Cysharp.Threading.Tasks;
+    using Game.Code.Animations;
     using Game.Code.Configuration.Runtime.Ability.Description;
-     
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Tools;
     using UniGame.LeoEcs.Shared.Extensions;
 
@@ -20,7 +20,7 @@
     {
         public List<AnimationLink> animations = new List<AnimationLink>();
 
-        public void Compose(ProtoWorld world, int abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
         {
             var tools = world.GetGlobal<AbilityTools>();
             world.GetOrAddComponent<AbilityCriticalAnimationTargetComponent>(abilityEntity);

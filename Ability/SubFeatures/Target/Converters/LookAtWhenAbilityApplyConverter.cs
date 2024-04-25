@@ -1,11 +1,9 @@
 ﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Converters
 {
     using System;
-    using System.Threading;
     using Components;
-     
-    using Sirenix.OdinInspector;
-    using UniGame.LeoEcs.Converter.Runtime;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [Serializable]

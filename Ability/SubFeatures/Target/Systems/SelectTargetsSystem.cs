@@ -3,8 +3,10 @@
 	using System;
 	using Aspects;
 	using Components;
-	using Core.Components;
-	 
+	using Game.Ecs.Core.Components;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using TargetSelection;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
