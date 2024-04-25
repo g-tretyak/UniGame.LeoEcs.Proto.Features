@@ -3,7 +3,6 @@
     using System;
     using System.Linq;
     using PlayableBindings;
-    using Resolvers;
     using UniGame.AddressableTools.Runtime;
     using UniModules.UniGame.Core.Runtime.DataFlow.Extensions;
     using UnityEngine;

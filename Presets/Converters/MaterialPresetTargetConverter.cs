@@ -15,7 +15,7 @@
         public string targetId;
         public MeshRenderer renderer;
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var dataComponent = ref world.GetOrAddComponent<MaterialPresetComponent>(entity);
             ref var idComponent = ref world.GetOrAddComponent<PresetIdComponent>(entity);

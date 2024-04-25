@@ -4,7 +4,7 @@ namespace unigame.ecs.proto.Characteristics.Health.Converters
     using System.Threading;
     using Base.Components.Requests;
     using Components;
-     
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
@@ -17,7 +17,7 @@ namespace unigame.ecs.proto.Characteristics.Health.Converters
         [SerializeField] 
         public float maxHealth;
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var createCharacteristicRequest = ref world.AddComponent<CreateCharacteristicRequest<HealthComponent>>(entity);
             createCharacteristicRequest.Value = maxHealth;

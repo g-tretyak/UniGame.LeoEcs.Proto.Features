@@ -1,8 +1,11 @@
 ﻿namespace unigame.ecs.proto.Characteristics.Health.Systems
 {
     using Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.Characteristics.Base.Components;
-     
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     public sealed class ProcessHealthChangedSystem : IProtoRunSystem,IProtoInitSystem
     {

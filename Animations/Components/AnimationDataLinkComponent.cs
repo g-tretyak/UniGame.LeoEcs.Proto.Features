@@ -1,8 +1,9 @@
 ﻿namespace unigame.ecs.proto.Core.Components
 {
     using System;
-    using Code.Animations;
-     
+    using Game.Code.Animations;
+    using Leopotam.EcsProto.QoL;
+
 
     /// <summary>
     /// link to animation entity

@@ -6,14 +6,16 @@ namespace unigame.ecs.proto.GameAi.ActivateAbility
     using Ability.SubFeatures.Target.Tools;
     using Ability.Tools;
     using AI.Components;
-    using Code.Ai.ActivateAbility;
-    using Code.Ai.ActivateAbility.Aspects;
-    using Code.GameLayers.Relationship;
     using Components;
-    using Core.Components;
-    using Core.Death.Components;
+    using Game.Code.Ai.ActivateAbility;
+    using Game.Code.Ai.ActivateAbility.Aspects;
+    using Game.Code.GameLayers.Relationship;
+    using Game.Ecs.Core.Components;
+    using Game.Ecs.Core.Death.Components;
     using GameLayers.Layer.Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Selection;
     using TargetSelection;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
@@ -43,7 +45,7 @@ namespace unigame.ecs.proto.GameAi.ActivateAbility
         
         private ProtoPool<AbilityActionActiveTargetComponent> _activeTargetPool;
         private ProtoPool<AbilityAiActionTargetComponent> _targetPool;
-        private int[] _resultSelection = new int[TargetSelectionData.MaxTargets];
+        private ProtoEntity[] _resultSelection = new ProtoEntity[TargetSelectionData.MaxTargets];
 
         public void Init(IProtoSystems systems)
         {
@@ -89,11 +91,11 @@ namespace unigame.ecs.proto.GameAi.ActivateAbility
                     }
 
                     var abilityEntity = _abilityTools.TryGetAbility(entity, slot);
-                    if (abilityEntity < 0) continue;
+                    if ((int)abilityEntity < 0) continue;
                     
                     var abilityTargetEntity = SelectAbilityTarget(entity, ref abilityEntity, ref abilityFilter);
                     
-                    if (abilityTargetEntity < 0)
+                    if ((int)abilityTargetEntity < 0)
                     {
                         _targetTools.ClearAbilityTargets(abilityEntity);
                         continue;
@@ -122,7 +124,7 @@ namespace unigame.ecs.proto.GameAi.ActivateAbility
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private int SelectAbilityTarget(int entity, ref int ability, ref AbilityFilter filter)
+        private ProtoEntity SelectAbilityTarget(ProtoEntity entity, ref ProtoEntity ability, ref AbilityFilter filter)
         {
             ref var activeTargetComponent = ref _targetAspect.ActiveTarget.GetOrAddComponent(ability);
             ref var radiusComponent = ref _targetAspect.Radius.Get(ability);
@@ -185,7 +187,7 @@ namespace unigame.ecs.proto.GameAi.ActivateAbility
                 target = selectionEntity;
             }
             
-            return target == TargetSelectionData.EmptyResult 
+            return target.Equals(TargetSelectionData.EmptyResult) 
                 ? TargetSelectionData.EmptyResult 
                 : target;
         }

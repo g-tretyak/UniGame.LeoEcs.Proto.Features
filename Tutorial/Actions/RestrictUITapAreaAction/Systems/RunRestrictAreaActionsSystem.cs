@@ -1,15 +1,11 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.RestrictUITapAreaAction.Systems
 {
 	using System;
-	using System.Linq;
 	using Aspects;
 	using Components;
-	 
-	using UniGame.Core.Runtime.Extension;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
-	using UniGame.Runtime.ObjectPool.Extensions;
-	using UnityEngine;
-	using UnityEngine.Pool;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 
 	/// <summary>

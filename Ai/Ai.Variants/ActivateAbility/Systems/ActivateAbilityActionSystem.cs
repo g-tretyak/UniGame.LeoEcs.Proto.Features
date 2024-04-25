@@ -1,12 +1,14 @@
 ﻿namespace Game.Code.Ai.ActivateAbility
 {
     using System;
-    using Ecs.Ability.SubFeatures.Target.Tools;
-    using Ecs.Ability.Tools;
-    using Ecs.AI.Components;
-    using Ecs.AI.Abstract;
     using Ecs.Core.Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+    using unigame.ecs.proto.Ability.SubFeatures.Target.Tools;
+    using unigame.ecs.proto.Ability.Tools;
+    using unigame.ecs.proto.AI.Abstract;
+    using unigame.ecs.proto.AI.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 

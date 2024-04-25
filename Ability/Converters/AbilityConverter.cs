@@ -47,7 +47,7 @@
         private List<AbilityConfiguration> _abilityConfigurations = new List<AbilityConfiguration>();
 #endif
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var mapComponent = ref world.GetOrAddComponent<AbilityMapComponent>(entity);
             ref var inHandLink = ref world.GetOrAddComponent<AbilityInHandLinkComponent>(entity);

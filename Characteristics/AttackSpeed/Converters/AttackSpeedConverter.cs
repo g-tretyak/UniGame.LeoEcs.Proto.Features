@@ -20,7 +20,7 @@ namespace unigame.ecs.proto.Characteristics.AttackSpeed.Converters
         public float minLimitValue = 0;
         public float maxLimitValue = 5;
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var createCharacteristicRequest = ref world.GetOrAddComponent<CreateCharacteristicRequest<AttackSpeedComponent>>(entity);
             createCharacteristicRequest.Value = attackSpeed;

@@ -1,13 +1,9 @@
 ﻿namespace unigame.ecs.proto.Animations.Data
 {
     using System;
-    using System.Collections.Generic;
-     
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Components;
-    using UnityEngine;
-    using UnityEngine.Playables;
-    using Object = UnityEngine.Object;
+    using UniGame.LeoEcs.Shared.Extensions;
 
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;

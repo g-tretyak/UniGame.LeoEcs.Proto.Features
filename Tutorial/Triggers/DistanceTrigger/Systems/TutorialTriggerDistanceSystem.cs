@@ -1,13 +1,15 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Triggers.DistanceTrigger.Systems
 {
 	using System;
-	using System.Linq;
 	using Aspects;
 	using Components;
-	using Core.Components;
-	 
+	using Game.Ecs.Core.Components;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using Tutorial.Components;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+	using UniGame.LeoEcs.Shared.Extensions;
 	using Unity.Mathematics;
 
 	/// <summary>
@@ -51,11 +53,10 @@
 
 		public void Run()
 		{
-			if (_startLevelFilter.GetEntitiesCount() == 0)
-				return;
-			if (_championFilter.GetEntitiesCount() == 0)
-				return;
-			var championEntity = _championFilter.GetRawEntities().FirstOrDefault();
+			if (_startLevelFilter.First() < 0) return;
+			if (_championFilter.First() < 0) return;
+			
+			var championEntity = (ProtoEntity)_championFilter.First();
 			ref var positionComponent = ref _aspect.Position.Get(championEntity);
 			ref var position = ref positionComponent.Position;
 			

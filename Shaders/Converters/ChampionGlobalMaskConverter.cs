@@ -3,8 +3,8 @@
 	using System;
 	using System.Collections.Generic;
 	using Components;
-	 
-	using UniGame.LeoEcs.Converter.Runtime;
+	using Leopotam.EcsProto;
+	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 	using Object = UnityEngine.Object;
 
@@ -17,7 +17,7 @@
 		#endregion
 		
 		
-		public override void Apply(GameObject target, ProtoWorld world, int entity)
+		public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
 		{
 			var playerGlobalMaskPool = world.GetPool<ChampionGlobalMaskComponent>();
 			ref var playerGlobalMaskComponent = ref playerGlobalMaskPool.Add(entity);

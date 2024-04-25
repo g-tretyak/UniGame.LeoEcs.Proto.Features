@@ -98,7 +98,7 @@
             return null;
         }
 
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             foreach (var characteristic in characteristics)
             {

@@ -2,19 +2,15 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Threading;
-    using Code.Configuration.Runtime.Ability;
     using Components;
-    using Core.Components;
-     
+    using Game.Code.Configuration.Runtime.Ability;
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    /// <summary>
-    /// ADD DESCRIPTION HERE
-    /// </summary>
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 
@@ -32,9 +28,9 @@
 
         #endregion
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
-            var packedEntity = world.PackEntity(entity);
+            var packedEntity = entity.PackEntity(world);
             ref var abilityAgentConfiguration = ref world.GetOrAddComponent<AbilityAgentConfigurationComponent>(entity);
             abilityAgentConfiguration.Value = entityConfiguration;
             ref var ownerTransformComponent = ref world.GetComponent<TransformComponent>(entity);
@@ -50,7 +46,7 @@
                 
                 //workaround for simultaneous work of ability agent and ability initiator
                 ref var agentUnitOwnerComponent = ref world.AddComponent<AbilityAgentUnitOwnerComponent>(entityAgent);
-                agentUnitOwnerComponent.Value = world.PackEntity(entity);
+                agentUnitOwnerComponent.Value = entity.PackEntity(world);
                 
                 ref var transformComponent = ref world.AddComponent<TransformComponent>(entityAgent);
                 transformComponent.Value = ownerTransformComponent.Value;

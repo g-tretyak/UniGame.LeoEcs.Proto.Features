@@ -29,7 +29,7 @@
         [HideLabel]
         public FogShaderPresets sourcePreset;
 
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var sourceComponent = ref world.GetOrAddComponent<FogShaderSettingsPresetComponent>(entity);
             ref var idComponent = ref world.GetOrAddComponent<PresetIdComponent>(entity);

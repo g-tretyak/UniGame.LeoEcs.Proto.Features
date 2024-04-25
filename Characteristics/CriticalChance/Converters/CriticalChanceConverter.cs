@@ -16,7 +16,7 @@ namespace unigame.ecs.proto.Characteristics.CriticalChance.Converters
         public float minLimitValue = 0f;
         public float maxLimitValue = 1000f;
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var createCharacteristicRequest = ref world
                 .GetOrAddComponent<CreateCharacteristicRequest<CriticalChanceComponent>>(entity);

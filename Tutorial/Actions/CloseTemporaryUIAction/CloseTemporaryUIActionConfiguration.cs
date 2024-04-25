@@ -3,13 +3,13 @@
 	using System;
 	using Abstracts;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
 
 	[Serializable]
 	public class CloseTemporaryUIActionConfiguration : ITutorialAction
 	{
-		public void ComposeEntity(ProtoWorld world, int entity)
+		public void ComposeEntity(ProtoWorld world, ProtoEntity entity)
 		{
 			world.AddComponent<CloseTemporaryUIActionComponent>(entity);
 		}

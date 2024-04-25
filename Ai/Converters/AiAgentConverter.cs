@@ -1,11 +1,10 @@
 namespace unigame.ecs.proto.AI.Converters
 {
     using System;
-    using System.Threading;
     using Cysharp.Threading.Tasks;
     using Components;
     using Configurations;
-     
+    using Leopotam.EcsProto;
     using Service;
     using Sirenix.OdinInspector;
     using UniGame.AddressableTools.Runtime;
@@ -51,14 +50,14 @@ namespace unigame.ecs.proto.AI.Converters
 
         public bool IsRuntime => Application.isPlaying;
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var aiSensorAgent = ref world.GetOrAddComponent<AiSensorComponent>(entity);
             aiSensorAgent.Range = sensorRange;
             ApplyAiDataAsync(target, world, entity).Forget();
         }
 
-        private async UniTask ApplyAiDataAsync(GameObject target, ProtoWorld world, int entity)
+        private async UniTask ApplyAiDataAsync(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var lifeTime = target.GetAssetLifeTime();
             var aiData = await configuration
@@ -68,7 +67,7 @@ namespace unigame.ecs.proto.AI.Converters
             ApplyAiData(target, world, entity, aiData);
         }
 
-        private void ApplyAiData(GameObject target,ProtoWorld world,int entity,AiAgentConfigurationAsset aiData)
+        private void ApplyAiData(GameObject target,ProtoWorld world,ProtoEntity entity,AiAgentConfigurationAsset aiData)
         {
             activeActions = new bool[aiData.ActionsCount];
             plannerData    = new AiPlannerData[aiData.ActionsCount];

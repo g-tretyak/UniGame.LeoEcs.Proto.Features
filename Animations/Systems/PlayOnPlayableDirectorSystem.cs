@@ -2,10 +2,12 @@
 {
     using System;
     using Aspects;
-    using Code.Animations;
     using Components.Requests;
-    using Core.Components;
-     
+    using Game.Code.Animations;
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;

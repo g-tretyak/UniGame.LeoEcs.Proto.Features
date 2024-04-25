@@ -1,7 +1,7 @@
 ﻿namespace unigame.ecs.proto.Shaders.Components
 {
 	using System.Collections.Generic;
-	 
+	using Leopotam.EcsProto;
 	using UnityEngine;
 
 	/// <summary>

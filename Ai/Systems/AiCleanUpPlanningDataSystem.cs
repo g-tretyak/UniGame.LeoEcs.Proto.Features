@@ -4,8 +4,11 @@ namespace unigame.ecs.proto.AI.Systems
     using System.Collections.Generic;
     using Components;
     using Configurations;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using Service;
-     
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     [Serializable]
     public class AiCleanUpPlanningDataSystem : IProtoRunSystem, IProtoInitSystem
@@ -13,9 +16,11 @@ namespace unigame.ecs.proto.AI.Systems
         private IReadOnlyList<AiActionData> _actionData;
         private EcsFilter _filter;
         private ProtoWorld _world;
+        private IProtoSystems _systems;
         
         public void Init(IProtoSystems systems)
         {
+            _systems = systems;
             _world = systems.GetWorld();
             _filter = _world.Filter<AiAgentComponent>().End();
         }
@@ -49,7 +54,7 @@ namespace unigame.ecs.proto.AI.Systems
                 
                     //remove ai system components
                     var planner = _actionData[i].planner;
-                    planner.RemoveComponent(systems,entity);
+                    planner.RemoveComponent(_systems,entity);
                 }
             }
         }

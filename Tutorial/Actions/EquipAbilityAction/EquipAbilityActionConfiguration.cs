@@ -1,16 +1,11 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.EquipAbilityAction
 {
-	using System;
 	using System.Collections.Generic;
-	using System.Linq;
 	using Abstracts;
-	using Code.Configuration.Runtime.Ability;
-	using Code.Services.AbilityLoadout.Data;
 	using Components;
-	 
-	using Sirenix.OdinInspector;
+	using Game.Code.Configuration.Runtime.Ability;
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
-	using UnityEngine;
 
 
 	public class EquipAbilityActionConfiguration : TutorialAction

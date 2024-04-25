@@ -1,7 +1,8 @@
 ﻿namespace unigame.ecs.proto.GameAi.ActivateAbility.Components
 {
     using System;
-     
+    using Leopotam.EcsProto.QoL;
+
 
     /// <summary>
     /// Current active target for ability

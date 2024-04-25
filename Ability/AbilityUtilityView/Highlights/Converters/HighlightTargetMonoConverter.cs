@@ -11,7 +11,7 @@
         [SerializeField]
         public GameObject highlight;
 
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var highlightPool = world.GetPool<HighlightComponent>();
             ref var highlightComponent = ref highlightPool.Add(entity);

@@ -4,8 +4,8 @@
     using Characteristics.Duration.Components;
     using Components;
     using Components.Requests;
-    using Core.Components;
-     
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
     [Serializable]

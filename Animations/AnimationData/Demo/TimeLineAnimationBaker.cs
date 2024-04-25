@@ -1,12 +1,11 @@
 ﻿namespace unigame.ecs.proto.Tools.Converters
 {
-    using Code.Animations;
+    using Game.Code.Animations;
     using Sirenix.OdinInspector;
     using UnityEngine;
     using UnityEngine.Playables;
 
 #if UNITY_EDITOR
-    using UniModules.Editor;
 #endif
     
     public class TimeLineAnimationBaker : MonoBehaviour

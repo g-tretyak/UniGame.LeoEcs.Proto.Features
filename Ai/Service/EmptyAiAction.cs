@@ -2,7 +2,8 @@
 {
     using System;
     using Abstract;
-     
+    using Leopotam.EcsProto;
+
 
     [Serializable]
     public sealed class EmptyAiAction : IAiAction
@@ -11,7 +12,7 @@
         
         public static AiActionResult EmptyAiActionResult = new AiActionResult();
 
-        public AiActionResult Execute(EcsSystems systems, int entity)
+        public AiActionResult Execute(IProtoSystems systems, int entity)
         {
             return new AiActionResult() { ActionStatus = AiActionStatus.Complete };
         }

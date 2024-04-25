@@ -16,7 +16,7 @@
     {
         public GeneralLightSettingsPresetSourceConverter generalLightConverter = new();
         
-        public sealed override void Apply(GameObject target, ProtoWorld world, int entity)
+        public sealed override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             generalLightConverter.Apply(world, entity);
         }
@@ -59,7 +59,7 @@
             new DirectionalLightSettingsSourceConverter() { showButtons = false };
 
 
-        public override void Apply(ProtoWorld world, int entity)
+        public override void Apply(ProtoWorld world, ProtoEntity entity)
         {
             if(renderingConverter.isEnabled)
                 renderingConverter.Apply(world, world.NewEntity());

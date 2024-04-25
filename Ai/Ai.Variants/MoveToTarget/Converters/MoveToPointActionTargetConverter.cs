@@ -1,10 +1,11 @@
 ﻿namespace unigame.ecs.proto.GameAi.MoveToTarget.Converters
 {
     using System;
-    using Code.GameLayers.Category;
     using Components;
-     
+    using Game.Code.GameLayers.Category;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Converter.Runtime;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [Serializable]
@@ -20,7 +21,7 @@
         [CategoryIdMask]
         public CategoryId _category;
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var point = _point == null
                 ? target.transform

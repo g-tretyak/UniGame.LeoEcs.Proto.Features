@@ -4,8 +4,9 @@
     using Aspects;
     using Components;
     using Components.Requests;
-    using Core.Components;
-     
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
     

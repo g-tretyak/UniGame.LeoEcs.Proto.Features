@@ -21,7 +21,7 @@
 
         public Light light;
 
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var lightPresetComponent = ref world.GetOrAddComponent<LightPresetComponent>(entity);
             ref var idComponent = ref world.GetOrAddComponent<PresetIdComponent>(entity);

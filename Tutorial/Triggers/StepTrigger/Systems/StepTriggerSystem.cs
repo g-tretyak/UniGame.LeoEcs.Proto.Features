@@ -40,15 +40,15 @@
 
 		public void Run()
 		{
-			if (_startLevelFilter.GetEntitiesCount() == 0)
-				return;
+			var first = _startLevelFilter.First();
+			if (first < 0) return;
 			
 			foreach (var entity in _filter)
 			{
 				_aspect.CompletedStepTrigger.Add(entity);
 				var requestEntity = _world.NewEntity();
 				ref var request = ref _aspect.RunTutorialActionsRequest.Add(requestEntity);
-				request.Source = _world.PackedEntity(entity);
+				request.Source = entity.PackEntity(_world);
 			}
 		}
 	}

@@ -2,17 +2,18 @@ namespace Game.Code.Ai.ActivateAbility
 {
     using System;
     using Cysharp.Threading.Tasks;
-    using Ecs.AI.Components;
-    using Ecs.AI.Systems;
     using Ecs.Core.Components;
-    using Ecs.GameAi.ActivateAbility;
-    using Ecs.GameLayers.Layer.Components;
-     
-    using Leopotam.EcsLite.ExtendedSystems;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+    using unigame.ecs.proto.AI.Components;
+    using unigame.ecs.proto.AI.Systems;
+    using unigame.ecs.proto.GameAi.ActivateAbility;
+    using unigame.ecs.proto.GameLayers.Layer.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;
-    
+
     /// <summary>
     /// Show and Hides HealthBars based on UnderTheTargetComponent 
     /// </summary>
@@ -29,6 +30,7 @@ namespace Game.Code.Ai.ActivateAbility
     {
         private EcsFilter _filter;
         private ProtoWorld _world;
+        private IProtoSystems _systems;
         private ProtoPool<ActivateAbilityActionComponent> _actionPool;
         private ProtoPool<ActivateAbilityPlannerComponent> _activateAbilityPool;
         private ProtoPool<AbilityAiActionTargetComponent> _abilityTargetPool;
@@ -36,7 +38,8 @@ namespace Game.Code.Ai.ActivateAbility
         public void Init(IProtoSystems systems)
         {
             _world = systems.GetWorld();
-
+            _systems = systems;
+            
             _filter = _world
                 .Filter<AiAgentComponent>()
                 .Inc<AbilityAiActionTargetComponent>()
@@ -59,7 +62,7 @@ namespace Game.Code.Ai.ActivateAbility
                 abilityActionComponent.AbilityCellId = targetComponent.AbilityCellId;
                 abilityActionComponent.Ability = targetComponent.Ability;
     
-                ApplyPlanningResult(systems, entity, plannerComponent.PlannerData);
+                ApplyPlanningResult(_systems, entity, plannerComponent.PlannerData);
             }
         }
 

@@ -3,8 +3,8 @@ namespace unigame.ecs.proto.Animations
     using Components.Requests;
     using Cysharp.Threading.Tasks;
     using Data;
-     
-    using Leopotam.EcsLite.ExtendedSystems;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Systems;
     using UniGame.LeoEcs.Bootstrap.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;

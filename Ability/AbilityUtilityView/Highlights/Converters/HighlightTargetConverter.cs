@@ -18,7 +18,7 @@
         [SerializeField]
         public AssetReferenceGameObject highlight;
 
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             LoadHighlightAsync(world,entity,target.GetAssetLifeTime()).Forget();
         }

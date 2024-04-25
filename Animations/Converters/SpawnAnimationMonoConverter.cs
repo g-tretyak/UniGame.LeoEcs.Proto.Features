@@ -1,11 +1,10 @@
 ﻿namespace unigame.ecs.proto.Animations.Converters
 {
     using System;
-    using System.Threading;
-    using Components;
     using Components.Requests;
     using Cysharp.Threading.Tasks;
-     
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Sirenix.OdinInspector;
     using UniGame.AddressableTools.Runtime;
     using UniGame.LeoEcs.Converter.Runtime;
@@ -20,24 +19,19 @@
 
     public sealed class SpawnAnimationMonoConverter : MonoLeoEcsConverter
     {
-        [FormerlySerializedAs("_spawnAnimation")] 
         [SerializeField]
         public PlayableAsset spawnAnimation;
 
         [SerializeField]
         public PlayableDirector playableDirector;
         
-        [FormerlySerializedAs("_disableParts")] 
         [SerializeField]
         public bool disableParts = true;
         
-        // TODO: надо будет продумать момент анимации, сейчас она запускается через n кадров, что дает эффект "мигания"
-        [FormerlySerializedAs("_disabledParts")]
         [Required]
         [SerializeField]
         public GameObject[] disabledParts;
-        
-        [FormerlySerializedAs("_playOnConvert")] 
+     
         [SerializeField]
         public bool playOnConvert = true;
         
@@ -58,7 +52,7 @@
             }
         }
 
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             if (!playOnConvert) return;
  
@@ -117,7 +111,7 @@
         [SerializeField]
         private bool playOnConvert = true;
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             foreach (var disabledPart in disabledParts)
             {
@@ -136,7 +130,7 @@
             ActivateAnimationAsync(target, world, entity).Forget();
         }
 
-        private async UniTask ActivateAnimationAsync(GameObject target, ProtoWorld world, int entity)
+        private async UniTask ActivateAnimationAsync(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var lifeTime = target.GetAssetLifeTime();
             var animation = spawnAnimation
@@ -148,7 +142,7 @@
                 .AttachExternalCancellation(lifeTime.Token);
         }
 
-        private void CreateAnimationEntity(PlayableAsset animation,GameObject target, ProtoWorld world, int entity)
+        private void CreateAnimationEntity(PlayableAsset animation,GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var animationCreateRequest = world.NewEntity();
             ref var createAnimationRequest = ref world.AddComponent<CreateAnimationPlayableSelfRequest>(animationCreateRequest);

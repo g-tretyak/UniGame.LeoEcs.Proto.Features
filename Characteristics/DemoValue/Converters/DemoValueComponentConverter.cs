@@ -8,7 +8,7 @@ namespace unigame.ecs.proto.Characteristics.DemoValue.Converters
     [Serializable]
     public class DemoValueComponentConverter : LeoEcsConverter
     {
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             
         }

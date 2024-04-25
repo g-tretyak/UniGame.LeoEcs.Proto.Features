@@ -2,19 +2,15 @@
 {
     using System;
     using Aspects;
-    using Characteristics.Cooldown.Components;
-    using Characteristics.Duration.Components;
     using Components;
-    using Components.Requests;
-    using Core.Components;
     using Data;
-     
-    using Time.Service;
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
-    using UnityEngine;
-    using UnityEngine.Playables;
-    
+
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 

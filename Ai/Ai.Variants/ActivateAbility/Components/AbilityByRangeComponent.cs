@@ -1,7 +1,7 @@
 namespace unigame.ecs.proto.GameAi.ActivateAbility.Components
 {
     using System;
-    using Code.Ai.ActivateAbility;
+    using Game.Code.Ai.ActivateAbility;
     using UniGame.LeoEcs.Shared.Abstract;
     using UnityEngine;
 

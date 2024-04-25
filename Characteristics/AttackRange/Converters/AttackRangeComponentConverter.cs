@@ -22,7 +22,7 @@ namespace unigame.ecs.proto.Characteristics.CriticalChance.Converters
 
         public Color rangeGizmosColor = new Color(0.128f, 0.200f, 0.850f);
 
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var createCharacteristicRequest = ref world
                 .GetOrAddComponent<CreateCharacteristicRequest<AttackRangeComponent>>(entity);

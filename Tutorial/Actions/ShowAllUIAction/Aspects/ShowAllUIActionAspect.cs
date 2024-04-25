@@ -2,7 +2,7 @@
 {
 	using System;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
 	[Serializable]

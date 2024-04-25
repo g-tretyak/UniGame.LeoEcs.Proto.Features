@@ -3,9 +3,12 @@
 	using System;
 	using Aspects;
 	using Components;
-	 
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using Tutorial.Components;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+	using UniGame.LeoEcs.Shared.Extensions;
 
 	/// <summary>
 	/// Sends request to run tutorial actions.
@@ -47,8 +50,8 @@
 
 		public void Run()
 		{
-			if (_startLevelFilter.GetEntitiesCount() == 0)
-				return;
+			if (_startLevelFilter.First() < 0) return;
+			
 			foreach (var entity in _requestFilter)
 			{
 				ref var request = ref _aspect.ActionTriggerRequest.Get(entity);

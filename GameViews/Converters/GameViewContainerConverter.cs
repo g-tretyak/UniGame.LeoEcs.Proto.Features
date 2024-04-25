@@ -55,7 +55,7 @@
 
         public bool IsActive => Application.isPlaying && _world != null && _world.IsAlive();
 
-        public sealed override void Apply(GameObject target, ProtoWorld world, int entity)
+        public sealed override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             _world = world;
             _entity = entity;

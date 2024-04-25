@@ -1,10 +1,10 @@
 ﻿namespace unigame.ecs.proto.AI.Abstract
 {
-     
+    using Leopotam.EcsProto;
     using Service;
 
     public interface IAiAction
     {
-        AiActionResult Execute( EcsSystems systems,int entity);
+        AiActionResult Execute( IProtoSystems systems,int entity);
     }
 }

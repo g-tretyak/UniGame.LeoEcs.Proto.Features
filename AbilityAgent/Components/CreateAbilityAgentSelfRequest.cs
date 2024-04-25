@@ -1,9 +1,9 @@
 ﻿namespace unigame.ecs.proto.AbilityAgent.Components
 {
     using System;
-    using Code.Configuration.Runtime.Ability;
-    using Code.Configuration.Runtime.Ability.Description;
-     
+    using Game.Code.Configuration.Runtime.Ability;
+    using Leopotam.EcsProto.QoL;
+
 
     /// <summary>
     /// Self request to create ability agent.

@@ -5,9 +5,10 @@
     using Components;
     using Components.Requests;
     using Core.Components;
-     
-    using UniGame.LeoEcs.Timer.Components;
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
+    using UniGame.LeoEcs.Timer.Components;
 
     [Serializable]
     public class AnimationTimelineAspect : EcsAspect

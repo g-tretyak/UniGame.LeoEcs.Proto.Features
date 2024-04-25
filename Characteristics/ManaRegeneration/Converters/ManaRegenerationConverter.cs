@@ -16,7 +16,7 @@
 		public float tickTime = 0.2f;
 		public float manaRegeneration = 80f;
 
-		public override void Apply(GameObject target, ProtoWorld world, int entity)
+		public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
 		{
 			ref var createCharacteristicRequest = ref world.AddComponent<CreateCharacteristicRequest<ManaRegenerationComponent>>(entity);
 			createCharacteristicRequest.Value = manaRegeneration;

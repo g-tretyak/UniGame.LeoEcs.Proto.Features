@@ -49,7 +49,7 @@ namespace unigame.ecs.proto.Presets.Converters
         public DirectionalLightSettingsTargetConverter directionalLightConverter =
             new DirectionalLightSettingsTargetConverter() { showButtons = false };
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             if (renderingConverter.IsEnabled)
                 renderingConverter.Apply(target, world, world.NewEntity());

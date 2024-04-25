@@ -21,7 +21,7 @@ namespace unigame.ecs.proto.Characteristics.Dodge.Converters
         [MinValue(0)]
         public float minDodge = 0f;
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var createCharacteristicRequest = ref world.GetOrAddComponent<CreateCharacteristicRequest<DodgeComponent>>(entity);
             createCharacteristicRequest.Value = dodge;

@@ -40,7 +40,7 @@ namespace unigame.ecs.proto.TargetSelection.Systems
 
         public void Run()
         {
-            if (_kdDataFilter.GetEntitiesCount() == 0)
+            if (_kdDataFilter.First() < 0) 
                 InitKDTreeTargets();
         }
         

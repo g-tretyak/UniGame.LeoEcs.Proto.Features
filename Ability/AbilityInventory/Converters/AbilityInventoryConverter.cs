@@ -15,7 +15,7 @@
 		
 		public bool autoEquipByProfile = true;
 		
-		public override void Apply(GameObject target, ProtoWorld world, int entity)
+		public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
 		{
 			world.GetOrAddComponent<AbilityInventoryComponent>(entity);
 			if(autoEquipByProfile)

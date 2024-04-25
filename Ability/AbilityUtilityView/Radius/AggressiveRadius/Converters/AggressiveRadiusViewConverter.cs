@@ -26,7 +26,7 @@
         [SerializeField]
         public LayerId layerMask;
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
 #if !UNITY_EDITOR
             return;

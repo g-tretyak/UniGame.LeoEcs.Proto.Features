@@ -2,8 +2,10 @@ namespace unigame.ecs.proto.AI.Systems
 {
     using System;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using Service;
+    using UniGame.LeoEcs.Shared.Extensions;
 
     [Serializable]
     public class AiPlanningSystem : IProtoRunSystem,IProtoInitSystem

@@ -2,7 +2,7 @@
 {
     using Abstract;
     using Cysharp.Threading.Tasks;
-     
+    using Leopotam.EcsProto;
     using UnityEngine;
 
     public class AiPlannerFeature : ScriptableObject
@@ -11,14 +11,14 @@
 
         public int Id => _id;
         
-        public async UniTask Initialize(int id,EcsSystems ecsSystems)
+        public async UniTask Initialize(int id,IProtoSystems ecsSystems)
         {
             _id = id;
 
             await OnInitialize(id, ecsSystems);
         }
         
-        protected virtual UniTask OnInitialize(int id, EcsSystems systems) => UniTask.CompletedTask;
+        protected virtual UniTask OnInitialize(int id, IProtoSystems systems) => UniTask.CompletedTask;
     }
     
     public class AiPlannerFeature<TPlanner> : ScriptableObject
@@ -34,13 +34,13 @@
 
         public int Id => _id;
         
-        public async UniTask Initialize(int id,EcsSystems ecsSystems)
+        public async UniTask Initialize(int id,IProtoSystems ecsSystems)
         {
             _id = id;
 
             await OnInitialize(id, ecsSystems);
         }
         
-        protected virtual UniTask OnInitialize(int id, EcsSystems systems) => UniTask.CompletedTask;
+        protected virtual UniTask OnInitialize(int id, IProtoSystems systems) => UniTask.CompletedTask;
     }
 }

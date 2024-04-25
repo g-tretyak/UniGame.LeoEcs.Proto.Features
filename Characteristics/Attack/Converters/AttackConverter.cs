@@ -15,7 +15,7 @@
         [Min(0.0f)]
         public float attackDamage = 10.0f;
 
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var attackDamageComponent = ref world.GetOrAddComponent<AttackDamageComponent>(entity);
             attackDamageComponent.Value = attackDamage;

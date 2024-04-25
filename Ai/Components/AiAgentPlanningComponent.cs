@@ -2,7 +2,6 @@ namespace unigame.ecs.proto.AI.Components
 {
     using System;
     using System.Collections.Generic;
-    using Service;
 
     /// <summary>
     /// данные для плана агента

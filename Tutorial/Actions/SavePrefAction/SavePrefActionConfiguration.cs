@@ -3,7 +3,7 @@
 	using Abstracts;
 	using ActionTools;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
 
 	public class SavePrefActionConfiguration : TutorialAction

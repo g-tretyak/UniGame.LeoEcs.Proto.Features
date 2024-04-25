@@ -24,7 +24,7 @@
         [SerializeField]
         private LayerId _layerMask;
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var radiusViewPool = world.GetPool<AggressiveRadiusViewDataComponent>();
             ref var radiusView = ref radiusViewPool.Add(entity);

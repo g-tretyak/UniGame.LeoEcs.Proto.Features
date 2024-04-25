@@ -12,7 +12,7 @@
         [HideLabel]
         public SpotLightSettingsSourceConverter spotLightConverter = new SpotLightSettingsSourceConverter();
 
-        public sealed override void Apply(GameObject target, ProtoWorld world, int entity)
+        public sealed override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             spotLightConverter.Apply(world, entity);
         }

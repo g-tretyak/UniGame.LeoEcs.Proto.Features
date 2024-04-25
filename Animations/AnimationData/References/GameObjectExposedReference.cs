@@ -2,7 +2,6 @@
 {
     using System;
     using Resolvers;
-    using UnityEngine.Serialization;
 
     [Serializable]
     public class GameObjectExposedReference : IPlayableReference

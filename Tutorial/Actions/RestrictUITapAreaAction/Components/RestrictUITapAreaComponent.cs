@@ -2,7 +2,6 @@
 {
 	using System;
 	using Data;
-	using UnityEngine.Serialization;
 
 	/// <summary>
 	/// ADD DESCRIPTION HERE

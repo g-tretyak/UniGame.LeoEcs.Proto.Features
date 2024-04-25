@@ -31,7 +31,7 @@
         [HideLabel]
         public SpotLightPresets sourcePreset;
 
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var sourceComponent = ref world.GetOrAddComponent<SpotLightSettingsPresetComponent>(entity);
             ref var idComponent = ref world.GetOrAddComponent<PresetIdComponent>(entity);

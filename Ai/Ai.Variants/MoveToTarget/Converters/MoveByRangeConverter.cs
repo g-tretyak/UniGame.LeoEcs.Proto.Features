@@ -2,11 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Threading;
     using AI.Abstract;
-    using Code.Configuration.Runtime.Effects.Abstract;
     using Components;
-     
+    using Game.Code.Configuration.Runtime.Effects.Abstract;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Converter.Runtime.Abstract;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
@@ -25,14 +24,14 @@
 
         public Color rangeGizmosColor = Color.red;
 
-        public override void Apply(ProtoWorld world, int entity)
+        public override void Apply(ProtoWorld world, ProtoEntity entity)
         {
             
         }
 
-        protected override void OnApply(GameObject target, ProtoWorld world, int entity)
+        protected override void OnApply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
-            ref var component = ref world.AddComponentToEntity<MoveByRangeComponent>(entity);
+            ref var component = ref world.AddComponent<MoveByRangeComponent>(entity);
 
             component.Center = target.transform.position;
             component.Priority = _priority;

@@ -3,7 +3,7 @@
     using System;
     using System.Threading;
     using Configurations;
-     
+    using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Abstract;
@@ -14,14 +14,12 @@
     [Serializable]
     public abstract class PlannerConverter : GameObjectConverter,IPlannerConverter, IEntityConverter
     {
-
-        [FormerlySerializedAs("_id")] 
         [SerializeField]
         public AiAgentActionId id;
         
         public AiAgentActionId Id => id;
 
-        public void Apply(GameObject target, ProtoWorld world, int entity)
+        public void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             if (enabled == false)
                 return;
@@ -30,12 +28,12 @@
             OnApply(target,world,entity);
         }
         
-        protected virtual void OnApply(GameObject target, ProtoWorld world, int entity, CancellationToken cancellationToken = default)
+        protected virtual void OnApply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             
         }
 
-        public virtual void Apply(ProtoWorld world, int entity)
+        public virtual void Apply(ProtoWorld world, ProtoEntity entity)
         {
             
         }
@@ -51,14 +49,14 @@
         [HideLabel]
         public TComponent data;
     
-        protected sealed override void OnApply(GameObject target, ProtoWorld world, int entity)
+        protected sealed override void OnApply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var component = ref world.GetOrAddComponent<TComponent>(entity);
             data.Apply(ref component);
             OnApplyComponents(target, world, entity);
         }
         
-        protected virtual void OnApplyComponents(GameObject target, ProtoWorld world, int entity)
+        protected virtual void OnApplyComponents(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
         }
 

@@ -10,7 +10,7 @@
     [Serializable]
     public class EmptyTargetConverter : LeoEcsConverter
     {
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             world.AddComponent<EmptyTargetComponent>(entity);
         }

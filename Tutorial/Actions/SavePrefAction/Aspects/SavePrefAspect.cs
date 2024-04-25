@@ -2,12 +2,9 @@
 {
 	using System;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
-	/// <summary>
-	/// ADD DESCRIPTION HERE
-	/// </summary>
 	[Serializable]
 	public class SavePrefAspect : EcsAspect
 	{

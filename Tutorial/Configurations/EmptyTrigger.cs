@@ -6,7 +6,7 @@
 
 	public class EmptyTrigger : ITutorialTrigger
 	{
-		public void ComposeEntity(ProtoWorld world, int entity)
+		public void ComposeEntity(ProtoWorld world, ProtoEntity entity)
 		{
 		}
 	}

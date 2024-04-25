@@ -1,7 +1,6 @@
 ﻿namespace Game.Code.Animations
 {
     using System;
-    using Cysharp.Threading.Tasks;
     using Modules.UnioModules.UniGame.CoreModules.UniGame.Core.Runtime.Extension;
     using Resolvers;
     using UniGame.Core.Runtime.Extension;

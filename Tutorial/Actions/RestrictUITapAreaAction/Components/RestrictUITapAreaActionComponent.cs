@@ -4,8 +4,7 @@
 	using System.Collections.Generic;
 	using ActionTools;
 	using Data;
-	 
-	using UnityEngine.Serialization;
+	using Leopotam.EcsProto;
 
 	/// <summary>
 	/// ADD DESCRIPTION HERE

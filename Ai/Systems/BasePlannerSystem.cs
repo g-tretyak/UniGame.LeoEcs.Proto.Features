@@ -4,13 +4,15 @@ namespace unigame.ecs.proto.AI.Systems
     using Components;
     using Abstract;
     using Cysharp.Threading.Tasks;
+    using Leopotam.EcsProto;
     using Service;
      
     using Tools;
     using UniGame.LeoEcs.Shared.Extensions;
 
     [Serializable]
-    public abstract class BasePlannerSystem<TComponent>: IAiPlannerSystem,IProtoRunSystem
+    public abstract class BasePlannerSystem<TComponent>: 
+        IAiPlannerSystem,IProtoRunSystem
         where TComponent : struct
     {
         protected int _id;
@@ -26,9 +28,10 @@ namespace unigame.ecs.proto.AI.Systems
 
         public abstract void Run();
 
-        public bool IsPlannerEnabledForEntity(ProtoWorld world, int entity) => AiSystemsTools.IsPlannerEnabledForEntity(world, entity, _id);
+        public bool IsPlannerEnabledForEntity(ProtoWorld world, ProtoEntity entity) => 
+            AiSystemsTools.IsPlannerEnabledForEntity(world, entity, _id);
         
-        public void ApplyPlanningResult(IProtoSystems systems, int entity, AiPlannerData data)
+        public void ApplyPlanningResult(IProtoSystems systems, ProtoEntity entity, AiPlannerData data)
         {
             var world = systems.GetWorld();
             var aiAgentPool = world.GetPool<AiAgentComponent>();
@@ -39,7 +42,7 @@ namespace unigame.ecs.proto.AI.Systems
             resultData[_id] = data;
         }
         
-        public void RemoveComponent(IProtoSystems systems, int entity)
+        public void RemoveComponent(IProtoSystems systems, ProtoEntity entity)
         {
             systems.TryRemoveComponent<TComponent>(entity);
         }

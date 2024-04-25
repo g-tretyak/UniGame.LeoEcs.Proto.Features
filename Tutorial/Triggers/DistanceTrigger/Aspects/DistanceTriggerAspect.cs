@@ -2,8 +2,8 @@
 {
 	using unigame.ecs.proto.Gameplay.Tutorial.Components;
 	using Components;
-	using Core.Components;
-	 
+	using Game.Ecs.Core.Components;
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Components;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 

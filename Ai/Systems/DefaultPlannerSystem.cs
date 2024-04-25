@@ -2,7 +2,8 @@ namespace unigame.ecs.proto.AI.Systems
 {
     using System;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using Service;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -18,9 +19,11 @@ namespace unigame.ecs.proto.AI.Systems
 
         private EcsFilter _filter;
         private ProtoWorld _world;
-        
+        private IProtoSystems _systems;
+
         public void Init(IProtoSystems systems)
         {
+            _systems = systems;
             _world= systems.GetWorld();
             _filter = _world.Filter<AiAgentComponent>().End();
         }
@@ -35,7 +38,7 @@ namespace unigame.ecs.proto.AI.Systems
                     continue;
                 
                 actionComponentPool.GetOrAddComponent<AiDefaultActionComponent>(entity);
-                ApplyPlanningResult(systems,entity,_plannerData);
+                ApplyPlanningResult(_systems,entity,_plannerData);
             }
         }
     }

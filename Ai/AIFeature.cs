@@ -3,22 +3,22 @@
     using Components;
     using Configurations;
     using Cysharp.Threading.Tasks;
-     
-    using Leopotam.EcsLite.ExtendedSystems;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Systems;
     using UniGame.LeoEcs.Bootstrap.Runtime;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
-    using Object = UnityEngine.Object;
-    
+
     [CreateAssetMenu(menuName = "Game/Feature/Ai Feature", fileName = "Ai Feature")]
     public sealed class AIFeature : BaseLeoEcsFeature
     {
         [SerializeField]
-        private AiConfigurationAsset _aiConfigurationAsset;
+        public AiConfigurationAsset aiConfigurationAsset;
         
         public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
         {
-            var configurationAsset = Instantiate(_aiConfigurationAsset);
+            var configurationAsset = Instantiate(aiConfigurationAsset);
             var configuration = configurationAsset.configuration;
             var actions = configuration.aiActions;
 

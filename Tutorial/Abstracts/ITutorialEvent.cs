@@ -8,6 +8,6 @@
 	/// </summary>
 	public interface ITutorialEvent
 	{
-		void ComposeEntity(ProtoWorld world, int entity);
+		void ComposeEntity(ProtoWorld world, ProtoEntity entity);
 	}
 }

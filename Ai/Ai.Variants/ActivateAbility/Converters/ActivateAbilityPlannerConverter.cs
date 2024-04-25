@@ -2,22 +2,23 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Threading;
-    using Code.Ai.ActivateAbility;
-    using unigame.ecs.proto.AI.Abstract;
-     
+    using AI.Abstract;
+    using Game.Code.Ai.ActivateAbility;
+    using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime.Abstract;
     using UnityEngine;
 
     [Serializable]
-    public class ActivateAbilityPlannerConverter : PlannerConverter<ActivateAbilityPlannerComponent>, ILeoEcsGizmosDrawer
+    public class ActivateAbilityPlannerConverter : 
+        PlannerConverter<ActivateAbilityPlannerComponent>, 
+        ILeoEcsGizmosDrawer
     {
         [SerializeReference] 
         [InlineProperty]
         private List<IAbilityByConverter> _converters = new List<IAbilityByConverter>();
 
-        protected override void OnApplyComponents(GameObject target, ProtoWorld world, int entity)
+        protected override void OnApplyComponents(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             //world.AddComponentToEntity<MoveToGoalComponent>(entity);
 

@@ -4,7 +4,9 @@
     using Aspects;
     using Components;
     using Components.Requests;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 #if ENABLE_IL2CPP

@@ -1,10 +1,8 @@
 ﻿namespace unigame.ecs.proto.Animations.Components.Requests
 {
     using System;
-    using Code.Animations;
-     
-    using UnityEngine.AddressableAssets;
-    using UnityEngine.Playables;
+    using Game.Code.Animations;
+    using Leopotam.EcsProto.QoL;
     using UnityEngine.Serialization;
 
     /// <summary>

@@ -2,8 +2,9 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using Code.Configuration.Runtime.Ability;
-	 
+	using Game.Code.Configuration.Runtime.Ability;
+	using Leopotam.EcsProto;
+
 
 	/// <summary>
 	/// Mark entity as equip ability action.

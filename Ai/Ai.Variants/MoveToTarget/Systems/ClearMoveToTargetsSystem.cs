@@ -1,8 +1,11 @@
 ﻿namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
 {
-    using unigame.ecs.proto.AI.Components;
+    using AI.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.GameAi.MoveToTarget.Components;
-     
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     public class ClearMoveToTargetsSystem : IProtoRunSystem,IProtoInitSystem
     {

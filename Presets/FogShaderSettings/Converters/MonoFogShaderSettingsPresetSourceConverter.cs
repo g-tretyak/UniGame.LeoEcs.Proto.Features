@@ -13,7 +13,7 @@
         [HideLabel]
         public FogShaderSettingsSourceConverter fogShaderConverter = new FogShaderSettingsSourceConverter();
 
-        public sealed override void Apply(GameObject target, ProtoWorld world, int entity)
+        public sealed override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             fogShaderConverter.Apply(world, entity);
         }

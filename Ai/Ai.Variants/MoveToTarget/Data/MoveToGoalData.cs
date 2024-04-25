@@ -1,8 +1,8 @@
 ﻿namespace unigame.ecs.proto.GameAi.MoveToTarget.Data
 {
     using System.Collections.Generic;
-    using Code.Configuration.Runtime.Effects.Abstract;
-     
+    using Game.Code.Configuration.Runtime.Effects.Abstract;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Abstract;
     using UnityEngine;
 

@@ -2,7 +2,7 @@
 {
 	using Abstracts;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
     
 	public class DistanceTriggerConfiguration : TutorialTrigger

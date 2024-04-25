@@ -2,10 +2,9 @@
 {
 	using System;
 	using Components;
-	using Core.Components;
-	 
+	using Game.Ecs.Core.Components;
+	using Leopotam.EcsProto;
 	using Triggers.ActionTrigger.Components;
-	using Tutorial.Components;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 	
 	[Serializable]

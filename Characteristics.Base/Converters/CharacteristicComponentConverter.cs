@@ -16,7 +16,7 @@ namespace unigame.ecs.proto.Characteristics.Health.Converters
         public float minValue;
         public float maxValue;
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var createCharacteristicRequest = ref world.AddComponent<CreateCharacteristicRequest<TCharacteristic>>(entity);
             createCharacteristicRequest.Value = value;

@@ -1,8 +1,10 @@
 ﻿namespace unigame.ecs.proto.GameAi.ActivateAbility.Components
 {
     using System;
-     
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using TargetSelection;
+
     /// <summary>
     /// data for ability range action
     /// </summary>

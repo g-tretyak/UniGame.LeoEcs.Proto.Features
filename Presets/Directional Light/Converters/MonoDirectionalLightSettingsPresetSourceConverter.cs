@@ -11,7 +11,7 @@
         [HideLabel]
         public DirectionalLightSettingsSourceConverter directionalLightConverter = new();
 
-        public sealed override void Apply(GameObject target, ProtoWorld world, int entity)
+        public sealed override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             directionalLightConverter.Apply(world, entity);
         }

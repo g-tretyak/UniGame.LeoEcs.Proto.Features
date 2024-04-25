@@ -1,7 +1,8 @@
 ﻿namespace unigame.ecs.proto.Animations.Components.Requests
 {
     using System;
-     
+    using Leopotam.EcsProto.QoL;
+
 
     /// <summary>
     /// play playable on playable director self

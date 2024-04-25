@@ -63,7 +63,7 @@
     [Serializable]
     public class ShakeEffectTargetConverter : LeoEcsConverter
     {
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var targetComponent = ref world.AddComponent<ShakeEffectDefaultTargetComponent>(entity);
         }

@@ -1,7 +1,8 @@
 namespace Game.Code.Ai.ActivateAbility
 {
     using System;
-     
+    using Leopotam.EcsProto.QoL;
+
 
     [Serializable]
     public struct ActivateAbilityActionComponent

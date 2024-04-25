@@ -2,7 +2,6 @@
 {
     using System;
     using UniGame.LeoEcs.Converter.Runtime;
-    using UnityEngine.Serialization;
 
     /// <summary>
     /// ADD DESCRIPTION HERE

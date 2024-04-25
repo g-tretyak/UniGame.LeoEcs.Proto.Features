@@ -13,7 +13,7 @@
 	{
 		public float abilityPower;
 		
-		public override void Apply(GameObject target, ProtoWorld world, int entity)
+		public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
 		{
 			ref var attackDamageComponent = ref world.GetOrAddComponent<AbilityPowerComponent>(entity);
 			attackDamageComponent.Value = abilityPower;

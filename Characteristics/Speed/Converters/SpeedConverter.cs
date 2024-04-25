@@ -25,7 +25,7 @@ namespace unigame.ecs.proto.Characteristics.Speed.Converters
         [ShowIf(nameof(overrideLimits))]
         public float maxValue;
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var createCharacteristicRequest = ref world.GetOrAddComponent<CreateCharacteristicRequest<SpeedComponent>>(entity);
             createCharacteristicRequest.Value = speed;

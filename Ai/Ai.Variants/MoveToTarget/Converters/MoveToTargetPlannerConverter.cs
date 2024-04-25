@@ -2,10 +2,9 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Converters
 {
     using System;
     using System.Collections.Generic;
-    using System.Threading;
-    using Components;
     using AI.Abstract;
-     
+    using Components;
+    using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime.Abstract;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -18,10 +17,10 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Converters
         [InlineProperty]
         public List<IMoveByConverter> converters = new List<IMoveByConverter>();
 
-        protected override void OnApplyComponents(GameObject target, ProtoWorld world, int entity)
+        protected override void OnApplyComponents(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
-            world.AddComponentToEntity<MoveToGoalComponent>(entity);
-            world.AddComponentToEntity<MoveToPoiGoalsComponent>(entity);
+            world.AddComponent<MoveToGoalComponent>(entity);
+            world.AddComponent<MoveToPoiGoalsComponent>(entity);
 
             foreach (var converter in converters)
                 converter.Apply(world,entity);

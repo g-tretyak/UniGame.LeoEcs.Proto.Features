@@ -32,7 +32,7 @@
         
         public float duration;
 
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var presetComponent = ref world.GetOrAddComponent<PresetComponent>(entity);
             ref var presetSourceComponent = ref world.GetOrAddComponent<PresetSourceComponent>(entity);

@@ -1,15 +1,19 @@
 ﻿namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
 {
     using System;
-    using Code.GameLayers.Category;
     using Data;
     using Components;
-    using Core.Death.Components;
+    using Game.Code.GameLayers.Category;
+    using Game.Ecs.Core.Death.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using unigame.ecs.proto.GameLayers.Category.Components;
     using unigame.ecs.proto.GameLayers.Layer.Components;
      
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;
+    using UniGame.LeoEcs.Shared.Extensions;
     using Unity.Mathematics;
 
 #if ENABLE_IL2CPP
@@ -71,7 +75,7 @@
                 var position = transformComponent.Position;
                 var poiGoals = goalsComponent.GoalsLinks;
                 var minDistance = float.MaxValue;
-                var targetEntity = -1;
+                var targetEntity = entity.GetInvalidEntity();
                 var targetGoal = new MoveToGoalData();
 
                 foreach (var key in _poiFilter)
@@ -107,7 +111,7 @@
                     poiGoals[key] = targetGoal;
                 }
 
-                if (targetEntity < 0) continue;
+                if ((int)targetEntity < 0) continue;
 
                 goals.Goals.Add(targetGoal);
             }

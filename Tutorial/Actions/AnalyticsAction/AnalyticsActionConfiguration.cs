@@ -4,7 +4,7 @@
 	using Abstracts;
 	using ActionTools;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using Sirenix.OdinInspector;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
@@ -22,7 +22,7 @@
 
 		#endregion
 		
-		public void ComposeEntity(ProtoWorld world, int entity)
+		public void ComposeEntity(ProtoWorld world, ProtoEntity entity)
 		{
 			ref var request = ref world.AddComponent<AnalyticsActionComponent>(entity);
 			request.stepName = stepName;

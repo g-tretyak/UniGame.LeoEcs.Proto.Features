@@ -1,14 +1,15 @@
 namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
 {
     using System;
+    using AI.Components;
     using AI.Service;
+    using AI.Systems;
     using Cysharp.Threading.Tasks;
-    using unigame.ecs.proto.AI.Components;
-    using unigame.ecs.proto.AI.Systems;
     using Components;
-    using Core.Death.Components;
     using Data;
-     
+    using Game.Ecs.Core.Death.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using Movement.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -26,6 +27,7 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
     {
         private EcsFilter _filter;
         private ProtoWorld _world;
+        private IProtoSystems _systems;
         
         private ProtoPool<MoveToGoalComponent> _goalPool;
         private ProtoPool<MoveToTargetActionComponent> _moveToTargetActionPool;
@@ -33,6 +35,7 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
         
         public void Init(IProtoSystems systems)
         {
+            _systems = systems;
             _world = systems.GetWorld();
             _filter = _world.Filter<AiAgentComponent>()
                 .Inc<MoveToTargetPlannerComponent>()
@@ -81,7 +84,7 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
 
                 plannerData.Priority = plannerPriority;
 
-                ApplyPlanningResult(systems, entity, plannerData);
+                ApplyPlanningResult(_systems, entity, plannerData);
             }
         }
 

@@ -35,7 +35,7 @@
         private ProtoWorld _world;
         private EcsFilter _filter;
 
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             _world = world;
             

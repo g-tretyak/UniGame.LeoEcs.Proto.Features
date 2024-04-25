@@ -5,14 +5,15 @@ namespace unigame.ecs.proto.GameAi.ActivateAbility
     using Ability.SubFeatures.Target.Tools;
     using Ability.Tools;
     using AI.Components;
-    using Code.Ai.ActivateAbility;
-    using Code.Ai.ActivateAbility.Aspects;
-    using Code.GameLayers.Relationship;
     using Components;
-    using Core.Components;
+    using Game.Code.Ai.ActivateAbility;
+    using Game.Code.Ai.ActivateAbility.Aspects;
+    using Game.Code.GameLayers.Relationship;
+    using Game.Ecs.Core.Components;
     using GameLayers.Layer.Components;
     using Input.Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using Selection;
     using TargetSelection;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
@@ -44,7 +45,7 @@ namespace unigame.ecs.proto.GameAi.ActivateAbility
         
         private ProtoPool<AbilityAiActionTargetComponent> _targetPool;
 
-        private int[] _selection = new int[TargetSelectionData.MaxTargets];
+        private ProtoEntity[] _selection = new ProtoEntity[TargetSelectionData.MaxTargets];
 
         public void Init(IProtoSystems systems)
         {
@@ -91,13 +92,13 @@ namespace unigame.ecs.proto.GameAi.ActivateAbility
                     
                     foreach (var abilityRequestEntity in _abilityRequestFilter)
                     {
-                        if(entity != abilityRequestEntity) continue;
+                        if(!entity.Equals(abilityRequestEntity)) continue;
                         var requestAbility =_abilityTools.GetAbilityBySlot(entity, abilitySlot);
-                        abilityEntity = requestAbility < 0 ? abilityEntity : requestAbility;
+                        abilityEntity = (int)requestAbility < 0 ? abilityEntity : requestAbility;
                         break;
                     }
 
-                    if(abilityEntity < 0) continue;
+                    if((int)abilityEntity < 0) continue;
                     
                     var abilityTargetEntity = SelectAbilityTarget(
                         entity,
@@ -105,13 +106,13 @@ namespace unigame.ecs.proto.GameAi.ActivateAbility
                         ref abilityFilter,
                         sqrRadius,sqrMinDistance);
 
-                    if (abilityTargetEntity == TargetSelectionData.EmptyResult)
+                    if (abilityTargetEntity.Equals(TargetSelectionData.EmptyResult))
                     {
                         _targetTools.ClearAbilityTargets(abilityEntity);
                         continue;
                     }
 
-                    var packedTarget = _world.PackEntity(abilityTargetEntity);
+                    var packedTarget = abilityTargetEntity.PackEntity(_world);
                     
                     _targetTools.SetAbilityTarget(abilityEntity,packedTarget,abilitySlot);
                     
@@ -126,14 +127,14 @@ namespace unigame.ecs.proto.GameAi.ActivateAbility
                     targetFound = true;
                     ref var targetComponent = ref _targetPool.Add(entity);
                         
-                    targetComponent.Ability = _world.PackEntity(abilityEntity);
+                    targetComponent.Ability = abilityEntity.PackEntity(_world);
                     targetComponent.AbilityCellId = abilitySlot;
                     targetComponent.AbilityTarget = packedTarget;
                 }
             }
         }
 
-        private int SelectAbilityTarget(int entity, ref int ability,
+        private ProtoEntity SelectAbilityTarget(ProtoEntity entity, ref ProtoEntity ability,
             ref AbilityFilter filter, 
             float radius ,
             float minDistance)
@@ -197,7 +198,7 @@ namespace unigame.ecs.proto.GameAi.ActivateAbility
                 target = selectionEntity;
             }
             
-            if (target == TargetSelectionData.EmptyResult)
+            if (target.Equals(TargetSelectionData.EmptyResult))
                 return TargetSelectionData.EmptyResult;
 
             return target;

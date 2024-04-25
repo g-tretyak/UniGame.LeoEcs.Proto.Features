@@ -53,6 +53,7 @@ namespace unigame.ecs.proto.Ability.Tools
         private EcsFilter _existsAbilityFilter;
         private AbilityOwnerAspect _abilityOwnerAspect;
         private AbilityAspect _abilityAspect;
+        private ProtoEntity _invalidAbility = ProtoEntity.FromIdx(-1);
 
         private ProtoWorld _world;
 
@@ -264,7 +265,7 @@ namespace unigame.ecs.proto.Ability.Tools
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsAbilityCooldownPassed(int abilityEntity)
+        public bool IsAbilityCooldownPassed(ProtoEntity abilityEntity)
         {
             //проверяем кулдаун абилки, если он не прошел - игнорируем
             if (!_world.EntityHasAll<CooldownComponent, CooldownStateComponent>(abilityEntity))
@@ -283,18 +284,18 @@ namespace unigame.ecs.proto.Ability.Tools
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int GetAbilityBySlot(ProtoEntity ownerEntity, int slotId)
+        public ProtoEntity GetAbilityBySlot(ProtoEntity ownerEntity, int slotId)
         {
             ref var abilityMapComponent = ref _abilityOwnerAspect.AbilityMap.Get(ownerEntity);
             var abilityMap = abilityMapComponent.AbilityEntities;
 
             if (slotId < 0 || slotId >= abilityMap.Count)
-                return AbilitySlotId.EmptyAbilitySlot;
+                return _invalidAbility;
 
             var packedAbility = abilityMap[slotId];
             return packedAbility.Unpack(_world, out var abilityEntity)
-                ? (int)abilityEntity
-                : AbilitySlotId.EmptyAbilitySlot;
+                ? abilityEntity
+                : _invalidAbility;
         }
 
 #if ENABLE_IL2CPP
@@ -727,9 +728,9 @@ namespace unigame.ecs.proto.Ability.Tools
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int TryGetAbility(ProtoEntity entity, int slot)
+        public ProtoEntity TryGetAbility(ProtoEntity entity, int slot)
         {
-            var abilityEntity = -1;
+            var abilityEntity = ProtoEntity.FromIdx(-1);
 
             if (!_abilityOwnerAspect.AbilityMap.Has(entity)) return abilityEntity;
 
@@ -739,7 +740,7 @@ namespace unigame.ecs.proto.Ability.Tools
             if(!isInBounds) return abilityEntity;
             
             return map.AbilityEntities[slot].Unpack(_world, out var ability) 
-                ? (int)ability : abilityEntity;
+                ? ability : abilityEntity;
         }
 
     }

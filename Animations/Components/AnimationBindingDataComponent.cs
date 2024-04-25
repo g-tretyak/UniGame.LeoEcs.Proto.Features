@@ -1,7 +1,7 @@
 ﻿namespace unigame.ecs.proto.Animations.Components
 {
     using System;
-    using Code.Animations;
+    using Game.Code.Animations;
 
     /// <summary>
     /// AnimationBindingData Value

@@ -23,7 +23,7 @@
 		public float minValue = 0f;
 
 		#endregion
-		public override void Apply(GameObject target, ProtoWorld world, int entity)
+		public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
 		{
 			ref var createCharacteristicRequest = ref world.AddComponent<CreateCharacteristicRequest<ArmorResistComponent>>(entity);
 			createCharacteristicRequest.Value = physicalResist;

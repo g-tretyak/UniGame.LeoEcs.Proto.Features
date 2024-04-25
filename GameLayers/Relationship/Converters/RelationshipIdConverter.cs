@@ -11,7 +11,7 @@
         [SerializeField] 
         public RelationshipId relationship;
 
-        protected override void OnApply(GameObject target, ProtoWorld world, int entity)
+        protected override void OnApply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var relationshipComponent = ref world.AddComponent<RelationshipIdComponent>(entity);
             relationshipComponent.Value = relationship;

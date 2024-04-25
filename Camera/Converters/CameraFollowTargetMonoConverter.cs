@@ -8,7 +8,7 @@
 
     public sealed class CameraFollowTargetMonoConverter : MonoLeoEcsConverter
     {
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var followTargetPool = world.GetPool<CameraFollowTargetComponent>();
             followTargetPool.Add(entity);

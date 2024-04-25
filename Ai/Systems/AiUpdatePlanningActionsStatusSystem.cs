@@ -4,7 +4,10 @@ namespace unigame.ecs.proto.AI.Systems
     using System.Collections.Generic;
     using Components;
     using Configurations;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     /// <summary>
     /// Система удаляет для система экшенов их компоненты с данными,
@@ -16,7 +19,8 @@ namespace unigame.ecs.proto.AI.Systems
         private IReadOnlyList<AiActionData> _actionData;
         private EcsFilter _filter;
         private ProtoWorld _world;
-        
+        private IProtoSystems _systems;
+
         public AiUpdatePlanningActionsStatusSystem(IReadOnlyList<AiActionData> actionData)
         {
             _actionData = actionData;
@@ -25,6 +29,7 @@ namespace unigame.ecs.proto.AI.Systems
         
         public void Init(IProtoSystems systems)
         {
+            _systems = systems;
             _world = systems.GetWorld();
             _filter = _world.Filter<AiAgentComponent>().End();
         }
@@ -48,7 +53,7 @@ namespace unigame.ecs.proto.AI.Systems
                     if (actionEnabled)
                         continue;
                     
-                    planner.RemoveComponent(systems,entity);
+                    planner.RemoveComponent(_systems,entity);
                 }
             }
         }

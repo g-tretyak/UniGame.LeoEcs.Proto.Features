@@ -3,9 +3,10 @@
 	using Abstracts;
 	using Components;
 	using Cysharp.Threading.Tasks;
-	 
-	using Leopotam.EcsLite.ExtendedSystems;
+	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using Systems;
+	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
 	[CreateAssetMenu(menuName = "Game/Feature/Gameplay/Tutorial/TutorialAction/Show All UI Action Feature", 

@@ -3,6 +3,7 @@
 	using System;
 	using Components;
 	using Leopotam.EcsProto;
+	using UniGame.LeoEcs.Converter.Runtime;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 	using UnityEngine.EventSystems;
@@ -11,7 +12,7 @@
 	[Serializable]
 	public class TutorialCanvasConverter : LeoEcsConverter
 	{
-		public override void Apply(GameObject target, ProtoWorld world, int entity)
+		public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
 		{
 			var graphicRaycaster = target.GetComponentInParent<GraphicRaycaster>();
 			var eventSystem = EventSystem.current;

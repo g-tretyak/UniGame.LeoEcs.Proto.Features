@@ -5,6 +5,7 @@
 	using Components;
 	using Leopotam.EcsLite;
 	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 	using UniGame.LeoEcs.Shared.Extensions;
 
@@ -46,7 +47,7 @@
 				{
 					var actionEntity = _world.NewEntity();
 					ref var actionOwnerComponent = ref _aspect.Owner.Add(actionEntity);
-					actionOwnerComponent.Value = _world.PackedEntity(sourceEntity);
+					actionOwnerComponent.Value = sourceEntity.PackEntity(_world);
 					action.ComposeEntity(_world, actionEntity);
 				}
 			}

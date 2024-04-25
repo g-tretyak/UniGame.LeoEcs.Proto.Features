@@ -2,7 +2,9 @@ namespace unigame.ecs.proto.AI.Systems
 {
     using System;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine.Pool;
 
     /// <summary>

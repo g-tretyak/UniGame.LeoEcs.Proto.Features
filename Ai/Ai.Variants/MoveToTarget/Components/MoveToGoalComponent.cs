@@ -2,7 +2,8 @@
 {
     using System.Collections.Generic;
     using Data;
-     
+    using Leopotam.EcsProto;
+
 
     public struct MoveToGoalComponent : IProtoAutoReset<MoveToGoalComponent>
     {

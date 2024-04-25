@@ -2,11 +2,14 @@
 {
     using System;
     using Components;
-    using Core.Death.Components;
     using Data;
-     
+    using Game.Ecs.Core.Death.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;
+    using UniGame.LeoEcs.Shared.Extensions;
     using Unity.Mathematics;
 
 #if ENABLE_IL2CPP

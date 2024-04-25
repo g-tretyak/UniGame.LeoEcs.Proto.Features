@@ -1,9 +1,9 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.RestrictUITapAreaAction.Components
 {
 	using System;
-	using System.Collections;
 	using System.Collections.Generic;
-	 
+	using Leopotam.EcsProto.QoL;
+
 
 	/// <summary>
 	/// ADD DESCRIPTION HERE

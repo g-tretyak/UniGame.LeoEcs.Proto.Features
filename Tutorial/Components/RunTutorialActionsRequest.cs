@@ -1,7 +1,8 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Components
 {
 	using System;
-	 
+	using Leopotam.EcsProto.QoL;
+
 
 	/// <summary>
 	/// Says to run tutorial actions.

@@ -2,13 +2,13 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
 {
     using System;
     using Components;
-    using Core.Death.Components;
-     
-    using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
+    using Game.Ecs.Core.Death.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;
+    using UniGame.LeoEcs.Shared.Extensions;
     using Unity.Mathematics;
-    using UnityEngine;
 
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;

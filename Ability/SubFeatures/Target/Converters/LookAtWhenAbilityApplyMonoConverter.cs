@@ -8,7 +8,7 @@
 
     public sealed class LookAtWhenAbilityApplyMonoConverter : MonoLeoEcsConverter
     {
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var canRotatePool = world.GetPool<CanLookAtComponent>();
             canRotatePool.Add(entity);

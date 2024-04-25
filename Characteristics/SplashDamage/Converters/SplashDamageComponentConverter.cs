@@ -13,7 +13,7 @@
 	{
 		public float _splashDamage;
 		
-		public override void Apply(GameObject target, ProtoWorld world, int entity)
+		public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
 		{
 			ref var splashDamageComponent = ref world.GetOrAddComponent<SplashDamageComponent>(entity);
 			splashDamageComponent.Value = _splashDamage;

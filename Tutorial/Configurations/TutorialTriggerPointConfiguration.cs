@@ -33,18 +33,18 @@
 
 		#endregion
 		
-		public bool Apply(ProtoWorld world, int entity)
+		public bool Apply(ProtoWorld world, ProtoEntity entity)
 		{
 			var startTriggerEntity = world.NewEntity();
 			var finalTriggerEntity = world.NewEntity();
 			
 			ref var startTriggerOwner = ref world.AddComponent<OwnerComponent>(startTriggerEntity);
-			startTriggerOwner.Value = world.PackedEntity(entity);
+			startTriggerOwner.Value = entity.PackEntity(world);
 			
 			ref var startActionsComponent = ref world.AddComponent<TutorialActionsComponent>(startTriggerEntity);
 			
 			ref var finalTriggerOwner = ref world.AddComponent<OwnerComponent>(finalTriggerEntity);
-			finalTriggerOwner.Value = world.PackedEntity(entity);
+			finalTriggerOwner.Value = entity.PackEntity(world);
 			
 			ref var finalActionsComponent = ref world.AddComponent<TutorialActionsComponent>(finalTriggerEntity);
 

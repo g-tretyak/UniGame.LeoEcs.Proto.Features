@@ -1,13 +1,11 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Triggers.ActionTrigger
 {
-	using System;
 	using Abstracts;
 	using ActionTools;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
-	using UnityEngine.Serialization;
-    
+
 	public class ActionTriggerConfiguration : TutorialTrigger
 	{
 		#region Inspector

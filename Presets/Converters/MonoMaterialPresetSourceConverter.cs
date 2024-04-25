@@ -12,7 +12,7 @@
         [InlineProperty]
         public MaterialPresetSourceConverter converter = new MaterialPresetSourceConverter();
         
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             converter.Apply(world,entity);
         }

@@ -2,7 +2,7 @@ namespace unigame.ecs.proto.AI.Components
 {
     using System;
     using Configurations;
-     
+    using Leopotam.EcsProto;
     using Service;
 
     /// <summary>

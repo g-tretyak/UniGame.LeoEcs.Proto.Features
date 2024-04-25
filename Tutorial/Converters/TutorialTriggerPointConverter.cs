@@ -5,6 +5,8 @@
 	using Configurations;
 	using Leopotam.EcsProto;
 	using Sirenix.OdinInspector;
+	using UniGame.LeoEcs.Converter.Runtime;
+	using UniGame.LeoEcs.Converter.Runtime.Abstract;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
@@ -20,7 +22,7 @@
 
 		#endregion
 		
-		public override void Apply(GameObject target, ProtoWorld world, int entity)
+		public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
 		{
 			world.AddComponent<TutorialTriggerPointComponent>(entity);
 			configuration.Apply(world, entity);

@@ -5,15 +5,13 @@
 	using ActionTools;
 	using Components;
 	using Data;
-	 
+	using Leopotam.EcsProto;
 	using Tools;
 	using UniGame.LeoEcs.Converter.Runtime.Abstract;
 	using UniGame.LeoEcs.Shared.Extensions;
-	using UniGame.LeoEcs.ViewSystem.Extensions;
 	using UniGame.UiSystem.Runtime.Settings;
 	using UniModules.UniGame.UiSystem.Runtime;
 	using UnityEngine;
-	using UnityEngine.Serialization;
 
 	public class RestrictUITapAreaActionConfiguration : TutorialAction, ILeoEcsGizmosDrawer
 	{

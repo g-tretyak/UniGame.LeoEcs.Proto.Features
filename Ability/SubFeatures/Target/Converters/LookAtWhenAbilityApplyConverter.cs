@@ -10,7 +10,7 @@
     [Serializable]
     public sealed class LookAtWhenAbilityApplyConverter : LeoEcsConverter
     {
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var canRotatePool = world.GetPool<CanLookAtComponent>();
             canRotatePool.Add(entity);

@@ -11,7 +11,7 @@ namespace unigame.ecs.proto.GameLayers.Layer.Converters
         [SerializeField]
         public LayerId layer;
 
-        protected sealed override void OnApply(GameObject target, ProtoWorld world, int entity)
+        protected sealed override void OnApply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var layerIdComponent = ref world.AddComponent<LayerIdComponent>(entity);
             layerIdComponent.Value = layer;

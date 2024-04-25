@@ -4,7 +4,6 @@
     using Resolvers;
     using UnityEngine;
     using UnityEngine.Playables;
-    using Object = UnityEngine.Object;
 
     [Serializable]
     public class GenericAssetCollector : IPlayableReferenceCollector

@@ -26,7 +26,7 @@
         [HideIf(nameof(useRootTransform))]
         public Transform rootValue;
         
-        protected override void OnApply(GameObject target, ProtoWorld world, int entity)
+        protected override void OnApply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var effectRootIdComponent = ref world.AddComponent<EffectRootIdComponent>(entity);
             ref var targetComponent = ref world.AddComponent<EffectRootTargetComponent>(entity);

@@ -4,12 +4,14 @@
     using Ability.Aspects;
     using Ability.Tools;
     using AI.Components;
-    using Code.Ai.ActivateAbility;
-    using Code.Ai.ActivateAbility.Aspects;
-    using Code.GameLayers.Relationship;
     using Components;
-    using Core.Components;
-     
+    using Game.Code.Ai.ActivateAbility;
+    using Game.Code.Ai.ActivateAbility.Aspects;
+    using Game.Code.GameLayers.Relationship;
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Selection;
     using TargetSelection;
     using UniGame.Core.Runtime;
@@ -83,7 +85,7 @@
                     _entitySet.Add(abilitySlot);
                     
                     var abilityEntity = _abilityTools.GetAbilityBySlot(entity, abilitySlot);
-                    if(abilityEntity <= 0) continue;
+                    if((int)abilityEntity <= 0) continue;
                     
                     ref var dataComponent = ref _aiActionAspect
                         .AbilityRangeData

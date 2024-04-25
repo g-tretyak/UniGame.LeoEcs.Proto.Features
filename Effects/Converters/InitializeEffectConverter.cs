@@ -24,7 +24,7 @@
         [SerializeReference]
         public List<EffectConfiguration> effectConfigurations;
         
-        protected override void OnApply(GameObject target, ProtoWorld world, int entity)
+        protected override void OnApply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             foreach (var effectConfiguration in effectConfigurations)
             {

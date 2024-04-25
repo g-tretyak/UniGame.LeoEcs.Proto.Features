@@ -2,8 +2,11 @@
 {
     using System.Linq;
     using Components;
-    using Core.Death.Components;
-     
+    using Game.Ecs.Core.Death.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     public sealed class ResetPoiSystem : IProtoRunSystem,IProtoInitSystem
     {

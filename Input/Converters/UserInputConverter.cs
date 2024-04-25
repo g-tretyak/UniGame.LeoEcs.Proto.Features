@@ -10,7 +10,7 @@
     [Serializable]
     public sealed class UserInputConverter : LeoEcsConverter
     {
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var inputTargetPool = world.GetPool<UserInputTargetComponent>();
             inputTargetPool.Add(entity);

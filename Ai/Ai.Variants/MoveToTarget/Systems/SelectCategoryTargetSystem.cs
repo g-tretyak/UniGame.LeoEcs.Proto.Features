@@ -3,14 +3,15 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
     using System;
     using Ability.Tools;
     using Characteristics.Radius.Component;
-    using Code.GameLayers.Relationship;
     using Components;
-    using Core.Death.Components;
     using Data;
-    using unigame.ecs.proto.GameLayers.Layer.Components;
+    using Game.Code.GameLayers.Relationship;
+    using Game.Ecs.Core.Death.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using Selection;
-     
     using TargetSelection;
+    using unigame.ecs.proto.GameLayers.Layer.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -38,7 +39,7 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
         private ProtoPool<TransformPositionComponent> _positionPool;
         private ProtoPool<LayerIdComponent> _layerPool;
 
-        private int[] _selection = new int[TargetSelectionData.MaxTargets];
+        private ProtoEntity[] _selection = new ProtoEntity[TargetSelectionData.MaxTargets];
         
         public void Init(IProtoSystems systems)
         {
@@ -118,7 +119,7 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
                     }
                 }
 
-                if (targetEntity == TargetSelectionData.EmptyResult)
+                if (targetEntity.Equals(TargetSelectionData.EmptyResult))
                     continue;
 
                 ref var abilityRadiusComponent = ref _radiusPool.Get(ability);
@@ -135,7 +136,7 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
                     Complete = complete,
                     Position = targetPosition,
                     Priority = targetPriority,
-                    Target = _world.PackEntity(targetEntity)
+                    Target = targetEntity.PackEntity(_world)
                 };
             
                 component.Goals.Add(value);

@@ -1,7 +1,7 @@
 ﻿namespace unigame.ecs.proto.AI.Abstract
 {
     using System;
-     
+    using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Abstract;
@@ -11,13 +11,13 @@
     [Serializable]
     public abstract class ComponentPlannerConverter : EcsComponentConverter, IEntityConverter
     {
-        public void Apply(GameObject target, ProtoWorld world, int entity)
+        public void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             Apply(world, entity);
             OnApply(target, world, entity);
         }
 
-        protected virtual void OnApply(GameObject target, ProtoWorld world, int entity)
+        protected virtual void OnApply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
 
         }
@@ -33,13 +33,13 @@
         [HideLabel]
         public TComponent data;
     
-        protected override void OnApply(GameObject target, ProtoWorld world, int entity)
+        protected override void OnApply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var component = ref world.GetOrAddComponent<TComponent>(entity);
             data.Apply(ref component);
         }
 
-        public override void Apply(ProtoWorld world, int entity)
+        public override void Apply(ProtoWorld world, ProtoEntity entity)
         {
             
         }

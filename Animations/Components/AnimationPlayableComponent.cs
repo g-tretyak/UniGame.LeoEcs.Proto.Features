@@ -1,7 +1,7 @@
 ﻿namespace unigame.ecs.proto.Animations.Components
 {
     using System;
-     
+    using Leopotam.EcsProto;
     using UnityEngine.Playables;
 
     /// <summary>

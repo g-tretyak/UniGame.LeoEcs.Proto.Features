@@ -1,16 +1,13 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.EquipAbilityAction.Systems
 {
 	using System;
-	using System.Linq;
 	using Aspects;
 	using Components;
-	using Core.Components;
-	 
-	using UniGame.Core.Runtime.Extension;
-	using UniGame.Runtime.ObjectPool.Extensions;
-	using UnityEngine;
-	using UnityEngine.Pool;
+	using Game.Ecs.Core.Components;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+	using UniGame.LeoEcs.Shared.Extensions;
 
 	/// <summary>
 	/// Equip ability to champion.
@@ -45,9 +42,9 @@
 
 		public void Run()
 		{
-			if (_championFilter.GetEntitiesCount() == 0)
-				return;
-			var championEntity = _championFilter.GetRawEntities().FirstOrDefault();
+			if (_championFilter.First() < 0) return;
+			
+			var championEntity = (ProtoEntity)_championFilter.First();
 			
 			foreach (var equipAbilityActionEntity in _abilityActionFilter)
 			{
@@ -64,7 +61,7 @@
 					request.AbilitySlot = slot;
 					request.IsUserInput = true;
 					request.IsDefault = slot == 0;
-					request.Owner = _world.PackEntity(championEntity);
+					request.Owner = championEntity.PackEntity(_world);
 				}
                 _aspect.CompletedEquipAbilityAction.Add(equipAbilityActionEntity);
 			}

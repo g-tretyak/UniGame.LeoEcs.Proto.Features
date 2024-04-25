@@ -3,6 +3,7 @@
 namespace unigame.ecs.proto.AbilityAgent.Components
 {
     using System;
+    using Leopotam.EcsProto.QoL;
 
     /// <summary>
     /// ADD DESCRIPTION HERE

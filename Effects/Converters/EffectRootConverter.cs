@@ -39,7 +39,7 @@
         [InlineButton(nameof(Bake),icon:SdfIconType.Activity)]
         private GameObject _target;
         
-        protected override void OnApply(GameObject target, ProtoWorld world, int entity)
+        protected override void OnApply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             ref var effectRootsComponent = ref world.AddComponent<EffectRootTransformsComponent>(entity);
             ref var effectRootComponent = ref world.AddComponent<EffectRootComponent>(entity);

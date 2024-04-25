@@ -1,6 +1,6 @@
 namespace unigame.ecs.proto.GameAi.MoveToTarget.Components
 {
-    using Code.GameLayers.Category;
+    using Game.Code.GameLayers.Category;
     using Unity.Mathematics;
 
     public struct MoveToPoiComponent

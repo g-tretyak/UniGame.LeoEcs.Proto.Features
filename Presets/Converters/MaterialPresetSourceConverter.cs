@@ -36,7 +36,7 @@
 
         public bool ButtonsEnabled => showButtons && isEnabled;
         
-        public override void Apply(ProtoWorld world, int entity)
+        public override void Apply(ProtoWorld world, ProtoEntity entity)
         {
             ref var sourceComponent = ref world.GetOrAddComponent<MaterialPresetSourceComponent>(entity);
             ref var presetComponent = ref world.GetOrAddComponent<PresetComponent>(entity);

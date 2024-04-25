@@ -15,7 +15,7 @@
         [SerializeField]
         public GameObject hasTargetRadiusView;
 
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var radiusViewPool = world.GetPool<RadiusViewDataComponent>();
             ref var radiusView = ref radiusViewPool.Add(entity);

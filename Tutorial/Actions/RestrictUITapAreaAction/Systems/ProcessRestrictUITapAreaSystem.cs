@@ -2,18 +2,14 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Linq;
 	using Aspects;
 	using Components;
-	 
-	using Tutorial.Components;
-	using UniGame.Core.Runtime.Extension;
-	using UniGame.Runtime.ObjectPool.Extensions;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
 	using UnityEngine;
-	using UnityEngine.Pool;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine.EventSystems;
-	using UnityEngine.UI;
 
 	/// <summary>
 	/// ADD DESCRIPTION HERE

@@ -1,8 +1,8 @@
 ﻿namespace unigame.ecs.proto.GameAi.MoveToTarget.Components
 {
     using System;
-    using Code.GameLayers.Category;
-    using Code.GameLayers.Relationship;
+    using Game.Code.GameLayers.Category;
+    using Game.Code.GameLayers.Relationship;
 
     [Serializable]
     public struct MoveFilterData

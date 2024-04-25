@@ -3,13 +3,15 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
     using System;
     using Ability.Tools;
     using AI.Abstract;
+    using AI.Components;
     using Components;
-    using Core.Death.Components;
     using Effects;
-    using unigame.ecs.proto.AI.Components;
-    using unigame.ecs.proto.Movement.Components;
+    using Game.Ecs.Core.Death.Components;
     using Gameplay.LevelProgress.Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+    using Movement.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;

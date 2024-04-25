@@ -10,7 +10,7 @@
     [Serializable]
     public sealed class VisibleUtilityViewConverter : LeoEcsConverter
     {
-        public override void Apply(GameObject target, ProtoWorld world, int entity)
+        public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var visiblePool = world.GetPool<VisibleUtilityViewComponent>();
             visiblePool.Add(entity);

@@ -2,11 +2,13 @@
 {
 	using System;
 	using Components;
-	using Core.Components;
-	 
+	using Game.Ecs.Core.Components;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
 	using UniCore.Runtime.ProfilerTools;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 	using UniGame.LeoEcs.Shared.Components;
+	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
 	/// <summary>

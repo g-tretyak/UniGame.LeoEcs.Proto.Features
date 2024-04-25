@@ -3,10 +3,11 @@
 	using Abstracts;
 	using Cysharp.Threading.Tasks;
 	using Data;
-	 
+	using Leopotam.EcsProto;
 	using Systems;
 	using UniGame.Context.Runtime.Extension;
 	using UniGame.Core.Runtime;
+	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
 	[CreateAssetMenu(menuName = "Game/Feature/Gameplay/Tutorial/TutorialAction/Analytics Action Feature", 

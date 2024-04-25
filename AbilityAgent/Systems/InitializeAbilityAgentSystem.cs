@@ -1,13 +1,15 @@
 ﻿namespace unigame.ecs.proto.AbilityAgent.Systems
 {
     using System;
-    using Ability.Components;
     using Aspects;
     using Components;
     using GameLayers.Category.Components;
     using GameLayers.Layer.Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
     /// Initialize ability agent
