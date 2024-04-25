@@ -1,0 +1,49 @@
+﻿namespace unigame.ecs.proto.Ability.Systems
+{
+	using Components;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
+	using UniGame.LeoEcs.Shared.Extensions;
+
+
+	/// <summary>
+	/// Ability unlock. Wait for unlock event.
+	/// </summary>
+#if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
+
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+#endif
+	public class AbilityUnlockSystem : IProtoInitSystem, IProtoRunSystem
+	{
+		private ProtoWorld _world;
+		private EcsFilter _eventFilter;
+		private ProtoPool<AbilityUnlockEvent> _abilityUnlockEventPool;
+		private ProtoPool<AbilityUnlockComponent> _abilityUnlockPool;
+
+		public void Init(IProtoSystems systems)
+		{
+			_world = systems.GetWorld();
+			_eventFilter = _world.Filter<AbilityUnlockEvent>()
+				.End();
+			_abilityUnlockEventPool = _world.GetPool<AbilityUnlockEvent>();
+			_abilityUnlockPool = _world.GetPool<AbilityUnlockComponent>();
+		}
+
+		public void Run()
+		{
+			foreach (var entity in _eventFilter)
+			{
+				ref var unlockEvent = ref _abilityUnlockEventPool.Get(entity);
+				if (!unlockEvent.Ability.Unpack(_world, out var abilityEntity))
+					continue;
+				if (_abilityUnlockPool.Has(abilityEntity))
+					continue;
+				_abilityUnlockPool.Add(abilityEntity);
+			}
+		}
+	}
+}

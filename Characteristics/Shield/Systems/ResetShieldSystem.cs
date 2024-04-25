@@ -1,0 +1,30 @@
+﻿namespace unigame.ecs.proto.Characteristics.Shield.Systems
+{
+    using Base.Components.Events;
+    using Components;
+     
+
+    public sealed class ResetShieldSystem : IProtoRunSystem,IProtoInitSystem
+    {
+        private EcsFilter _filter;
+        private ProtoWorld _world;
+
+        public void Init(IProtoSystems systems)
+        {
+            _world = systems.GetWorld();
+            _filter = _world.Filter<ShieldComponent>()
+                .Inc<ResetCharacteristicsEvent>()
+                .End();
+        }
+        
+        public void Run()
+        {
+            var shieldPool = _world.GetPool<ShieldComponent>();
+            
+            foreach (var entity in _filter)
+            {
+                shieldPool.Del(entity);
+            }
+        }
+    }
+}

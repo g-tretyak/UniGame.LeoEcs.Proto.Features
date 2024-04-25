@@ -1,0 +1,36 @@
+﻿{
+  "name": "unigame.ecs.proto.GameEffects.RetargetEffect",
+  "rootNamespace": "",
+    "references": [
+        "GUID:e59bf9fc7d5a44b18a819a92edd46163",
+        "GUID:e06a58708b83247ca9dc984644f5b40b",
+        "GUID:026625b7bd14ddc46912538cb18f97e1",
+        "GUID:b10aac27e5bc3d74f9892b100a74487f",
+        "GUID:8e4577c9194c10845984cf27eb974fd1",
+        "GUID:c1d53fc1b1b71c647b00626be502b7b1",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:c2f35cbf0d9c448ca2eb6ec8c3ff41f5",
+        "GUID:b9e4029c2cdc84f7d82433cf8a1d0e69",
+        "GUID:209749b816e76d241a52eb0770dbdcb5",
+        "GUID:bd4ea46f2fdce47f0a34f0df46c013f5",
+        "GUID:87e2f3511f8e34949a94db2b3e6c6517",
+        "GUID:be22077deba4c13448e497d030e626a0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+  "defineConstraints": [
+    "LEO_ECS_PROTO_ENABLED"
+  ],
+  "versionDefines": [
+    {
+      "name": "com.leopotam.proto",
+      "expression": "2023.0.0",
+      "define": "LEO_ECS_PROTO_ENABLED"
+    }
+  ],
+    "noEngineReferences": false
+}

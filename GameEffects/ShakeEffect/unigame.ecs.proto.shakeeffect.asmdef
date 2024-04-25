@@ -1,0 +1,50 @@
+{
+    "name": "unigame.ecs.proto.ShakeEffect",
+    "rootNamespace": "",
+    "references": [
+        "unigame.unicore.runtime",
+        "Leopotam.EcsLite",
+        "Leopotam.EcsLite.ExtendedSystems",
+        "Leopotam.EcsLite.Threads",
+        "Leopotam.EcsLite.UnityEditor.Runtime",
+        "UniGame.Shared.Runtime",
+        "unigame.ecs.proto.Time",
+        "unigame.ecs.proto.Effects",
+        "UniTask",
+        "UniTask.Addressables",
+        "unigame.ecs.proto.GameLayers",
+        "unigame.ecs.proto.Characteristics",
+        "unigame.ecs.proto.Movement",
+        "unigame.ecs.proto.Ability",
+        "unigame.ecs.proto.Effects.Modifitaions",
+        "Game.Service.Ability.Runtime",
+        "unigame.ecs.proto.Characteristics.Base",
+        "unigame.ecs.proto.Characteristic.Block",
+        "unigame.ecs.proto.Characteristic.CriticalChance",
+        "unigame.ecs.proto.Gameplay.Damage",
+        "unigame.ecs.proto.Characteristics.Mana",
+        "unigame.ecs.proto.Characteristics.Health",
+        "unigame.ecs.proto.Camera",
+        "unigame.leoecs.bootstrap.runtime",
+        "unigame.leoecs.converter.runtime",
+        "unigame.laeoecs.shared.runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "LEO_ECS_PROTO_ENABLED",
+        "ENABLE_DOTWEEN"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.leopotam.proto",
+            "expression": "2023.0.0",
+            "define": "LEO_ECS_PROTO_ENABLED"
+        }
+    ],
+    "noEngineReferences": false
+}

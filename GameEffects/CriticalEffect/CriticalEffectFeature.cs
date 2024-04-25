@@ -1,0 +1,20 @@
+﻿namespace unigame.ecs.proto.GameEffects.CriticalEffect
+{
+	using Cysharp.Threading.Tasks;
+	using Effects.Feature;
+	using Leopotam.EcsProto;
+	using Systems;
+	using UniGame.LeoEcs.Bootstrap.Runtime;
+	using UniGame.LeoEcs.Shared.Extensions;
+	using UnityEngine;
+
+	[CreateAssetMenu(menuName = "Game/Feature/Effects/Critical Effect Feature", fileName = "Critical Effect Feature")]
+	public class CriticalEffectFeature : EffectFeatureAsset
+	{
+		protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+		{
+			ecsSystems.Add(new CriticalEffectSystem());
+			return UniTask.CompletedTask;
+		}
+	}
+}
