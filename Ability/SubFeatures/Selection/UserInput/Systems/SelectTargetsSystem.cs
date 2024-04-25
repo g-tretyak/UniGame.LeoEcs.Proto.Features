@@ -4,6 +4,7 @@
     using Characteristics.Radius.Component;
     using Common.Components;
     using Components;
+    using Game.Code.GameLayers.Relationship;
     using Game.Ecs.Core.Components;
     using GameLayers.Category.Components;
     using GameLayers.Layer.Components;
@@ -11,6 +12,8 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
+    using proto.Selection;
+    using TargetSelection;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -31,7 +34,7 @@
         private ProtoWorld _world;
 
         private TargetSelectionSystem _selectionSystem;
-        private int[] _selection = new int[TargetSelectionData.MaxTargets];
+        private ProtoEntity[] _selection = new ProtoEntity[TargetSelectionData.MaxTargets];
         private ProtoPackedEntity[] _packedEntities = new ProtoPackedEntity[TargetSelectionData.MaxTargets];
         
         private ProtoPool<SelectedTargetsComponent> _targetsPool;
@@ -100,8 +103,8 @@
                     ref layer, 
                     ref category.Value);
 
-                for (int i = 0; i < amount; i++)
-                    _packedEntities[i] = _world.PackedEntity(_selection[i]);
+                for (var i = 0; i < amount; i++)
+                    _packedEntities[i] = _selection[i].PackEntity(_world);
                 
                 targets.SetEntities(_packedEntities,amount);
             }

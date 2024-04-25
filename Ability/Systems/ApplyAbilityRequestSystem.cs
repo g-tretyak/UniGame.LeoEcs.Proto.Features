@@ -52,10 +52,10 @@
                 if(!ownerComponent.Value.Unpack(_world,out var ownerEntity))
                     continue;
                 
-                if(ownerEntity != entity) continue;
+                if(!ownerEntity.Equals(entity)) continue;
                 
                 ref var inHandLink = ref _ownerAspect.AbilityInHandLink.Get(entity);
-                if(!inHandLink.AbilityEntity.EqualsTo(abilityEntity))
+                if(!inHandLink.AbilityEntity.Equals(abilityEntity))
                     continue;
 
                 _abilityAspect.Validate.TryAdd(ref abilityEntity);

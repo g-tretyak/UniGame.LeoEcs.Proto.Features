@@ -3,6 +3,7 @@
     using System;
     using Ability.UserInput.Components;
     using Components;
+    using Game.Code.Configuration.Runtime.Ability.Description;
     using Leopotam.EcsProto;
     using Selection.Components;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -10,7 +11,7 @@
     [Serializable]
     public sealed class ToTargetBehaviour : IAbilityBehaviour
     {
-        public void Compose(ProtoWorld world, int abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
         {
             var selectablePool = world.GetPool<SelectableAbilityComponent>();
             selectablePool.Add(abilityEntity);

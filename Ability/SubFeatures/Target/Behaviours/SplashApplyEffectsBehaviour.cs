@@ -4,6 +4,8 @@
 	using System.Collections.Generic;
 	using Abstract;
 	using Components;
+	using Game.Code.Configuration.Runtime.Ability.Description;
+	using Game.Code.Configuration.Runtime.Effects.Abstract;
 	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
@@ -12,19 +14,19 @@
 	public class SplashApplyEffectsBehaviour : IAbilityBehaviour
 	{
 		[SerializeReference]
-		public IZoneTargetsDetector _zoneTargetsDetector;
+		public IZoneTargetsDetector zoneTargetsDetector;
 		[SerializeReference]
-		public List<IEffectConfiguration> _mainTargetEffects = new List<IEffectConfiguration>();
+		public List<IEffectConfiguration> mainTargetEffects = new();
 		[SerializeReference]
-		public List<IEffectConfiguration> _otherTargetsEffects = new List<IEffectConfiguration>();
+		public List<IEffectConfiguration> otherTargetsEffects = new();
 
-		public void Compose(ProtoWorld world, int abilityEntity, bool isDefault)
+		public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
 		{
 			var splashPool = world.GetPool<SplashEffectSourceComponent>();
 			ref var splashComponent = ref splashPool.Add(abilityEntity);
-			splashComponent.MainTargetEffects.AddRange(_mainTargetEffects);
-			splashComponent.OtherTargetsEffects.AddRange(_otherTargetsEffects);
-			splashComponent.ZoneTargetsDetector = _zoneTargetsDetector;
+			splashComponent.MainTargetEffects.AddRange(mainTargetEffects);
+			splashComponent.OtherTargetsEffects.AddRange(otherTargetsEffects);
+			splashComponent.ZoneTargetsDetector = zoneTargetsDetector;
 		}
 	}
 }

@@ -7,6 +7,7 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
+    using proto.Effects;
     using TargetSelection;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -30,8 +31,8 @@
         private ProtoWorld _world;
         private TargetAbilityAspect _aspect;
         
-        private int[] _targets = new int[TargetSelectionData.MaxTargets];
-        private int[] _zoneTargets = new int[TargetSelectionData.MaxTargets];
+        private ProtoEntity[] _targets = new ProtoEntity[TargetSelectionData.MaxTargets];
+        private ProtoEntity[] _zoneTargets = new ProtoEntity[TargetSelectionData.MaxTargets];
 
         public void Init(IProtoSystems systems)
         {
@@ -78,7 +79,7 @@
                 {
                     var target = _zoneTargets[i];
                     
-                    if (soloTargetEntity == target) continue;
+                    if (soloTargetEntity.Equals(target)) continue;
                     
                     splashEffectComponent.OtherTargetsEffects
                         .CreateRequests(_world, owner.Value, _world.PackEntity(target));

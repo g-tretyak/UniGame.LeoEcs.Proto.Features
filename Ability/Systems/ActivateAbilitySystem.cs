@@ -65,7 +65,7 @@
                     if(!ownerComponent.Value.Unpack(_world,out _)) continue;
                     if (!ownerComponent.Value.EqualsTo(request.Target)) continue;
                     
-                    if (abilityEntity != targetAbilityEntity) continue;
+                    if (!abilityEntity.Equals(targetAbilityEntity)) continue;
                     
                     _abilityTools.ActivateAbility(_world,targetEntity,abilityEntity);
                     

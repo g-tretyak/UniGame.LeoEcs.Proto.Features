@@ -59,9 +59,9 @@
                     if (!ownerComponent.Value.Unpack(_world, out var ownerEntity))
                         continue;
                     
-                    if (ownerEntity != entity) continue;
+                    if (!ownerEntity.Equals(entity)) continue;
 
-                    targetAbility = abilityEntity;
+                    targetAbility = (int)abilityEntity;
                 }
 
                 if (targetAbility < 0)
@@ -70,12 +70,13 @@
                     continue;
                 }
 
-                ref var slotComponent = ref _abilityAspect.AbilitySlot.Get(targetAbility);
+                var targetAbilityEntity = (ProtoEntity)targetAbility;
+                ref var slotComponent = ref _abilityAspect.AbilitySlot.Get(targetAbilityEntity);
                 ref var progressComponent = ref _abilityOwnerAspect.AbilityInProcessing.GetOrAddComponent(entity);
                 
-                progressComponent.Ability = _world.PackedEntity(targetAbility);
+                progressComponent.Ability = targetAbilityEntity.PackEntity(_world);
                 progressComponent.Slot = slotComponent.SlotType;
-                progressComponent.IsDefault = _abilityAspect.Default.Has(targetAbility);
+                progressComponent.IsDefault = _abilityAspect.Default.Has(targetAbilityEntity);
             }
         }
     }

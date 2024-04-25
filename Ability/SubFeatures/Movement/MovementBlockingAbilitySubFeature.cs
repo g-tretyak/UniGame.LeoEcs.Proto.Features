@@ -2,16 +2,17 @@
 {
     using System;
     using Cysharp.Threading.Tasks;
-     
+    using Leopotam.EcsProto;
     using Movement.Systems;
-    using Tools;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     /// <summary>
     /// add critical animations if critical hit exist
     /// </summary>
     [Serializable]
-    [CreateAssetMenu(menuName = "Game/Feature/Ability/MovementBlockingAbility SubFeature",fileName = "MovementBlockingAbility SubFeature")]
+    [CreateAssetMenu(menuName = "Game/Feature/Ability/MovementBlockingAbility SubFeature",
+        fileName = "MovementBlockingAbility SubFeature")]
     public class MovementBlockingAbilitySubFeature : AbilitySubFeature
     {
 

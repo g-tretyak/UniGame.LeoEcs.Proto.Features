@@ -3,9 +3,11 @@
     using System;
     using Common.Components;
     using Components;
-    using Core.Components;
-    using Ecs.Movement.Components;
-     
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+    using proto.Movement.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 

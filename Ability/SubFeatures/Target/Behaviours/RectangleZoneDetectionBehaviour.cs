@@ -2,7 +2,10 @@
 {
     using System;
     using Components;
+    using Game.Code.Configuration.Runtime.Ability.Description;
+    using Game.Code.GameTools.Runtime;
     using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Converter.Runtime.Abstract;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
@@ -12,7 +15,7 @@
         public Vector2 offset;
         public Vector2 size;
         
-        public void Compose(ProtoWorld world, int abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
         {
             var zoneDetectionPool = world.GetPool<RectangleZoneDetectionComponent>();
             ref var zoneDetectionComponent = ref zoneDetectionPool.Add(abilityEntity);

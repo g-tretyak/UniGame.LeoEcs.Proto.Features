@@ -9,7 +9,7 @@
     [Serializable]
     public sealed class SelfApplyEffects : IAbilityBehaviour
     {
-        public void Compose(ProtoWorld world, int abilityEntity , bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity , bool isDefault)
         {
             var pressPool = world.GetPool<CanApplyWhenUpInputComponent>();
             if (!pressPool.Has(abilityEntity))

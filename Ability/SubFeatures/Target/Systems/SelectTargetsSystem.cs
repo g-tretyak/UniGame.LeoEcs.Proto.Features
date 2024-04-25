@@ -29,7 +29,7 @@
 		private TargetAbilityAspect _aspect;
 		private EcsFilter _filter;
 		
-		private int[] _abilityTargets = new int[TargetSelectionData.MaxTargets];
+		private ProtoEntity[] _abilityTargets = new ProtoEntity[TargetSelectionData.MaxTargets];
 
 		public void Init(IProtoSystems systems)
 		{
@@ -63,7 +63,7 @@
 				for (var i = 0; i < amount; i++)
 				{
 					var abilityTarget = _abilityTargets[i];
-					if (abilityTarget != targetEntity) continue;
+					if (!abilityTarget.Equals(targetEntity)) continue;
 					isLastTarget = true;
 					break;
 				}

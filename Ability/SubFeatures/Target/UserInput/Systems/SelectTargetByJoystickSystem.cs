@@ -36,7 +36,7 @@
         
         private ProtoPool<RadiusComponent> _radiusPool;
         
-        private int[] _unpacked = new int[TargetSelectionData.MaxTargets];
+        private ProtoEntity[] _unpacked = new ProtoEntity[TargetSelectionData.MaxTargets];
         private EntityFloat[] _distanceEntity = new EntityFloat[TargetSelectionData.MaxTargets];
         private ProtoPackedEntity[] _packedEntities = new ProtoPackedEntity[TargetSelectionData.MaxTargets];
         private EntityFloatComparer _comparer = new();
@@ -105,8 +105,8 @@
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int Compare(EntityFloat x, EntityFloat y)
         {
-            if (x.entity == 0) return 1;
-            if (y.entity == 0) return -1;
+            if ((int)x.entity == 0) return 1;
+            if ((int)y.entity == 0) return -1;
             if (x.value - y.value < 0) return -1;
             return 1;
         }

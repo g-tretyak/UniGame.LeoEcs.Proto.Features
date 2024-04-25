@@ -3,6 +3,7 @@
 	using System;
 	using Aspects;
 	using Components;
+	using Game.Code.GameTools.Runtime;
 	using Game.Ecs.Core.Components;
 	using Leopotam.EcsLite;
 	using Leopotam.EcsProto;
@@ -31,12 +32,12 @@
 
 		private TargetAbilityAspect _targetAspect;
 		
-		private NativeHashSet<int> _foundTarget;
+		private NativeHashSet<ProtoEntity> _foundTarget;
 		private ILifeTime _lifeTime;
 		
 		private ProtoPool<ConeZoneDetectionComponent> _zoneDetectionPool;
 
-		private int[] _unpacked = new  int[TargetSelectionData.MaxTargets];
+		private ProtoEntity[] _unpacked = new  ProtoEntity[TargetSelectionData.MaxTargets];
 		private ProtoPackedEntity[] _targets = new  ProtoPackedEntity[TargetSelectionData.MaxTargets];
 
 		public void Init(IProtoSystems systems)
@@ -44,7 +45,7 @@
 			_world = systems.GetWorld();
 			_lifeTime = _world.GetWorldLifeTime();
 			
-			_foundTarget = new NativeHashSet<int>(TargetSelectionData.MaxTargets,
+			_foundTarget = new NativeHashSet<ProtoEntity>(TargetSelectionData.MaxTargets,
 				Allocator.Persistent)
 				.AddTo(_lifeTime);
 			

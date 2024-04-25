@@ -3,6 +3,7 @@
     using System;
     using Components;
     using Game.Ecs.Core.Death.Components;
+    using Input.Components.Ability;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;

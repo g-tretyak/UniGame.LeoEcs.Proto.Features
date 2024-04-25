@@ -3,6 +3,7 @@
     using System;
     using Aspects;
     using Components;
+    using Game.Code.GameTools.Runtime;
     using Game.Ecs.Core.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
@@ -35,7 +36,7 @@
 
         private TargetAbilityAspect _targetAspect;
         private ILifeTime _lifeTime;
-        private NativeHashSet<int> _nativeHashSet;
+        private NativeHashSet<ProtoEntity> _nativeHashSet;
         
         private ProtoPackedEntity[] _targets = new ProtoPackedEntity[TargetSelectionData.MaxTargets];
 
@@ -43,7 +44,7 @@
         {
             _world = systems.GetWorld();
             _lifeTime = _world.GetWorldLifeTime();
-            _nativeHashSet = new NativeHashSet<int>(TargetSelectionData.MaxTargets, 
+            _nativeHashSet = new NativeHashSet<ProtoEntity>(TargetSelectionData.MaxTargets, 
                     Allocator.Persistent).AddTo(_lifeTime);
             
             _filter = _world

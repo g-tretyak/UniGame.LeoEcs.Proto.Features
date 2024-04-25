@@ -33,7 +33,7 @@
         private TargetAbilityAspect _targetAspect;
         
         private EntityFloat[] _distances = new EntityFloat[TargetSelectionData.MaxTargets];
-        private int[] _unpackedEntities  = new int[TargetSelectionData.MaxTargets];
+        private ProtoEntity[] _unpackedEntities  = new ProtoEntity[TargetSelectionData.MaxTargets];
         private ProtoPackedEntity[] _packedEntities  = new ProtoPackedEntity[TargetSelectionData.MaxTargets];
         private EntityFloatComparer _comparer = new();
         private SortedDictionary<float,int> _sortedDistances = new();

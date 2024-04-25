@@ -4,6 +4,8 @@
     using Game.Ecs.Core.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using proto.Effects;
+    using proto.Effects.Components;
     using UniGame.LeoEcs.Shared.Extensions;
 
 #if ENABLE_IL2CPP

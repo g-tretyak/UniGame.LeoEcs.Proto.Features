@@ -1,6 +1,8 @@
 ﻿namespace unigame.ecs.proto.Ability.UserInput.Systems
 {
     using Common.Components;
+    using Input.Components;
+    using Input.Components.Ability;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;

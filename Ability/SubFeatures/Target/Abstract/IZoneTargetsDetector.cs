@@ -5,6 +5,7 @@
 
 	public interface IZoneTargetsDetector
 	{
-		int GetTargetsInZone(ProtoWorld world,int[] result, int entity, int[] targetEntities,int amount);
+		int GetTargetsInZone(ProtoWorld world,ProtoEntity[] result,
+			ProtoEntity entity, ProtoEntity[] targetEntities,int amount);
 	}
 }

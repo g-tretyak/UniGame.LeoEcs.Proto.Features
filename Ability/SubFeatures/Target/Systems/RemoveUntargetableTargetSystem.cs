@@ -32,16 +32,16 @@
 		private NonTargetAspect _aspect;
 
 		private ILifeTime _lifeTime;
-		private int[] _targets = new int[TargetSelectionData.MaxTargets];
+		private ProtoEntity[] _targets = new ProtoEntity[TargetSelectionData.MaxTargets];
 		private ProtoPackedEntity[] _resultTargets = new ProtoPackedEntity[TargetSelectionData.MaxTargets];
-		private NativeHashSet<int> _targetsHashSet;
+		private NativeHashSet<ProtoEntity> _targetsHashSet;
 
 		public void Init(IProtoSystems systems)
 		{
 			_world = systems.GetWorld();
 			_lifeTime = _world.GetLifeTime();
 			
-			_targetsHashSet = new NativeHashSet<int>(
+			_targetsHashSet = new NativeHashSet<ProtoEntity>(
 				TargetSelectionData.MaxTargets,
 				Allocator.Persistent)
 				.AddTo(_lifeTime);

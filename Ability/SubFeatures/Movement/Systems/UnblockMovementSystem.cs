@@ -2,9 +2,12 @@
 {
     using Common.Components;
     using Components;
-    using Core.Components;
-    using Ecs.Movement.Components;
-     
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+    using proto.Movement.Components;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     public sealed class UnblockMovementSystem : IProtoRunSystem,IProtoInitSystem

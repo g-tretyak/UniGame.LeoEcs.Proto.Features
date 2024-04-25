@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Abstract;
+    using Game.Code.GameTools.Runtime;
     using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -13,9 +14,11 @@
         public float _angle;
         public float _distance;
 
-        private HashSet<int> _targetMap = new HashSet<int>();
+        private HashSet<ProtoEntity> _targetMap = new HashSet<ProtoEntity>();
         
-        public int GetTargetsInZone(ProtoWorld world,int[] result, int entity, int[] targets,int amount)
+        public int GetTargetsInZone(ProtoWorld world,
+            ProtoEntity[] result, ProtoEntity entity, 
+            ProtoEntity[] targets,int amount)
         {
             _targetMap.Clear();
             

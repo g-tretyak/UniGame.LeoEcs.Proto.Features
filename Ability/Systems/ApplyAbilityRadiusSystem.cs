@@ -55,9 +55,9 @@
                 var abilityEntity = _abilityTools.TryGetAbility(targetEntity, request.AbilitySlot);
                 if(abilityEntity < 0) continue;
                 
-                if(!_abilityAspect.Radius.Has(abilityEntity)) continue;
+                if(!_abilityAspect.Radius.Has((ProtoEntity)abilityEntity)) continue;
 
-                ref var abilityRadiusComponent = ref _abilityAspect.Radius.Get(abilityEntity);
+                ref var abilityRadiusComponent = ref _abilityAspect.Radius.Get((ProtoEntity)abilityEntity);
                 abilityRadiusComponent.Value = request.Value;
 
                 _abilityAspect.ApplyRadiusRange.Del(requestEntity);

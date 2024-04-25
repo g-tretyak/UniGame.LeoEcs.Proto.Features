@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Abstract;
+    using Game.Code.Configuration.Runtime.Effects.Abstract;
     using Leopotam.EcsProto;
 
 
