@@ -1,7 +1,7 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.OpenWindowAction.Aspects
 {
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
 	public class OpenWindowActionAspect : EcsAspect

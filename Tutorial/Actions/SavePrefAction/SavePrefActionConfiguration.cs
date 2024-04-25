@@ -13,7 +13,7 @@
 		public TutorialKey StepKey;
 
 		#endregion
-		protected override void Composer(ProtoWorld world, int entity)
+		protected override void Composer(ProtoWorld world, ProtoEntity entity)
 		{
 			ref var savePrefComponent = ref world.AddComponent<SavePrefComponent>(entity);
 			savePrefComponent.Value = StepKey;

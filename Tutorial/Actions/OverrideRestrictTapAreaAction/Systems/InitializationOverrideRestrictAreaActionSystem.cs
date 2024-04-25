@@ -4,7 +4,8 @@
 	using System.Linq;
 	using Aspects;
 	using Components;
-	 
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
 	using UniGame.Core.Runtime.Extension;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UniGame.Runtime.ObjectPool.Extensions;
@@ -12,9 +13,6 @@
 	using UnityEngine.Pool;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 
-	/// <summary>
-	/// ADD DESCRIPTION HERE
-	/// </summary>
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 

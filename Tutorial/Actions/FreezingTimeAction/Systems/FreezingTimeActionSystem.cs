@@ -1,17 +1,12 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.FreezingTimeAction.Systems
 {
 	using System;
-	using System.Linq;
 	using Aspects;
 	using Components;
-	 
-	using UniGame.Core.Runtime.Extension;
-	using UniGame.LeoEcs.Shared.Extensions;
-	using UniGame.Runtime.ObjectPool.Extensions;
-	using UnityEngine;
-	using UnityEngine.Pool;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-	using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
+	using UniGame.LeoEcs.Shared.Extensions;
 
 	/// <summary>
 	/// Freezing time action

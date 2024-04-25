@@ -2,7 +2,7 @@
 {
 	using Components;
 	using FreezingTime.Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
 	public class FreezingTimeActionAspect : EcsAspect

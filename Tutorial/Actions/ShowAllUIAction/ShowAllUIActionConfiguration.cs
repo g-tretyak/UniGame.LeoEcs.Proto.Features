@@ -7,7 +7,7 @@
 
 	public class ShowAllUIActionConfiguration : TutorialAction
 	{
-		protected override void Composer(ProtoWorld world, int entity)
+		protected override void Composer(ProtoWorld world, ProtoEntity entity)
 		{
 			world.AddComponent<ShowAllUIActionComponent>(entity);
 		}

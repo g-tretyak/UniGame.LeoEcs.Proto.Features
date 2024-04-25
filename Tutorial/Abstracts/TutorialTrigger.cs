@@ -15,7 +15,7 @@
 
 		#endregion
 		
-		public void ComposeEntity(ProtoWorld world, int entity)
+		public void ComposeEntity(ProtoWorld world, ProtoEntity entity)
 		{
 			var delayedPool = world.GetPool<DelayedTutorialComponent>();
 			if (delay > 0f && !delayedPool.Has(entity))
@@ -30,6 +30,6 @@
 			Composer(world, entity);
 		}
 		
-		protected abstract void Composer(ProtoWorld world, int entity);
+		protected abstract void Composer(ProtoWorld world, ProtoEntity entity);
 	}
 }

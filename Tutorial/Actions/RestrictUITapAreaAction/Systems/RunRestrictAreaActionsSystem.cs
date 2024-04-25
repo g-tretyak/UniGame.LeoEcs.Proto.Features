@@ -8,9 +8,6 @@
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 
-	/// <summary>
-	/// ADD DESCRIPTION HERE
-	/// </summary>
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 
@@ -47,7 +44,7 @@
 					var actionEntity = _world.NewEntity();
 					tutorialAction.ComposeEntity(_world, actionEntity);
 					ref var ownerComponent = ref _aspect.Owners.Add(actionEntity);
-					ownerComponent.Value = _world.PackEntity(entity);
+					ownerComponent.Value = entity.PackEntity(_world);
 				}
 				_aspect.CompletedRunRestrictActions.Add(entity);
 			}

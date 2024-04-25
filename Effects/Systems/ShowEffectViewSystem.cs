@@ -78,22 +78,6 @@
                 
                 var size = avatarComponent.Bounds.Radius * 2.0f;
                 var packedEntity = _world.PackEntity(entity);
-                
-                if (viewDataComponent.ViewPrefab != null)
-                {
-                    var effectViewResult = new EffectViewResult()
-                    {
-                        Source = packedEntity,
-                        Size = size,
-                        Duration = effectViewDuration,
-                        View = viewDataComponent.ViewPrefab,
-                    };
-                    
-                    _effectViewResults[_counter] = effectViewResult;
-                    _counter++;
-                    
-                    continue;
-                }
 
                 if (viewDataComponent.View != null &&
                     viewDataComponent.View.RuntimeKeyIsValid())

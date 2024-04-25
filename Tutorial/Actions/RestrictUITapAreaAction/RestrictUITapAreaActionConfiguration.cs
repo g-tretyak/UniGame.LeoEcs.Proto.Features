@@ -9,6 +9,7 @@
 	using Tools;
 	using UniGame.LeoEcs.Converter.Runtime.Abstract;
 	using UniGame.LeoEcs.Shared.Extensions;
+	using UniGame.LeoEcs.ViewSystem.Extensions;
 	using UniGame.UiSystem.Runtime.Settings;
 	using UniModules.UniGame.UiSystem.Runtime;
 	using UnityEngine;
@@ -30,7 +31,7 @@
 #if UNITY_EDITOR
 		private Rect _debugRect;
 #endif
-		protected override void Composer(ProtoWorld world, int entity)
+		protected override void Composer(ProtoWorld world, ProtoEntity entity)
 		{
 			ref var restrictUITapAreaComponent = ref world.AddComponent<RestrictUITapAreaActionComponent>(entity);
 			var camera = Camera.main;

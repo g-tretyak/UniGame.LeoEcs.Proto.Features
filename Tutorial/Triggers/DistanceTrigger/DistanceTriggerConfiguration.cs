@@ -13,7 +13,7 @@
 
 		#endregion
 		
-		protected override void Composer(ProtoWorld world, int entity)
+		protected override void Composer(ProtoWorld world, ProtoEntity entity)
 		{
 			ref var distanceComponent = ref world.AddComponent<DistanceTriggerPointComponent>(entity);
 			distanceComponent.TriggerDistance = distance;

@@ -2,7 +2,7 @@
 {
 	using Abstracts;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
 
 	public class HealingChampionActionConfiguration : TutorialAction
@@ -14,7 +14,8 @@
 		public float HealOverMax = 300f;
 
 		#endregion
-		protected override void Composer(ProtoWorld world, int entity)
+		
+		protected override void Composer(ProtoWorld world, ProtoEntity entity)
 		{
 			ref var healingAction = ref world.AddComponent<HealingChampionActionComponent>(entity);
 			healingAction.HealPeriod = HealPeriod;

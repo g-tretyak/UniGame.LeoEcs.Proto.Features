@@ -14,7 +14,7 @@
 
 		#endregion
 		
-		protected override void Composer(ProtoWorld world, int entity)
+		protected override void Composer(ProtoWorld world, ProtoEntity entity)
 		{
 			ref var actionTriggerComponent = ref world.AddComponent<ActionTriggerComponent>(entity);
 			actionTriggerComponent.ActionId = actionId;

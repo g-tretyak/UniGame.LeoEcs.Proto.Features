@@ -3,11 +3,11 @@
 	using System;
 	using Abstracts;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
-	using UnityEngine.Serialization;
 
-	
+
+	[Serializable]
 	public class FreezingTimeActionConfiguration : TutorialAction
 	{
 		#region Inspector
@@ -17,7 +17,7 @@
 
 		#endregion
 		
-		protected override void Composer(ProtoWorld world, int entity)
+		protected override void Composer(ProtoWorld world, ProtoEntity entity)
 		{
 			ref var freezingTimeActionComponent = ref world.AddComponent<FreezingTimeActionComponent>(entity);
 			freezingTimeActionComponent.Duration = duration;

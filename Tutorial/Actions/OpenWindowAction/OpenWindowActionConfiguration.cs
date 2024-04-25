@@ -1,9 +1,8 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.OpenWindowAction
 {
-	using System;
 	using Abstracts;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UniGame.UiSystem.Runtime.Settings;
 	using UniModules.UniGame.UiSystem.Runtime;
@@ -17,7 +16,7 @@
 
 		#endregion
 		
-		protected override void Composer(ProtoWorld world, int entity)
+		protected override void Composer(ProtoWorld world, ProtoEntity entity)
 		{
 			ref var openWindowActionComponent = ref world.AddComponent<OpenWindowActionComponent>(entity);
 			openWindowActionComponent.View = view;

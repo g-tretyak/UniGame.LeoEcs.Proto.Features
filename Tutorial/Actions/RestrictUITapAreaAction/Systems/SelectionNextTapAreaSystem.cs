@@ -5,12 +5,10 @@
 	using Components;
 	using Leopotam.EcsLite;
 	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 	using UniGame.LeoEcs.Shared.Extensions;
 
-	/// <summary>
-	/// ADD DESCRIPTION HERE
-	/// </summary>
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 
@@ -46,9 +44,9 @@
 		{
 			foreach (var entity in _activeRestrictTapAreaFilter)
 			{
-				if (_restrictTapAreasFilter.GetEntitiesCount() == 0)
-					continue;
-				var areasEntity = _restrictTapAreasFilter.GetRawEntities().FirstOrDefault();
+				if (_restrictTapAreasFilter.First() < 0) continue;
+				
+				var areasEntity = (ProtoEntity)_restrictTapAreasFilter.First();
 				ref var areasActionComponent = ref _aspect.RestrictUITapAreaAction.Get(areasEntity);
 				ref var areasComponent = ref _aspect.RestrictUITapAreas.Get(areasEntity);		
 				_aspect.ActivateRestrictUITapArea.Del(entity);

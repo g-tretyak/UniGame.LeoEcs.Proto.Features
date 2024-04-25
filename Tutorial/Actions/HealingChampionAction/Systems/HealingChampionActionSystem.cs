@@ -1,19 +1,17 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.HealingChampionAction.Systems
 {
 	using System;
-	using System.Linq;
 	using Aspects;
 	using Characteristics.Health.Components;
-	using Code.Configuration.Runtime.Effects;
 	using Components;
-	using Core.Components;
+	using Game.Code.Configuration.Runtime.Effects;
+	using Game.Ecs.Core.Components;
 	using GameEffects.HealingEffect;
-	 
-	using UniGame.Core.Runtime.Extension;
-	using UniGame.Runtime.ObjectPool.Extensions;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
 	using UnityEngine;
-	using UnityEngine.Pool;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+	using UniGame.LeoEcs.Shared.Extensions;
 
 	/// <summary>
 	/// Heals the champion
@@ -53,9 +51,9 @@
 		{
 			foreach (var actionEntity in _actionFilter)
 			{
-				if (_championFilter.GetEntitiesCount() == 0) 
-					continue;
-				var championEntity = _championFilter.GetRawEntities().FirstOrDefault();
+				if (_championFilter.First() < 0) continue;
+				
+				var championEntity = (ProtoEntity)_championFilter.First();
 				var healthComponent = _aspect.Healths.Get(championEntity);
 				ref var healingActionComponent = ref _aspect.HealingChampionAction.Get(actionEntity);
 				var currentHealth = healthComponent.Health;
@@ -89,8 +87,8 @@
 				ref var applyEffectRequest = ref _aspect.ApplyEffectRequest.Add(healingEntity);
                 
 				ref var effectComponent = ref _aspect.Effects.Add(healingEntity);
-				effectComponent.Destination = _world.PackEntity(championEntity);
-				effectComponent.Source = _world.PackEntity(healingEntity);
+				effectComponent.Destination = championEntity.PackEntity(_world);
+				effectComponent.Source = healingEntity.PackEntity(_world);
 				
 				_aspect.CompletedHealingChampionAction.Add(actionEntity);
 			}

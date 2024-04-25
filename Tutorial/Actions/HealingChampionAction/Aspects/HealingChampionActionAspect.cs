@@ -4,7 +4,7 @@
 	using Characteristics.Health.Components;
 	using Components;
 	using Effects.Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 	
 	[Serializable]
