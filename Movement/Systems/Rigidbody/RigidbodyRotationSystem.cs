@@ -1,9 +1,10 @@
 ﻿namespace unigame.ecs.proto.Movement.Systems.Rigidbody
 {
-    using Components;
-    using Core.Components;
-     
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Components;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     /// <summary>

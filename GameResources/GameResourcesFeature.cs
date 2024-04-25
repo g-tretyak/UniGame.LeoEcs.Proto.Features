@@ -1,16 +1,14 @@
 ﻿namespace unigame.ecs.proto.GameResources
 {
-    using Code.DataBase.Runtime;
-    using Code.DataBase.Runtime.Abstract;
     using Components;
     using Cysharp.Threading.Tasks;
-     
-    using Leopotam.EcsLite.ExtendedSystems;
+    using Game.Code.DataBase.Runtime.Abstract;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Systems;
     using UniGame.Context.Runtime.Extension;
     using UniGame.Core.Runtime;
     using UniGame.LeoEcs.Bootstrap.Runtime;
-    using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 

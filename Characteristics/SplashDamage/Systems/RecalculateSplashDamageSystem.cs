@@ -2,7 +2,10 @@
 {
     using Base.Components;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
+
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 #endif

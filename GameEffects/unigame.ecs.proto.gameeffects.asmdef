@@ -38,7 +38,8 @@
         "unigame.laeoecs.proto.shared.runtime",
         "unigame.leoecs.proto.converter.runtime",
         "Leopotam.EcsProto.QoL",
-        "unigame.ecs.proto.ability.runtime"
+        "unigame.ecs.proto.ability.runtime",
+        "unigame.laeoecs.proto.features"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

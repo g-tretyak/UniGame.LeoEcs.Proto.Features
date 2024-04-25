@@ -1,9 +1,8 @@
 ﻿namespace unigame.ecs.proto.Presets.Light.Converters
 {
     using System;
-    using System.Threading;
     using Components;
-     
+    using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Converter.Runtime.Converters;

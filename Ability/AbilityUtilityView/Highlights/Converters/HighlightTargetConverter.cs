@@ -23,13 +23,13 @@
             LoadHighlightAsync(world,entity,target.GetAssetLifeTime()).Forget();
         }
 
-        private async UniTask LoadHighlightAsync(ProtoWorld world,int entity,ILifeTime lifeTime)
+        private async UniTask LoadHighlightAsync(ProtoWorld world,ProtoEntity entity,ILifeTime lifeTime)
         {
             var asset = await highlight.LoadAssetInstanceTaskAsync<GameObject>(lifeTime,true);
             ApplyComponent(world, entity, asset);
         }
 
-        private void ApplyComponent(ProtoWorld world, int entity,GameObject highlightAsset)
+        private void ApplyComponent(ProtoWorld world, ProtoEntity entity,GameObject highlightAsset)
         {
             ref var highlightComponent = ref world.GetOrAddComponent<HighlightComponent>(entity);
             highlightComponent.Highlight = highlightAsset;

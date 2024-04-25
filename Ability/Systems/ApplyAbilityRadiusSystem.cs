@@ -53,7 +53,7 @@
                 if(!request.Target.Unpack(_world,out var targetEntity)) continue;
                 
                 var abilityEntity = _abilityTools.TryGetAbility(targetEntity, request.AbilitySlot);
-                if(abilityEntity < 0) continue;
+                if((int)abilityEntity < 0) continue;
                 
                 if(!_abilityAspect.Radius.Has((ProtoEntity)abilityEntity)) continue;
 

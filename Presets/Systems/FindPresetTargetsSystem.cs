@@ -1,15 +1,11 @@
 ﻿namespace unigame.ecs.proto.Presets.Systems
 {
     using System;
-    using System.Linq;
     using Components;
-     
-    using Time.Service;
-    using UniGame.Core.Runtime.Extension;
+    using Game.Ecs.Time.Service;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Extensions;
-    using UniGame.Runtime.ObjectPool.Extensions;
-    using UnityEngine;
-    using UnityEngine.Pool;
 
     /// <summary>
     /// Apply material preset to target system.
@@ -85,7 +81,7 @@
                         applyingDataComponent.Duration = durationComponent.Value;
                     }
 
-                    applyingDataComponent.Source = _world.PackEntity(sourceEntity);
+                    applyingDataComponent.Source = sourceEntity.PackEntity(_world);
 
                     _activatedPresetPool.GetOrAddComponent(sourceEntity);
                     

@@ -6,6 +6,7 @@
     using Game.Modules.UnioModules.UniGame.CoreModules.UniGame.Core.Runtime.Extension;
     using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
+    using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 

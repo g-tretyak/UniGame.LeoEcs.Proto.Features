@@ -7,6 +7,7 @@
 	using Feature;
 	using Leopotam.EcsProto;
 	using Systems;
+	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
 	[CreateAssetMenu(menuName = "Game/Feature/Characteristics/Mana Feature")]

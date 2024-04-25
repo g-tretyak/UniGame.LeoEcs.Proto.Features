@@ -1,7 +1,6 @@
 ﻿namespace unigame.ecs.proto.Effects.Components
 {
     using System;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using UnityEngine;
 

@@ -3,7 +3,6 @@
     using System;
     using Leopotam.EcsProto.QoL;
     using Modification;
-    using UnityEngine.Serialization;
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 #endif

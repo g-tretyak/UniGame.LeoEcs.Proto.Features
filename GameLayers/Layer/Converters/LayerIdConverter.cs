@@ -3,6 +3,9 @@ namespace unigame.ecs.proto.GameLayers.Layer.Converters
     using System;
     using Components;
     using Game.Code.GameLayers.Layer;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Converter.Runtime;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [Serializable]

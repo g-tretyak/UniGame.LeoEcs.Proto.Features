@@ -2,7 +2,7 @@
 {
     using System;
     using Data;
-     
+    using Leopotam.EcsProto;
     using UnityEngine;
 
     /// <summary>

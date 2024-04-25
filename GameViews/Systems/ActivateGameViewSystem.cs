@@ -4,7 +4,9 @@
     using Aspects;
     using Components;
     using GameResources.Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Extensions;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 
@@ -54,7 +56,7 @@
 
                 var viewEntity = _world.NewEntity();
                 ref var viewComponent = ref _viewAspect.View.Add(viewEntity);
-                var viewPacked = _world.PackEntity(viewEntity);
+                var viewPacked = viewEntity.PackEntity(_world);
                 
                 gameResourceRequest.Source = activateRequest.Source;
                 gameResourceRequest.Owner = activateRequest.Source;

@@ -1,7 +1,6 @@
 ﻿namespace unigame.ecs.proto.Presets.Components
 {
     using System;
-    using UnityEngine;
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 #endif

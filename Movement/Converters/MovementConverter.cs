@@ -1,13 +1,12 @@
 ﻿namespace unigame.ecs.proto.Movement.Converters
 {
     using System;
-    using System.Threading;
     using Characteristics.Base.Components.Requests.OwnerRequests;
     using Characteristics.Speed.Components;
-    using Code.Configuration.Runtime.Entity.Movement;
     using Components;
-    using Core.Components;
-     
+    using Game.Code.Configuration.Runtime.Entity.Movement;
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Components;
@@ -43,8 +42,8 @@
             ref var speedRequestComponent = ref world
                 .GetOrAddComponent<ChangeCharacteristicBaseRequest<SpeedComponent>>(requestEntity);
             speedRequestComponent.Value = movementData.speed;
-            speedRequestComponent.Target = world.PackEntity(entity);
-            speedRequestComponent.Source = world.PackEntity(entity);
+            speedRequestComponent.Target = entity.PackEntity(world);
+            speedRequestComponent.Source = entity.PackEntity(world);
 
             ref var rotationSpeedComponent = ref world.GetOrAddComponent<AngularSpeedComponent>(entity);
             rotationSpeedComponent.Value = movementData.angularSpeed;

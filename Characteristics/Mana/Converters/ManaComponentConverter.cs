@@ -1,10 +1,9 @@
 ﻿namespace unigame.ecs.proto.Characteristics.Mana.Converters
 {
 	using System;
-	using System.Threading;
 	using Base.Components.Requests;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Converter.Runtime;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
@@ -20,7 +19,7 @@
 			createCharacteristicRequest.Value = maxMana;
 			createCharacteristicRequest.MaxValue = maxMana;
 			createCharacteristicRequest.MinValue = 0;
-			createCharacteristicRequest.Owner = world.PackEntity(entity);
+			createCharacteristicRequest.Owner = entity.PackEntity(world);
             
 			ref var valueComponent = ref world.AddComponent<ManaComponent>(entity);
 			valueComponent.Mana = maxMana;

@@ -1,10 +1,11 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Death.Aspects
 {
     using System;
-    using Characteristics.Health.Components;
-    using Core.Components;
     using Core.Death.Components;
-     
+    using Game.Ecs.Characteristics.Health.Components;
+    using Game.Ecs.Core.Components;
+    using Game.Ecs.Core.Death.Components;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
     [Serializable]

@@ -3,6 +3,9 @@
     using System;
     using Components;
     using Game.Code.GameLayers.Relationship;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Converter.Runtime;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [Serializable]

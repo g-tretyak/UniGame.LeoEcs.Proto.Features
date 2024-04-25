@@ -1,6 +1,9 @@
 ﻿namespace unigame.ecs.proto.Input
 {
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     public static class InputHelper
     {

@@ -2,7 +2,6 @@
 {
     using System;
     using Data;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
 
 

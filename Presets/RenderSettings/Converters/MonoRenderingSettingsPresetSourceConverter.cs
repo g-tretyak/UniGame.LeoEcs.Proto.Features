@@ -1,14 +1,12 @@
 ﻿namespace unigame.ecs.proto.Presets.Converters
 {
     using System;
-    using System.Threading;
     using Abstract;
     using Assets;
     using Components;
-     
+    using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime;
-    using UniGame.LeoEcs.Converter.Runtime.Abstract;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 

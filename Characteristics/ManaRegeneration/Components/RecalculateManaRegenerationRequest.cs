@@ -1,6 +1,7 @@
 ﻿namespace unigame.ecs.proto.Characteristics.ManaRegeneration.Components
 {
-	 
+	using Leopotam.EcsProto.QoL;
+
 
 	/// <summary>
 	/// Recalculate mana regeneration value.

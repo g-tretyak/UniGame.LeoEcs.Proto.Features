@@ -1,15 +1,13 @@
 ﻿namespace unigame.ecs.proto.Characteristics.Shield
 {
     using System;
-    using Base;
     using Systems;
     using Components;
     using Cysharp.Threading.Tasks;
     using Feature;
-     
-    using Leopotam.EcsLite.ExtendedSystems;
-    using Speed.Components;
-    using Speed.Systems;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Shield Feature")]

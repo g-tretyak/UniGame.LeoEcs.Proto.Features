@@ -3,7 +3,6 @@
     using System;
     using Leopotam.EcsProto.QoL;
     using Modification;
-    using Unity.IL2CPP.CompilerServices;
 
     /// <summary>
     /// Add modification of parameter

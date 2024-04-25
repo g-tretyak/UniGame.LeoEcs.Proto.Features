@@ -4,8 +4,10 @@
     using Aspects;
     using Components;
     using Data;
-     
-    using Modules.UnioModules.UniGame.CoreModules.UniGame.Core.Runtime.Extension;
+    using Game.Modules.UnioModules.UniGame.CoreModules.UniGame.Core.Runtime.Extension;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 

@@ -5,6 +5,7 @@
     using Components.Requests;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
@@ -74,7 +75,7 @@
                     ref var characteristicLinkComponent = ref _linkPool.Get(modificationEntity);
                     if(!characteristicLinkComponent.Link.Unpack(_world,out var characteristicLinkEntity))
                         continue;
-                    if(characteristicLinkEntity != characteristicEntity) continue;
+                    if(!characteristicLinkEntity.Equals(characteristicEntity)) continue;
                     
                     isModificationChanged = true;
                     

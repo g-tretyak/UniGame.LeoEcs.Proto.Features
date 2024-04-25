@@ -1,6 +1,8 @@
 ﻿namespace unigame.ecs.proto.GameResources.Components
 {
-     
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+
 
     /// <summary>
     /// Компонент указывает, что над данной энтити ведется работа по загрузке ресурсов

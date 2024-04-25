@@ -2,9 +2,9 @@
 {
     using System;
     using Components;
-    using Core.Components;
-     
-    using Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
+    using Game.Ecs.Core.Components;
+    using Game.Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
     using UniGame.LeoEcsLite.LeoEcs.Shared.Components;

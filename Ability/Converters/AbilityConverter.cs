@@ -61,7 +61,7 @@
 
             if (skipEquipRequest) return;
 
-            var packedEntity = world.PackedEntity(entity);
+            var packedEntity = entity.PackEntity(world);
 
             var defaultCell = abilityCells.FirstOrDefault(x => x.IsDefault);
             var defaultCellIType = defaultCell.SlotId;

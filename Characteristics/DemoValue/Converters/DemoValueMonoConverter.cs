@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using Base.Modification;
     using Components;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using unigame.ecs.proto.Characteristics.Base.Components;
     using unigame.ecs.proto.Characteristics.Base.Components.Requests;
     using unigame.ecs.proto.Characteristics.Base.Components.Requests.OwnerRequests;
@@ -21,22 +23,18 @@
         [HideLabel]
         public CharacteristicComponent<DemoValueComponent> characteristicComponent = new CharacteristicComponent<DemoValueComponent>();
 
-        [FormerlySerializedAs("addValue")]
         [TitleGroup("COMMANDS")]
         [InlineButton(nameof(Add))]
         public float value = 10;
         
-        [FormerlySerializedAs("setMaxLimit")]
         [TitleGroup("COMMANDS")]
         [InlineButton(nameof(SetMaxLimit))]
         public float maxLimit = 10;
         
-        [FormerlySerializedAs("setMinLimit")]
         [TitleGroup("COMMANDS")]
         [InlineButton(nameof(SetMinLimit))]
         public float minLimit = 10;
         
-        [FormerlySerializedAs("setBaseValue")]
         [TitleGroup("COMMANDS")]
         [InlineButton(nameof(AddBaseValue))]
         public float baseValue = 10;
@@ -48,10 +46,9 @@
         public DemoModificationValue modification;
         
         [TitleGroup("MODIFICATIONS")] 
-        //[InlineProperty]
         public List<DemoModificationValue> modifications = new List<DemoModificationValue>();
 
-        private int _entity;
+        private ProtoEntity _entity;
         private ProtoPackedEntity _packedEntity;
         private ProtoWorld _world;
         private List<DemoModificationValue> _removedItems = new List<DemoModificationValue>();
@@ -201,7 +198,7 @@
             requestComponent.ModificationSource = SourceEntity;
         }
         
-        public DemoModificationValue Create(ProtoWorld world,int entity)
+        public DemoModificationValue Create(ProtoWorld world,ProtoEntity entity)
         {
             var modification = new Modification()
             {

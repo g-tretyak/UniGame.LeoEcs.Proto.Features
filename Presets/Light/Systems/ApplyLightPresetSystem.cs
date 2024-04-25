@@ -1,10 +1,11 @@
 ﻿namespace unigame.ecs.proto.Presets.Systems
 {
     using System;
-    using Assets;
     using Components;
-     
-    using Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
+    using Game.Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>

@@ -2,11 +2,11 @@
 {
     using System;
     using Aspects;
-    using Code.Configuration.Runtime.Effects;
     using Components;
-    using Core.Components;
     using Cysharp.Threading.Tasks;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.AddressableTools.Runtime;
     using UniGame.Core.Runtime;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
@@ -14,7 +14,6 @@
     using UniGame.Runtime.ObjectPool.Extensions;
     using UnityEngine;
     using UnityEngine.AddressableAssets;
-    using UnityEngine.Serialization;
 
     /// <summary>
     /// Show view effect by effect data

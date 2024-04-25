@@ -2,7 +2,6 @@
 {
     using Data;
     using Game.Code.Configuration.Runtime.Effects;
-    using UnityEngine;
     using UnityEngine.AddressableAssets;
 
     /// <summary>

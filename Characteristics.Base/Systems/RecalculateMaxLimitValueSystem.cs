@@ -7,7 +7,6 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
@@ -67,7 +66,7 @@
                     ref var linkComponent = ref _characteristicsValueLinkPool.Get(modificationEntity);
                     if(!linkComponent.Link.Unpack(_world,out var characteristicValue))
                         continue;
-                    if(characteristicEntity!=characteristicValue) continue;
+                    if(!characteristicEntity.Equals(characteristicValue)) continue;
                     
                     ref var modificationComponent = ref _modificationPool.Get(modificationEntity);
                     maxValue += modificationComponent.Counter * modificationComponent.BaseValue;

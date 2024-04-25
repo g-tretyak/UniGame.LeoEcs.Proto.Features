@@ -5,7 +5,7 @@ namespace unigame.ecs.proto.Presets.Converters
     using unigame.ecs.proto.Presets.SpotLightSettings.Converters;
     using Abstract;
     using System;
-    using System.Threading;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.Presets.FogShaderSettings.Converters;
      
     using Sirenix.OdinInspector;

@@ -4,8 +4,11 @@
     using System.Collections.Generic;
     using Aspects;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
 #if ENABLE_IL2CP
 	using Unity.IL2CPP.CompilerServices;
 #endif

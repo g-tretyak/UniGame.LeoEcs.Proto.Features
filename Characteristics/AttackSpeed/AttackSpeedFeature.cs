@@ -1,12 +1,14 @@
 ﻿namespace unigame.ecs.proto.Characteristics.AttackSpeed
 {
     using System;
+    using Base;
     using Components;
     using Cysharp.Threading.Tasks;
-    using unigame.ecs.proto.Characteristics.Base;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.Characteristics.Feature;
      
     using Systems;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     /// <summary>

@@ -2,8 +2,10 @@
 {
     using System;
     using Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.Characteristics.Base.Components;
-     
+    using UniGame.LeoEcs.Shared.Extensions;
     using Unity.IL2CPP.CompilerServices;
 
     [Serializable]

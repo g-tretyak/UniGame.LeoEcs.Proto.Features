@@ -5,8 +5,9 @@
     using Components;
     using Cysharp.Threading.Tasks;
     using Feature;
-     
-    using Leopotam.EcsLite.ExtendedSystems;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Cooldown Feature")]

@@ -3,7 +3,7 @@
 	using System;
 	using Base.Components.Requests;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using Sirenix.OdinInspector;
 	using UniGame.LeoEcs.Converter.Runtime;
 	using UniGame.LeoEcs.Shared.Extensions;
@@ -22,7 +22,7 @@
 			createCharacteristicRequest.Value = manaRegeneration;
 			createCharacteristicRequest.MaxValue = float.MaxValue;
 			createCharacteristicRequest.MinValue = 0;
-			createCharacteristicRequest.Owner = world.PackEntity(entity);
+			createCharacteristicRequest.Owner = entity.PackEntity(world);
 
 			ref var manaRegenerationComponent = ref world.AddComponent<ManaRegenerationComponent>(entity);
 			manaRegenerationComponent.Value = manaRegeneration;

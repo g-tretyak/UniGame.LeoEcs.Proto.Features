@@ -5,11 +5,12 @@
     using Systems.NavMesh;
     using Systems.Transform;
     using Components;
-    using Core.Components;
     using Cysharp.Threading.Tasks;
-     
-    using Leopotam.EcsLite.ExtendedSystems;
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
     
     [CreateAssetMenu(menuName = "Game/Feature/Movement/Movement Feature", fileName = "Movement Feature")]

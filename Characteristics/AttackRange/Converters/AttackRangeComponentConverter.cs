@@ -1,8 +1,8 @@
 namespace unigame.ecs.proto.Characteristics.CriticalChance.Converters
 {
     using System;
-    using System.Threading;
     using Components;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.Characteristics.Base.Components.Requests;
      
     using UniGame.LeoEcs.Converter.Runtime;
@@ -32,7 +32,7 @@ namespace unigame.ecs.proto.Characteristics.CriticalChance.Converters
             createCharacteristicRequest.Value = attackRange + deltaValue;
             createCharacteristicRequest.MaxValue = maxValue;
             createCharacteristicRequest.MinValue = minValue;
-            createCharacteristicRequest.Owner = world.PackEntity(entity);
+            createCharacteristicRequest.Owner = entity.PackEntity(world);
 
             ref var criticalChanceComponent = ref world.GetOrAddComponent<AttackRangeComponent>(entity);
         }

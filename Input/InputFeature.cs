@@ -5,10 +5,11 @@
     using Components.Direction;
     using Cysharp.Threading.Tasks;
     using JetBrains.Annotations;
-     
-    using Leopotam.EcsLite.ExtendedSystems;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Map.Systems;
     using UniGame.LeoEcs.Bootstrap.Runtime;
+    using UniGame.LeoEcs.Shared.Extensions;
 
     [UsedImplicitly]
     public sealed class InputFeature : LeoEcsSystemAsyncFeature

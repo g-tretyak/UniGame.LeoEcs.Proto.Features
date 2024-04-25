@@ -55,7 +55,7 @@
 					continue;
 
 				var abilityEntity = _abilityTools.TryGetAbility(target, 0);
-				if (abilityEntity < 0) continue;
+				if ((int)abilityEntity < 0) continue;
 				
 				_blockAttackEffectReadyPool.Add(entity);
 				ref var blockAttackEffectComponent = ref _blockAttackEffectPool.Get(entity);

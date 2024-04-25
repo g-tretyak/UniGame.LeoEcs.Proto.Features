@@ -3,7 +3,8 @@ namespace unigame.ecs.proto.GameResources.Components
     using System;
     using Data;
     using Game.Code.DataBase.Runtime;
-     
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Abstract;
     using UnityEngine;
     using UnityEngine.Serialization;

@@ -3,8 +3,10 @@
     using System;
     using Aspects;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UniGame.Runtime.ObjectPool.Extensions;
 #if ENABLE_IL2CP
 	using Unity.IL2CPP.CompilerServices;

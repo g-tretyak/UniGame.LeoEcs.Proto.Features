@@ -1,9 +1,9 @@
 namespace unigame.ecs.proto.Characteristics.AttackSpeed.Converters
 {
     using System;
-    using System.Threading;
     using Components;
-    using Ecs.Cooldown;
+    using Cooldown;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.Characteristics.Base.Components.Requests;
      
     using UniGame.LeoEcs.Converter.Runtime;
@@ -26,7 +26,7 @@ namespace unigame.ecs.proto.Characteristics.AttackSpeed.Converters
             createCharacteristicRequest.Value = attackSpeed;
             createCharacteristicRequest.MaxValue = maxLimitValue;
             createCharacteristicRequest.MinValue = minLimitValue;
-            createCharacteristicRequest.Owner = world.PackEntity(entity);
+            createCharacteristicRequest.Owner = entity.PackEntity(world);
 
             ref var attackSpeedComponent = ref world.GetOrAddComponent<AttackSpeedComponent>(entity);
             ref var attackAbilityIdComponent = ref world.GetOrAddComponent<AttackAbilityIdComponent>(entity);

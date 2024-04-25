@@ -69,7 +69,7 @@
                     ref var linkComponent = ref _characteristicsValueLinkPool.Get(modificationEntity);
                     if(!linkComponent.Link.Unpack(_world,out var characteristicValue))
                         continue;
-                    if(characteristicEntity!=characteristicValue) continue;
+                    if(!characteristicEntity.Equals(characteristicValue)) continue;
 
                     ref var modificationComponent = ref _modificationPool.Get(modificationEntity);
                     newValue += modificationComponent.Counter * modificationComponent.BaseValue;

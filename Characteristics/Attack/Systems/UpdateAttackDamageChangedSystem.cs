@@ -1,9 +1,12 @@
 ﻿namespace unigame.ecs.proto.Characteristics.Attack.Systems
 {
     using System;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.Characteristics.Attack.Components;
     using unigame.ecs.proto.Characteristics.Base.Components;
-     
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     /// <summary>
     /// update value of attack speed characteristic

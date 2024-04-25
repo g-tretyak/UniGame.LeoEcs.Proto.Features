@@ -1,6 +1,7 @@
 namespace unigame.ecs.proto.Characteristics.Speed.Converters
 {
     using System;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.Characteristics.Base.Components.Requests;
     using unigame.ecs.proto.Characteristics.Speed.Components;
      
@@ -31,7 +32,7 @@ namespace unigame.ecs.proto.Characteristics.Speed.Converters
             createCharacteristicRequest.Value = speed;
             createCharacteristicRequest.MaxValue = overrideLimits ? maxValue : 10000;
             createCharacteristicRequest.MinValue = overrideLimits ? minValue : 0;
-            createCharacteristicRequest.Owner = world.PackEntity(entity);
+            createCharacteristicRequest.Owner = entity.PackEntity(world);
 
             ref var speedComponent = ref world.GetOrAddComponent<SpeedComponent>(entity);
             speedComponent.Value = speed;

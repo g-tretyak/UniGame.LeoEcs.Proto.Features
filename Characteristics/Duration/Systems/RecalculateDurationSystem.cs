@@ -2,7 +2,10 @@
 {
     using Base.Modification;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     public sealed class RecalculateDurationSystem : IProtoRunSystem,IProtoInitSystem
     {

@@ -1,6 +1,7 @@
 ﻿namespace unigame.ecs.proto.Movement.Components
 {
-     
+    using Leopotam.EcsProto;
+
 
     public struct ImmobilityComponent : IProtoAutoReset<ImmobilityComponent>
     {

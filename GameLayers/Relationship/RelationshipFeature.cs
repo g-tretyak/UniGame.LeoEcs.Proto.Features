@@ -4,7 +4,10 @@ namespace unigame.ecs.proto.GameLayers.Relationship
     using Cysharp.Threading.Tasks;
     using Game.Code.GameLayers.Layer;
     using Game.Code.GameLayers.Relationship;
+    using Leopotam.EcsProto;
     using Systems;
+    using UniGame.LeoEcs.Bootstrap.Runtime;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [Serializable]

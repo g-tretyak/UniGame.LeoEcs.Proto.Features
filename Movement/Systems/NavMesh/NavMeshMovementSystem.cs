@@ -4,10 +4,12 @@
     using Aspect;
     using Characteristics.Speed.Components;
     using Components;
-    using Core.Components;
-    using Core.Death.Components;
-     
+    using Game.Ecs.Core.Components;
+    using Game.Ecs.Core.Death.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
     /// Система отвечающая за перемещение с помощью вектора скорости через систему NavMesh.

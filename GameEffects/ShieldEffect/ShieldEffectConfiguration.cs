@@ -11,13 +11,13 @@
     public sealed class ShieldEffectConfiguration : EffectConfiguration
     {
         [SerializeField]
-        private float _shieldValue;
+        public float shieldValue;
         
-        protected override void Compose(ProtoWorld world, int effectEntity)
+        protected override void Compose(ProtoWorld world, ProtoEntity effectEntity)
         {
             var shieldPool = world.GetPool<ShieldEffectComponent>();
             ref var shield = ref shieldPool.Add(effectEntity);
-            shield.MaxValue = _shieldValue;
+            shield.MaxValue = shieldValue;
         }
     }
 }

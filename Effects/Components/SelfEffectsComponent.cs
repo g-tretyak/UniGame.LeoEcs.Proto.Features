@@ -2,7 +2,6 @@
 {
 	using System.Collections.Generic;
 	using Game.Code.Configuration.Runtime.Effects.Abstract;
-	using Leopotam.EcsLite;
 	using Leopotam.EcsProto;
 
 

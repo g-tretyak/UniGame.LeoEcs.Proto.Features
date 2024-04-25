@@ -2,7 +2,10 @@
 {
     using Base.Components.Events;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     public sealed class ResetShieldSystem : IProtoRunSystem,IProtoInitSystem
     {

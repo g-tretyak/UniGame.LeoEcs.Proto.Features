@@ -1,8 +1,10 @@
 ﻿namespace unigame.ecs.proto.Input.Systems
 {
     using Components.Ability;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using Map;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     public sealed class AbilityVelocityRawConvertSystem : IProtoRunSystem,IProtoInitSystem

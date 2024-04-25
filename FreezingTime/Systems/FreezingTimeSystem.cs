@@ -3,10 +3,12 @@
 	using System;
 	using Aspects;
 	using Components;
-	 
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
 	using PrimeTween;
 	using UnityEngine;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+	using UniGame.LeoEcs.Shared.Extensions;
 
 	/// <summary>
 	/// Freezes time for gameplay. Await for FreezingTimeRequest.

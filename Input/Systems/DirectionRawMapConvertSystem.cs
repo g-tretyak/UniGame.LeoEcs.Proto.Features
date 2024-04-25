@@ -1,9 +1,11 @@
 ﻿namespace unigame.ecs.proto.Input.Systems
 {
     using Components.Direction;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using Map;
     using Map.Component;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     /// <summary>

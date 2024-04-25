@@ -1,7 +1,5 @@
 ﻿namespace unigame.ecs.proto.Characteristics.ManaRegeneration.Components
 {
-	using UnityEngine.Serialization;
-
 	/// <summary>
 	/// Stores mana regeneration timer.
 	/// </summary>

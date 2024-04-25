@@ -1,7 +1,8 @@
 ﻿namespace unigame.ecs.proto.GameResources.Components
 {
     using System;
-     
+    using Leopotam.EcsProto.QoL;
+
 
     /// <summary>
     /// game resource component marker

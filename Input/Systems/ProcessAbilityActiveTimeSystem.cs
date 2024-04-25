@@ -1,7 +1,8 @@
 ﻿namespace unigame.ecs.proto.Input.Systems
 {
     using Components.Ability;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 

@@ -3,8 +3,10 @@
     using System;
     using Aspects;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UniGame.LeoEcsLite.LeoEcs.Shared.Components;
     
 #if ENABLE_IL2CPP
@@ -47,7 +49,7 @@
                 var eventEntity = _world.NewEntity();
                 ref var eventComponent = ref _spawnEventPool.Add(eventEntity);
                 
-                eventComponent.SpawnedEntity = _world.PackEntity(entity);
+                eventComponent.SpawnedEntity = entity.PackEntity(_world);
                 eventComponent.Resource = objectComponent.Value;
                 eventComponent.Source = spawnedResourceComponent.Source;
                 eventComponent.ResourceId = resourceComponent.Value;

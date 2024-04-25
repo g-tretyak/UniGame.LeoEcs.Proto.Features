@@ -4,7 +4,7 @@
 	using System.Threading;
 	using Base.Components.Requests;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using Sirenix.OdinInspector;
 	using UniGame.LeoEcs.Converter.Runtime;
 	using UniGame.LeoEcs.Shared.Extensions;
@@ -23,13 +23,14 @@
 		public float minValue = 0f;
 
 		#endregion
+		
 		public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
 		{
 			ref var createCharacteristicRequest = ref world.AddComponent<CreateCharacteristicRequest<ArmorResistComponent>>(entity);
 			createCharacteristicRequest.Value = physicalResist;
 			createCharacteristicRequest.MaxValue = maxValue;
 			createCharacteristicRequest.MinValue = minValue;
-			createCharacteristicRequest.Owner = world.PackEntity(entity);
+			createCharacteristicRequest.Owner = entity.PackEntity(world);
             
 			ref var valueComponent = ref world.AddComponent<ArmorResistComponent>(entity);
 			valueComponent.Value = physicalResist;

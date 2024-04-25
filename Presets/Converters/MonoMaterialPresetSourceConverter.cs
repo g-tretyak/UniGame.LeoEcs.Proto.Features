@@ -1,7 +1,6 @@
 ﻿namespace unigame.ecs.proto.Presets.Converters
 {
-    using System.Threading;
-     
+    using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime;
     using UnityEngine;

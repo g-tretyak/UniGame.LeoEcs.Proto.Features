@@ -3,8 +3,10 @@
     using System;
     using Aspect;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
     /// Система отвечающая за остановку симуляции NavMesh при наличии запроса на остановку <see cref="MovementStopRequest"/>.

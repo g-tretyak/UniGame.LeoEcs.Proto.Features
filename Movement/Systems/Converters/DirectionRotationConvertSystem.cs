@@ -1,11 +1,12 @@
 ﻿namespace unigame.ecs.proto.Movement.Systems.Converters
 {
     using System;
-    using Components;
-    using Core.Components;
+    using Game.Ecs.Core.Components;
     using Input.Components.Direction;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     /// <summary>

@@ -1,7 +1,10 @@
 ﻿namespace unigame.ecs.proto.Characteristics.Shield.Systems
 {
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     public sealed class ProcessShieldSystem : IProtoRunSystem,IProtoInitSystem

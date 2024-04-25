@@ -4,7 +4,9 @@
     using Components;
     using UniGame.LeoEcs.Shared.Extensions;
     using System;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     /// <summary>
     /// Apply spot light preset in game.

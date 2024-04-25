@@ -1,6 +1,7 @@
 ﻿namespace unigame.ecs.proto.Effects.Converters
 {
     using Sirenix.OdinInspector;
+    using UniGame.LeoEcs.Converter.Runtime.Converters;
 
 #if UNITY_EDITOR
     using UniModules.Editor;

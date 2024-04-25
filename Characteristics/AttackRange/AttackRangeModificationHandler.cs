@@ -2,7 +2,7 @@
 {
     using System;
     using Components;
-    using unigame.ecs.proto.Characteristics.Base;
+    using Base;
 
     [Serializable]
     public sealed class AttackRangeModificationHandler :

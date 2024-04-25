@@ -3,9 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading;
     using Components;
-     
+    using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -51,7 +50,7 @@
         
         private LifeTimeDefinition _lifeTime;
         private ProtoWorld _world;
-        private int _entity;
+        private ProtoEntity _entity;
 
         public bool IsActive => Application.isPlaying && _world != null && _world.IsAlive();
 
@@ -79,9 +78,9 @@
                 ref var parentComponent = ref world.GetOrAddComponent<ParentEntityComponent>(viewEntity);
                 ref var requestComponent = ref world.GetOrAddComponent<ActiveGameViewComponent>(entity);
 
-                var viewPackedEntity = world.PackEntity(viewEntity);
+                var viewPackedEntity = viewEntity.PackEntity(world);
                 requestComponent.Value = viewPackedEntity;
-                parentComponent.Value = world.PackEntity(entity);
+                parentComponent.Value = entity.PackEntity(world);
                 
                 view.ConvertGameObjectToEntity(world, viewEntity);
                 view.SetActive(true);
@@ -99,7 +98,7 @@
 
             var requestEntity = _world.NewEntity();
             ref var requestComponent = ref _world.GetOrAddComponent<ActivateGameViewRequest>(requestEntity);
-            requestComponent.Source = _world.PackEntity(_entity);
+            requestComponent.Source = _entity.PackEntity(_world);
             requestComponent.View = selection.AssetGUID;
         }
     

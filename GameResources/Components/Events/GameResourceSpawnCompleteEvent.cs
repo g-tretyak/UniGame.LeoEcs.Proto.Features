@@ -1,8 +1,7 @@
 ﻿namespace unigame.ecs.proto.GameResources.Components
 {
     using System;
-     
-    using UnityEngine.Serialization;
+    using Leopotam.EcsProto.QoL;
     using Object = UnityEngine.Object;
 
     [Serializable]

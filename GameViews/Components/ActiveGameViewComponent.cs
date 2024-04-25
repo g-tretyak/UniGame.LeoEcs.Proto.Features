@@ -1,7 +1,8 @@
 ﻿namespace unigame.ecs.proto.Gameplay.LevelProgress.Components
 {
     using System;
-     
+    using Leopotam.EcsProto.QoL;
+
 
     /// <summary>
     /// current active view

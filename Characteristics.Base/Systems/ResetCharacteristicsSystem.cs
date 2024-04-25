@@ -5,6 +5,7 @@
     using Game.Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Extensions;
 
     public class ResetCharacteristicsSystem : IProtoRunSystem,IProtoInitSystem

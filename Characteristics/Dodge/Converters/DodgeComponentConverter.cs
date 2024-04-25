@@ -1,10 +1,9 @@
 namespace unigame.ecs.proto.Characteristics.Dodge.Converters
 {
     using System;
-    using System.Threading;
     using Base.Components.Requests;
     using Components;
-     
+    using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -27,7 +26,7 @@ namespace unigame.ecs.proto.Characteristics.Dodge.Converters
             createCharacteristicRequest.Value = dodge;
             createCharacteristicRequest.MaxValue = maxDodge;
             createCharacteristicRequest.MinValue = minDodge;
-            createCharacteristicRequest.Owner = world.PackEntity(entity);
+            createCharacteristicRequest.Owner = entity.PackEntity(world);
 
             ref var healthComponent = ref world.AddComponent<DodgeComponent>(entity);
             healthComponent.Value = dodge;

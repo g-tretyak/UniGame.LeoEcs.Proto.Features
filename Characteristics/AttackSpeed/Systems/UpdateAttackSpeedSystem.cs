@@ -2,8 +2,11 @@
 {
     using System;
     using Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.Characteristics.Base.Components;
-     
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     /// <summary>
     /// update value of attack speed characteristic

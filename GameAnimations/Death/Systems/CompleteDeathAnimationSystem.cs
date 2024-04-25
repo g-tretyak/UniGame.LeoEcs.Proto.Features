@@ -3,10 +3,9 @@
     using System;
     using Animations.Aspects;
     using Aspects;
-    using Characteristics.Health.Components;
-    using Core.Components;
     using Core.Death.Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 #if ENABLE_IL2CPP

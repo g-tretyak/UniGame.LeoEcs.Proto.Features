@@ -5,8 +5,9 @@
     using Components;
     using Cysharp.Threading.Tasks;
     using Feature;
-     
+    using Leopotam.EcsProto;
     using Systems;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     /// <summary>

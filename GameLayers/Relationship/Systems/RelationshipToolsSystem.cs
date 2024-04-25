@@ -3,6 +3,10 @@
     using System;
     using Game.Code.GameLayers.Layer;
     using Game.Code.GameLayers.Relationship;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 #endif
@@ -17,7 +21,7 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class RelationshipToolsSystem : IEcsDestroySystem,IProtoInitSystem
+    public class RelationshipToolsSystem : IProtoDestroySystem,IProtoInitSystem
     {
         private ProtoWorld _world;
         
@@ -44,7 +48,7 @@
         }
 
 
-        public void Destroy(IProtoSystems systems)
+        public void Destroy()
         {
             RelationshipTool.Destroy();
         }

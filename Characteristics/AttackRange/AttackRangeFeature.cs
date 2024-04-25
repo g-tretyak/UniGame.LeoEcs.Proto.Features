@@ -1,13 +1,14 @@
 ﻿namespace unigame.ecs.proto.Characteristics.CriticalChance
 {
     using System;
-    using Attack.Components;
     using Components;
     using Cysharp.Threading.Tasks;
-    using unigame.ecs.proto.Characteristics.Base;
-    using unigame.ecs.proto.Characteristics.Feature;
+    using Leopotam.EcsProto;
+    using Base;
+    using Feature;
      
     using Systems;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     /// <summary>

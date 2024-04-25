@@ -65,24 +65,24 @@
                     continue;
 
                 if (!requestComponent.Source.Unpack(_world, out var targetSourceEntity))
-                    targetSourceEntity = -1;
+                    targetSourceEntity = ProtoEntity.FromIdx(-1);
 
                 //check is target is characteristic entity
                 if(!_characteristicPool.Has(targetCharacteristicEntity)) continue;
                 
-                var foundedCharacteristicEntity = -1;
+                var foundedCharacteristicEntity = ProtoEntity.FromIdx(-1);
 
                 foreach (var modificationEntity in _modificationsFilter)
                 {
                     ref var linkComponent = ref _characteristicLinkPool.Get(modificationEntity);
                     if (!linkComponent.Link.Unpack(_world, out var characteristicEntity)) continue;
                     
-                    if (characteristicEntity != targetCharacteristicEntity) continue;
+                    if (!characteristicEntity.Equals(targetCharacteristicEntity)) continue;
 
                     ref var sourceComponent = ref _sourceLinkPool.Get(modificationEntity);
                     if (!sourceComponent.Value.Unpack(_world, out var sourceEntity)) continue;
                     
-                    if(sourceEntity != targetSourceEntity) continue;
+                    if(!sourceEntity.Equals(targetSourceEntity)) continue;
                     
                     foundedCharacteristicEntity = characteristicEntity;
 
@@ -97,7 +97,7 @@
                     break;
                 }
                 
-                if (foundedCharacteristicEntity > 0) continue;
+                if ((int)foundedCharacteristicEntity > 0) continue;
 
                 var createEntity = _world.NewEntity();
                 ref var createComponent = ref _createPool.Add(createEntity);

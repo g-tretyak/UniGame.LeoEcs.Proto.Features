@@ -2,10 +2,11 @@ namespace unigame.ecs.proto.Gameplay.LevelProgress
 {
     using Components;
     using Cysharp.Threading.Tasks;
-     
-    using Leopotam.EcsLite.ExtendedSystems;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Systems;
     using UniGame.LeoEcs.Bootstrap.Runtime;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "Game/Feature/GameViews Feature",fileName = "GameViews Feature")]

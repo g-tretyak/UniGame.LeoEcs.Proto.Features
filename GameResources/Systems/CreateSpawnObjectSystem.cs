@@ -3,7 +3,9 @@
     using System;
     using Aspects;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
     using UniGame.Runtime.ObjectPool.Extensions;
@@ -69,11 +71,11 @@
                     ? component.gameObject 
                     : instance as GameObject;
                 
-                var pawnEntity = -1;
+                var pawnEntity = ProtoEntity.FromIdx(-1);
                 if (targetComponent.Value.Unpack(_world, out var target))
                     pawnEntity = target;
                 
-                pawnEntity = pawnEntity == -1 ? _world.NewEntity() : pawnEntity;
+                pawnEntity = (int)pawnEntity < 0 ? _world.NewEntity() : pawnEntity;
 
                 ref var sourceLinkComponent = ref _resourceAspect.SourceLink.Add(pawnEntity);
                 sourceLinkComponent.Source = handleComponent.Source;
@@ -91,7 +93,7 @@
                     pawnParentEntityComponent.Value = parentEntityComponent.Value;
                 }
 
-                if (target > 0) _resourceAspect.Target.Add(pawnEntity);
+                if ((int)target > 0) _resourceAspect.Target.Add(pawnEntity);
                 
                 ref var pawnSpawnedComponent = ref _resourceAspect.SpawnedResource.Add(pawnEntity);
                 ref var pawnObjectComponent = ref _resourceAspect.Object.Add(pawnEntity);

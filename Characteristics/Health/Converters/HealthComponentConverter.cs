@@ -23,7 +23,7 @@ namespace unigame.ecs.proto.Characteristics.Health.Converters
             createCharacteristicRequest.Value = maxHealth;
             createCharacteristicRequest.MaxValue = maxHealth;
             createCharacteristicRequest.MinValue = 0;
-            createCharacteristicRequest.Owner = world.PackEntity(entity);
+            createCharacteristicRequest.Owner = entity.PackEntity(world);
             
             ref var healthComponent = ref world.AddComponent<HealthComponent>(entity);
             healthComponent.Health = maxHealth;

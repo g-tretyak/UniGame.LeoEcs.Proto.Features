@@ -3,7 +3,7 @@
 	using System;
 	using Base.Components.Requests;
 	using Components;
-	 
+	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Converter.Runtime;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
@@ -23,7 +23,7 @@
 			createCharacteristicRequest.Value = abilityPower;
 			createCharacteristicRequest.MaxValue = 1000;
 			createCharacteristicRequest.MinValue = 0;
-			createCharacteristicRequest.Owner = world.PackEntity(entity);
+			createCharacteristicRequest.Owner = entity.PackEntity(world);
 		}
 	}
 }

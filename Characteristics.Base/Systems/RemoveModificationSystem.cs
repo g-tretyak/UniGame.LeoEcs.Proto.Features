@@ -5,6 +5,7 @@
     using Components.Requests;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
@@ -74,8 +75,8 @@
                     if (!characteristicsLinkComponent.Link.Unpack(_world, out var characteristicEntity))
                         continue;
                     
-                    if(sourceEntity != modificationSourceEntity) continue;
-                    if(targetCharacteristic != characteristicEntity) continue;
+                    if(!sourceEntity.Equals(modificationSourceEntity)) continue;
+                    if(!targetCharacteristic.Equals(characteristicEntity)) continue;
                     
                     ref var modificationComponent = ref _modificationPool.Get(modificationEntity);
                     modificationComponent.Counter -= 1;

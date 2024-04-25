@@ -11,7 +11,7 @@
     public abstract class CharacteristicModificationHandler<TCharacteristic> : ModificationHandler
         where TCharacteristic : struct
     {
-        public override void AddModification(ProtoWorld world,int sourceEntity, int destinationEntity)
+        public override void AddModification(ProtoWorld world,ProtoEntity sourceEntity, ProtoEntity destinationEntity)
         {
             if(!world.HasComponent<CharacteristicComponent<TCharacteristic>>(destinationEntity))
                 return;
@@ -27,12 +27,12 @@
             
             var entity = world.NewEntity();
             ref var request = ref world.AddComponent<AddModificationRequest<TCharacteristic>>(entity);
-            request.ModificationSource = world.PackedEntity(sourceEntity);
-            request.Target = world.PackedEntity(destinationEntity);
+            request.ModificationSource = sourceEntity.PackEntity(world);
+            request.Target = destinationEntity.PackEntity(world);
             request.Modification = modification;
         }
 
-        public override void RemoveModification(ProtoWorld world,int source, int destinationEntity)
+        public override void RemoveModification(ProtoWorld world,ProtoEntity source, ProtoEntity destinationEntity)
         {
             if(!world.HasComponent<TCharacteristic>(destinationEntity))
                 return;
@@ -40,8 +40,8 @@
             var entity = world.NewEntity();
             ref var removeRequest = ref world
                 .AddComponent<RemoveCharacteristicModificationRequest<TCharacteristic>>(entity);
-            removeRequest.Source = world.PackedEntity(source);
-            removeRequest.Target = world.PackedEntity(destinationEntity);
+            removeRequest.Source = source.PackEntity(world);
+            removeRequest.Target = destinationEntity.PackEntity(world);
         }
     }
 }

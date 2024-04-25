@@ -1,7 +1,10 @@
 ﻿namespace unigame.ecs.proto.Input.Systems
 {
     using Components.Ability;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;

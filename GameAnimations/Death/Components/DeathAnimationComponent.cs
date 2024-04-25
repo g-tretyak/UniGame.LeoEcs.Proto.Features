@@ -1,6 +1,6 @@
 ﻿namespace unigame.ecs.proto.Core.Death.Components
 {
-     
+    using Leopotam.EcsProto;
     using UnityEngine.Playables;
 
     public struct DeathAnimationComponent : IProtoAutoReset<DeathAnimationComponent>

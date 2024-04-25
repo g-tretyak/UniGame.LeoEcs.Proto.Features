@@ -2,7 +2,8 @@
 {
     using System.Collections.Generic;
     using Base.Modification;
-     
+    using Leopotam.EcsProto;
+
 
     public struct BaseDurationComponent : IProtoAutoReset<BaseDurationComponent>
     {

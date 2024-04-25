@@ -3,6 +3,8 @@
     using System;
     using Components;
     using Effects.Components;
+    using Game.Ecs.Core;
+    using Game.Ecs.Core.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;

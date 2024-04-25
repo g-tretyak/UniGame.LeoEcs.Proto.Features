@@ -5,6 +5,7 @@
     using Effects;
     using Effects.Components;
     using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
     using UnityEngine.Serialization;
@@ -32,8 +33,8 @@
                 ref var effectComponent = ref world.GetOrAddComponent<EffectComponent>(effectEntity);
                 ref var applyEffectRequest = ref world.GetOrAddComponent<ApplyEffectSelfRequest>(effectEntity);
 
-                effectComponent.Destination = world.PackedEntity(entity);
-                effectComponent.Source = world.PackedEntity(entity);
+                effectComponent.Destination = entity.PackEntity(world);
+                effectComponent.Source = entity.PackEntity(world);
                 
                 effectConfiguration.ComposeEntity(world,effectEntity);
             }

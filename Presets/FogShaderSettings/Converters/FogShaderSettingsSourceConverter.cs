@@ -6,9 +6,8 @@
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Shared.Extensions;
     using System;
-    using System.Threading;
     using Abstract;
-     
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Converter.Runtime;
 
     /// <summary>

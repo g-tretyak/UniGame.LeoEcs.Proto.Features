@@ -3,12 +3,14 @@
     using System;
     using Base.Modification;
     using Components;
-     
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     [Serializable]
     public sealed class DurationModificationHandler : ModificationHandler
     {
-        public override void AddModification(ProtoWorld world,int source, int destinationEntity)
+        public override void AddModification(ProtoWorld world,ProtoEntity source, ProtoEntity destinationEntity)
         {
             var baseDurationPool = world.GetPool<BaseDurationComponent>();
             if(!baseDurationPool.Has(destinationEntity))
@@ -22,7 +24,7 @@
                 requestPool.Add(destinationEntity);
         }
 
-        public override void RemoveModification(ProtoWorld world,int source, int destinationEntity)
+        public override void RemoveModification(ProtoWorld world,ProtoEntity source, ProtoEntity destinationEntity)
         {
             var baseDurationPool = world.GetPool<BaseDurationComponent>();
             if(!baseDurationPool.Has(destinationEntity))

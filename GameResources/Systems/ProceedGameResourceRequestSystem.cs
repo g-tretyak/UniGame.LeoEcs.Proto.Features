@@ -8,10 +8,13 @@ namespace unigame.ecs.proto.GameResources.Systems
     using Cysharp.Threading.Tasks;
     using Game.Code.DataBase.Runtime;
     using Game.Code.DataBase.Runtime.Abstract;
-    using unigame.ecs.proto.Time.Service;
-     
+    using Game.Ecs.Time.Service;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.Core.Runtime;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
     using Object = UnityEngine.Object;
 
@@ -24,7 +27,7 @@ namespace unigame.ecs.proto.GameResources.Systems
 #endif
     [Serializable]
     [ECSDI]
-    public class ProceedGameResourceRequestSystem : IProtoRunSystem, IEcsDestroySystem,IProtoInitSystem
+    public class ProceedGameResourceRequestSystem : IProtoRunSystem, IProtoDestroySystem,IProtoInitSystem
     {
         private readonly IGameDatabase _gameDatabase;
         private readonly ILifeTime _lifeTime;
@@ -68,20 +71,20 @@ namespace unigame.ecs.proto.GameResources.Systems
             }
         }
 
-        public void Destroy(IProtoSystems systems)
+        public void Destroy()
         {
             _tokenSource.Cancel();
             _tokenSource.Dispose();
         }
         
-        private async UniTask LoadGameResource(int entity, string resourceId)
+        private async UniTask LoadGameResource(ProtoEntity entity, string resourceId)
         {
             var result = await _gameDatabase.LoadAsync<Object>(resourceId,_lifeTime);
             CreateResourceResult(entity,ref result,resourceId, _world);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void CreateResourceResult(int entity,ref GameResourceResult result, string resourceId, ProtoWorld world)
+        public void CreateResourceResult(ProtoEntity entity,ref GameResourceResult result, string resourceId, ProtoWorld world)
         {
             //is entity still alive?
             var packedEntity = world.PackEntity(entity);

@@ -8,8 +8,6 @@ namespace unigame.ecs.proto.Characteristics.Base
     using Components.Events;
     using Components.Requests;
     using Systems;
-     
-    using Leopotam.EcsLite.ExtendedSystems;
     using Sirenix.OdinInspector;
     using UniCore.Runtime.ProfilerTools;
     using UniGame.LeoEcs.Bootstrap.Runtime;

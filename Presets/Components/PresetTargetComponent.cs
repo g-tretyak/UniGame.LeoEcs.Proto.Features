@@ -1,7 +1,6 @@
 ﻿namespace unigame.ecs.proto.Presets.Components
 {
     using System;
-    using UnityEngine;
 
     /// <summary>
     /// Game Preset Target Component

@@ -1,6 +1,7 @@
 ﻿namespace unigame.ecs.proto.Input.Components.Ability
 {
-     
+    using Leopotam.EcsProto;
+
 
     public struct AbilityUpInputRequest : IProtoAutoReset<AbilityUpInputRequest>
     {

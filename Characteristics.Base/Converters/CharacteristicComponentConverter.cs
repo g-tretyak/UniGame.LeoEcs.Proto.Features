@@ -22,7 +22,7 @@ namespace unigame.ecs.proto.Characteristics.Health.Converters
             createCharacteristicRequest.Value = value;
             createCharacteristicRequest.MaxValue = maxValue;
             createCharacteristicRequest.MinValue = minValue;
-            createCharacteristicRequest.Owner = world.PackedEntity(entity);
+            createCharacteristicRequest.Owner = entity.PackEntity(world);
 
             OnApply(target,world, entity);
             
@@ -30,7 +30,7 @@ namespace unigame.ecs.proto.Characteristics.Health.Converters
         }
 
         protected virtual void OnApply(GameObject target, 
-            ProtoWorld world, int entity,
+            ProtoWorld world, ProtoEntity entity,
             CancellationToken cancellationToken = default)
         {
             

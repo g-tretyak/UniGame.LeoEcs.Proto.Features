@@ -4,9 +4,10 @@ namespace unigame.ecs.proto.Presets
     using unigame.ecs.proto.Presets.FogShaderSettings.Systems;
     using unigame.ecs.proto.Presets.SpotLightSettings.Systems;
     using Cysharp.Threading.Tasks;
-     
+    using Leopotam.EcsProto;
     using Systems;
     using UniGame.LeoEcs.Bootstrap.Runtime;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "Game/Feature/Game Presets Feature", fileName = "Game Presets Feature")]

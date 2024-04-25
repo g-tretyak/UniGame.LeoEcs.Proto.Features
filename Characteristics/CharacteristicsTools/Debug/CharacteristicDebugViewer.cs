@@ -1,10 +1,11 @@
 ﻿namespace Game.Editor.Runtime.CharacteristicsViewer
 {
     using System;
-    using Ecs.Characteristics.Base.Components;
-    using Ecs.Characteristics.Base.Components.Requests;
-     
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Sirenix.OdinInspector;
+    using unigame.ecs.proto.Characteristics.Base.Components;
+    using unigame.ecs.proto.Characteristics.Base.Components.Requests;
     using UniGame.LeoEcs.Shared.Extensions;
 
     [Serializable]
@@ -22,12 +23,12 @@
 
         public bool IsReady => _world != null && _world.IsAlive();
         
-        public CharacteristicDebugViewer(string name,ProtoWorld world,int entity)
+        public CharacteristicDebugViewer(string name,ProtoWorld world,ProtoEntity entity)
         {
             Name = name;
             
             _world = world;
-            _packedEntity = world.PackEntity(entity);
+            _packedEntity = entity.PackEntity(world);
             _pool = world.GetPool<CharacteristicComponent<TCharacteristic>>();
         }
 

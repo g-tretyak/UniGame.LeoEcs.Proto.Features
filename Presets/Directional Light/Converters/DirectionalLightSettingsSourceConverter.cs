@@ -2,12 +2,11 @@
 {
     using Assets;
     using System;
-    using System.Threading;
     using Abstract;
     using unigame.ecs.proto.Presets.Components;
     using unigame.ecs.proto.Presets.Converters;
     using Components;
-     
+    using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;

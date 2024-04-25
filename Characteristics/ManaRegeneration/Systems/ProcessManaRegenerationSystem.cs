@@ -2,9 +2,12 @@
 {
 	using Base.Components.Requests.OwnerRequests;
 	using Components;
-	 
+	using Game.Ecs.Time.Service;
+	using Leopotam.EcsLite;
+	using Leopotam.EcsProto;
 	using Mana.Components;
-	using Time.Service;
+	using UniGame.LeoEcs.Shared.Extensions;
+	
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 #endif
@@ -58,8 +61,8 @@
 				ref var request = ref _manaChangePool.Add(requestEntity);
 				
 				request.Value = manaRegeneration;
-				request.Source = _world.PackEntity(entity);
-				request.Target = _world.PackEntity(entity);
+				request.Source = entity.PackEntity(_world);
+				request.Target = entity.PackEntity(_world);
 			}
 		}
 	}

@@ -1,9 +1,7 @@
 ﻿namespace unigame.ecs.proto.Gameplay.LevelProgress.Components
 {
     using System;
-     
-    using UnityEngine;
-    using UnityEngine.Serialization;
+    using Leopotam.EcsProto.QoL;
 
     /// <summary>
     /// request to activate view fot target

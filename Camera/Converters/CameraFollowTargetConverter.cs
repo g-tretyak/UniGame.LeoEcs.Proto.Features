@@ -3,8 +3,9 @@
     using System;
     using System.Threading;
     using Components;
-     
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Converter.Runtime;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [Serializable]

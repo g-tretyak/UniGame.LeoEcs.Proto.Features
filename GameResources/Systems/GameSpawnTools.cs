@@ -1,17 +1,14 @@
 ﻿namespace unigame.ecs.proto.GameResources.Systems
 {
     using System;
-    using System.Linq;
     using System.Runtime.CompilerServices;
     using Aspects;
     using Data;
-     
-    using UniGame.Core.Runtime.Extension;
-    using UniGame.LeoEcs.Shared.Extensions;
-    using UniGame.Runtime.ObjectPool.Extensions;
+    using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UnityEngine;
-    using UnityEngine.Pool;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
     using Unity.Mathematics;
 
     /// <summary>
@@ -42,7 +39,7 @@
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int Spawn(
+        public ProtoEntity Spawn(
             string resourceId, 
             float3 pawnPosition,
             Transform parent = null)
@@ -51,7 +48,7 @@
         }
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int Spawn(
+        public ProtoEntity Spawn(
             ref ProtoPackedEntity owner,
             string resourceId, 
             float3 pawnPosition,
@@ -61,7 +58,7 @@
         }
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int Spawn(
+        public ProtoEntity Spawn(
             ref ProtoPackedEntity owner,
             ref ProtoPackedEntity source,
             string resourceId, 

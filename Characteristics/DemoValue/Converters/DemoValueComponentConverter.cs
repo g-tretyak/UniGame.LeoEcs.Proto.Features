@@ -1,7 +1,7 @@
 namespace unigame.ecs.proto.Characteristics.DemoValue.Converters
 {
     using System;
-     
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Converter.Runtime;
     using UnityEngine;
 

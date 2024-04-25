@@ -1,7 +1,6 @@
 ﻿namespace unigame.ecs.proto.Effects.Components
 {
     using System.Collections.Generic;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
 

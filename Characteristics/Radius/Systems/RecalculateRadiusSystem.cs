@@ -2,7 +2,10 @@
 {
     using Base.Components;
     using Component;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     public sealed class RecalculateRadiusSystem : IProtoRunSystem,IProtoInitSystem
     {

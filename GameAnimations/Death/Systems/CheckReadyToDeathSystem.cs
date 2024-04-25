@@ -1,11 +1,13 @@
 ﻿namespace unigame.ecs.proto.Gameplay.Death.Systems
 {
     using System;
-    using Core.Components;
-    using unigame.ecs.proto.Characteristics.Health.Components;
-    using unigame.ecs.proto.Core.Death.Components;
-     
+    using Game.Ecs.Characteristics.Health.Components;
+    using Game.Ecs.Core.Components;
+    using Game.Ecs.Core.Death.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Extensions;
+    
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 

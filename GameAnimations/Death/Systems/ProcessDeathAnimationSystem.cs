@@ -3,8 +3,9 @@
     using System;
     using Animations.Aspects;
     using Aspects;
-    using unigame.ecs.proto.Characteristics.Health.Components;
-    using unigame.ecs.proto.Core.Components;
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.Core.Death.Components;
      
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
@@ -48,12 +49,12 @@
         {
             foreach (var entity in _filter)
             {
-                var ownerEntity = _world.PackEntity(entity);
+                var ownerEntity = entity.PackEntity(_world);
                 ref var deadAnimation = ref _deathAspect.Animation.Get(entity);
                 ref var evaluate = ref _deathAspect.Evaluate.Add(entity);
                 
                 var animationEntity = _world.NewEntity();
-                var packedAnimationEntity = _world.PackEntity(animationEntity);
+                var packedAnimationEntity = animationEntity.PackEntity(_world);
                 ref var createAnimation = ref _animationAspect.CreateSelfAnimation.Add(animationEntity);
                 ref var playAnimation = ref _animationAspect.PlaySelf.Add(animationEntity);
                 
@@ -69,7 +70,7 @@
                 
                 evaluate.Value = packedAnimationEntity;
                 
-                _deathAspect.Disabled.TryAdd(entity);
+                _deathAspect.Disabled.GetOrAddComponent(entity);
                 _deathAspect.AwaitDeath.Add(entity);
             }
         }

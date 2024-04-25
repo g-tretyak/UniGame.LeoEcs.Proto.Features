@@ -10,7 +10,7 @@
     [Serializable]
     public sealed class TeleportEffectConfiguration : EffectConfiguration
     {
-        protected override void Compose(ProtoWorld world, int effectEntity)
+        protected override void Compose(ProtoWorld world, ProtoEntity effectEntity)
         {
             var teleportPool = world.GetPool<TeleportEffectComponent>();
             teleportPool.Add(effectEntity);

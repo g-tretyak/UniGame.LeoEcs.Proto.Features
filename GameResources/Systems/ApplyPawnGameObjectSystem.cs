@@ -3,10 +3,12 @@
     using System;
     using Aspects;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Components;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UniGame.LeoEcsLite.LeoEcs.Shared.Components;
     using UnityEngine;
     using Component = UnityEngine.Component;

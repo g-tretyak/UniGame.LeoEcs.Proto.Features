@@ -2,16 +2,15 @@
 {
     using Abstract;
     using System;
-    using System.Threading;
     using Assets;
     using unigame.ecs.proto.Presets.Components;
     using Components;
-     
-    using UniGame.LeoEcs.Converter.Runtime;
-    using UniGame.LeoEcs.Converter.Runtime.Converters;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
     using Sirenix.OdinInspector;
+    using UniGame.LeoEcs.Converter.Runtime;
+    using UniGame.LeoEcs.Converter.Runtime.Converters;
 
     public sealed class MonoFogShaderSettingsTargetConverter : MonoLeoEcsConverter<FogShaderSettingsTargetConverter>
     {

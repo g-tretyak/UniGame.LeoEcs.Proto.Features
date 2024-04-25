@@ -2,12 +2,11 @@
 {
     using System;
     using Components;
-    using Core.Components;
-     
+    using Game.Ecs.Core.Components;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
     using UniGame.LeoEcsLite.LeoEcs.Shared.Components;
-    using UnityEngine;
 
     [Serializable]
     public class GameResourceAspect : EcsAspect

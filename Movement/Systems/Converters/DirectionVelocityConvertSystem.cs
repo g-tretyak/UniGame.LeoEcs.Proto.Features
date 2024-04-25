@@ -3,8 +3,10 @@
     using System;
     using Aspect;
     using Input.Components.Direction;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
     /// Система отвечающая за конвертацию map space направления в вектор скорости.

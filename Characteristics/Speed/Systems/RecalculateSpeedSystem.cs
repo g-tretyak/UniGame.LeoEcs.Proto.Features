@@ -2,7 +2,10 @@
 {
     using Base.Components;
     using Components;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
+
 
     public sealed class RecalculateSpeedSystem : IProtoRunSystem,IProtoInitSystem
     {

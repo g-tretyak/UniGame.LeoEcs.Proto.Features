@@ -1,7 +1,7 @@
 ﻿namespace unigame.ecs.proto.Characteristics.AttackSpeed.Components
 {
     using System;
-    using Ecs.Cooldown;
+    using Cooldown;
 
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;

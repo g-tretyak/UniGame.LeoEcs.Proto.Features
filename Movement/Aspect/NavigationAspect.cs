@@ -3,10 +3,10 @@
     using System;
     using Characteristics.Speed.Components;
     using Components;
-    using Core.Components;
+    using Game.Ecs.Core.Components;
     using Gameplay.LevelProgress.Components;
     using Input.Components.Direction;
-     
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 

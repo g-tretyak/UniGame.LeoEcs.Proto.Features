@@ -49,7 +49,7 @@
                 var cooldown = requestComponent.Cooldown;
                 
                 var abilityEntity = _abilityTools.TryGetAbility( entity, slot);
-                if(abilityEntity < 0) continue;
+                if((int)abilityEntity < 0) continue;
 
                 ref var baseCooldownComponent = ref _abilityAspect.BaseCooldown.Get((ProtoEntity)abilityEntity);
                 baseCooldownComponent.Value = cooldown;

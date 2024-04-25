@@ -1,16 +1,15 @@
 ﻿namespace unigame.ecs.proto.Presets.SpotLightSettings.Converters
 {
     using System;
-    using System.Threading;
     using Abstract;
     using Assets;
     using unigame.ecs.proto.Presets.Components;
     using Components;
-     
+    using Leopotam.EcsProto;
     using Sirenix.OdinInspector;
-    using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;
     using unigame.ecs.proto.Presets.Converters;
+    using UniGame.LeoEcs.Converter.Runtime;
 
     [Serializable]
     public class SpotLightSettingsSourceConverter : EcsComponentConverter, IPresetAction

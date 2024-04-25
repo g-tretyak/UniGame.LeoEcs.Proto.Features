@@ -4,8 +4,10 @@
     using Aspect;
     using Components;
     using Input.Components.Direction;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
     /// Система отвечающая за конвертацию остановки пользовательского ввода в запрос остановки движения entity через NavMesh.

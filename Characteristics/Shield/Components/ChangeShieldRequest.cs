@@ -1,6 +1,7 @@
 ﻿namespace unigame.ecs.proto.Characteristics.Shield.Components
 {
-     
+    using Leopotam.EcsProto.QoL;
+
 
     public struct ChangeShieldRequest
     {

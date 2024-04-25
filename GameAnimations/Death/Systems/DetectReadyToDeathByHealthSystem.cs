@@ -2,10 +2,11 @@
 {
     using System;
     using Characteristics.Base.Components;
-    using Core.Components;
     using Characteristics.Health.Components;
-    using unigame.ecs.proto.Core.Death.Components;
-     
+    using Game.Ecs.Core.Components;
+    using Game.Ecs.Core.Death.Components;
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
     
@@ -51,11 +52,11 @@
                 if(healthComponent.Value > 0.0f) continue;
 
                 ref var prepareToDeath = ref _preparePool.GetOrAddComponent(entity);
-                prepareToDeath.Source = _world.PackEntity(entity);
+                prepareToDeath.Source = entity.PackEntity(_world);
                 
                 var eventEntity = _world.NewEntity();
                 ref var prepareToDeathEvent = ref _prepareEventPool.GetOrAddComponent(eventEntity);
-                prepareToDeathEvent.Source = _world.PackEntity(entity);
+                prepareToDeathEvent.Source = entity.PackEntity(_world);
             }
         }
     }

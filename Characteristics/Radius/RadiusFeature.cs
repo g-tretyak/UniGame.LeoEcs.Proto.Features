@@ -6,7 +6,8 @@
     using Component;
     using Cysharp.Threading.Tasks;
     using Feature;
-     
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Radius Feature")]

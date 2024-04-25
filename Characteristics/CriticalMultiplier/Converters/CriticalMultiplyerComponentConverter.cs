@@ -2,6 +2,7 @@ namespace unigame.ecs.proto.Characteristics.CriticalMultiplier.Converters
 {
     using System;
     using Components;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.Characteristics.Base.Components.Requests;
      
     using UniGame.LeoEcs.Converter.Runtime;
@@ -23,7 +24,7 @@ namespace unigame.ecs.proto.Characteristics.CriticalMultiplier.Converters
             createCharacteristicRequest.Value = criticalMultilplier;
             createCharacteristicRequest.MaxValue = maxLimitValue;
             createCharacteristicRequest.MinValue = minLimitValue;
-            createCharacteristicRequest.Owner = world.PackEntity(entity);
+            createCharacteristicRequest.Owner = entity.PackEntity(world);
 
             ref var valueComponent = ref world.GetOrAddComponent<CriticalMultiplierComponent>(entity);
             valueComponent.Value = criticalMultilplier;

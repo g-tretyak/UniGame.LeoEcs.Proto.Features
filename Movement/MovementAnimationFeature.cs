@@ -2,9 +2,9 @@
 {
     using Systems.NavMesh.Animation;
     using Cysharp.Threading.Tasks;
-    using JetBrains.Annotations;
-     
+    using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "Game/Feature/Movement/Movement Animation Feature", 

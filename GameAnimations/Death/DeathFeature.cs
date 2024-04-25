@@ -1,9 +1,10 @@
 namespace unigame.ecs.proto.Gameplay.Death
 {
     using Cysharp.Threading.Tasks;
-     
+    using Leopotam.EcsProto;
     using Systems;
     using UniGame.LeoEcs.Bootstrap.Runtime;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "Game/Feature/Gameplay/Death")]

@@ -3,7 +3,9 @@
     using Camera.Components;
     using Component;
     using JetBrains.Annotations;
-     
+    using Leopotam.EcsLite;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     /// <summary>
@@ -12,7 +14,7 @@
     [UsedImplicitly]
     public sealed class MapSpaceInitializeSystem : IProtoInitSystem, IProtoRunSystem
     {
-        private int _mapEntity;
+        private ProtoEntity _mapEntity;
         private EcsFilter _filter;
         private ProtoWorld _world;
         

@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Threading;
     using AbilityPower.Converters;
     using ArmorResist.Converters;
     using Attack.Converters;
@@ -13,7 +12,7 @@
     using Dodge.Converters;
     using Health.Converters;
     using JetBrains.Annotations;
-     
+    using Leopotam.EcsProto;
     using Mana.Converters;
     using ManaRegeneration.Converters;
     using Sirenix.OdinInspector;

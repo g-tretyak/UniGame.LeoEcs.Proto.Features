@@ -3,7 +3,6 @@
     using System;
     using Components;
     using Components.Requests;
-    using unigame.ecs.proto.Core.Components;
     using Game.Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;

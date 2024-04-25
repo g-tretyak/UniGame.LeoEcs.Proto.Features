@@ -3,6 +3,7 @@ namespace unigame.ecs.proto.Characteristics.Block.Converters
     using System;
     using System.Threading;
     using Components;
+    using Leopotam.EcsProto;
     using unigame.ecs.proto.Characteristics.Base.Components.Requests;
      
     using Sirenix.OdinInspector;
@@ -27,7 +28,7 @@ namespace unigame.ecs.proto.Characteristics.Block.Converters
             createCharacteristicRequest.Value = block;
             createCharacteristicRequest.MaxValue = maxDodge;
             createCharacteristicRequest.MinValue = minDodge;
-            createCharacteristicRequest.Owner = world.PackEntity(entity);
+            createCharacteristicRequest.Owner = entity.PackEntity(world);
             
             ref var healthComponent = ref world.GetOrAddComponent<BlockComponent>(entity);
             healthComponent.Value = block;

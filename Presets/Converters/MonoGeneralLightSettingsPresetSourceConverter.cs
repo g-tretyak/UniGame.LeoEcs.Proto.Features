@@ -3,14 +3,12 @@
     using unigame.ecs.proto.Presets.Directional_Light.Converters;
     using unigame.ecs.proto.Presets.SpotLightSettings.Converters;
     using unigame.ecs.proto.Presets.FogShaderSettings.Converters;
-    using System.Threading;
-     
     using Sirenix.OdinInspector;
     using UnityEngine;
-    using UniGame.LeoEcs.Converter.Runtime;
     using System;
     using Abstract;
-    using UniGame.LeoEcs.Converter.Runtime.Abstract;
+    using Leopotam.EcsProto;
+    using UniGame.LeoEcs.Converter.Runtime;
 
     public class MonoGeneralLightSettingsPresetSourceConverter : MonoLeoEcsConverter
     {
