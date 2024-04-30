@@ -13,7 +13,7 @@
 		fileName = "Action Trigger Feature")]
 	public class ActionTriggerFeature : TutorialFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			// Sends request to execute action. Await ActionTriggerRequest.
 			ecsSystems.Add(new ActionTriggerSystem());

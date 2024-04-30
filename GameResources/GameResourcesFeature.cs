@@ -15,7 +15,7 @@
     [CreateAssetMenu(menuName = "Game/Feature/Resources/Game Resources Feature", fileName = "Game Resources Feature")]
     public class GameResourcesFeature : BaseLeoEcsFeature
     {
-        public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             var context = ecsSystems.GetShared<IContext>();
             var dataBase = await context.ReceiveFirstAsync<IGameDatabase>();

@@ -11,7 +11,7 @@
 		fileName = "Restrict UI Tap Area Action Feature")]
 	public class RestrictUITapAreaActionFeature : TutorialFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			ecsSystems.Add(new InitializationRestrictUITapAreaActionSystem());
 			ecsSystems.Add(new ProcessRestrictUITapAreaSystem());

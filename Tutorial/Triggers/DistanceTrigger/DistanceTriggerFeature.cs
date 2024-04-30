@@ -11,7 +11,7 @@
 		fileName = "Distance Trigger Feature")]
 	public class DistanceTriggerFeature : TutorialFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			// Sends request to run tutorial actions when champion is in trigger distance.
 			ecsSystems.Add(new TutorialTriggerDistanceSystem());

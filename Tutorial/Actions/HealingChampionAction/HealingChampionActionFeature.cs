@@ -11,7 +11,7 @@
 		fileName = "Healing Champion Action Feature")]
 	public class HealingChampionActionFeature : TutorialFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			// Heals champion
 			ecsSystems.Add(new HealingChampionActionSystem());

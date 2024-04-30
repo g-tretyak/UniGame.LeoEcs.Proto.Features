@@ -13,7 +13,7 @@
 		fileName = "Show All UI Action Feature")]
 	public class ShowAllUIActionFeature : TutorialFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			ecsSystems.DelHere<ShowAllUIActionEvent>();
 			// Send event to show all UI

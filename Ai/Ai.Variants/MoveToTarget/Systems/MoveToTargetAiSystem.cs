@@ -37,7 +37,7 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
         private ProtoPool<TransformPositionComponent> _transformPool;
         private ProtoPool<TransformDirectionComponent> _directionPool;
         private ProtoPool<MoveToTargetActionComponent> _moveToTargetPool;
-        private ProtoPool<MovementPointRequest> _movementPointPool;
+        private ProtoPool<MovementPointSelfRequest> _movementPointPool;
         private ProtoPool<RotateToPointSelfRequest> _rotateToPointPool;
         private ProtoPool<ActiveGameViewComponent> _viewPool;
         private ProtoPool<NavMeshAgentComponent> _agentPool;
@@ -78,7 +78,7 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
                 
                 if (sqrDistance < minSqrDistance)
                 {
-                    _world.AddComponent<MovementStopRequest>(entity);
+                    _world.AddComponent<MovementStopSelfRequest>(entity);
                     continue;
                 }
                 

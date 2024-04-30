@@ -19,10 +19,10 @@
 		[Searchable(FilterOptions = SearchFilterOptions.ISearchFilterableInterface)]
 		public List<TutorialFeature> tutorialFeatures = new List<TutorialFeature>();
 		
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			foreach (var feature in tutorialFeatures)
-				await feature.InitializeFeatureAsync(ecsSystems);
+				await feature.InitializeAsync(ecsSystems);
 			
 			// Run tutorial actions. Await RunTutorialActionsRequest.
 			ecsSystems.Add(new RunTutorialActionsSystem());

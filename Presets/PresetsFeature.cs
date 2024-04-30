@@ -13,7 +13,7 @@ namespace unigame.ecs.proto.Presets
     [CreateAssetMenu(menuName = "Game/Feature/Game Presets Feature", fileName = "Game Presets Feature")]
     public class PresetsFeature : BaseLeoEcsFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             //find active preset and target by id
             ecsSystems.Add(new FindPresetTargetsSystem());

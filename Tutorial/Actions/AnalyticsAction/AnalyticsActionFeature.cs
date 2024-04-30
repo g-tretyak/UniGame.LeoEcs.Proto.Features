@@ -17,7 +17,7 @@
 		[SerializeReference]
 		public ITutorialAnalytics analytics;
 		
-		public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			var context = ecsSystems.GetShared<IContext>();
 			var service = context.Get<ITutorialAnalytics>() ?? analytics;

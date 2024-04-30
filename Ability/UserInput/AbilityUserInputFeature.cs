@@ -13,7 +13,7 @@
         fileName = "Ability Input Feature")]
     public sealed class AbilityUserInputFeature : BaseLeoEcsFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.Add(new ProcessAbilityUpInputSystem());
             ecsSystems.Add(new RestoreDefaultInHandAbilitySystem());

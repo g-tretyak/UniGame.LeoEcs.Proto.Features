@@ -11,7 +11,7 @@
         fileName = "Movement Animation Feature")]
     public sealed class MovementAnimationFeature : BaseLeoEcsFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.Add(new NavMeshMovementAnimationSystem());
             return UniTask.CompletedTask;

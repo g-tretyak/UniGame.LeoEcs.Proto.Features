@@ -22,7 +22,7 @@
 		private AbilitySequenceTools _abilitySequenceTools;
 		private AbilityTools _abilityTools;
 		
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			var world = ecsSystems.GetWorld();
 			_abilitySequenceTools = world.GetGlobal<AbilitySequenceTools>();

@@ -36,7 +36,7 @@
 			_abilityTools = world.GetGlobal<AbilityTools>();
 			
 			foreach (var abilitySwitcherAssetFeature in features) 
-				abilitySwitcherAssetFeature.InitializeFeatureAsync(ecsSystems);
+				abilitySwitcherAssetFeature.InitializeAsync(ecsSystems);
 			
 			// Do ability switch. Await for AbilitySwitcherRequest and switch ability.
 			ecsSystems.Add(new AbilitySwitcherSystem(_abilityTools));

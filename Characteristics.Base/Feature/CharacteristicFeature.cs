@@ -18,9 +18,9 @@
     {
         private TFeature _feature = new TFeature();
         
-        public sealed override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public sealed override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
-            return _feature.InitializeFeatureAsync(ecsSystems);
+            return _feature.InitializeAsync(ecsSystems);
         }
     }
     

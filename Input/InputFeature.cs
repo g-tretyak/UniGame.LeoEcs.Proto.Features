@@ -14,7 +14,7 @@
     [UsedImplicitly]
     public sealed class InputFeature : LeoEcsSystemAsyncFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.Add(new MapSpaceInitializeSystem());
             ecsSystems.DelHere<DirectionInputEvent>();

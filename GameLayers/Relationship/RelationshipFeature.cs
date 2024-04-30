@@ -20,7 +20,7 @@ namespace unigame.ecs.proto.GameLayers.Relationship
         [SerializeField]
         private RelationshipId _selfRelationship;
     
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.Add(new RelationshipToolsSystem(_layerIdConfiguration, _relationshipIdMap, _selfRelationship));
             

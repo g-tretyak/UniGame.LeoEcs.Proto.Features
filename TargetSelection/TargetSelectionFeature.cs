@@ -11,7 +11,7 @@
     [CreateAssetMenu(menuName = "Game/Feature/Target/Target Selection", fileName = "Target Selection Feature")]
     public class TargetSelectionFeature : BaseLeoEcsFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             var world = ecsSystems.GetWorld();
             

@@ -12,7 +12,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
-    /// Система отвечающая за перемещение в целевую позицю при наличии компонента <see cref="MovementPointRequest"/>.
+    /// Система отвечающая за перемещение в целевую позицю при наличии компонента <see cref="MovementPointSelfRequest"/>.
     /// </summary>
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
@@ -32,8 +32,9 @@
         public void Init(IProtoSystems systems)
         {
             _world = systems.GetWorld();
-            _filter = _world.Filter<NavMeshAgentComponent>()
-                .Inc<MovementPointRequest>()
+            
+            _filter = _world.Filter<MovementPointSelfRequest>()
+                .Inc<NavMeshAgentComponent>()
                 .Inc<SpeedComponent>()
                 .Inc<AngularSpeedComponent>()
                 .Exc<ChampionComponent>()

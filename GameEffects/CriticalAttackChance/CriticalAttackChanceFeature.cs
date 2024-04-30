@@ -10,7 +10,7 @@ namespace unigame.ecs.proto.Gameplay.CriticalAttackChance
     [CreateAssetMenu(menuName = "Game/Feature/Gameplay/Critical Attack Chance Feature",fileName = "Critical Attack Chance Feature")]
     public class CriticalAttackChanceFeature  : BaseLeoEcsFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             
             //recalculate critical change after attack and mark with CriticalAttackMarkerComponent

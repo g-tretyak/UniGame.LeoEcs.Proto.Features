@@ -11,7 +11,7 @@
 		fileName = "Open Window Action Feature")]
 	public class OpenWindowActionFeature : TutorialFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			// Open window
 			ecsSystems.Add(new OpenWindowActionSystem());

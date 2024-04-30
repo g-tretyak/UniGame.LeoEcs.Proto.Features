@@ -12,7 +12,7 @@ namespace unigame.ecs.proto.Gameplay.LevelProgress
     [CreateAssetMenu(menuName = "Game/Feature/GameViews Feature",fileName = "GameViews Feature")]
     public class GameViewsFeature : BaseLeoEcsFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             //disable active view on activate new one
             ecsSystems.Add(new DisableGameViewOnActivateSystem());

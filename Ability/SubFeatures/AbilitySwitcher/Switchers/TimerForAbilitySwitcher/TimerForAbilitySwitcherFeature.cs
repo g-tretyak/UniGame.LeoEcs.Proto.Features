@@ -16,7 +16,7 @@
 		fileName = "Timer Ability Switcher Feature")]
 	public class TimerForAbilitySwitcherFeature : AbilitySwitcherAssetFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			// Evaluate timer for ability switcher. Set ready if timer is over.
 			ecsSystems.Add(new EvaluateTimerForAbilitySwitcherSystem());

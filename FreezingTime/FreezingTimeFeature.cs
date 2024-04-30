@@ -13,7 +13,7 @@
 	[CreateAssetMenu(menuName = "Game/Feature/Gameplay/Freezing Time Feature", fileName = "Freezing Time Feature")]
 	public class FreezingTimeFeature : BaseLeoEcsFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			ecsSystems.DelHere<FreezingTimeCompletedEvent>();
 			

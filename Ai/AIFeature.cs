@@ -16,7 +16,7 @@
         [SerializeField]
         public AiConfigurationAsset aiConfigurationAsset;
         
-        public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             var configurationAsset = Instantiate(aiConfigurationAsset);
             var configuration = configurationAsset.configuration;

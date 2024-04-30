@@ -31,7 +31,7 @@
         
         public AbilityInventoryFeature inventoryFeature = new AbilityInventoryFeature();
         
-        public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             var world = ecsSystems.GetWorld();
             var abilityTools = new AbilityTools();
@@ -145,7 +145,7 @@
             foreach (var feature in subFeatures)
                 await feature.OnLastAbilitySystems(ecsSystems);
 
-            await inventoryFeature.InitializeFeatureAsync(ecsSystems);
+            await inventoryFeature.InitializeAsync(ecsSystems);
         }
 
         [Button]

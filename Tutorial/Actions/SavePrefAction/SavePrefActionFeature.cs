@@ -11,7 +11,7 @@
 		fileName = "Save Pref Action Feature")]
 	public class SavePrefActionFeature : TutorialFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			ecsSystems.Add(new SavePrefSystem());
 		}

@@ -10,7 +10,7 @@
 	[CreateAssetMenu(menuName = "Game/Feature/Shaders Feature", fileName = "Shaders Feature Configuration")]
 	public class ShadersFeature : BaseLeoEcsFeature
 	{
-		public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			// Sets shader materials to the position of the player.
 			ecsSystems.Add(new ChampionGlobalMaskSystem());

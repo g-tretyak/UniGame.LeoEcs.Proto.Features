@@ -21,7 +21,7 @@
         fileName = "Ability Utility View Feature")]
     public class AbilityUtilityViewFeature : BaseLeoEcsFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             var world = ecsSystems.GetWorld();
 

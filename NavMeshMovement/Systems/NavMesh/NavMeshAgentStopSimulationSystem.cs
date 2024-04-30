@@ -9,7 +9,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
-    /// Система отвечающая за остановку симуляции NavMesh при наличии запроса на остановку <see cref="MovementStopRequest"/>.
+    /// Система отвечающая за остановку симуляции NavMesh при наличии запроса на остановку <see cref="MovementStopSelfRequest"/>.
     /// </summary>
     #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
@@ -32,7 +32,7 @@
             
             _filter = _world
                 .Filter<NavMeshAgentComponent>()
-                .Inc<MovementStopRequest>()
+                .Inc<MovementStopSelfRequest>()
                 .End();
         }
         

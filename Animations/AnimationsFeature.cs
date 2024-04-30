@@ -18,7 +18,7 @@ namespace unigame.ecs.proto.Animations
     {
         public float minimumPlayableSpeed = 0.1f;
         
-        public sealed override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public sealed override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             var world = ecsSystems.GetWorld();
             var animationTool = new AnimationToolSystem();

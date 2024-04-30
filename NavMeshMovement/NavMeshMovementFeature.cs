@@ -14,9 +14,9 @@
     using UnityEngine;
     
     [CreateAssetMenu(menuName = "Game/Feature/Movement/Movement Feature", fileName = "Movement Feature")]
-    public sealed class MovementFeature : BaseLeoEcsFeature
+    public sealed class NavMeshMovementFeature : BaseLeoEcsFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.Add(new StopNavMeshAgentSystem());
             ecsSystems.Add(new ProcessImmobilityStatusSystem());
@@ -27,7 +27,7 @@
             ecsSystems.Add(new VelocityNavMeshTargetConvertSystem());
 
             ecsSystems.Add(new NavMeshTargetMovementSystem());
-            ecsSystems.DelHere<MovementPointRequest>();
+            ecsSystems.DelHere<MovementPointSelfRequest>();
             
             ecsSystems.Add(new NavMeshMovementSystem());
 
@@ -41,7 +41,7 @@
             ecsSystems.DelHere<RevokeComeToEndOfRequest>();
             
             ecsSystems.Add(new NavMeshAgentStopSimulationSystem());
-            ecsSystems.DelHere<MovementStopRequest>();
+            ecsSystems.DelHere<MovementStopSelfRequest>();
 
             ecsSystems.Add(new DisableNavMeshAgentSystem());
             ecsSystems.Add(new SetNavigationStatusByRequestSystem());

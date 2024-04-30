@@ -25,7 +25,7 @@ namespace unigame.ecs.proto.Gameplay.Damage
     {
         public List<DamageSubFeature> damageFeatures = new List<DamageSubFeature>();
         
-        public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
 
             //if unit ready to death then create KillRequest

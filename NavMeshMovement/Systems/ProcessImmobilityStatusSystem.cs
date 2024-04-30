@@ -32,7 +32,7 @@
             _filter = _world.Filter<ImmobilityComponent>().End();
             _stopFilter = _world.Filter<ImmobilityComponent>()
                 .Inc<NavMeshAgentComponent>()
-                .Exc<MovementStopRequest>()
+                .Exc<MovementStopSelfRequest>()
                 .End();
         }
         

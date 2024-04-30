@@ -12,7 +12,7 @@
     [CreateAssetMenu(menuName = "Game/Feature/View Control Feature", fileName = "View Control Feature")]
     public sealed class ViewControlFeature : BaseLeoEcsFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.Add(new ProcessHideViewRequestSystem());
             ecsSystems.DelHere<HideViewRequest>();

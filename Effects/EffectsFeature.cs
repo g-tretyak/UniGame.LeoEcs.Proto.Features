@@ -32,7 +32,7 @@
 
         public AddressableValue<EffectsRootConfiguration> effectsRootValue;
         
-        public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             EcsEffectsConfiguration.MAX_EFFECTS_COUNT = maxEffectsCount;
             
@@ -59,7 +59,7 @@
             ecsSystems.Add(new ProcessEffectPeriodicitySystem());
 
             foreach (var feature in effectFeatures)
-                await feature.InitializeFeatureAsync(ecsSystems);
+                await feature.InitializeAsync(ecsSystems);
 
             ecsSystems.DelHere<EffectAppliedSelfEvent>();
             ecsSystems.Add(new ProcessAppliedEffectsSystem());

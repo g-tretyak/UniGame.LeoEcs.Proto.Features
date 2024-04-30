@@ -11,7 +11,7 @@
 		fileName = "Close Temporary UI Action Feature")]
 	public class CloseTemporaryUIActionFeature : TutorialFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			ecsSystems.Add(new CloseTemporaryUIActionSystem());
 		}

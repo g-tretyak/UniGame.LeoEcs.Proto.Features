@@ -33,7 +33,7 @@ namespace unigame.ecs.proto.Characteristics.Base
         [Searchable(FilterOptions = SearchFilterOptions.ISearchFilterableInterface)]
         public List<CharacteristicEcsFeature> characteristicFeatures = new List<CharacteristicEcsFeature>();
         
-        public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
 #if DEBUG
             var timer = Stopwatch.StartNew();   
@@ -44,7 +44,7 @@ namespace unigame.ecs.proto.Characteristics.Base
 #if DEBUG
                 timer.Restart();
 #endif
-                await feature.InitializeFeatureAsync(ecsSystems);
+                await feature.InitializeAsync(ecsSystems);
 #if DEBUG
                 var elapsed = timer.ElapsedMilliseconds;
                 timer.Stop();

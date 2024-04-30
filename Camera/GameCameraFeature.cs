@@ -10,7 +10,7 @@
     [CreateAssetMenu(menuName = "Game/Feature/Camera Feature", fileName = "Camera Feature")]
     public class GameCameraFeature : BaseLeoEcsFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.Add(new CameraLookAtTargetSystem());
             return UniTask.CompletedTask;

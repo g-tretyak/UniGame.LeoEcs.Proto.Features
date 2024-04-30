@@ -12,7 +12,7 @@
 		fileName = "Override Restrict UI Tap Area Action Feature")]
 	public class OverrideRestrictTapAreaActionFeature : TutorialFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			ecsSystems.Add(new InitializationOverrideRestrictAreaActionSystem());
 		}

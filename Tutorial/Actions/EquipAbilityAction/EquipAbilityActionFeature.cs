@@ -11,7 +11,7 @@
 		fileName = "Equip Ability Action Feature")]
 	public class EquipAbilityActionFeature : TutorialFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			// Equip ability to champion
 			ecsSystems.Add(new EquipAbilityActionSystem());

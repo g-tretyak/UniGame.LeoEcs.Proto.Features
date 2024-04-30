@@ -11,7 +11,7 @@
 		fileName = "Freezing Time Action Feature")]
 	public class FreezingTimeActionFeature : TutorialFeature
 	{
-		public override async UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			// Freezes time
 			ecsSystems.Add(new FreezingTimeActionSystem());

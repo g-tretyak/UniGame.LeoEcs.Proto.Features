@@ -7,7 +7,7 @@
 
     public abstract class DamageSubFeature : BaseLeoEcsFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             return UniTask.CompletedTask;
         }

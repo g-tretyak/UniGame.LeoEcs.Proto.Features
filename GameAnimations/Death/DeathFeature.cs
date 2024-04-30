@@ -10,7 +10,7 @@ namespace unigame.ecs.proto.Gameplay.Death
     [CreateAssetMenu(menuName = "Game/Feature/Gameplay/Death")]
     public class DeathFeature  : BaseLeoEcsFeature
     {
-        public override UniTask InitializeFeatureAsync(IProtoSystems ecsSystems)
+        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.Add(new CheckReadyToDeathSystem());
             
