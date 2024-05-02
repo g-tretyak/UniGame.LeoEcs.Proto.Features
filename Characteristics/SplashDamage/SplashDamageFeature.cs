@@ -14,7 +14,7 @@
     /// allows you to deal damage on the area with default attacks, 
     /// the characteristic increases the damage that opponents receive near the main target
     /// </summary>
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/SplashDamage Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/SplashDamage Feature")]
     public sealed class SplashDamageFeature : CharacteristicFeature<SplashDamageEcsFeature>
     {
     }
@@ -22,7 +22,7 @@
     [Serializable]
     public sealed class SplashDamageEcsFeature : CharacteristicEcsFeature
     {
-        protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+        protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.AddCharacteristic<SplashDamageComponent>();
             // update Splash Damage value

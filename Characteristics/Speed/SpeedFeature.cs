@@ -10,7 +10,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Speed Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Speed Feature")]
     public class SpeedFeature : CharacteristicFeature<SpeedEcsFeature>
     {
     }
@@ -18,7 +18,7 @@
     [Serializable]
     public sealed class SpeedEcsFeature : CharacteristicEcsFeature
     {
-        protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+        protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.AddCharacteristic<SpeedComponent>();
             ecsSystems.Add(new RecalculateSpeedSystem());

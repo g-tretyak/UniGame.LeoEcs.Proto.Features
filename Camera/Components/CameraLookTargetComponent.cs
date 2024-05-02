@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Camera.Components
 {
     using System;
+    using Unity.Mathematics;
     using UnityEngine;
 
     /// <summary>
@@ -10,6 +11,6 @@
     public struct CameraLookTargetComponent
     {
         public float Speed;
-        public Vector3 Offset;
+        public float3 Offset;
     }
 }

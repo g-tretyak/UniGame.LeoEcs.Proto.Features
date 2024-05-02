@@ -15,7 +15,7 @@
     /// - check ready to death status if health <= 0
     /// - update helath value by request
     /// </summary>
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Health Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Health Feature")]
     public sealed class HealthFeature : CharacteristicFeature<HealthEcsFeature>
     {
     }
@@ -28,7 +28,7 @@
     [Serializable]
     public sealed class HealthEcsFeature : CharacteristicEcsFeature
     {
-        protected sealed override  UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+        protected sealed override  UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             //register health characteristic
             ecsSystems.AddCharacteristic<HealthComponent>();

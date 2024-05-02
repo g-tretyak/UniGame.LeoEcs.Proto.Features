@@ -11,7 +11,7 @@
     using UserInput.Systems;
 
     [Serializable]
-    [CreateAssetMenu(menuName = "Game/Feature/Ability/Selection SubFeature",fileName = "Selection SubFeature")]
+    [CreateAssetMenu(menuName = "Proto Features/Ability/Selection SubFeature",fileName = "Selection SubFeature")]
     public sealed class SelectionSubFeature : AbilitySubFeature
     {
         public override UniTask<IProtoSystems> OnAfterInHandSystems(IProtoSystems ecsSystems)

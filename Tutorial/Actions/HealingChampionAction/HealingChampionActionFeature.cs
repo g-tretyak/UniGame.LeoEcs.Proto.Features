@@ -7,7 +7,7 @@
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
-	[CreateAssetMenu(menuName = "Game/Feature/Gameplay/Tutorial/TutorialAction/Healing Champion Action", 
+	[CreateAssetMenu(menuName = "Proto Features/Gameplay/Tutorial/TutorialAction/Healing Champion Action", 
 		fileName = "Healing Champion Action Feature")]
 	public class HealingChampionActionFeature : TutorialFeature
 	{

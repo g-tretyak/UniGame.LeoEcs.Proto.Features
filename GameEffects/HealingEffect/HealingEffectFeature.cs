@@ -7,7 +7,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Effects/Healing Effect Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Effects/Healing Effect Feature")]
     public sealed class HealingEffectFeature : EffectFeatureAsset
     {
         protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)

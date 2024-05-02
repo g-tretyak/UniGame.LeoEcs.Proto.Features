@@ -10,7 +10,7 @@
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
-	[CreateAssetMenu(menuName = "Game/Feature/Gameplay/Tutorial/TutorialAction/Analytics Action Feature", 
+	[CreateAssetMenu(menuName = "Proto Features/Gameplay/Tutorial/TutorialAction/Analytics Action Feature", 
 		fileName = "Analytics Action Feature")]
 	public class AnalyticsActionFeature : TutorialFeature
 	{

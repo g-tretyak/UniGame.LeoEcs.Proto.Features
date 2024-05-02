@@ -14,7 +14,7 @@
     /// <summary>
     /// - recalculate attack speed characteristic
     /// </summary>
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/AttackRange Feature",fileName = "AttackRange Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/AttackRange Feature",fileName = "AttackRange Feature")]
     public sealed class CriticalChanceFeature : CharacteristicFeature<CriticalChanceEcsFeature>
     {
     }
@@ -22,7 +22,7 @@
     [Serializable]
     public sealed class CriticalChanceEcsFeature : CharacteristicEcsFeature
     {
-        protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+        protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             //register health characteristic
             ecsSystems.AddCharacteristic<AttackRangeComponent>();

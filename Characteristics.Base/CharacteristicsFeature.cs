@@ -24,7 +24,7 @@ namespace UniGame.Ecs.Proto.Characteristics.Base
     using UnityEditor;
 #endif
     
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Characteristics Feature",
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Characteristics Feature",
         fileName = "Characteristics Feature")]
     public class CharacteristicsFeature : BaseLeoEcsFeature
     {

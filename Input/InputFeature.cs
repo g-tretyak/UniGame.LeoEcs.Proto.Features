@@ -12,9 +12,9 @@
     using UniGame.LeoEcs.Shared.Extensions;
 
     [UsedImplicitly]
-    public sealed class InputFeature : LeoEcsSystemAsyncFeature
+    public sealed class InputFeature : EcsFeature
     {
-        public override UniTask InitializeAsync(IProtoSystems ecsSystems)
+        protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.Add(new MapSpaceInitializeSystem());
             ecsSystems.DelHere<DirectionInputEvent>();

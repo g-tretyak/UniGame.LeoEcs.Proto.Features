@@ -9,7 +9,7 @@
     using UnityEngine;
 
     [Serializable]
-    [CreateAssetMenu(menuName = "Game/Feature/Ability/AreaSubFeature",fileName = "AreaSubFeature")]
+    [CreateAssetMenu(menuName = "Proto Features/Ability/AreaSubFeature",fileName = "AreaSubFeature")]
     public sealed class AreaSubFeature : AbilitySubFeature
     {
         public override UniTask<IProtoSystems> OnAfterInHandSystems(IProtoSystems ecsSystems)

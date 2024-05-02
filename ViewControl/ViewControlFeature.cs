@@ -9,7 +9,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
     
-    [CreateAssetMenu(menuName = "Game/Feature/View Control Feature", fileName = "View Control Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/View Control Feature", fileName = "View Control Feature")]
     public sealed class ViewControlFeature : BaseLeoEcsFeature
     {
         public override UniTask InitializeAsync(IProtoSystems ecsSystems)

@@ -22,7 +22,7 @@
     using UniModules.Editor;
 #endif
     
-    [CreateAssetMenu(menuName = "Game/Feature/Ability/Ability Feature", fileName = "Ability Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Ability/Ability Feature", fileName = "Ability Feature")]
     [Serializable]
     public sealed class AbilityFeature : BaseLeoEcsFeature
     {

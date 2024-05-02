@@ -7,7 +7,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
     
-    [CreateAssetMenu(menuName = "Game/Feature/Ability/Ability Agent Feature", fileName = "Ability Agent Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Ability/Ability Agent Feature", fileName = "Ability Agent Feature")]
     public class AbilityAgentFeature : BaseLeoEcsFeature
     {
         public override async UniTask InitializeAsync(IProtoSystems ecsSystems)

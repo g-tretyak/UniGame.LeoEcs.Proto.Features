@@ -13,7 +13,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
     
-    [CreateAssetMenu(menuName = "Game/Feature/Movement/Movement Feature", fileName = "Movement Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Movement/NavMesh Movement Feature", fileName = "NavMesh Movement Feature")]
     public sealed class NavMeshMovementFeature : BaseLeoEcsFeature
     {
         public override UniTask InitializeAsync(IProtoSystems ecsSystems)
@@ -30,9 +30,7 @@
             ecsSystems.DelHere<MovementPointSelfRequest>();
             
             ecsSystems.Add(new NavMeshMovementSystem());
-
-            ecsSystems.Add(new EndInputStopNavMeshAgentConvertSystem());
-
+            
             ecsSystems.Add(new RotationToPointSystem());
             ecsSystems.DelHere<RotateToPointSelfRequest>();
 

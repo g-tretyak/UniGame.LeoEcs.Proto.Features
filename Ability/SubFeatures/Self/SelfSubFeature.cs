@@ -8,7 +8,7 @@
     using UnityEngine;
 
     [Serializable]
-    [CreateAssetMenu(menuName = "Game/Feature/Ability/Self SubFeature",fileName = "Self SubFeature")]
+    [CreateAssetMenu(menuName = "Proto Features/Ability/Self SubFeature",fileName = "Self SubFeature")]
     public sealed class SelfSubFeature : AbilitySubFeature
     {
         public override UniTask<IProtoSystems> OnApplyEffectsSystems(IProtoSystems ecsSystems)

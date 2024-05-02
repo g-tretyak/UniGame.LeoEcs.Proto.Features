@@ -7,7 +7,7 @@ namespace UniGame.Ecs.Proto.Gameplay.Death
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Gameplay/Death")]
+    [CreateAssetMenu(menuName = "Proto Features/Gameplay/Death")]
     public class DeathFeature  : BaseLeoEcsFeature
     {
         public override UniTask InitializeAsync(IProtoSystems ecsSystems)

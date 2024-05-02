@@ -10,7 +10,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Ai Feature", fileName = "Ai Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Ai Feature", fileName = "Ai Feature")]
     public sealed class AIFeature : BaseLeoEcsFeature
     {
         [SerializeField]

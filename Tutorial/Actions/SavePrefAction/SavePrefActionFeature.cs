@@ -7,7 +7,7 @@
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
-	[CreateAssetMenu(menuName = "Game/Feature/Gameplay/Tutorial/TutorialAction/Save Pref Action Feature", 
+	[CreateAssetMenu(menuName = "Proto Features/Gameplay/Tutorial/TutorialAction/Save Pref Action Feature", 
 		fileName = "Save Pref Action Feature")]
 	public class SavePrefActionFeature : TutorialFeature
 	{

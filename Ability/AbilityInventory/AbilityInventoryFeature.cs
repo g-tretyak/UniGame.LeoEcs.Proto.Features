@@ -20,7 +20,7 @@
 	{
 		public AbilityCatalog abilityCatalog;
 		
-		protected override async UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+		protected override async UniTask OnInitializeAsync(IProtoSystems ecsSystems)
 		{
 			var context = ecsSystems.GetShared<IContext>();
 			var world = ecsSystems.GetWorld();

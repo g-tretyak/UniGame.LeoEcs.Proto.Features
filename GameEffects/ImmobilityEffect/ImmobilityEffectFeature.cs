@@ -7,7 +7,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Effects/Immobility Effect Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Effects/Immobility Effect Feature")]
     public sealed class ImmobilityEffectFeature : EffectFeatureAsset
     {
         protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)

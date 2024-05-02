@@ -12,7 +12,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Resources/Game Resources Feature", fileName = "Game Resources Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Resources/Game Resources Feature", fileName = "Game Resources Feature")]
     public class GameResourcesFeature : BaseLeoEcsFeature
     {
         public override async UniTask InitializeAsync(IProtoSystems ecsSystems)

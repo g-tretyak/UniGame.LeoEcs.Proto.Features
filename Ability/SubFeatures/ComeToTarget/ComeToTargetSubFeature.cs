@@ -9,7 +9,7 @@
     using UserInput.Systems;
 
     [Serializable]
-    [CreateAssetMenu(menuName = "Game/Feature/Ability/ComeToTarget SubFeature",fileName = "ComeToTarget SubFeature")]
+    [CreateAssetMenu(menuName = "Proto Features/Ability/ComeToTarget SubFeature",fileName = "ComeToTarget SubFeature")]
     public sealed class ComeToTargetSubFeature : AbilitySubFeature
     {
         public override UniTask<IProtoSystems> OnUtilitySystems(IProtoSystems ecsSystems)

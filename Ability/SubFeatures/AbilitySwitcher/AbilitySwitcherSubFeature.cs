@@ -17,7 +17,7 @@
 	/// add critical animations if critical hit exist
 	/// </summary>
 	[Serializable]
-	[CreateAssetMenu(menuName = "Game/Feature/Ability/Ability Switcher SubFeature", fileName = "Ability Switcher SubFeature")]
+	[CreateAssetMenu(menuName = "Proto Features/Ability/Ability Switcher SubFeature", fileName = "Ability Switcher SubFeature")]
 	public class AbilitySwitcherSubFeature : AbilitySubFeature
 	{
 		#region Inspector

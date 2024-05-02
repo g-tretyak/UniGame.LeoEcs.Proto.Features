@@ -14,7 +14,7 @@
     /// - check ready to death status if health <= 0
     /// - update helath value by request
     /// </summary>
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Demo Value Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Demo Value Feature")]
     public sealed class DemoValueFeature : CharacteristicFeature<DemoValueEcsFeature>
     {
     }
@@ -22,7 +22,7 @@
     [Serializable]
     public sealed class DemoValueEcsFeature : CharacteristicEcsFeature
     {
-        protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+        protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.AddCharacteristic<DemoValueComponent>();
             

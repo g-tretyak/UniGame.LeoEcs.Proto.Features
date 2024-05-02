@@ -14,7 +14,7 @@
     /// provides a feature to increase the damage of abilities,
     /// allows you to change the strength of abilities by AbilityPowerComponent
     /// </summary>
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/AbilityPower Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/AbilityPower Feature")]
     public sealed class AbilityPowerFeature : CharacteristicFeature<AbilityPowerEcsFeature>
     {
     }
@@ -22,7 +22,7 @@
     [Serializable]
     public sealed class AbilityPowerEcsFeature : CharacteristicEcsFeature
     {
-        protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+        protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.AddCharacteristic<AbilityPowerComponent>();
             // update ability power value

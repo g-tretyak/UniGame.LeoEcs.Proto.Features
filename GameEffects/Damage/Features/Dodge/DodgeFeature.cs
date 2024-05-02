@@ -10,7 +10,7 @@ namespace UniGame.Ecs.Proto.Gameplay.Dodge
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Damage/Damage Dodge Feature",fileName = "Damage Dodge Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Damage/Damage Dodge Feature",fileName = "Damage Dodge Feature")]
     public class DeathFeature  : DamageSubFeature
     {
         public sealed override UniTask BeforeDamageSystem(IProtoSystems ecsSystems)

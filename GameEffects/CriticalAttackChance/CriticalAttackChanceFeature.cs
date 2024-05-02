@@ -7,7 +7,7 @@ namespace UniGame.Ecs.Proto.Gameplay.CriticalAttackChance
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Gameplay/Critical Attack Chance Feature",fileName = "Critical Attack Chance Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Gameplay/Critical Attack Chance Feature",fileName = "Critical Attack Chance Feature")]
     public class CriticalAttackChanceFeature  : BaseLeoEcsFeature
     {
         public override UniTask InitializeAsync(IProtoSystems ecsSystems)

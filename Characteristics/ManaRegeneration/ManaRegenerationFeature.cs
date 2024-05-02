@@ -10,7 +10,7 @@
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
-	[CreateAssetMenu(menuName = "Game/Feature/Characteristics/Mana Regeneration Feature")]
+	[CreateAssetMenu(menuName = "Proto Features/Characteristics/Mana Regeneration Feature")]
 	public sealed class ManaRegenerationFeature : CharacteristicFeature<ManaRegenerationEcsFeature>
 	{
 	}
@@ -18,7 +18,7 @@
 	[Serializable]
 	public sealed class ManaRegenerationEcsFeature : CharacteristicEcsFeature
 	{
-		protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+		protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
 		{
 			ecsSystems.AddCharacteristic<ManaRegenerationComponent>();
 			// Recalculate mana regeneration value. Use this request RecalculateManaRegenerationRequest when you want to recalculate mana regeneration value.

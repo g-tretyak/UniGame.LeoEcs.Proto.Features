@@ -11,7 +11,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Block Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Block Feature")]
     public sealed class BlockFeature : CharacteristicFeature<BlockEcsFeature>
     {
     }
@@ -19,7 +19,7 @@
     [Serializable]
     public sealed class BlockEcsFeature : CharacteristicEcsFeature
     {
-        protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+        protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.AddCharacteristic<BlockComponent>();
             ecsSystems.Add(new RecalculateBlockSystem());

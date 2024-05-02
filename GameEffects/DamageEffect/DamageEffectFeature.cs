@@ -7,7 +7,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Effects/Damage Effect Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Effects/Damage Effect Feature")]
     public sealed class DamageEffectFeature : EffectFeatureAsset
     {
         protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)

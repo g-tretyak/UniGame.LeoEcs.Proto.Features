@@ -10,7 +10,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Radius Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Radius Feature")]
     public sealed class RadiusFeature : CharacteristicFeature<RadiusEcsFeature>
     {
     }
@@ -18,7 +18,7 @@
     [Serializable]
     public sealed class RadiusEcsFeature : CharacteristicEcsFeature
     {
-        protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+        protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.AddCharacteristic<RadiusComponent>();
             ecsSystems.Add(new RecalculateRadiusSystem());

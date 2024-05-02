@@ -20,7 +20,7 @@ namespace UniGame.Ecs.Proto.Gameplay.Damage
     using UnityEditor;
 #endif
     
-    [CreateAssetMenu(menuName = "Game/Feature/Gameplay/Damage Feature",fileName = "Damage Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Gameplay/Damage Feature",fileName = "Damage Feature")]
     public class DamageFeature  : BaseLeoEcsFeature
     {
         public List<DamageSubFeature> damageFeatures = new List<DamageSubFeature>();

@@ -6,6 +6,7 @@
     using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;
+    using Unity.Mathematics;
     using UnityEngine;
 
     /// <summary>
@@ -47,15 +48,15 @@
                     break;
                 }
 
-                if (targetTransform == null)
-                    continue;
+                if (targetTransform == null) continue;
 
                 var transform = transformComponent.Value;
 
                 var currentPosition = transform.position;
-                var nextPosition = targetTransform.position + targetComponent.Offset;
+                var nextPosition = (float3)targetTransform.position + targetComponent.Offset;
 
-                transform.position = Vector3.Lerp(currentPosition, nextPosition, Time.deltaTime * targetComponent.Speed);
+                transform.position = math.lerp(currentPosition, nextPosition, 
+                    Time.deltaTime * targetComponent.Speed);
             }
         }
     }

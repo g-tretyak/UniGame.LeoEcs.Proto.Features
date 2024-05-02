@@ -7,7 +7,7 @@ namespace UniGame.Ecs.Proto.Gameplay.Dodge
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Damage/Damage Block Feature",fileName = "Damage Block Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Damage/Damage Block Feature",fileName = "Damage Block Feature")]
     public class BlockFeature  : DamageSubFeature
     {
         public sealed override UniTask BeforeDamageSystem(IProtoSystems ecsSystems)

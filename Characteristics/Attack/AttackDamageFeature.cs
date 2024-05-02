@@ -10,7 +10,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Attack Damage Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Attack Damage Feature")]
     public sealed class AttackDamageFeature : CharacteristicFeature<AttackDamageEcsFeature>
     {
     }
@@ -18,7 +18,7 @@
     [Serializable]
     public sealed class AttackDamageEcsFeature : CharacteristicEcsFeature
     {
-        protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+        protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.AddCharacteristic<AttackDamageComponent>();
             ecsSystems.Add(new UpdateAttackDamageChangedSystem());

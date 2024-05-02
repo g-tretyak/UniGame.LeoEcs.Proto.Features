@@ -11,7 +11,7 @@
     /// add critical animations if critical hit exist
     /// </summary>
     [Serializable]
-    [CreateAssetMenu(menuName = "Game/Feature/Ability/AbilityAnimations SubFeature",fileName = "AbilityAnimations SubFeature")]
+    [CreateAssetMenu(menuName = "Proto Features/Ability/AbilityAnimations SubFeature",fileName = "AbilityAnimations SubFeature")]
     public class AbilityAnimationsSubFeature : AbilitySubFeature
     {
         public override UniTask<IProtoSystems> OnCompleteAbilitySystems(IProtoSystems ecsSystems)

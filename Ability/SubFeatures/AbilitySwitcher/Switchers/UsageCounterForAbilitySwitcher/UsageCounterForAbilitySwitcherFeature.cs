@@ -15,7 +15,7 @@
 	/// Feature for ability switcher that uses counter to switch between abilities.
 	/// </summary>
 	[Serializable]
-	[CreateAssetMenu(menuName = "Game/Feature/Ability/AbilitySwitcherConfigurations/Usage Counter Ability Switcher Feature", 
+	[CreateAssetMenu(menuName = "Proto Features/Ability/AbilitySwitcherConfigurations/Usage Counter Ability Switcher Feature", 
 		fileName = "Usage Counter Ability Switcher Feature")]
 	public class UsageCounterForAbilitySwitcherFeature : AbilitySwitcherAssetFeature
 	{

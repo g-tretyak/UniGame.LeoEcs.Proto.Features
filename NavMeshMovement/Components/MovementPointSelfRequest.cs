@@ -1,6 +1,6 @@
 ﻿namespace UniGame.Ecs.Proto.Movement.Components
 {
-    using UnityEngine;
+    using Unity.Mathematics;
 
     /// <summary>
     /// Целевая позиция для перемещения.
@@ -8,6 +8,6 @@
     /// </summary>
     public struct MovementPointSelfRequest
     {
-        public Vector3 DestinationPosition;
+        public float3 Value;
     }
 }

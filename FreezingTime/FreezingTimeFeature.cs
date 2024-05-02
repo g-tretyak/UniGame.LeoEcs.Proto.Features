@@ -10,7 +10,7 @@
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
-	[CreateAssetMenu(menuName = "Game/Feature/Gameplay/Freezing Time Feature", fileName = "Freezing Time Feature")]
+	[CreateAssetMenu(menuName = "Proto Features/Gameplay/Freezing Time Feature", fileName = "Freezing Time Feature")]
 	public class FreezingTimeFeature : BaseLeoEcsFeature
 	{
 		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)

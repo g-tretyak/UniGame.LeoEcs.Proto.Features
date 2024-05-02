@@ -10,13 +10,13 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Shield Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Shield Feature")]
     public sealed class ShieldFeature : CharacteristicFeature<ShieldEcsFeature> {}
     
     [Serializable]
     public sealed class ShieldEcsFeature : CharacteristicEcsFeature
     {
-        protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+        protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.Add(new ProcessShieldSystem());
             ecsSystems.DelHere<ChangeShieldRequest>();

@@ -7,7 +7,7 @@
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
 
-	[CreateAssetMenu(menuName = "Game/Feature/Gameplay/Tutorial/TutorialTrigger/Step Trigger Feature", 
+	[CreateAssetMenu(menuName = "Proto Features/Gameplay/Tutorial/TutorialTrigger/Step Trigger Feature", 
 		fileName = "Step Trigger Feature")]
 	public class StepTriggerFeature : TutorialFeature
 	{

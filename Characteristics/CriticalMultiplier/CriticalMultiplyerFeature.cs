@@ -13,7 +13,7 @@
     /// <summary>
     /// - recalculate attack speed characteristic
     /// </summary>
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Critical Multiplier Feature",fileName = "Critical Multiplier")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Critical Multiplier Feature",fileName = "Critical Multiplier")]
     public sealed class CriticalMultiplierFeature : CharacteristicFeature<CriticalMultiplierEcsFeature>
     {
     }
@@ -21,7 +21,7 @@
     [Serializable]
     public sealed class CriticalMultiplierEcsFeature : CharacteristicEcsFeature
     {
-        protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+        protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             //register health characteristic
             ecsSystems.AddCharacteristic<CriticalMultiplierComponent>();

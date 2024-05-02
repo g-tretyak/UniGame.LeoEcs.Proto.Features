@@ -7,7 +7,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Camera Feature", fileName = "Camera Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Camera Feature", fileName = "Camera Feature")]
     public class GameCameraFeature : BaseLeoEcsFeature
     {
         public override UniTask InitializeAsync(IProtoSystems ecsSystems)

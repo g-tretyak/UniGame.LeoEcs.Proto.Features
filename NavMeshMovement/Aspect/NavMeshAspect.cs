@@ -1,12 +1,9 @@
 ﻿namespace UniGame.Ecs.Proto.Movement.Aspect
 {
     using System;
-    using Characteristics.Speed.Components;
     using Components;
     using Game.Ecs.Core.Components;
     using Game.Ecs.Core.Death.Components;
-    using Gameplay.LevelProgress.Components;
-    using Input.Components.Direction;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Components;
@@ -27,9 +24,7 @@
         public ProtoPool<RigidbodyComponent> Rigidbody;
         public ProtoPool<TransformComponent> Transform;
         public ProtoPool<TransformPositionComponent> Position;
-        public ProtoPool<ActiveGameViewComponent> ActiveGameView;
         public ProtoPool<VelocityComponent> Velocity;
-        public ProtoPool<SpeedComponent> Speed;
         public ProtoPool<AngularSpeedComponent> RotationSpeed;
         public ProtoPool<ImmobilityComponent> Immobility;
         public ProtoPool<StepMovementComponent> StepMovement;
@@ -44,9 +39,6 @@
         public ProtoPool<RotateToPointSelfRequest> RotateTo;
         public ProtoPool<SetNavigationStatusSelfRequest> SetNavigationStatus;
         public ProtoPool<SetKinematicSelfRequest> SetKinematicStatus;
-        
-        //events
-        public ProtoPool<DirectionInputEvent> Direction;
         
     }
 }

@@ -12,7 +12,7 @@
 	/// Feature for ability switcher that uses counter to switch between abilities.
 	/// </summary>
 	[Serializable]
-	[CreateAssetMenu(menuName = "Game/Feature/Ability/AbilitySwitcherConfigurations/Timer Ability Switcher Feature", 
+	[CreateAssetMenu(menuName = "Proto Features/Ability/AbilitySwitcherConfigurations/Timer Ability Switcher Feature", 
 		fileName = "Timer Ability Switcher Feature")]
 	public class TimerForAbilitySwitcherFeature : AbilitySwitcherAssetFeature
 	{

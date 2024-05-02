@@ -82,7 +82,7 @@ namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Systems
                     continue;
                 }
                 
-                targetComponentRequest.DestinationPosition = destination;
+                targetComponentRequest.Value = destination;
                 var packedEntity = _world.PackEntity(entity);
                 moveToTargetComponent.Effects.CreateRequests(_world,packedEntity,packedEntity);
             }

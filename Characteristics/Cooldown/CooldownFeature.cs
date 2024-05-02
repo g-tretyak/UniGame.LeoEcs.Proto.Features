@@ -10,7 +10,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Game/Feature/Characteristics/Cooldown Feature")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Cooldown Feature")]
     public sealed class CooldownFeature : CharacteristicFeature<CooldownEcsFeature>
     {
     }
@@ -18,7 +18,7 @@
     [Serializable]
     public sealed class CooldownEcsFeature : CharacteristicEcsFeature
     {
-        protected override UniTask OnInitializeFeatureAsync(IProtoSystems ecsSystems)
+        protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             ecsSystems.Add(new RecalculateCooldownSystem());
             ecsSystems.DelHere<RecalculateCooldownSelfRequest>();
