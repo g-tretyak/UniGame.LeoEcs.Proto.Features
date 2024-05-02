@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ModificationEffect.Systems
+﻿namespace UniGame.Ecs.Proto.GameEffects.ModificationEffect.Systems
 {
     using Components;
     using Effects.Components;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Effects.Components
+﻿namespace UniGame.Ecs.Proto.Effects.Components
 {
     using Data;
     using Game.Code.Configuration.Runtime.Effects;

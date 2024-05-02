@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameResources.Aspects
+﻿namespace UniGame.Ecs.Proto.GameResources.Aspects
 {
     using System;
     using Components;

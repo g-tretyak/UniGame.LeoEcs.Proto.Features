@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Tools
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Tools
 {
 	using UnityEngine;
 

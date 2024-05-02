@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.AnalyticsAction
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.AnalyticsAction
 {
 	using Abstracts;
 	using Cysharp.Threading.Tasks;

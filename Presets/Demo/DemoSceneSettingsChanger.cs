@@ -1,7 +1,7 @@
-namespace unigame.ecs.proto.Presets.Demo
+namespace UniGame.Ecs.Proto.Presets.Demo
 {
     using System.Collections.Generic;
-    using unigame.ecs.proto.Presets.Assets;
+    using UniGame.Ecs.Proto.Presets.Assets;
     using Sirenix.OdinInspector;
     using UnityEngine;
 

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.CriticalAnimations.Components
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.CriticalAnimations.Components
 {
     using System;
 

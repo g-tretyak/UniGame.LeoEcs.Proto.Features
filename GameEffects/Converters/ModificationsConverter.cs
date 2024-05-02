@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using unigame.ecs.proto.GameEffects.ModificationEffect.Components;
+using UniGame.Ecs.Proto.GameEffects.ModificationEffect.Components;
 using Sirenix.OdinInspector;
 using UniGame.LeoEcs.Shared.Extensions;
 using UnityEngine;
 
-namespace unigame.ecs.proto.Characteristics.Converters
+namespace UniGame.Ecs.Proto.Characteristics.Converters
 {
     using System;
     using Base.Modification;

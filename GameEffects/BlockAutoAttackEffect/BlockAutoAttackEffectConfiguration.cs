@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.BlockAutoAttackEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.BlockAutoAttackEffect
 {
 	using System;
 	using Components;

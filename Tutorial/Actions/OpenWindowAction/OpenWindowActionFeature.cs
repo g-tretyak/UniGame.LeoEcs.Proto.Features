@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.OpenWindowAction
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.OpenWindowAction
 {
 	using Abstracts;
 	using Cysharp.Threading.Tasks;

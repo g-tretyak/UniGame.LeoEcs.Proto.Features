@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.CriticalAnimations.Behaviours
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.CriticalAnimations.Behaviours
 {
     using System;
     using AbilitySequence.Assets;

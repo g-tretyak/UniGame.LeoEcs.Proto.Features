@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Animations.Converters
+﻿namespace UniGame.Ecs.Proto.Animations.Converters
 {
     using System;
     using Components.Requests;

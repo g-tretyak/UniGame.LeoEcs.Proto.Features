@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Radius.AggressiveRadius.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Radius.AggressiveRadius.Systems
 {
     using System;
     using System.Collections.Generic;

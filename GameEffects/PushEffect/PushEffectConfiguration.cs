@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.PushEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.PushEffect
 {
 	using System;
 	using Components;

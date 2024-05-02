@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Triggers.StepTrigger
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Triggers.StepTrigger
 {
 	using Abstracts;
 	using Cysharp.Threading.Tasks;

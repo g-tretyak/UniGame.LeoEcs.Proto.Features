@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Triggers.DistanceTrigger
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Triggers.DistanceTrigger
 {
 	using Abstracts;
 	using Cysharp.Threading.Tasks;

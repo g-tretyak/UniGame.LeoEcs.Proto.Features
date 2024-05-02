@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Health
+﻿namespace UniGame.Ecs.Proto.Characteristics.Health
 {
     using System;
     using Base;

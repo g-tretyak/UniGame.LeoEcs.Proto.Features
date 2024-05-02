@@ -1,8 +1,8 @@
-﻿namespace unigame.ecs.proto.Presets.Converters
+﻿namespace UniGame.Ecs.Proto.Presets.Converters
 {
-    using unigame.ecs.proto.Presets.Directional_Light.Converters;
-    using unigame.ecs.proto.Presets.SpotLightSettings.Converters;
-    using unigame.ecs.proto.Presets.FogShaderSettings.Converters;
+    using UniGame.Ecs.Proto.Presets.Directional_Light.Converters;
+    using UniGame.Ecs.Proto.Presets.SpotLightSettings.Converters;
+    using UniGame.Ecs.Proto.Presets.FogShaderSettings.Converters;
     using Sirenix.OdinInspector;
     using UnityEngine;
     using System;

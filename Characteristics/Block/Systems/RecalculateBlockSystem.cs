@@ -1,10 +1,10 @@
-﻿namespace unigame.ecs.proto.Characteristics.Block.Systems
+﻿namespace UniGame.Ecs.Proto.Characteristics.Block.Systems
 {
     using System;
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Characteristics.Base.Components;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components;
     using UniGame.LeoEcs.Shared.Extensions;
     using Unity.IL2CPP.CompilerServices;
 

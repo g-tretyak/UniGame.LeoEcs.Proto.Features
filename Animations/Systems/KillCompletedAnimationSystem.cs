@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Animations.Systems
+﻿namespace UniGame.Ecs.Proto.Animations.Systems
 {
     using System;
     using Aspects;

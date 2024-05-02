@@ -1,12 +1,12 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Target.Systems
 {
     using Common.Components;
     using Components;
     using Game.Ecs.Core.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
-    using proto.Effects;
-    using proto.Effects.Components;
+    using Proto.Effects;
+    using Proto.Effects.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 

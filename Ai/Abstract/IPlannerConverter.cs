@@ -1,6 +1,6 @@
-using unigame.ecs.proto.AI.Configurations;
+using UniGame.Ecs.Proto.AI.Configurations;
 
-namespace unigame.ecs.proto.AI.Abstract
+namespace UniGame.Ecs.Proto.AI.Abstract
 {
     using UniGame.LeoEcs.Converter.Runtime.Abstract;
 

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ImmobilityEffect.Components
+﻿namespace UniGame.Ecs.Proto.GameEffects.ImmobilityEffect.Components
 {
     public struct ImmobilityEffectComponent
     {

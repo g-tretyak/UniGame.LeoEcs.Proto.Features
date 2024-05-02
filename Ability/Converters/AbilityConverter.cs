@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.Converters
+﻿namespace UniGame.Ecs.Proto.Ability.Converters
 {
     using System;
     using System.Collections.Generic;

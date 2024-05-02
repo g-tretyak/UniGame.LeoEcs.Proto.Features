@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.ArmorResist
+﻿namespace UniGame.Ecs.Proto.Gameplay.ArmorResist
 {
 	using Cysharp.Threading.Tasks;
 	using Damage;

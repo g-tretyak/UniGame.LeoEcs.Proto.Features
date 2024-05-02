@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Movement.Systems.NavMesh
+﻿namespace UniGame.Ecs.Proto.Movement.Systems.NavMesh
 {
     using System;
     using Aspect;
@@ -9,7 +9,7 @@
     using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
-    /// Система отвечающая за остановку симуляции NavMesh при наличии запроса на остановку <see cref="MovementStopSelfRequest"/>.
+    /// Система отвечающая за остановку симуляции NavMesh при наличии запроса на остановку <see cref="UniGame.Ecs.Proto.Movement.Components.MovementStopSelfRequest"/>.
     /// </summary>
     #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
@@ -24,7 +24,7 @@
     {
         private EcsFilter _filter;
         private ProtoWorld _world;
-        private NavigationAspect _navigationAspect;
+        private NavMeshAspect _navigationAspect;
 
         public void Init(IProtoSystems systems)
         {

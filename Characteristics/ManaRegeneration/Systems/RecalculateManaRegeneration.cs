@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.ManaRegeneration.Systems
+﻿namespace UniGame.Ecs.Proto.Characteristics.ManaRegeneration.Systems
 {
 	using Base.Components;
 	using Components;

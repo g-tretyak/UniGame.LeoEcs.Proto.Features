@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Cooldown
+﻿namespace UniGame.Ecs.Proto.Characteristics.Cooldown
 {
     using System;
     using Systems;

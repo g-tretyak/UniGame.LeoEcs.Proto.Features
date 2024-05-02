@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.FreezingTimeAction.Components
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.FreezingTimeAction.Components
 {
 	using System;
 

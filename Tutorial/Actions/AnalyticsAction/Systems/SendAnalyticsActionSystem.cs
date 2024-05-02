@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.AnalyticsAction.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.AnalyticsAction.Systems
 {
 	using System;
 	using System.Collections.Generic;

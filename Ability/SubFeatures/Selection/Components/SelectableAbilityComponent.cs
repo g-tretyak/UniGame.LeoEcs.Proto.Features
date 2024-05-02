@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Selection.Components
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Selection.Components
 {
     /// <summary>
     /// Умение может выбирать сущности вокруг себя.

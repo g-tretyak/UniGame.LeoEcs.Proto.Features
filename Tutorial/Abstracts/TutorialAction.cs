@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Abstracts
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Abstracts
 {
 	using System;
 	using Components;

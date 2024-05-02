@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.FreezingTime
+﻿namespace UniGame.Ecs.Proto.Gameplay.FreezingTime
 {
 	using Components;
 	using Cysharp.Threading.Tasks;

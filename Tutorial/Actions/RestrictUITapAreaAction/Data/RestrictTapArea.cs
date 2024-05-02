@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.RestrictUITapAreaAction.Data
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.RestrictUITapAreaAction.Data
 {
 	using System;
 	using System.Collections.Generic;

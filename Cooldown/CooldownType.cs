@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Cooldown
+﻿namespace UniGame.Ecs.Proto.Cooldown
 {
     public enum CooldownType : byte
     {

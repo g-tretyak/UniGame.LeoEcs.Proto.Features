@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.AI.Tools
+namespace UniGame.Ecs.Proto.AI.Tools
 {
     using Components;
     using Leopotam.EcsProto;

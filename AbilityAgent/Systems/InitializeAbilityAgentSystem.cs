@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.AbilityAgent.Systems
+﻿namespace UniGame.Ecs.Proto.AbilityAgent.Systems
 {
     using System;
     using Aspects;

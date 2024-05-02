@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.AbilityAgent
+﻿namespace UniGame.Ecs.Proto.AbilityAgent
 {
     using Cysharp.Threading.Tasks;
     using Leopotam.EcsProto;

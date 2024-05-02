@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.AbilityPower.Converters
+﻿namespace UniGame.Ecs.Proto.Characteristics.AbilityPower.Converters
 {
 	using System;
 	using Base.Components.Requests;

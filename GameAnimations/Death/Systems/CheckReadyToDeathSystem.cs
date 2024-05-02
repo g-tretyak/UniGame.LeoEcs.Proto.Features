@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Death.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.Death.Systems
 {
     using System;
     using Game.Ecs.Characteristics.Health.Components;

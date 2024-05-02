@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Map.Systems
+﻿namespace UniGame.Ecs.Proto.Map.Systems
 {
     using Camera.Components;
     using Component;

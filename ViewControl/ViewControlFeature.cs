@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.ViewControl
+﻿namespace UniGame.Ecs.Proto.ViewControl
 {
     using Systems;
     using Components;

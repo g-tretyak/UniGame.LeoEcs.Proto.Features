@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial
 {
 	using System.Collections.Generic;
 	using Abstracts;

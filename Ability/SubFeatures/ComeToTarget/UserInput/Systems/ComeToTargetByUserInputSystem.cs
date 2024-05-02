@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.ComeToTarget.UserInput.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.ComeToTarget.UserInput.Systems
 {
     using Common.Components;
     using Components;

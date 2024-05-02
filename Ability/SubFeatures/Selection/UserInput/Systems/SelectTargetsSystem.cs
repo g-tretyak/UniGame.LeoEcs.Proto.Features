@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Selection.UserInput.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Selection.UserInput.Systems
 {
     using System;
     using Characteristics.Radius.Component;
@@ -12,7 +12,7 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using proto.Selection;
+    using Proto.Selection;
     using TargetSelection;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;

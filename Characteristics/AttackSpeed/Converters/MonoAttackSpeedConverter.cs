@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Characteristics.AttackSpeed.Converters
+namespace UniGame.Ecs.Proto.Characteristics.AttackSpeed.Converters
 {
     using UniGame.LeoEcs.Converter.Runtime.Converters;
 

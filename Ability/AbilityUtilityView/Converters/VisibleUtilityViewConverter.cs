@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Converters
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Converters
 {
     using System;
     using Components;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Converters
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Converters
 {
     using Components;
     using Leopotam.EcsProto;

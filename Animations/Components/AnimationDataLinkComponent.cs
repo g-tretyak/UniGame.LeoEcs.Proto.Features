@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Core.Components
+﻿namespace UniGame.Ecs.Proto.Core.Components
 {
     using System;
     using Game.Code.Animations;

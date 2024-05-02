@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Area.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Area.Systems
 {
     using System;
     using Aspects;
@@ -11,7 +11,7 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using proto.Selection;
+    using Proto.Selection;
     using Target.Components;
     using TargetSelection;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Self.Behaviours
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Self.Behaviours
 {
     using System;
     using Ability.UserInput.Components;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ShakeEffect.Converters
+﻿namespace UniGame.Ecs.Proto.GameEffects.ShakeEffect.Converters
 {
     using System;
     using Components;

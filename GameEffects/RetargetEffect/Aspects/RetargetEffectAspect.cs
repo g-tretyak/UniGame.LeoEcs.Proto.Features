@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.RetargetEffect.Aspects
+﻿namespace UniGame.Ecs.Proto.GameEffects.RetargetEffect.Aspects
 {
 	using System;
 	using Ability.SubFeatures.Target.Components;

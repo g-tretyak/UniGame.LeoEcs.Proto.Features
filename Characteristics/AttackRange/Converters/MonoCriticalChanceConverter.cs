@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Characteristics.CriticalChance.Converters
+namespace UniGame.Ecs.Proto.Characteristics.CriticalChance.Converters
 {
     using UniGame.LeoEcs.Converter.Runtime.Converters;
 

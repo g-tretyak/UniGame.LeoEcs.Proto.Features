@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Movement.Systems.Transform
+﻿namespace UniGame.Ecs.Proto.Movement.Systems.Transform
 {
     using System;
     using Aspect;
@@ -25,7 +25,7 @@
         private EcsFilter _filter;
         private ProtoWorld _world;
 
-        private NavigationAspect _navigationAspect;
+        private NavMeshAspect _navigationAspect;
         
         public void Init(IProtoSystems systems)
         {

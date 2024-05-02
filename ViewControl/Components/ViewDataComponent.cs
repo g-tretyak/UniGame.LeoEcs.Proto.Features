@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.ViewControl.Components
+﻿namespace UniGame.Ecs.Proto.ViewControl.Components
 {
     using System.Collections.Generic;
     using Leopotam.EcsProto;

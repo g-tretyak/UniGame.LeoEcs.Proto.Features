@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Animations.Components.Requests
+﻿namespace UniGame.Ecs.Proto.Animations.Components.Requests
 {
     using System;
     using Game.Code.Animations;

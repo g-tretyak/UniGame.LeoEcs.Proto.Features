@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Death.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.Death.Systems
 {
     using System;
     using Animations.Aspects;
@@ -6,7 +6,7 @@
     using Game.Ecs.Core.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Core.Death.Components;
+    using UniGame.Ecs.Proto.Core.Death.Components;
      
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;

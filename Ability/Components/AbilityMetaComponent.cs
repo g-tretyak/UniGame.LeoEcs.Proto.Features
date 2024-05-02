@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.AbilityInventory.Components
+﻿namespace UniGame.Ecs.Proto.AbilityInventory.Components
 {
 	using System;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;

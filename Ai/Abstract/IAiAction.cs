@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.AI.Abstract
+﻿namespace UniGame.Ecs.Proto.AI.Abstract
 {
     using Leopotam.EcsProto;
     using Service;

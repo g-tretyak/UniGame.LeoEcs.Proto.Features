@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.OpenWindowAction.Components
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.OpenWindowAction.Components
 {
 	using System;
 	using UniGame.UiSystem.Runtime.Settings;

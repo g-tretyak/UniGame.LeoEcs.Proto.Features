@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.AbilityInventory.Systems
+﻿namespace UniGame.Ecs.Proto.AbilityInventory.Systems
 {
 	using Aspects;
 	using Components;

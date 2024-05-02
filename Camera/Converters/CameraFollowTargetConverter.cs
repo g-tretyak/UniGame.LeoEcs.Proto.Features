@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Camera.Converters
+﻿namespace UniGame.Ecs.Proto.Camera.Converters
 {
     using System;
     using System.Threading;

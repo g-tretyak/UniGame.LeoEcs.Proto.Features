@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameAi.MoveToTarget.Data
+﻿namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Data
 {
     using System.Collections.Generic;
     using Game.Code.Configuration.Runtime.Effects.Abstract;

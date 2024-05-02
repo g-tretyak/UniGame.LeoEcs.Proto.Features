@@ -1,10 +1,10 @@
-﻿namespace unigame.ecs.proto.Gameplay.CriticalAttackChance.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.CriticalAttackChance.Systems
 {
     using System;
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Characteristics.CriticalChance.Components;
+    using UniGame.Ecs.Proto.Characteristics.CriticalChance.Components;
      
     using Requests;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;

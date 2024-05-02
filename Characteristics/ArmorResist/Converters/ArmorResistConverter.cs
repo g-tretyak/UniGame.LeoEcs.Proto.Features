@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.ArmorResist.Converters
+﻿namespace UniGame.Ecs.Proto.Characteristics.ArmorResist.Converters
 {
 	using System;
 	using System.Threading;

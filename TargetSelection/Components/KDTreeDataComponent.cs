@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.TargetSelection.Components
+﻿namespace UniGame.Ecs.Proto.TargetSelection.Components
 {
     using System;
     using Leopotam.EcsProto;

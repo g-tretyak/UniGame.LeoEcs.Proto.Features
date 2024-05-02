@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.Common.Components
+﻿namespace UniGame.Ecs.Proto.Ability.Common.Components
 {
     /// <summary>
     /// Запрос "положить" в руку умение из конкретной ячейки.

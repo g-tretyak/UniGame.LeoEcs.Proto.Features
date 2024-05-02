@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ShieldEffect.Systems
+﻿namespace UniGame.Ecs.Proto.GameEffects.ShieldEffect.Systems
 {
     using Characteristics.Shield.Components;
     using Components;

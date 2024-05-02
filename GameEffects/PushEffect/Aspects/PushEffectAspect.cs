@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.PushEffect.Aspects
+﻿namespace UniGame.Ecs.Proto.GameEffects.PushEffect.Aspects
 {
 	using System;
 	using Ability.SubFeatures.Target.Components;

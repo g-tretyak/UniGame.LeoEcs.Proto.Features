@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.ComeToTarget
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.ComeToTarget
 {
     using System;
     using Cysharp.Threading.Tasks;

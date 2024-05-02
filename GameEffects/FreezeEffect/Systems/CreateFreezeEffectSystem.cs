@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.FreezeEffect.Systems
+﻿namespace UniGame.Ecs.Proto.GameEffects.FreezeEffect.Systems
 {
     using Components;
     using Effects.Components;

@@ -1,11 +1,11 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Self.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Self.Systems
 {
     using Common.Components;
     using Game.Ecs.Core.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
-    using proto.Effects;
-    using proto.Effects.Components;
+    using Proto.Effects;
+    using Proto.Effects.Components;
     using UniGame.LeoEcs.Shared.Extensions;
 
 #if ENABLE_IL2CPP

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.AI.Components
+﻿namespace UniGame.Ecs.Proto.AI.Components
 {
     using System;
 

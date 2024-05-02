@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.LevitationEffect.Components
+﻿namespace UniGame.Ecs.Proto.GameEffects.LevitationEffect.Components
 {
 	using UnityEngine;
 

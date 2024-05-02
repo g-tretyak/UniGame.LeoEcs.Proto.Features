@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.SplashDamage.Components
+﻿namespace UniGame.Ecs.Proto.Characteristics.SplashDamage.Components
 {
 	using System;
 

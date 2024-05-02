@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Radius.Converters
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Radius.Converters
 {
     using System;
     using Component;

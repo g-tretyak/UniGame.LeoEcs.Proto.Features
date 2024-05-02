@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.ChampionHealingFeature.Converters
+﻿namespace UniGame.Ecs.Proto.Gameplay.ChampionHealingFeature.Converters
 {
     using System;
     using System.Collections.Generic;

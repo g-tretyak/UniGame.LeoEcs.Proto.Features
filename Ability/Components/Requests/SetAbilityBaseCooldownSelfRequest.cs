@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.Components.Requests
+﻿namespace UniGame.Ecs.Proto.Ability.Components.Requests
 {
     using System;
 

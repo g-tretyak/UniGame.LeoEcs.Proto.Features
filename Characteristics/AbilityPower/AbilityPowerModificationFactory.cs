@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.AbilityPower
+﻿namespace UniGame.Ecs.Proto.Characteristics.AbilityPower
 {
     using System;
     using Base.Modification;

@@ -1,6 +1,6 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Triggers.DistanceTrigger.Aspects
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Triggers.DistanceTrigger.Aspects
 {
-	using unigame.ecs.proto.Gameplay.Tutorial.Components;
+	using UniGame.Ecs.Proto.Gameplay.Tutorial.Components;
 	using Components;
 	using Game.Ecs.Core.Components;
 	using Leopotam.EcsProto;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilityAnimation.Components
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilityAnimation.Components
 {
     using System;
     using Leopotam.EcsProto.QoL;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.AbilityAgent.Aspects
+﻿namespace UniGame.Ecs.Proto.AbilityAgent.Aspects
 {
     using System;
     using Ability.Common.Components;

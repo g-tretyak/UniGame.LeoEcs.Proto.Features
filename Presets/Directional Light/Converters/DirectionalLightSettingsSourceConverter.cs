@@ -1,10 +1,10 @@
-﻿namespace unigame.ecs.proto.Presets.Directional_Light.Converters
+﻿namespace UniGame.Ecs.Proto.Presets.Directional_Light.Converters
 {
     using Assets;
     using System;
     using Abstract;
-    using unigame.ecs.proto.Presets.Components;
-    using unigame.ecs.proto.Presets.Converters;
+    using UniGame.Ecs.Proto.Presets.Components;
+    using UniGame.Ecs.Proto.Presets.Converters;
     using Components;
     using Leopotam.EcsProto;
     using Sirenix.OdinInspector;

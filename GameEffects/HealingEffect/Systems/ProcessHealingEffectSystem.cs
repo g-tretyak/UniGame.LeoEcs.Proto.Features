@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.HealingEffect.Systems
+﻿namespace UniGame.Ecs.Proto.GameEffects.HealingEffect.Systems
 {
     using Characteristics.Base.Components.Requests.OwnerRequests;
     using Characteristics.Health.Components;

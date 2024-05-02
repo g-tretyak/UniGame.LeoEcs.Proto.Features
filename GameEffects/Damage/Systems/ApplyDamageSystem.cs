@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Damage.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.Damage.Systems
 {
     using System;
     using Components;
@@ -7,9 +7,9 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using unigame.ecs.proto.Characteristics.Base.Components.Requests.OwnerRequests;
-    using unigame.ecs.proto.Characteristics.Health.Components;
-    using unigame.ecs.proto.Characteristics.Shield.Components;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components.Requests.OwnerRequests;
+    using UniGame.Ecs.Proto.Characteristics.Health.Components;
+    using UniGame.Ecs.Proto.Characteristics.Shield.Components;
      
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;

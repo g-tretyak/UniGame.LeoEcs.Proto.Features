@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Ability
+namespace UniGame.Ecs.Proto.Ability
 {
     using UniGame.LeoEcs.Bootstrap.Runtime;
     using UnityEngine;

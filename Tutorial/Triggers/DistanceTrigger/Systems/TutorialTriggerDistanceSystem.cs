@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Triggers.DistanceTrigger.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Triggers.DistanceTrigger.Systems
 {
 	using System;
 	using Aspects;

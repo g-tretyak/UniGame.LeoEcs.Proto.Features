@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.OpenWindowAction.Aspects
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.OpenWindowAction.Aspects
 {
 	using Components;
 	using Leopotam.EcsProto;

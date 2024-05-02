@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.AttackSpeed.Components
+﻿namespace UniGame.Ecs.Proto.Characteristics.AttackSpeed.Components
 {
     using System;
 #if ENABLE_IL2CPP

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.ComeToTarget.Behaviours
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.ComeToTarget.Behaviours
 {
     using System;
     using ComeToTarget.Components;

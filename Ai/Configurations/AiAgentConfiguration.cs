@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.AI.Configurations
+﻿namespace UniGame.Ecs.Proto.AI.Configurations
 {
     using System;
     using System.Collections.Generic;

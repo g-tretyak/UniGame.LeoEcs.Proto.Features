@@ -3,13 +3,13 @@
     using System;
     using Ecs.Core.Components;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Ability.Common.Components;
-    using unigame.ecs.proto.Characteristics.Radius.Component;
-    using unigame.ecs.proto.GameAi.ActivateAbility;
-    using unigame.ecs.proto.GameAi.ActivateAbility.Components;
-    using unigame.ecs.proto.GameLayers.Category.Components;
-    using unigame.ecs.proto.GameLayers.Layer.Components;
-    using unigame.ecs.proto.GameLayers.Relationship.Components;
+    using UniGame.Ecs.Proto.Ability.Common.Components;
+    using UniGame.Ecs.Proto.Characteristics.Radius.Component;
+    using UniGame.Ecs.Proto.GameAi.ActivateAbility;
+    using UniGame.Ecs.Proto.GameAi.ActivateAbility.Components;
+    using UniGame.Ecs.Proto.GameLayers.Category.Components;
+    using UniGame.Ecs.Proto.GameLayers.Layer.Components;
+    using UniGame.Ecs.Proto.GameLayers.Relationship.Components;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 

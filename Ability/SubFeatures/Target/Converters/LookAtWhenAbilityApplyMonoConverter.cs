@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Converters
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Target.Converters
 {
     using Components;
     using Leopotam.EcsProto;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameResources.Systems
+﻿namespace UniGame.Ecs.Proto.GameResources.Systems
 {
     using System;
     using System.Runtime.CompilerServices;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Triggers.ActionTrigger.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Triggers.ActionTrigger.Systems
 {
 	using System;
 	using Aspects;

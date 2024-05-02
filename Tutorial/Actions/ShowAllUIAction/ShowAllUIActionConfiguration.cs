@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.ShowAllUIAction
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.ShowAllUIAction
 {
 	using Abstracts;
 	using Components;

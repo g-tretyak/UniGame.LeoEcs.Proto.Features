@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.JumpForwardEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.JumpForwardEffect
 {
     using Component;
     using Cysharp.Threading.Tasks;

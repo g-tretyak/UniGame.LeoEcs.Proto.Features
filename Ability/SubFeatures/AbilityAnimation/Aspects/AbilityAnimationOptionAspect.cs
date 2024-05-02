@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilityAnimation.Aspects
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilityAnimation.Aspects
 {
     using System;
     using Components;

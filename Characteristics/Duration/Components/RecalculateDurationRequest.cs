@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Duration.Components
+﻿namespace UniGame.Ecs.Proto.Characteristics.Duration.Components
 {
     public struct RecalculateDurationRequest
     {

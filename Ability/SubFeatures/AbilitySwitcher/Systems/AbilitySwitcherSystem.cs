@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySwitcher.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySwitcher.Systems
 {
 	using System;
 	using Aspects;

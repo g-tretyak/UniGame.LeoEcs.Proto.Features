@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.CriticalMultiplier.Components
+﻿namespace UniGame.Ecs.Proto.Characteristics.CriticalMultiplier.Components
 {
     using System;
 #if ENABLE_IL2CPP

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.ArmorResist.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.ArmorResist.Systems
 {
 	using System;
 	using System.Linq;

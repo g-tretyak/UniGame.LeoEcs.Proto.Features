@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Target.Systems
 {
     using System;
     using Aspects;

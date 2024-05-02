@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
+namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Systems
 {
     using System;
     using AI.Components;

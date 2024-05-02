@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameAi.ActivateAbility.Components
+﻿namespace UniGame.Ecs.Proto.GameAi.ActivateAbility.Components
 {
     using System;
     using Leopotam.EcsProto;

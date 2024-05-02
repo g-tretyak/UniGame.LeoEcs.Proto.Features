@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.Components
+﻿namespace UniGame.Ecs.Proto.Ability.Components
 {
     using System;
 #if ENABLE_IL2CPP

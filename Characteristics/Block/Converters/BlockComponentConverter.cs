@@ -1,10 +1,10 @@
-namespace unigame.ecs.proto.Characteristics.Block.Converters
+namespace UniGame.Ecs.Proto.Characteristics.Block.Converters
 {
     using System;
     using System.Threading;
     using Components;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Characteristics.Base.Components.Requests;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components.Requests;
      
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime;

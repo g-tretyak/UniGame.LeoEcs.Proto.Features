@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Radius.Systems
+﻿namespace UniGame.Ecs.Proto.Characteristics.Radius.Systems
 {
     using Base.Components;
     using Component;

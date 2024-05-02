@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Movement.Components
+﻿namespace UniGame.Ecs.Proto.Movement.Components
 {
     using UnityEngine.AI;
 

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Movement.Systems.NavMesh
+﻿namespace UniGame.Ecs.Proto.Movement.Systems.NavMesh
 {
     using System;
     using Aspect;
@@ -25,7 +25,7 @@
         
         private ProtoWorld _world;
 
-        private NavigationAspect _navigationAspect;
+        private NavMeshAspect _navigationAspect;
 
         public void Init(IProtoSystems systems)
         {

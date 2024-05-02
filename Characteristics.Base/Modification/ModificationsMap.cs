@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Base.Modification
+﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Modification
 {
     using System;
     using System.Collections.Generic;

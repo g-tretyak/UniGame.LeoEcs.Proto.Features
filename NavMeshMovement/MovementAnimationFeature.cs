@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Movement
+﻿namespace UniGame.Ecs.Proto.Movement
 {
     using Systems.NavMesh.Animation;
     using Cysharp.Threading.Tasks;

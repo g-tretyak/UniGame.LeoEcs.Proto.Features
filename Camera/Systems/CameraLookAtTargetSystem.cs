@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Camera.Systems
+﻿namespace UniGame.Ecs.Proto.Camera.Systems
 {
     using Components;
     using JetBrains.Annotations;

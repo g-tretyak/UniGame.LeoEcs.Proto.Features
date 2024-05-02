@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.JumpForwardEffect.Systems
+﻿namespace UniGame.Ecs.Proto.GameEffects.JumpForwardEffect.Systems
 {
     using System;
     using Component;

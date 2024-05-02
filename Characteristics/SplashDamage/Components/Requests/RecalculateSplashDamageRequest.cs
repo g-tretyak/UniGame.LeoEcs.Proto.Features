@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.SplashDamage.Components.Requests
+﻿namespace UniGame.Ecs.Proto.Characteristics.SplashDamage.Components.Requests
 {
 	/// <summary>
 	/// Recalculate Splash Damage value.

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Components
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Target.Components
 {
     /// <summary>
     /// Умение может выбирать цели для применения умения.

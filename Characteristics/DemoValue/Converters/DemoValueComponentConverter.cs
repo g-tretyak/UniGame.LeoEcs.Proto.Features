@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Characteristics.DemoValue.Converters
+namespace UniGame.Ecs.Proto.Characteristics.DemoValue.Converters
 {
     using System;
     using Leopotam.EcsProto;

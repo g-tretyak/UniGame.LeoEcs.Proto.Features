@@ -1,8 +1,8 @@
-namespace unigame.ecs.proto.Presets
+namespace UniGame.Ecs.Proto.Presets
 {
-    using unigame.ecs.proto.Presets.Directional_Light.Systems;
-    using unigame.ecs.proto.Presets.FogShaderSettings.Systems;
-    using unigame.ecs.proto.Presets.SpotLightSettings.Systems;
+    using UniGame.Ecs.Proto.Presets.Directional_Light.Systems;
+    using UniGame.Ecs.Proto.Presets.FogShaderSettings.Systems;
+    using UniGame.Ecs.Proto.Presets.SpotLightSettings.Systems;
     using Cysharp.Threading.Tasks;
     using Leopotam.EcsProto;
     using Systems;

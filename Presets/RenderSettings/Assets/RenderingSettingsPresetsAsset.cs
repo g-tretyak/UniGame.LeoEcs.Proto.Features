@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Presets.Assets
+﻿namespace UniGame.Ecs.Proto.Presets.Assets
 {
     using Sirenix.OdinInspector;
     using UnityEngine;

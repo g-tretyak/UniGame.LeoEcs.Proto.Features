@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Effects.Data
+﻿namespace UniGame.Ecs.Proto.Effects.Data
 {
     using System;
     using Sirenix.OdinInspector;

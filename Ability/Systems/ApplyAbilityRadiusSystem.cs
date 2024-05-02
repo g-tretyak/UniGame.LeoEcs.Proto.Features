@@ -1,10 +1,10 @@
-﻿namespace unigame.ecs.proto.Ability.Common.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.Common.Systems
 {
     using Aspects;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using unigame.ecs.proto.Characteristics.Attack.Components;
+    using UniGame.Ecs.Proto.Characteristics.Attack.Components;
      
     using Tools;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;

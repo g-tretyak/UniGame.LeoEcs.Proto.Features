@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.CriticalAnimations.Abstract
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.CriticalAnimations.Abstract
 {
     using Leopotam.EcsProto;
 

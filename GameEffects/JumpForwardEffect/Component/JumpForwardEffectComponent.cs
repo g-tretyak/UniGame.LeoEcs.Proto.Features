@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.JumpForwardEffect.Component
+﻿namespace UniGame.Ecs.Proto.GameEffects.JumpForwardEffect.Component
 {
     /// <summary>
     /// Data for jump forward effect

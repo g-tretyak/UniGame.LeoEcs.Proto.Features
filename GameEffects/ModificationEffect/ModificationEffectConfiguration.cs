@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ModificationEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.ModificationEffect
 {
     using System;
     using System.Collections.Generic;

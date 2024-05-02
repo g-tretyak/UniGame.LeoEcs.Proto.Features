@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.DemoValue.Converters
+﻿namespace UniGame.Ecs.Proto.Characteristics.DemoValue.Converters
 {
     using System;
     using System.Collections.Generic;
@@ -6,9 +6,9 @@
     using Components;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using unigame.ecs.proto.Characteristics.Base.Components;
-    using unigame.ecs.proto.Characteristics.Base.Components.Requests;
-    using unigame.ecs.proto.Characteristics.Base.Components.Requests.OwnerRequests;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components.Requests;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components.Requests.OwnerRequests;
      
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime.Converters;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Area.Components
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Area.Components
 {
     using UnityEngine;
 

@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.GameAi.ActivateAbility
+namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
 {
     using System;
     using Ability.Common.Components;

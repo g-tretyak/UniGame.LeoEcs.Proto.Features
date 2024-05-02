@@ -1,9 +1,9 @@
-namespace unigame.ecs.proto.Characteristics.CriticalChance.Converters
+namespace UniGame.Ecs.Proto.Characteristics.CriticalChance.Converters
 {
     using System;
     using Components;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Characteristics.Base.Components.Requests;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components.Requests;
      
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;

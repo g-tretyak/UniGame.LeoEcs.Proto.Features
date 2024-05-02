@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Triggers.StepTrigger.Components
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Triggers.StepTrigger.Components
 {
 	using System;
 	using ActionTools;

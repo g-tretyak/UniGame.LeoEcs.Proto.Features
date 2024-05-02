@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Presets.Directional_Light.Components
+﻿namespace UniGame.Ecs.Proto.Presets.Directional_Light.Components
 {
     using Assets;
     using System;

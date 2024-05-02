@@ -1,8 +1,8 @@
-﻿namespace unigame.ecs.proto.Characteristics.AttackSpeed
+﻿namespace UniGame.Ecs.Proto.Characteristics.AttackSpeed
 {
     using System;
     using Components;
-    using unigame.ecs.proto.Characteristics.Base;
+    using UniGame.Ecs.Proto.Characteristics.Base;
 
     [Serializable]
     public sealed class AttackSpeedModificationHandler :

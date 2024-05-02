@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Speed.Components
+﻿namespace UniGame.Ecs.Proto.Characteristics.Speed.Components
 {
     using System;
 

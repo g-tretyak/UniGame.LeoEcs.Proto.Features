@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Dodge.Systems
+﻿namespace UniGame.Ecs.Proto.Characteristics.Dodge.Systems
 {
     using System;
     using Base.Components;

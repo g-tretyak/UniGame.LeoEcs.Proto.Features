@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ImmobilityEffect.Systems
+﻿namespace UniGame.Ecs.Proto.GameEffects.ImmobilityEffect.Systems
 {
     using Components;
     using Effects.Components;

@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Gameplay.LevelProgress
+namespace UniGame.Ecs.Proto.Gameplay.LevelProgress
 {
     using Components;
     using Cysharp.Threading.Tasks;

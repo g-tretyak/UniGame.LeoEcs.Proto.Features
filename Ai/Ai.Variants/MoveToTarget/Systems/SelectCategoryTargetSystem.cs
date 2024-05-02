@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
+namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Systems
 {
     using System;
     using Ability.Tools;
@@ -11,7 +11,7 @@ namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
     using Leopotam.EcsProto;
     using Selection;
     using TargetSelection;
-    using unigame.ecs.proto.GameLayers.Layer.Components;
+    using UniGame.Ecs.Proto.GameLayers.Layer.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;

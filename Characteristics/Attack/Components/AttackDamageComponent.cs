@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Attack.Components
+﻿namespace UniGame.Ecs.Proto.Characteristics.Attack.Components
 {
     using System;
 

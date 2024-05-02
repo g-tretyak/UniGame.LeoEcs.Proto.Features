@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Self
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Self
 {
     using System;
     using Cysharp.Threading.Tasks;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySwitcher.Switchers.UsageCounterForAbilitySwitcher.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySwitcher.Switchers.UsageCounterForAbilitySwitcher.Systems
 {
 	using System;
 	using AbilitySwitcher.Components;
@@ -7,7 +7,7 @@
 	using Leopotam.EcsLite;
 	using Leopotam.EcsProto;
 	using Leopotam.EcsProto.QoL;
-	using unigame.ecs.proto.Ability.Common.Components;
+	using UniGame.Ecs.Proto.Ability.Common.Components;
 	 
 	using Tools;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;

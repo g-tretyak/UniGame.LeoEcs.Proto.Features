@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.AbilityPower.Components.Requests
+﻿namespace UniGame.Ecs.Proto.Characteristics.AbilityPower.Components.Requests
 {
 	/// <summary>
 	/// Recalculate Ability Power value.

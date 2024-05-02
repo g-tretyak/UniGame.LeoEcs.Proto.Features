@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Base.Components.Events
+﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Components.Events
 {
     using System;
     using Leopotam.EcsProto.QoL;

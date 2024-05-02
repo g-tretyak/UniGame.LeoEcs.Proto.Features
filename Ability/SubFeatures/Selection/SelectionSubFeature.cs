@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Selection
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Selection
 {
     using System;
     using Cysharp.Threading.Tasks;

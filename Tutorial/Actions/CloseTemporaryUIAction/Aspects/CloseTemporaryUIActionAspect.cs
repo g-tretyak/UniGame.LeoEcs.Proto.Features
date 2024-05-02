@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.CloseTemporaryUIAction.Aspects
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.CloseTemporaryUIAction.Aspects
 {
 	using System;
 	using Components;

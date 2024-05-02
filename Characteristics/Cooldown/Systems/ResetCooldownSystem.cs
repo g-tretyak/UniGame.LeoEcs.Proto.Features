@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Cooldown.Systems
+﻿namespace UniGame.Ecs.Proto.Characteristics.Cooldown.Systems
 {
     using System;
     using Base.Components.Events;

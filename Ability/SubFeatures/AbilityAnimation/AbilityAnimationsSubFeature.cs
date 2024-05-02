@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilityAnimation
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilityAnimation
 {
     using System;
     using Cysharp.Threading.Tasks;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Area.Components
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Area.Components
 {
     using UnityEngine;
 

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.RetargetEffect.Systems
+﻿namespace UniGame.Ecs.Proto.GameEffects.RetargetEffect.Systems
 {
 	using System;
 	using System.Linq;

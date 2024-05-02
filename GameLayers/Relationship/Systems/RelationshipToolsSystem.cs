@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameLayers.Relationship.Systems
+﻿namespace UniGame.Ecs.Proto.GameLayers.Relationship.Systems
 {
     using System;
     using Game.Code.GameLayers.Layer;

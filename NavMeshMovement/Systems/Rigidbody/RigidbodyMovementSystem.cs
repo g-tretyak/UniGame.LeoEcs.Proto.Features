@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Movement.Systems.Rigidbody
+﻿namespace UniGame.Ecs.Proto.Movement.Systems.Rigidbody
 {
     using Characteristics.Speed.Components;
     using Game.Ecs.Core.Components;

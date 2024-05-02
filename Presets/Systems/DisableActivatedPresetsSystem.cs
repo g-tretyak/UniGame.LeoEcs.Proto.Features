@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Presets.Systems
+﻿namespace UniGame.Ecs.Proto.Presets.Systems
 {
     using System;
     using Components;

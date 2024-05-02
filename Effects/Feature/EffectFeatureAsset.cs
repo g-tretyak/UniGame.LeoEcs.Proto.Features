@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Effects.Feature
+﻿namespace UniGame.Ecs.Proto.Effects.Feature
 {
     using UniGame.LeoEcs.Bootstrap.Runtime;
 

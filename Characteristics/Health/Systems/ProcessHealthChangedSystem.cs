@@ -1,9 +1,9 @@
-﻿namespace unigame.ecs.proto.Characteristics.Health.Systems
+﻿namespace UniGame.Ecs.Proto.Characteristics.Health.Systems
 {
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Characteristics.Base.Components;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components;
     using UniGame.LeoEcs.Shared.Extensions;
 
 

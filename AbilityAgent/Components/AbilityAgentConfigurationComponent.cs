@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.AbilityAgent.Components
+﻿namespace UniGame.Ecs.Proto.AbilityAgent.Components
 {
     using System;
     using UniGame.LeoEcs.Converter.Runtime;

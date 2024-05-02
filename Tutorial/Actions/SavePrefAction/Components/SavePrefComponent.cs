@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.SavePrefAction.Components
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.SavePrefAction.Components
 {
 	using System;
 	using ActionTools;

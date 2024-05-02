@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Radius.AggressiveRadius.Converters
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Radius.AggressiveRadius.Converters
 {
     using Components;
     using Game.Code.GameLayers.Category;

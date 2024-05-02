@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySwitcher.Switchers.TimerForAbilitySwitcher
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySwitcher.Switchers.TimerForAbilitySwitcher
 {
 	using System;
 	using Abstracts;

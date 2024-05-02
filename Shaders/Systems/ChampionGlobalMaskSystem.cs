@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Shaders.Systems
+﻿namespace UniGame.Ecs.Proto.Shaders.Systems
 {
 	using System;
 	using Components;

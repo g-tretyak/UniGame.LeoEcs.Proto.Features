@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ShieldEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.ShieldEffect
 {
     using Systems;
     using Cysharp.Threading.Tasks;

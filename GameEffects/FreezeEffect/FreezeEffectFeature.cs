@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.FreezeEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.FreezeEffect
 {
     using Components;
     using Cysharp.Threading.Tasks;

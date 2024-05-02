@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Shaders.Components
+﻿namespace UniGame.Ecs.Proto.Shaders.Components
 {
 	using System.Collections.Generic;
 	using Leopotam.EcsProto;

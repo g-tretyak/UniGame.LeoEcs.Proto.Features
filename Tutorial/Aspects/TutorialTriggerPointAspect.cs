@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Aspects
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Aspects
 {
 	using System;
 	using Components;

@@ -1,9 +1,9 @@
-namespace unigame.ecs.proto.Characteristics.CriticalMultiplier.Converters
+namespace UniGame.Ecs.Proto.Characteristics.CriticalMultiplier.Converters
 {
     using System;
     using Components;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Characteristics.Base.Components.Requests;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components.Requests;
      
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;

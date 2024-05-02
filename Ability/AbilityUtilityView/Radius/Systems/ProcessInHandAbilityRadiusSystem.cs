@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Radius.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Radius.Systems
 {
     using Characteristics.Radius.Component;
     using Common.Components;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Abstract
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Target.Abstract
 {
 	using Leopotam.EcsProto;
 

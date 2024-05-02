@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Area
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Area
 {
     using System;
     using Cysharp.Threading.Tasks;

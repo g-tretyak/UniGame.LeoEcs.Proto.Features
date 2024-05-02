@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Input.Components.Ability
+﻿namespace UniGame.Ecs.Proto.Input.Components.Ability
 {
     using UnityEngine;
 

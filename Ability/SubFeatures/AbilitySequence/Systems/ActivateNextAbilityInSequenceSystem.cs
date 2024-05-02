@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySequence.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySequence.Systems
 {
     using System;
     using Aspects;
@@ -7,7 +7,7 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using unigame.ecs.proto.Ability.Tools;
+    using UniGame.Ecs.Proto.Ability.Tools;
      
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;

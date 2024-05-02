@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Highlights.Components
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Highlights.Components
 {
     using System.Collections.Generic;
     using Leopotam.EcsProto;

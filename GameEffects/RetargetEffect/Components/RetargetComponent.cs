@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.RetargetEffect.Components
+﻿namespace UniGame.Ecs.Proto.GameEffects.RetargetEffect.Components
 {
 	using System;
 	using UnityEngine.Serialization;

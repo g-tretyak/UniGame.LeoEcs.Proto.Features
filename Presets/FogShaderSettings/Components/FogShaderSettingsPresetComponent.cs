@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Presets.FogShaderSettings.Components
+﻿namespace UniGame.Ecs.Proto.Presets.FogShaderSettings.Components
 {
     using Assets;
     using System;

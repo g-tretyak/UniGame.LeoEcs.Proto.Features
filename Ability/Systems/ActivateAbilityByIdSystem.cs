@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.Systems
 {
     using System;
     using Common.Components;

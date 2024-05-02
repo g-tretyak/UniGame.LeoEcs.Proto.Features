@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Base.Components
+﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Components
 {
     using System;
 #if ENABLE_IL2CPP

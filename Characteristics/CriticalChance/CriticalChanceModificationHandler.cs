@@ -1,8 +1,8 @@
-﻿namespace unigame.ecs.proto.Characteristics.CriticalChance
+﻿namespace UniGame.Ecs.Proto.Characteristics.CriticalChance
 {
     using System;
     using Components;
-    using unigame.ecs.proto.Characteristics.Base;
+    using UniGame.Ecs.Proto.Characteristics.Base;
 
     [Serializable]
     public sealed class CriticalChanceModificationHandler :

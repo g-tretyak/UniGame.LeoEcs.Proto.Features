@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Ability.Tools
+namespace UniGame.Ecs.Proto.Ability.Tools
 {
     using System;
     using System.Runtime.CompilerServices;

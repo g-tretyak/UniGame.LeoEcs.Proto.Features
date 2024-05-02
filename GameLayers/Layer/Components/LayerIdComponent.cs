@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.GameLayers.Layer.Components
+namespace UniGame.Ecs.Proto.GameLayers.Layer.Components
 {
     using Game.Code.GameLayers.Layer;
 

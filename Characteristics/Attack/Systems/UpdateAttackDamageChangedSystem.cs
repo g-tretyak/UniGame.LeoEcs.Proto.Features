@@ -1,10 +1,10 @@
-﻿namespace unigame.ecs.proto.Characteristics.Attack.Systems
+﻿namespace UniGame.Ecs.Proto.Characteristics.Attack.Systems
 {
     using System;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Characteristics.Attack.Components;
-    using unigame.ecs.proto.Characteristics.Base.Components;
+    using UniGame.Ecs.Proto.Characteristics.Attack.Components;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components;
     using UniGame.LeoEcs.Shared.Extensions;
 
 

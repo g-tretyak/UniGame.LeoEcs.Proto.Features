@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Selection.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Selection.Systems
 {
     using System;
     using Common.Components;

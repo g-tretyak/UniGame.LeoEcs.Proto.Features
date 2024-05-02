@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace unigame.ecs.proto.GameEffects.ModificationEffect.Components
+namespace UniGame.Ecs.Proto.GameEffects.ModificationEffect.Components
 {
     using System.Collections.Generic;
     using Characteristics.Base.Modification;

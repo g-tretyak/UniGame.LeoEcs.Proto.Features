@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameResources.Components
+﻿namespace UniGame.Ecs.Proto.GameResources.Components
 {
     using Leopotam.EcsProto.QoL;
 

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Death.Aspects
+﻿namespace UniGame.Ecs.Proto.Gameplay.Death.Aspects
 {
     using System;
     using Core.Death.Components;

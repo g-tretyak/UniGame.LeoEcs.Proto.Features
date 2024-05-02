@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameResources
+﻿namespace UniGame.Ecs.Proto.GameResources
 {
     using Components;
     using Cysharp.Threading.Tasks;

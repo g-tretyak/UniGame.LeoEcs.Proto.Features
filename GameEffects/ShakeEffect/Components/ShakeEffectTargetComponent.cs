@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ShakeEffect.Components
+﻿namespace UniGame.Ecs.Proto.GameEffects.ShakeEffect.Components
 {
     using System;
     using UnityEngine;

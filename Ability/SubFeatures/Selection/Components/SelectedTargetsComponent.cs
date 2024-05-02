@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Selection.Components
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Selection.Components
 {
     using System;
     using System.Runtime.CompilerServices;

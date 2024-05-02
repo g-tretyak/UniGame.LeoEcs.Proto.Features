@@ -1,6 +1,6 @@
 ﻿using UnityEngine.AI;
 
-namespace unigame.ecs.proto.GameEffects.PushEffect.Systems
+namespace UniGame.Ecs.Proto.GameEffects.PushEffect.Systems
 {
 	using System;
 	using System.Collections.Generic;

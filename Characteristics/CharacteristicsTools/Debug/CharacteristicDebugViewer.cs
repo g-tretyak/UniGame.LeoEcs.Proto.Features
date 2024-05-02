@@ -4,8 +4,8 @@
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using Sirenix.OdinInspector;
-    using unigame.ecs.proto.Characteristics.Base.Components;
-    using unigame.ecs.proto.Characteristics.Base.Components.Requests;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components.Requests;
     using UniGame.LeoEcs.Shared.Extensions;
 
     [Serializable]

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Duration
+﻿namespace UniGame.Ecs.Proto.Characteristics.Duration
 {
     using System;
     using Systems;

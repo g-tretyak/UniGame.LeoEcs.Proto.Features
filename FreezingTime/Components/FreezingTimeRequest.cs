@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.FreezingTime.Components
+﻿namespace UniGame.Ecs.Proto.Gameplay.FreezingTime.Components
 {
 	using UnityEngine.Serialization;
 

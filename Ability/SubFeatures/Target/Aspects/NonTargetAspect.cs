@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Aspects
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Target.Aspects
 {
 	using System;
 	using Components;

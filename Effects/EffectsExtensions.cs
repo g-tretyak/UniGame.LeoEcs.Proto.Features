@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Effects
+﻿namespace UniGame.Ecs.Proto.Effects
 {
     using System.Collections.Generic;
     using Components;

@@ -1,11 +1,11 @@
-﻿namespace unigame.ecs.proto.Gameplay.Dodge.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.Dodge.Systems
 {
     using Damage.Components.Request;
     using Events;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using unigame.ecs.proto.Characteristics.Dodge.Components;
+    using UniGame.Ecs.Proto.Characteristics.Dodge.Components;
      
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;

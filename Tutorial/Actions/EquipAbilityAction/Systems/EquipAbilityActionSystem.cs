@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.EquipAbilityAction.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.EquipAbilityAction.Systems
 {
 	using System;
 	using Aspects;

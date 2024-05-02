@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.RetargetEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.RetargetEffect
 {
 	using Cysharp.Threading.Tasks;
 	using Effects.Feature;

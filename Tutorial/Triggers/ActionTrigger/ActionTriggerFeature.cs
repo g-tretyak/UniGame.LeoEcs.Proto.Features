@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Triggers.ActionTrigger
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Triggers.ActionTrigger
 {
 	using Abstracts;
 	using Components;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Shaders
+﻿namespace UniGame.Ecs.Proto.Shaders
 {
 	using Cysharp.Threading.Tasks;
 	using Leopotam.EcsProto;

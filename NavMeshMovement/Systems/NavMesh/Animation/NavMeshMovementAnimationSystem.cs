@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Movement.Systems.NavMesh.Animation
+﻿namespace UniGame.Ecs.Proto.Movement.Systems.NavMesh.Animation
 {
     using System;
     using Characteristics.Speed.Components;

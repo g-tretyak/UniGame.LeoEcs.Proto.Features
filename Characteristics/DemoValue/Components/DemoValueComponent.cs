@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.DemoValue.Components
+﻿namespace UniGame.Ecs.Proto.Characteristics.DemoValue.Components
 {
     using System;
 #if ENABLE_IL2CPP

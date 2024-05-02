@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.CriticalAttackChance.Components
+﻿namespace UniGame.Ecs.Proto.Gameplay.CriticalAttackChance.Components
 {
     using System;
 

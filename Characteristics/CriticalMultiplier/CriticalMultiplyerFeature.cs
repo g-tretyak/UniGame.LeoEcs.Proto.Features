@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.CriticalMultiplier
+﻿namespace UniGame.Ecs.Proto.Characteristics.CriticalMultiplier
 {
     using System;
     using Components;

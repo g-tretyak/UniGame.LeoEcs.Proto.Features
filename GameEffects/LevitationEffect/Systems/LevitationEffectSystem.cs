@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.LevitationEffect.Systems
+﻿namespace UniGame.Ecs.Proto.GameEffects.LevitationEffect.Systems
 {
 	using Aspects;
 	using Components;

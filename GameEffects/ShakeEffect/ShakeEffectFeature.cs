@@ -1,8 +1,8 @@
-﻿namespace unigame.ecs.proto.GameEffects.ShakeEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.ShakeEffect
 {
 	using Components;
 	using Cysharp.Threading.Tasks;
-	using unigame.ecs.proto.Effects.Feature;
+	using UniGame.Ecs.Proto.Effects.Feature;
 	 
 	using Leopotam.EcsLite.ExtendedSystems;
 	using Systems;

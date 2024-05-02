@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.LevitationEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.LevitationEffect
 {
 	using Cysharp.Threading.Tasks;
 	using Effects.Feature;

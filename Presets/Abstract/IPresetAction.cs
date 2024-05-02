@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Presets.Abstract
+﻿namespace UniGame.Ecs.Proto.Presets.Abstract
 {
     public interface IPresetAction
     {

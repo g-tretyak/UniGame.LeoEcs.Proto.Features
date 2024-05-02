@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Damage.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.Damage.Systems
 {
     using Characteristics.Block.Components;
     using Characteristics.Dodge.Components;

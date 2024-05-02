@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Tools.Converters
+﻿namespace UniGame.Ecs.Proto.Tools.Converters
 {
     using Game.Code.Animations;
     using Sirenix.OdinInspector;

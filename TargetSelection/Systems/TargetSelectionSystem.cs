@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Selection
+﻿namespace UniGame.Ecs.Proto.Selection
 {
     using System.Collections.Generic;
     using System.Runtime.CompilerServices;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.Modifications
+﻿namespace UniGame.Ecs.Proto.Ability.Modifications
 {
     using System;
     using Characteristics.Base.Modification;

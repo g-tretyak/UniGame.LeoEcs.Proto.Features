@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Shield.Components
+﻿namespace UniGame.Ecs.Proto.Characteristics.Shield.Components
 {
     public struct ShieldComponent
     {

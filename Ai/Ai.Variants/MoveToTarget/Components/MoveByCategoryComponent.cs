@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameAi.MoveToTarget.Components
+﻿namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Components
 {
     using System;
     using UniGame.LeoEcs.Shared.Abstract;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.LevelProgress.Aspects
+﻿namespace UniGame.Ecs.Proto.Gameplay.LevelProgress.Aspects
 {
     using System;
     using Components;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Components
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Target.Components
 {
     /// <summary>
     /// Статус возможности мгновенно применить эффекты умения.

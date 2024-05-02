@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Characteristics.Block.Converters
+namespace UniGame.Ecs.Proto.Characteristics.Block.Converters
 {
     using UniGame.LeoEcs.Converter.Runtime.Converters;
 

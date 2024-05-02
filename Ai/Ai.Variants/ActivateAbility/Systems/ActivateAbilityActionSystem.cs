@@ -5,10 +5,10 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using unigame.ecs.proto.Ability.SubFeatures.Target.Tools;
-    using unigame.ecs.proto.Ability.Tools;
-    using unigame.ecs.proto.AI.Abstract;
-    using unigame.ecs.proto.AI.Components;
+    using UniGame.Ecs.Proto.Ability.SubFeatures.Target.Tools;
+    using UniGame.Ecs.Proto.Ability.Tools;
+    using UniGame.Ecs.Proto.AI.Abstract;
+    using UniGame.Ecs.Proto.AI.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 

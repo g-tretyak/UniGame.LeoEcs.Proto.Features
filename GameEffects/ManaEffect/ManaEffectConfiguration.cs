@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ManaEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.ManaEffect
 {
 	using System;
 	using Characteristics.Base.Components.Requests.OwnerRequests;

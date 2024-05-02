@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.ComeToTarget.Components
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.ComeToTarget.Components
 {
     /// <summary>
     /// Статус обновления точки "доводки".

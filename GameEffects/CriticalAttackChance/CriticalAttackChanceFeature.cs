@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Gameplay.CriticalAttackChance
+namespace UniGame.Ecs.Proto.Gameplay.CriticalAttackChance
 {
     using Cysharp.Threading.Tasks;
     using Leopotam.EcsProto;

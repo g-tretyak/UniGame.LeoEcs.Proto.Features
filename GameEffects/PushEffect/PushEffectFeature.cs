@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.PushEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.PushEffect
 {
 	using Cysharp.Threading.Tasks;
 	using Effects.Feature;

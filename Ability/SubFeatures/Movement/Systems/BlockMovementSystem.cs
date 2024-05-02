@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Movement.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Movement.Systems
 {
     using System;
     using Common.Components;
@@ -7,7 +7,7 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using proto.Movement.Components;
+    using Proto.Movement.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 

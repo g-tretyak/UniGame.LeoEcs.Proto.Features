@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.TargetSelection.Aspects
+﻿namespace UniGame.Ecs.Proto.TargetSelection.Aspects
 {
     using System;
     using Characteristics.Radius.Component;

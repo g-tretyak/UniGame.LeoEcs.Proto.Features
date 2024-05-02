@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Components
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Components
 {
     public struct VisibleUtilityViewComponent
     {

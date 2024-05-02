@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.AI.Converters
+namespace UniGame.Ecs.Proto.AI.Converters
 {
     using System;
     using Cysharp.Threading.Tasks;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Input.Components
+﻿namespace UniGame.Ecs.Proto.Input.Components
 {
     /// <summary>
     /// Компонент, показывающий, что сущность может управляться через пользовательский input.

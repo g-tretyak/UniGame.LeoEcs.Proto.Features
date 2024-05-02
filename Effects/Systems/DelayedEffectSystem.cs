@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Effects.Systems
+﻿namespace UniGame.Ecs.Proto.Effects.Systems
 {
 	using Aspects;
 	using Components;

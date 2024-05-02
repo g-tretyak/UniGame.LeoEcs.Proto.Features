@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.CloseTemporaryUIAction.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.CloseTemporaryUIAction.Systems
 {
 	using System;
 	using System.Linq;

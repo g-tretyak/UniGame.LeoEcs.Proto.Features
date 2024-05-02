@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Camera.Components
+﻿namespace UniGame.Ecs.Proto.Camera.Components
 {
     using System;
     using UnityEngine;

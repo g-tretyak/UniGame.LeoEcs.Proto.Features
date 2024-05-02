@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.OpenWindowAction.Systems
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.OpenWindowAction.Systems
 {
 	using System;
 	using Aspects;

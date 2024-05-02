@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.ComeToTarget.Aspects
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.ComeToTarget.Aspects
 {
     using System;
     using Characteristics.Radius.Component;

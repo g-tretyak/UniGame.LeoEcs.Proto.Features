@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Base.Systems
+﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Systems
 {
     using Components;
     using Components.Requests;

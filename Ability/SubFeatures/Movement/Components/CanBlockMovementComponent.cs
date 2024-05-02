@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Movement.Components
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Movement.Components
 {
     /// <summary>
     /// Статус возможности заблокировать перемещение.

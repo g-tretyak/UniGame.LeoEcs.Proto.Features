@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.UserInput.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Target.UserInput.Systems
 {
     using System;
     using System.Collections.Generic;

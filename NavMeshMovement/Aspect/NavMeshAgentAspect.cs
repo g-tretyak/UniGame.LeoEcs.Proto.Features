@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Movement.Aspect
+﻿namespace UniGame.Ecs.Proto.Movement.Aspect
 {
     using System;
     using Characteristics.Speed.Components;

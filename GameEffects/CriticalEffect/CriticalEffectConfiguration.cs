@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.CriticalEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.CriticalEffect
 {
 	using System;
 	using Components;

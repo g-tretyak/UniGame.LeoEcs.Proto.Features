@@ -1,7 +1,7 @@
-﻿namespace unigame.ecs.proto.Presets.FogShaderSettings.Converters
+﻿namespace UniGame.Ecs.Proto.Presets.FogShaderSettings.Converters
 {
     using Assets;
-    using unigame.ecs.proto.Presets.Components;
+    using UniGame.Ecs.Proto.Presets.Components;
     using Components;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Shared.Extensions;

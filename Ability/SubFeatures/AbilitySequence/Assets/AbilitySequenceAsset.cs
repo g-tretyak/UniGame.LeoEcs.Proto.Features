@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySequence.Assets
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySequence.Assets
 {
     using Data;
     using Sirenix.OdinInspector;

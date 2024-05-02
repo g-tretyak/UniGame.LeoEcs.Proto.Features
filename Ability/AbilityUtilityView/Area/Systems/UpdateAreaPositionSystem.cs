@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Area.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Area.Systems
 {
     using System;
     using Components;

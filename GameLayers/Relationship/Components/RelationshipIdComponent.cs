@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameLayers.Relationship.Components
+﻿namespace UniGame.Ecs.Proto.GameLayers.Relationship.Components
 {
     using Game.Code.GameLayers.Relationship;
 

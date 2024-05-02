@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.TargetSelection.Systems
+﻿namespace UniGame.Ecs.Proto.TargetSelection.Systems
 {
     using System;
     using Aspects;

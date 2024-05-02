@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.BlockAutoAttackEffect.Components
+﻿namespace UniGame.Ecs.Proto.GameEffects.BlockAutoAttackEffect.Components
 {
 	/// <summary>
 	/// Says that block auto attack effect is ready to be applied

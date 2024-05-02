@@ -1,11 +1,11 @@
-﻿namespace unigame.ecs.proto.Characteristics.Block
+﻿namespace UniGame.Ecs.Proto.Characteristics.Block
 {
     using System;
     using Components;
     using Cysharp.Threading.Tasks;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Characteristics.Base;
-    using unigame.ecs.proto.Characteristics.Feature;
+    using UniGame.Ecs.Proto.Characteristics.Base;
+    using UniGame.Ecs.Proto.Characteristics.Feature;
      
     using Systems;
     using UniGame.LeoEcs.Shared.Extensions;

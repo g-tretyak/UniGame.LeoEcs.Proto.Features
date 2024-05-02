@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Camera
+﻿namespace UniGame.Ecs.Proto.Camera
 {
     using Cysharp.Threading.Tasks;
     using Leopotam.EcsProto;

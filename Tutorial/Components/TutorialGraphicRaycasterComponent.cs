@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Components
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Components
 {
 	using System;
 	using UnityEngine.UI;

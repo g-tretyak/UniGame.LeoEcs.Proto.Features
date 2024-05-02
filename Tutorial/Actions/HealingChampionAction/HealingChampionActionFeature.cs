@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.HealingChampionAction
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.HealingChampionAction
 {
 	using Abstracts;
 	using Cysharp.Threading.Tasks;

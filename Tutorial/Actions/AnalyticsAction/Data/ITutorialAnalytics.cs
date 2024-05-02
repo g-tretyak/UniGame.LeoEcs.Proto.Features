@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.AnalyticsAction.Data
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.AnalyticsAction.Data
 {
     public interface ITutorialAnalytics
     {

@@ -1,8 +1,8 @@
 using DataStructures.ViliWonka.KDTree;
-using unigame.ecs.proto.TargetSelection.Components;
+using UniGame.Ecs.Proto.TargetSelection.Components;
 using Unity.Mathematics;
 
-namespace unigame.ecs.proto.TargetSelection.Systems
+namespace UniGame.Ecs.Proto.TargetSelection.Systems
 {
     using System;
     using Leopotam.EcsLite;

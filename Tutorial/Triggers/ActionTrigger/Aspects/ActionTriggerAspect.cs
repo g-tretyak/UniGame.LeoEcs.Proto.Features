@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Triggers.ActionTrigger.Aspects
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Triggers.ActionTrigger.Aspects
 {
 	using System;
 	using Components;

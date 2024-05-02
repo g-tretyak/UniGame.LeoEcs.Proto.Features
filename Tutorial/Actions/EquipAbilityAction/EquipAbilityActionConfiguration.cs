@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.EquipAbilityAction
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.EquipAbilityAction
 {
 	using System.Collections.Generic;
 	using Abstracts;

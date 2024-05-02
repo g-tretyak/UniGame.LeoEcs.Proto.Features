@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ModificationEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.ModificationEffect
 {
     using Systems;
     using Cysharp.Threading.Tasks;

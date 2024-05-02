@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Gameplay.Dodge
+namespace UniGame.Ecs.Proto.Gameplay.Dodge
 {
     using Cysharp.Threading.Tasks;
     using Damage;

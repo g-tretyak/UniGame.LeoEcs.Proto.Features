@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameAi.MoveToTarget.Converters
+﻿namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Converters
 {
     using System;
     using System.Linq;

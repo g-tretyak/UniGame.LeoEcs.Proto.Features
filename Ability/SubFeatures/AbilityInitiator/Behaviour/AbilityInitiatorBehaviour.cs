@@ -6,7 +6,7 @@ using UniGame.LeoEcs.Shared.Components;
 using UniGame.LeoEcs.Shared.Extensions;
 using UnityEngine;
 
-namespace unigame.ecs.proto.Ability.SubFeatures.AbilityInitiator.Behaviour
+namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilityInitiator.Behaviour
 {
     using AbilityAgent.Components;
     using Game.Ecs.Core.Components;

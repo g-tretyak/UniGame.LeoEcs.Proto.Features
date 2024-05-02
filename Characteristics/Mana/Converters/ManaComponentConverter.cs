@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Mana.Converters
+﻿namespace UniGame.Ecs.Proto.Characteristics.Mana.Converters
 {
 	using System;
 	using Base.Components.Requests;

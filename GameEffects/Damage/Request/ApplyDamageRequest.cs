@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Damage.Components.Request
+﻿namespace UniGame.Ecs.Proto.Gameplay.Damage.Components.Request
 {
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;

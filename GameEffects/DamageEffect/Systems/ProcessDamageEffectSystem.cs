@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.DamageEffect.Systems
+﻿namespace UniGame.Ecs.Proto.GameEffects.DamageEffect.Systems
 {
     using Characteristics.AbilityPower.Components;
     using Components;

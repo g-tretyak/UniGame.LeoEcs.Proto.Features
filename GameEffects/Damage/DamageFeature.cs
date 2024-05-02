@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Gameplay.Damage
+namespace UniGame.Ecs.Proto.Gameplay.Damage
 {
     using System.Collections.Generic;
     using Characteristics.Dodge.Components.Events;

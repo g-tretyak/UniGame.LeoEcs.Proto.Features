@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.GameLayers.Relationship
+namespace UniGame.Ecs.Proto.GameLayers.Relationship
 {
     using System;
     using Cysharp.Threading.Tasks;

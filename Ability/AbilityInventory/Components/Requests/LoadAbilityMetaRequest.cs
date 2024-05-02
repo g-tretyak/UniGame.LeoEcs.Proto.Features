@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Equip.Components
+﻿namespace UniGame.Ecs.Proto.Equip.Components
 {
     using System;
 

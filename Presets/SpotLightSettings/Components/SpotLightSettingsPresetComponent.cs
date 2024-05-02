@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Presets.SpotLightSettings.Components
+﻿namespace UniGame.Ecs.Proto.Presets.SpotLightSettings.Components
 {
     using Assets;
     using System;

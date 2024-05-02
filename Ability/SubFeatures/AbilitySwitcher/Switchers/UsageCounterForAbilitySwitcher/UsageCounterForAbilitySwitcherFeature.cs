@@ -1,10 +1,10 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySwitcher.Switchers.UsageCounterForAbilitySwitcher
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySwitcher.Switchers.UsageCounterForAbilitySwitcher
 {
 	using System;
 	using AbilitySequence.Tools;
 	using Cysharp.Threading.Tasks;
 	using Leopotam.EcsProto;
-	using unigame.ecs.proto.Ability.SubFeatures.AbilitySwitcher.Abstracts;
+	using UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySwitcher.Abstracts;
 	 
 	using Systems;
 	using Tools;

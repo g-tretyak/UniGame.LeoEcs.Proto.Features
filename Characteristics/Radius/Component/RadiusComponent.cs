@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Radius.Component
+﻿namespace UniGame.Ecs.Proto.Characteristics.Radius.Component
 {
     public struct RadiusComponent
     {

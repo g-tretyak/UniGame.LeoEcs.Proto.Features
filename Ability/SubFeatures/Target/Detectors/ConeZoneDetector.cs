@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Detectors
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Target.Detectors
 {
     using System;
     using System.Collections.Generic;

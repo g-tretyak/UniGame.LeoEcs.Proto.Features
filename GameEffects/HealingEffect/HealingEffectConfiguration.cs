@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.HealingEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.HealingEffect
 {
     using System;
     using Components;

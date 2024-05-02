@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.AI.Service
+﻿namespace UniGame.Ecs.Proto.AI.Service
 {
     using System;
     using Abstract;

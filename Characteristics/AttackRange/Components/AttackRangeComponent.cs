@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.CriticalChance.Components
+﻿namespace UniGame.Ecs.Proto.Characteristics.CriticalChance.Components
 {
     using System;
 #if ENABLE_IL2CPP

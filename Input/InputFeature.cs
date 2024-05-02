@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Input
+﻿namespace UniGame.Ecs.Proto.Input
 {
     using Systems;
     using Components.Ability;

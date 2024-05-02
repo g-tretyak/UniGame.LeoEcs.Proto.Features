@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.TeleportEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.TeleportEffect
 {
     using Systems;
     using Cysharp.Threading.Tasks;

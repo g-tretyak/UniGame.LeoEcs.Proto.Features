@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.ActionTools
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.ActionTools
 {
 	using System;
 	using Sirenix.OdinInspector;

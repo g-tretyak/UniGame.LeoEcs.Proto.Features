@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Core.Death.Components
+﻿namespace UniGame.Ecs.Proto.Core.Death.Components
 {
     using Leopotam.EcsProto.QoL;
 

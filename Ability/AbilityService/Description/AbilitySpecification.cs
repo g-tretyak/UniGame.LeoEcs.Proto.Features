@@ -3,7 +3,7 @@
     using System;
     using GameLayers.Category;
     using GameLayers.Relationship;
-    using unigame.ecs.proto.Cooldown;
+    using UniGame.Ecs.Proto.Cooldown;
     using UnityEngine;
     using UnityEngine.Serialization;
 

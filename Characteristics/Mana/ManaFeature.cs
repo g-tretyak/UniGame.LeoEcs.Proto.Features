@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Mana
+﻿namespace UniGame.Ecs.Proto.Characteristics.Mana
 {
 	using System;
 	using Base;

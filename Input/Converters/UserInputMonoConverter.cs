@@ -1,6 +1,6 @@
 ﻿using UniCore.Runtime.ProfilerTools;
 
-namespace unigame.ecs.proto.Input.Converters
+namespace UniGame.Ecs.Proto.Input.Converters
 {
     using Components;
     using Leopotam.EcsProto;

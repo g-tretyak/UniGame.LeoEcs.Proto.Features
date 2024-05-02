@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Dodge.Events
+﻿namespace UniGame.Ecs.Proto.Gameplay.Dodge.Events
 {
     using System;
     using Leopotam.EcsProto.QoL;

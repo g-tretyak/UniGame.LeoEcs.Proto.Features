@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Configurations
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Configurations
 {
 	using Abstracts;
 	using Leopotam.EcsProto;

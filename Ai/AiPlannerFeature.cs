@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.AI
+﻿namespace UniGame.Ecs.Proto.AI
 {
     using Abstract;
     using Cysharp.Threading.Tasks;

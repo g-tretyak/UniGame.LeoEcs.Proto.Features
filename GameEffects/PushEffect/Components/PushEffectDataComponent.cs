@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.PushEffect.Components
+﻿namespace UniGame.Ecs.Proto.GameEffects.PushEffect.Components
 {
 	using System;
 	using DG.Tweening;

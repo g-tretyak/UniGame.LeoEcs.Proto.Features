@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Radius.Component
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Radius.Component
 {
     using Leopotam.EcsProto.QoL;
 

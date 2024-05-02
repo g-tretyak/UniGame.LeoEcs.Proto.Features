@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Input.Systems
+﻿namespace UniGame.Ecs.Proto.Input.Systems
 {
     using Components.Direction;
     using Leopotam.EcsLite;

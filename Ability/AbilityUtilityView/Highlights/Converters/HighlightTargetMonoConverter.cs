@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Highlights.Converters
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Highlights.Converters
 {
     using Components;
     using Leopotam.EcsProto;

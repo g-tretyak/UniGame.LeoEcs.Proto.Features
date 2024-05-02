@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySwitcher.Abstracts
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySwitcher.Abstracts
 {
 	using UniGame.LeoEcs.Bootstrap.Runtime;
 

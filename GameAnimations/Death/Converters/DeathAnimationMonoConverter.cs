@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Core.Death.Converters
+﻿namespace UniGame.Ecs.Proto.Core.Death.Converters
 {
     using Components;
     using Leopotam.EcsProto;

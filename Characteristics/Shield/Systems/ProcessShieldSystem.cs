@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Shield.Systems
+﻿namespace UniGame.Ecs.Proto.Characteristics.Shield.Systems
 {
     using Components;
     using Leopotam.EcsLite;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView
 {
     using System;
     using System.Collections.Generic;

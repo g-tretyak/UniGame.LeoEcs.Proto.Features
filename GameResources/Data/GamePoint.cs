@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.GameResources.Data
+namespace UniGame.Ecs.Proto.GameResources.Data
 {
     using System;
     using Unity.Mathematics;

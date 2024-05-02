@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ManaEffect.Components
+﻿namespace UniGame.Ecs.Proto.GameEffects.ManaEffect.Components
 {
 	/// <summary>
 	/// Mana cost value.

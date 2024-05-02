@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Animations.Components
+﻿namespace UniGame.Ecs.Proto.Animations.Components
 {
     using System;
     using Leopotam.EcsProto;

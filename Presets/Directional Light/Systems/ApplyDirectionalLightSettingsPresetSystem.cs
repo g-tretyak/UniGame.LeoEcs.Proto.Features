@@ -1,6 +1,6 @@
-﻿namespace unigame.ecs.proto.Presets.Directional_Light.Systems
+﻿namespace UniGame.Ecs.Proto.Presets.Directional_Light.Systems
 {    
-    using unigame.ecs.proto.Presets.Components;
+    using UniGame.Ecs.Proto.Presets.Components;
     using Components;
     using UniGame.LeoEcs.Shared.Extensions;
     using System;

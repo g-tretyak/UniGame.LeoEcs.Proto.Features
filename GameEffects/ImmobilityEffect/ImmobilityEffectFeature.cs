@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ImmobilityEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.ImmobilityEffect
 {
     using Systems;
     using Cysharp.Threading.Tasks;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameAi.ActivateAbility.Converters
+﻿namespace UniGame.Ecs.Proto.GameAi.ActivateAbility.Converters
 {
     using UniGame.LeoEcs.Converter.Runtime.Abstract;
 

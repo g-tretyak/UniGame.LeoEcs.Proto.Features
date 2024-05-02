@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Base.Components.Requests.OwnerRequests
+﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Components.Requests.OwnerRequests
 {
     using System;
 

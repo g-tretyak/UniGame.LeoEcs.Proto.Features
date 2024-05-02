@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Map.Component
+﻿namespace UniGame.Ecs.Proto.Map.Component
 {
     using UnityEngine;
 

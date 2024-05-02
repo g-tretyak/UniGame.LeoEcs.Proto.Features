@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.Target.Tools
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.Target.Tools
 {
     using System.Collections.Generic;
     using System.Runtime.CompilerServices;

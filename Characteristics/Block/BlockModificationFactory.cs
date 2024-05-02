@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Block
+﻿namespace UniGame.Ecs.Proto.Characteristics.Block
 {
     using System;
     using Base.Modification;

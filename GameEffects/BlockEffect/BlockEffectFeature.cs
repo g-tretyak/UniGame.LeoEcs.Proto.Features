@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.DamageEffect
+﻿namespace UniGame.Ecs.Proto.GameEffects.DamageEffect
 {
     using Cysharp.Threading.Tasks;
     using Effects.Feature;

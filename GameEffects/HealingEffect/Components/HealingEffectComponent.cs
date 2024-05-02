@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.HealingEffect.Components
+﻿namespace UniGame.Ecs.Proto.GameEffects.HealingEffect.Components
 {
     public struct HealingEffectComponent
     {

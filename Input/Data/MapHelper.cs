@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Map
+﻿namespace UniGame.Ecs.Proto.Map
 {
     using Component;
     using Leopotam.EcsProto;

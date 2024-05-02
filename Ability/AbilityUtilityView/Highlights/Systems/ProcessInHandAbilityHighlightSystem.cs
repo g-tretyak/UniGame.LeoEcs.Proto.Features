@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.AbilityUtilityView.Highlights.Systems
+﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Highlights.Systems
 {
     using System;
     using AbilityUtilityView.Components;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySequence.Components
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySequence.Components
 {
     using System;
     using Leopotam.EcsProto;

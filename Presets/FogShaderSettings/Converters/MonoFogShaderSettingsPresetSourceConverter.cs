@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Presets.FogShaderSettings.Converters
+﻿namespace UniGame.Ecs.Proto.Presets.FogShaderSettings.Converters
 {
     using Leopotam.EcsProto;
     using Sirenix.OdinInspector;

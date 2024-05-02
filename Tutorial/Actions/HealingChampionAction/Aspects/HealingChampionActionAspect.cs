@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.HealingChampionAction.Aspects
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.HealingChampionAction.Aspects
 {
 	using System;
 	using Characteristics.Health.Components;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Presets.Directional_Light.Converters
+﻿namespace UniGame.Ecs.Proto.Presets.Directional_Light.Converters
 {
     using Leopotam.EcsProto;
     using Sirenix.OdinInspector;

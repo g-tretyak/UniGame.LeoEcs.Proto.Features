@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Effects.Converters
+﻿namespace UniGame.Ecs.Proto.Effects.Converters
 {
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime.Converters;

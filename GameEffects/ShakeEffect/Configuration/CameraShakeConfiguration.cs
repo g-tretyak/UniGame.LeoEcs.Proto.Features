@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ManaEffect.Behaviours
+﻿namespace UniGame.Ecs.Proto.GameEffects.ManaEffect.Behaviours
 {
 	using System;
 	using Code.Configuration.Runtime.Ability.Description;

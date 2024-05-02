@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Presets.Converters
+﻿namespace UniGame.Ecs.Proto.Presets.Converters
 {
     using Leopotam.EcsProto;
     using Sirenix.OdinInspector;

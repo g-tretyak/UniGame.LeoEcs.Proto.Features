@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.CriticalAttackChance.Requests
+﻿namespace UniGame.Ecs.Proto.Gameplay.CriticalAttackChance.Requests
 {
     using System;
 

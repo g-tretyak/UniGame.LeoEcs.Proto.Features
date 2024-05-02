@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Feature
+﻿namespace UniGame.Ecs.Proto.Characteristics.Feature
 {
     using System;
     using Cysharp.Threading.Tasks;

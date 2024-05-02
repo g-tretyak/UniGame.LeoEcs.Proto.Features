@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.TeleportEffect.Components
+﻿namespace UniGame.Ecs.Proto.GameEffects.TeleportEffect.Components
 {
     public struct TeleportEffectComponent
     {

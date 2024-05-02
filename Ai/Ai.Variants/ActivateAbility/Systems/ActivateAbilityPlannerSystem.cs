@@ -6,10 +6,10 @@ namespace Game.Code.Ai.ActivateAbility
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using unigame.ecs.proto.AI.Components;
-    using unigame.ecs.proto.AI.Systems;
-    using unigame.ecs.proto.GameAi.ActivateAbility;
-    using unigame.ecs.proto.GameLayers.Layer.Components;
+    using UniGame.Ecs.Proto.AI.Components;
+    using UniGame.Ecs.Proto.AI.Systems;
+    using UniGame.Ecs.Proto.GameAi.ActivateAbility;
+    using UniGame.Ecs.Proto.GameLayers.Layer.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.DamageEffect.DamageTypes.Abstracts
+﻿namespace UniGame.Ecs.Proto.GameEffects.DamageEffect.DamageTypes.Abstracts
 {
 	using Leopotam.EcsProto;
 

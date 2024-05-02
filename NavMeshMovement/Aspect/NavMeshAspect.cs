@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Movement.Aspect
+﻿namespace UniGame.Ecs.Proto.Movement.Aspect
 {
     using System;
     using Characteristics.Speed.Components;
@@ -13,7 +13,7 @@
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
     [Serializable]
-    public class NavigationAspect : EcsAspect
+    public class NavMeshAspect : EcsAspect
     {
         //filters
         public ProtoItExc AgentFilter = It

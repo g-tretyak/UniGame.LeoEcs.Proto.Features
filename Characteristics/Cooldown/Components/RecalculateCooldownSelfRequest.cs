@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Cooldown.Components
+﻿namespace UniGame.Ecs.Proto.Characteristics.Cooldown.Components
 {
     public struct RecalculateCooldownSelfRequest
     {

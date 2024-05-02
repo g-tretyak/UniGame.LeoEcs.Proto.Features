@@ -1,9 +1,9 @@
-﻿namespace unigame.ecs.proto.Presets.SpotLightSettings.Converters
+﻿namespace UniGame.Ecs.Proto.Presets.SpotLightSettings.Converters
 {
     using System;
     using Abstract;
     using Assets;
-    using unigame.ecs.proto.Presets.Components;
+    using UniGame.Ecs.Proto.Presets.Components;
     using Components;
     using Leopotam.EcsProto;
     using Sirenix.OdinInspector;

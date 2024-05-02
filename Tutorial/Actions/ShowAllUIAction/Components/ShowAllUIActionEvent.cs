@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Gameplay.Tutorial.Actions.ShowAllUIAction.Components
+﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.ShowAllUIAction.Components
 {
 	using System;
 

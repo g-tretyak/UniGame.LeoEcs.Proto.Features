@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.AI.Configurations
+namespace UniGame.Ecs.Proto.AI.Configurations
 {
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime.Abstract;

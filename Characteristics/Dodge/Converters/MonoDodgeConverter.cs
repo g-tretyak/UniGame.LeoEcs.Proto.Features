@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Characteristics.Dodge.Converters
+namespace UniGame.Ecs.Proto.Characteristics.Dodge.Converters
 {
     using UniGame.LeoEcs.Converter.Runtime.Converters;
 

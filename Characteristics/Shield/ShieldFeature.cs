@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.Shield
+﻿namespace UniGame.Ecs.Proto.Characteristics.Shield
 {
     using System;
     using Systems;

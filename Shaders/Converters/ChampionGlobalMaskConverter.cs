@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Shaders.Converters
+﻿namespace UniGame.Ecs.Proto.Shaders.Converters
 {
 	using System;
 	using System.Collections.Generic;

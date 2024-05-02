@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Input.Components.Direction
+﻿namespace UniGame.Ecs.Proto.Input.Components.Direction
 {
     /// <summary>
     /// Компонент, означающий прекращение ввода (пользовательского или любого другого).

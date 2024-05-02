@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.AbilityInventory.Converters
+﻿namespace UniGame.Ecs.Proto.AbilityInventory.Converters
 {
 	using System;
 	using Components;

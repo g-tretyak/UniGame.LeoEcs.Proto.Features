@@ -1,10 +1,10 @@
-namespace unigame.ecs.proto.Characteristics.AttackSpeed.Converters
+namespace UniGame.Ecs.Proto.Characteristics.AttackSpeed.Converters
 {
     using System;
     using Components;
     using Cooldown;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Characteristics.Base.Components.Requests;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components.Requests;
      
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;

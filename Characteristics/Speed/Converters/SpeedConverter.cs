@@ -1,9 +1,9 @@
-namespace unigame.ecs.proto.Characteristics.Speed.Converters
+namespace UniGame.Ecs.Proto.Characteristics.Speed.Converters
 {
     using System;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Characteristics.Base.Components.Requests;
-    using unigame.ecs.proto.Characteristics.Speed.Components;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components.Requests;
+    using UniGame.Ecs.Proto.Characteristics.Speed.Components;
      
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime;

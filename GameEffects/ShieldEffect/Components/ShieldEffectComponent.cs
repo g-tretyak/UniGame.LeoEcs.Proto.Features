@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.GameEffects.ShieldEffect.Components
+﻿namespace UniGame.Ecs.Proto.GameEffects.ShieldEffect.Components
 {
     public struct ShieldEffectComponent
     {

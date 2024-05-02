@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Characteristics.Block.Components
+namespace UniGame.Ecs.Proto.Characteristics.Block.Components
 {
     using System;
 

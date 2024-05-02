@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Ability.SubFeatures.AbilitySequence.Tools
+﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySequence.Tools
 {
     using System.Collections.Generic;
     using Aspects;

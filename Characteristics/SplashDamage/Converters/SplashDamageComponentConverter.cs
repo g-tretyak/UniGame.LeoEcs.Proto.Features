@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.SplashDamage.Converters
+﻿namespace UniGame.Ecs.Proto.Characteristics.SplashDamage.Converters
 {
 	using System;
 	using Base.Components.Requests;

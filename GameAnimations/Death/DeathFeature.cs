@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Gameplay.Death
+namespace UniGame.Ecs.Proto.Gameplay.Death
 {
     using Cysharp.Threading.Tasks;
     using Leopotam.EcsProto;

@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Animations.Aspects
+﻿namespace UniGame.Ecs.Proto.Animations.Aspects
 {
     using System;
     using Characteristics.Duration.Components;

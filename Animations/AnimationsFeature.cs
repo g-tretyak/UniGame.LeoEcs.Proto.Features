@@ -1,4 +1,4 @@
-namespace unigame.ecs.proto.Animations
+namespace UniGame.Ecs.Proto.Animations
 {
     using Components.Requests;
     using Cysharp.Threading.Tasks;

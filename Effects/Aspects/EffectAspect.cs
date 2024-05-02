@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Effects.Aspects
+﻿namespace UniGame.Ecs.Proto.Effects.Aspects
 {
     using System;
     using Characteristics.AbilityPower.Components;

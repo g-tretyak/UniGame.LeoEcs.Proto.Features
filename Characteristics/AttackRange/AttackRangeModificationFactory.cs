@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.CriticalChance
+﻿namespace UniGame.Ecs.Proto.Characteristics.CriticalChance
 {
     using System;
     using Base.Modification;

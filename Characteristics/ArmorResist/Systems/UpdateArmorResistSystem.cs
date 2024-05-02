@@ -1,4 +1,4 @@
-﻿namespace unigame.ecs.proto.Characteristics.ArmorResist.Systems
+﻿namespace UniGame.Ecs.Proto.Characteristics.ArmorResist.Systems
 {
 	using System;
 	using Aspects;

@@ -1,9 +1,9 @@
-﻿namespace unigame.ecs.proto.GameAi.MoveToTarget.Systems
+﻿namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Systems
 {
     using AI.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.GameAi.MoveToTarget.Components;
+    using UniGame.Ecs.Proto.GameAi.MoveToTarget.Components;
     using UniGame.LeoEcs.Shared.Extensions;
 
 

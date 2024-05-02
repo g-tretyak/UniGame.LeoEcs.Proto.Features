@@ -1,10 +1,10 @@
-﻿namespace unigame.ecs.proto.Characteristics.CriticalChance.Systems
+﻿namespace UniGame.Ecs.Proto.Characteristics.CriticalChance.Systems
 {
     using System;
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
-    using unigame.ecs.proto.Characteristics.Base.Components;
+    using UniGame.Ecs.Proto.Characteristics.Base.Components;
     using UniGame.LeoEcs.Shared.Extensions;
 
 
