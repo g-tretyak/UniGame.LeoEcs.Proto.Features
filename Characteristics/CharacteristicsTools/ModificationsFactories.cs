@@ -12,6 +12,4 @@
     [Serializable]
     public class DurationModificationFactory : DefaultModificationFactory<DurationModificationHandler>{}
     
-    [Serializable]
-    public class HealthModificationFactory : DefaultModificationFactory<HealthModificationHandler>{}
 }
