@@ -28,7 +28,6 @@ namespace UniGame.Ecs.Proto.Characteristics.Base
         fileName = "Characteristics Feature")]
     public class CharacteristicsFeature : BaseLeoEcsFeature
     {
-        [FormerlySerializedAs("effectFeatures")]
         [SerializeReference]
         [Searchable(FilterOptions = SearchFilterOptions.ISearchFilterableInterface)]
         public List<CharacteristicEcsFeature> characteristicFeatures = new List<CharacteristicEcsFeature>();

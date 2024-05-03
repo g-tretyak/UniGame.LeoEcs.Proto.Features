@@ -44,7 +44,7 @@
 
             _filter = _world
                 .Filter<CharacteristicChangedComponent>()
-                .Inc<CharacteristicOwnerComponent<TCharacteristic>>()
+                .Inc<CharacteristicOwnerComponent>()
                 .Inc<CharacteristicValueComponent>()
                 .Inc<OwnerComponent>()
                 .End();

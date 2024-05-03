@@ -1,12 +1,20 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Health.Systems
 {
+    using System;
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using UniGame.Ecs.Proto.Characteristics.Base.Components;
     using UniGame.LeoEcs.Shared.Extensions;
 
+#if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
 
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+#endif
+    [Serializable]
     public sealed class ProcessHealthChangedSystem : IProtoRunSystem,IProtoInitSystem
     {
         private EcsFilter _filter;

@@ -16,8 +16,7 @@
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
-    public struct CharacteristicOwnerComponent<TCharacteristic>
-        where TCharacteristic : struct
+    public struct CharacteristicOwnerComponent
     {
         public ProtoPackedEntity Link;
     }

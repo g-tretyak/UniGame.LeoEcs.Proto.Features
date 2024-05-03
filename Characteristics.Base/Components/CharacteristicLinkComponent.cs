@@ -20,7 +20,7 @@
     public struct CharacteristicLinkComponent<TCharacteristic>
         where TCharacteristic : struct
     {
-        [FormerlySerializedAs("Link")] public ProtoPackedEntity Value;
+        public ProtoPackedEntity Value;
     }
     
     /// <summary>
