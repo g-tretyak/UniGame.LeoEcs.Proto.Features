@@ -1,9 +1,11 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Systems
 {
     using System;
+    using Aspects;
     using Components;
     using Components.Requests;
     using Game.Ecs.Core.Components;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
@@ -20,57 +22,35 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public class CreateModificationSystem : IProtoInitSystem, IProtoRunSystem
+    [ECSDI]
+    public class CreateModificationSystem : IProtoRunSystem
     {
         private ProtoWorld _world;
-        private EcsFilter _filter;
+        private CharacteristicsAspect _characteristicsAspect;
+        private ModificationsAspect _modificationsAspect;
         
-        private ProtoPool<CharacteristicLinkComponent> _characteristicLinkPool;
-        private ProtoPool<CreateModificationRequest> _requestPool;
-        private ProtoPool<ModificationComponent> _modificationPool;
-        private ProtoPool<ModificationSourceLinkComponent> _sourceLinkPool;
-        private ProtoPool<ModificationSourceTrackComponent> _trackComponentPool;
-        private ProtoPool<RecalculateCharacteristicSelfRequest> _recalculatePool;
-        private ProtoPool<ModificationPercentComponent> _percentPool;
-        private ProtoPool<OwnerComponent> _ownerPool;
-        private ProtoPool<ModificationMaxLimitComponent> _maxLimitPool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-
-            _filter = _world
-                .Filter<CreateModificationRequest>()
-                .End();
-            
-            _characteristicLinkPool = _world.GetPool<CharacteristicLinkComponent>();
-            _requestPool = _world.GetPool<CreateModificationRequest>();
-            _modificationPool = _world.GetPool<ModificationComponent>();
-            _sourceLinkPool = _world.GetPool<ModificationSourceLinkComponent>();
-            _trackComponentPool = _world.GetPool<ModificationSourceTrackComponent>();
-            _percentPool = _world.GetPool<ModificationPercentComponent>();
-            _maxLimitPool = _world.GetPool<ModificationMaxLimitComponent>();
-            _recalculatePool = _world.GetPool<RecalculateCharacteristicSelfRequest>();
-            _ownerPool = _world.GetPool<OwnerComponent>();
-        }
+        private ProtoIt _filter = It
+            .Chain<CreateModificationRequest>()
+            .End();
 
         public void Run()
         {
             foreach (var requestEntity in _filter)
             {
-                ref var requestComponent = ref _requestPool.Get(requestEntity);
+                ref var requestComponent = ref _modificationsAspect.CreateModification.Get(requestEntity);
                 if (!requestComponent.Target.Unpack(_world, out var characteristicEntity))
                     continue;
                 
+                //create entity
                 var modificationEntity = _world.NewEntity();
                 
-                ref var ownerComponent = ref _ownerPool.Add(modificationEntity);
-                ref var modificationValueComponent = ref _modificationPool.Add(modificationEntity);
-                ref var linkCharacteristicComponent = ref _characteristicLinkPool.Add(modificationEntity);
-                ref var sourceLinkComponent = ref _sourceLinkPool.Add(modificationEntity);
+                ref var ownerComponent = ref _characteristicsAspect.Owner.Add(modificationEntity);
+                ref var modificationValueComponent = ref _modificationsAspect.Modification.Add(modificationEntity);
+                ref var linkCharacteristicComponent = ref _characteristicsAspect.CharacteristicLink.Add(modificationEntity);
+                ref var sourceLinkComponent = ref _modificationsAspect.SourceLink.Add(modificationEntity);
                 
                 //mark modification as binded to source lifetime
-                _trackComponentPool.Add(modificationEntity);
+                _modificationsAspect.ModificationSourceTrack.Add(modificationEntity);
                 
                 var modificationValue = requestComponent.Modification;
                 var counter = modificationValue.counter == 0 ? 1 : modificationValue.counter;
@@ -81,13 +61,13 @@
                 modificationValueComponent.BaseValue = modificationValue.baseValue;
                 modificationValueComponent.Counter = counter;
 
-                if (modificationValue.isPercent) _percentPool.Add(modificationEntity);
-                if (modificationValue.isMaxLimitModification) _maxLimitPool.Add(modificationEntity);
+                if (modificationValue.isPercent) _modificationsAspect.ModificationPercent.Add(modificationEntity);
+                if (modificationValue.isMaxLimitModification) _modificationsAspect.ModificationMaxLimit.Add(modificationEntity);
                 
                 linkCharacteristicComponent.Link = requestComponent.Target;
-                sourceLinkComponent.Value = requestComponent.ModificationSource;
+                sourceLinkComponent.Value = requestComponent.Source;
                 
-                _recalculatePool.GetOrAddComponent(characteristicEntity);
+                _characteristicsAspect.Recalculate.GetOrAddComponent(characteristicEntity);
             }
         }
     }

@@ -1,61 +1,46 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Systems
 {
-    using Components;
+    using System;
+    using Aspects;
     using Components.Requests;
-    using Game.Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Extensions;
 
-    public class ResetCharacteristicsSystem : IProtoRunSystem,IProtoInitSystem
+#if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
+
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+#endif
+    [ECSDI]
+    [Serializable]
+    public class ResetCharacteristicsSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
-        private EcsFilter _requestFilter;
 
-        private ProtoPool<CharacteristicValueComponent> _characteristicPool;
-        private ProtoPool<ResetCharacteristicRequest> _resetCharacteristicPool;
-        private ProtoPool<CharacteristicDefaultValueComponent> _defaultPool;
-        private ProtoPool<MinValueComponent> _minPool;
-        private ProtoPool<MinValueComponent> _maxPool;
-        private ProtoPool<CharacteristicBaseValueComponent> _basePool;
-        private ProtoPool<ResetModificationsRequest> _resetModificationPool;
-        private ProtoPool<RecalculateCharacteristicSelfRequest> _recalculateCharacteristicPool;
+        private ProtoIt _requestFilter = It
+            .Chain<ResetCharacteristicRequest>()
+            .End();
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-
-            _requestFilter = _world
-                .Filter<ResetCharacteristicRequest>()
-                .End();
-
-            _resetCharacteristicPool = _world.GetPool<ResetCharacteristicRequest>();
-            _resetModificationPool = _world.GetPool<ResetModificationsRequest>();
-            _characteristicPool = _world.GetPool<CharacteristicValueComponent>();
-            _defaultPool = _world.GetPool<CharacteristicDefaultValueComponent>();
-            _minPool = _world.GetPool<MinValueComponent>();
-            _maxPool = _world.GetPool<MinValueComponent>();
-            _basePool = _world.GetPool<CharacteristicBaseValueComponent>();
-            _recalculateCharacteristicPool = _world.GetPool<RecalculateCharacteristicSelfRequest>();
-
-        }
+        private CharacteristicsAspect _characteristicsAspect;
+        private ModificationsAspect _modificationsAspect;
         
         public void Run()
         {
             foreach (var requestEntity in _requestFilter)
             {
-                ref var resetRequestComponent = ref _resetCharacteristicPool.Get(requestEntity);
-                if(!resetRequestComponent.Target.Unpack(_world,out var targetEntity))
-                    continue;
+                ref var resetRequestComponent = ref _characteristicsAspect.Reset.Get(requestEntity);
+                if(!resetRequestComponent.Target.Unpack(_world,out var targetEntity)) continue;
                 
                 //reset base value to default
-                ref var baseValuePoolComponent = ref _basePool.Get(targetEntity);
-                ref var defaultPoolComponent = ref _defaultPool.Get(targetEntity);
-                ref var characteristicValueComponent = ref _characteristicPool.Get(targetEntity);
-                ref var minComponent = ref _minPool.Get(targetEntity);
-                ref var maxComponent = ref _maxPool.Get(targetEntity);
+                ref var baseValuePoolComponent = ref _characteristicsAspect.BaseValue.Get(targetEntity);
+                ref var defaultPoolComponent = ref _characteristicsAspect.DefaultValue.Get(targetEntity);
+                ref var characteristicValueComponent = ref _characteristicsAspect.Value.Get(targetEntity);
+                ref var minComponent = ref _characteristicsAspect.MinValue.Get(targetEntity);
+                ref var maxComponent = ref _characteristicsAspect.MaxValue.Get(targetEntity);
 
                 maxComponent.Value = defaultPoolComponent.MaxValue;
                 minComponent.Value = defaultPoolComponent.MinValue;
@@ -63,10 +48,10 @@
                 baseValuePoolComponent.Value = defaultPoolComponent.BaseValue;
 
                 var resetModificationEntity = _world.NewEntity();
-                ref var resetModificationComponent = ref _resetModificationPool.Add(resetModificationEntity);
+                ref var resetModificationComponent = ref _modificationsAspect.ResetModifications.Add(resetModificationEntity);
                 resetModificationComponent.Characteristic = resetRequestComponent.Target;
 
-                _recalculateCharacteristicPool.GetOrAddComponent(targetEntity);
+                _characteristicsAspect.Recalculate.GetOrAddComponent(targetEntity);
             }
             
         }

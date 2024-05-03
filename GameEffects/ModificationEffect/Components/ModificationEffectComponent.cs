@@ -3,7 +3,7 @@
 namespace UniGame.Ecs.Proto.GameEffects.ModificationEffect.Components
 {
     using System.Collections.Generic;
-    using Characteristics.Base.Modification;
+    using Characteristics;
     using Leopotam.EcsProto;
 
 

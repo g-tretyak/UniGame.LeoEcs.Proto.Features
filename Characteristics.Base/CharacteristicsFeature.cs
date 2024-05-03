@@ -13,7 +13,6 @@ namespace UniGame.Ecs.Proto.Characteristics.Base
     using UniGame.LeoEcs.Bootstrap.Runtime;
     using System.Linq;
     using UnityEngine;
-    using UnityEngine.Serialization;
     using System;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
@@ -103,7 +102,6 @@ namespace UniGame.Ecs.Proto.Characteristics.Base
             ecsSystems.DelHere<ChangeMaxLimitRequest>();
             ecsSystems.DelHere<ChangeMinLimitRequest>();
             ecsSystems.DelHere<AddModificationRequest>();
-            ecsSystems.DelHere<CreateModificationRequest>();
             ecsSystems.DelHere<RemoveModificationRequest>();
             ecsSystems.DelHere<RecalculateModificationSelfRequest>();
             ecsSystems.DelHere<RecalculateCharacteristicSelfRequest>();

@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using Base.Modification;
+    using Characteristics;
     using Components;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;

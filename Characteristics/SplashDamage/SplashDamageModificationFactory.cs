@@ -1,7 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.SplashDamage
 {
     using System;
-    using Base.Modification;
+    using Characteristics;
 
     [Serializable]
     public class SplashDamageModificationFactory : DefaultModificationFactory<SplashDamageModificationHandler> {}

@@ -1,7 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.Modifications
 {
     using System;
-    using Characteristics.Base.Modification;
+    using Characteristics;
     using Characteristics.Cooldown.Components;
     using Common.Components;
     using Cooldown;

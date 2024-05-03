@@ -1,11 +1,14 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Systems
 {
     using System;
+    using Aspects;
     using Components;
     using Components.Requests;
-    using Game.Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
+    using LeoEcs.Shared.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
@@ -19,40 +22,29 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public class ResetCharacteristicMaxLimitSystem : IProtoInitSystem, IProtoRunSystem
+    [ECSDI]
+    public class ResetCharacteristicMaxLimitSystem : IProtoRunSystem
     {
         private ProtoWorld _world;
-        private EcsFilter _filter;
         
-        private ProtoPool<MaxValueComponent> _maxValuePool;
-        private ProtoPool<CharacteristicDefaultValueComponent> _defaultValuePool;
-        private ProtoPool<RecalculateCharacteristicSelfRequest> _recalculateCharacteristicPool;
+        private ProtoIt _filter = It.Chain<ResetCharacteristicMaxLimitSelfRequest>()
+            .Inc<CharacteristicDefaultValueComponent>()
+            .Inc<MaxValueComponent>()
+            .End();
         
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-
-            _filter = _world
-                .Filter<ResetCharacteristicMaxLimitSelfRequest>()
-                .Inc<CharacteristicDefaultValueComponent>()
-                .Inc<MaxValueComponent>()
-                .End();
-
-            _maxValuePool = _world.GetPool<MaxValueComponent>();
-            _defaultValuePool = _world.GetPool<CharacteristicDefaultValueComponent>();
-            _recalculateCharacteristicPool = _world.GetPool<RecalculateCharacteristicSelfRequest>();
-        }
+        private CharacteristicsAspect _characteristicsAspect;
+        private ModificationsAspect _modificationsAspect;
 
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var maxComponent = ref _maxValuePool.Get(entity);
-                ref var defaultComponent = ref _defaultValuePool.Get(entity);
+                ref var maxComponent = ref _characteristicsAspect.MaxValue.Get(entity);
+                ref var defaultComponent = ref _characteristicsAspect.DefaultValue.Get(entity);
 
                 maxComponent.Value = defaultComponent.MaxValue;
 
-                _recalculateCharacteristicPool.GetOrAddComponent(entity);
+                _characteristicsAspect.Recalculate.GetOrAddComponent(entity);
             }
         }
     }

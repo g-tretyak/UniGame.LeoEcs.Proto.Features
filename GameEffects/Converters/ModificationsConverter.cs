@@ -7,7 +7,7 @@ using UnityEngine;
 namespace UniGame.Ecs.Proto.Characteristics.Converters
 {
     using System;
-    using Base.Modification;
+    using Characteristics;
     using Leopotam.EcsProto;
     using UniGame.LeoEcs.Converter.Runtime;
     

@@ -1,8 +1,14 @@
-﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Modification
+﻿namespace UniGame.Ecs.Proto.Characteristics
 {
     using System;
-    using System.Runtime.CompilerServices;
 
+#if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
+
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+#endif
     [Serializable]
     public struct Modification
     {
@@ -24,24 +30,6 @@
             this.allowedSummation = allowedSummation;
             this.isMaxLimitModification = isMaxLimitModification;
             this.counter = counter;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void IncreaseCounter()
-        {
-            counter++;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DecreaseCounter()
-        {
-            counter--;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public float GetValue()
-        {
-            return baseValue * counter;
         }
     }
 }

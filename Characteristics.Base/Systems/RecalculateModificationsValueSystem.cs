@@ -1,8 +1,10 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Systems
 {
     using System;
+    using Aspects;
     using Components;
     using Components.Requests;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
@@ -20,58 +22,43 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public class RecalculateModificationsValueSystem : IProtoInitSystem, IProtoRunSystem
+    [ECSDI]
+    public class RecalculateModificationsValueSystem : IProtoRunSystem
     {
         private ProtoWorld _world;
-        private EcsFilter _recalculateRequestFilter;
-        private EcsFilter _modificationsFilter;
+        private CharacteristicsAspect _characteristicsAspect;
+        private ModificationsAspect _modificationsAspect;
         
-        private ProtoPool<ModificationComponent> _modificationPool;
-        private ProtoPool<CharacteristicLinkComponent> _characteristicsValueLinkPool;
+        private ProtoIt _recalculateRequestFilter = It
+            .Chain<RecalculateCharacteristicSelfRequest>()
+            .Inc<CharacteristicValueComponent>()
+            .Inc<CharacteristicBaseValueComponent>()
+            .End();
         
-        private ProtoPool<CharacteristicBaseValueComponent> _baseValuePool;
-        private ProtoPool<BaseModificationsValueComponent> _valueModificationsPool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-
-            _recalculateRequestFilter = _world
-                .Filter<RecalculateCharacteristicSelfRequest>()
-                .Inc<CharacteristicValueComponent>()
-                .Inc<CharacteristicBaseValueComponent>()
-                .End();
-  
-            _modificationsFilter = _world
-                .Filter<ModificationComponent>()
-                .Inc<CharacteristicLinkComponent>()
-                .Exc<ModificationPercentComponent>()
-                .Exc<ModificationMaxLimitComponent>()
-                .End();
-            
-            _baseValuePool = _world.GetPool<CharacteristicBaseValueComponent>();
-            _modificationPool = _world.GetPool<ModificationComponent>();
-            _characteristicsValueLinkPool = _world.GetPool<CharacteristicLinkComponent>();
-            _valueModificationsPool = _world.GetPool<BaseModificationsValueComponent>();
-        }
+        private ProtoItExc _modificationsFilter= It
+            .Chain<ModificationComponent>()
+            .Inc<CharacteristicLinkComponent>()
+            .Exc<ModificationPercentComponent>()
+            .Exc<ModificationMaxLimitComponent>()
+            .End();
 
         public void Run()
         {
             foreach (var characteristicEntity in _recalculateRequestFilter)
             {
-                ref var baseValueComponent = ref _baseValuePool.Get(characteristicEntity);
-                ref var valueModificationsComponent = ref _valueModificationsPool.Get(characteristicEntity);
+                ref var baseValueComponent = ref _characteristicsAspect.BaseValue.Get(characteristicEntity);
+                ref var valueModificationsComponent = ref _modificationsAspect.BaseModificationValue.Get(characteristicEntity);
 
                 var newValue = baseValueComponent.Value;
                 
                 foreach (var modificationEntity in _modificationsFilter)
                 {
-                    ref var linkComponent = ref _characteristicsValueLinkPool.Get(modificationEntity);
+                    ref var linkComponent = ref _characteristicsAspect.CharacteristicLink.Get(modificationEntity);
                     if(!linkComponent.Link.Unpack(_world,out var characteristicValue))
                         continue;
                     if(!characteristicEntity.Equals(characteristicValue)) continue;
 
-                    ref var modificationComponent = ref _modificationPool.Get(modificationEntity);
+                    ref var modificationComponent = ref _modificationsAspect.Modification.Get(modificationEntity);
                     newValue += modificationComponent.Counter * modificationComponent.BaseValue;
                 }
 

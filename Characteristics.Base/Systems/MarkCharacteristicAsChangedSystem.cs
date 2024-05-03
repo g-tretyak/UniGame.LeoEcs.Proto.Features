@@ -1,10 +1,13 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Systems
 {
     using System;
+    using Aspects;
     using Components;
     using Components.Requests;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Extensions;
 
 
@@ -19,33 +22,27 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public class MarkCharacteristicAsChangedSystem : IProtoInitSystem, IProtoRunSystem
+    [ECSDI]
+    public class MarkCharacteristicAsChangedSystem : IProtoRunSystem
     {
         private ProtoWorld _world;
-        private EcsFilter _filter;
+        private CharacteristicsAspect _characteristicsAspect;
+        private ModificationsAspect _modificationsAspect;
+        
+        private ProtoItExc _filter= It
+            .Chain<RecalculateCharacteristicSelfRequest>()
+            .Inc<CharacteristicValueComponent>()
+            .Inc<CharacteristicBaseValueComponent>()
+            .Exc<CharacteristicChangedComponent>()
+            .End();
         
         private ProtoPool<CharacteristicChangedComponent> _changedPool;
-
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-
-            _filter = _world
-                .Filter<RecalculateCharacteristicSelfRequest>()
-                .Inc<CharacteristicValueComponent>()
-                .Inc<CharacteristicBaseValueComponent>()
-                .Exc<CharacteristicChangedComponent>()
-                .End();
-            
-            _changedPool = _world.GetPool<CharacteristicChangedComponent>();
-        }
-
+        
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                _changedPool.Add(entity);
+                _characteristicsAspect.Changed.Add(entity);
             }
         }
     }

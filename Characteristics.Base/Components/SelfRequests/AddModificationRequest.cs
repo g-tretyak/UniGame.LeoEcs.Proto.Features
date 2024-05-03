@@ -2,7 +2,7 @@
 {
     using System;
     using Leopotam.EcsProto.QoL;
-    using Modification;
+    using Characteristics;
 
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;

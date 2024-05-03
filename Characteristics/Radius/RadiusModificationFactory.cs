@@ -1,7 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics
 {
     using System;
-    using Base.Modification;
+    using Characteristics;
     using Radius;
 
     [Serializable]

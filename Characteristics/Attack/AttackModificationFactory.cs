@@ -2,7 +2,7 @@
 {
     using System;
     using Attack;
-    using Base.Modification;
+    using Characteristics;
 
     [Serializable]
     public class AttackModificationFactory : DefaultModificationFactory<AttackDamageModificationHandler>{}

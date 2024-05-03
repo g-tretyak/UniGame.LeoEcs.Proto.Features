@@ -17,14 +17,15 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public class CharacteristicsModificationsAspect : EcsAspect
+    public class ModificationsAspect : EcsAspect
     {
         public ProtoPool<BaseModificationsValueComponent> BaseModificationValue;
         public ProtoPool<PercentModificationsValueComponent> PercentModificationValue;
         public ProtoPool<MaxLimitModificationsValueComponent> MaxLimitModificationValue;
         
+        public ProtoPool<CharacteristicLinkComponent> CharacteristicLink;
         public ProtoPool<ModificationSourceTrackComponent> ModificationSourceTrack;
-        public ProtoPool<ModificationSourceLinkComponent> ModificationSourceLink;
+        public ProtoPool<ModificationSourceLinkComponent> SourceLink;
         public ProtoPool<ModificationSourceComponent> ModificationSource;
         public ProtoPool<ModificationPercentComponent> ModificationPercent;
         public ProtoPool<ModificationMaxLimitComponent> ModificationMaxLimit;
@@ -33,5 +34,6 @@
         //requests
         public ProtoPool<AddModificationRequest> AddModification;
         public ProtoPool<CreateModificationRequest> CreateModification;
+        public ProtoPool<ResetModificationsRequest> ResetModifications;
     }
 }

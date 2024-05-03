@@ -21,8 +21,9 @@
     {
         
         //requests
-        ProtoPool<AddModificationRequest<TCharacteristic>> AddModification;
-        ProtoPool<RemoveCharacteristicModificationRequest<TCharacteristic>> RemoveModification;
-        ProtoPool<ResetCharacteristicModificationsSelfRequest<TCharacteristic>> RemoveSelfModifications;
+        public ProtoPool<AddModificationRequest<TCharacteristic>> AddModification;
+        public ProtoPool<RemoveCharacteristicModificationRequest<TCharacteristic>> RemoveModification;
+        public ProtoPool<ResetCharacteristicModificationsSelfRequest<TCharacteristic>> RemoveSelfModifications;
+        public ProtoPool<CreateModificationRequest<TCharacteristic>> CreateModification;
     }
 }

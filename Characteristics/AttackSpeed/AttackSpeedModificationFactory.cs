@@ -1,7 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.AttackSpeed
 {
     using System;
-    using Base.Modification;
+    using Characteristics;
 
     [Serializable]
     public class AttackSpeedModificationFactory : DefaultModificationFactory<AttackSpeedModificationHandler>

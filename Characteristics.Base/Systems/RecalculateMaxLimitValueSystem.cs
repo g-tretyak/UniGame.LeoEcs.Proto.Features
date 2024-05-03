@@ -1,9 +1,11 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Systems
 {
     using System;
+    using Aspects;
     using Components;
     using Components.Requests;
-    using Game.Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
+    using LeoEcs.Shared.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
@@ -20,55 +22,45 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public class RecalculateMaxLimitValueSystem : IProtoInitSystem, IProtoRunSystem
+    [ECSDI]
+    public class RecalculateMaxLimitValueSystem : IProtoRunSystem
     {
         private ProtoWorld _world;
-        private EcsFilter _recalculateRequestFilter;
-        private EcsFilter _maxLimitFilter;
+        private CharacteristicsAspect _characteristicsAspect;
+        private ModificationsAspect _modificationsAspect;
         
-        private ProtoPool<ModificationComponent> _modificationPool;
-        private ProtoPool<CharacteristicLinkComponent> _characteristicsValueLinkPool;
-        private ProtoPool<MaxLimitModificationsValueComponent> _valuePool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-
-            _recalculateRequestFilter = _world
-                .Filter<RecalculateCharacteristicSelfRequest>()
-                .Inc<CharacteristicValueComponent>()
-                .Inc<CharacteristicBaseValueComponent>()
-                .Inc<MaxLimitModificationsValueComponent>()
-                .Inc<MaxValueComponent>()
-                .End();
-            
-            _maxLimitFilter = _world
-                .Filter<ModificationComponent>()
-                .Inc<ModificationMaxLimitComponent>()
-                .Inc<CharacteristicLinkComponent>()
-                .End();
-    
-            _modificationPool = _world.GetPool<ModificationComponent>();
-            _characteristicsValueLinkPool = _world.GetPool<CharacteristicLinkComponent>();
-            _valuePool = _world.GetPool<MaxLimitModificationsValueComponent>();
-        }
+        private ProtoIt _recalculateRequestFilter = It
+            .Chain<RecalculateCharacteristicSelfRequest>()
+            .Inc<CharacteristicValueComponent>()
+            .Inc<CharacteristicBaseValueComponent>()
+            .Inc<MaxLimitModificationsValueComponent>()
+            .Inc<MaxValueComponent>()
+            .End();
+        
+        private ProtoIt _maxLimitFilter= It
+            .Chain<ModificationComponent>()
+            .Inc<ModificationMaxLimitComponent>()
+            .Inc<CharacteristicLinkComponent>()
+            .End();
 
         public void Run()
         {
             foreach (var characteristicEntity in _recalculateRequestFilter)
             {
-                ref var maxLimitValueComponent = ref _valuePool.Get(characteristicEntity);
+                ref var maxLimitValueComponent = ref _modificationsAspect
+                    .MaxLimitModificationValue
+                    .Get(characteristicEntity);
 
                 var maxValue = 0f;
 
                 foreach (var modificationEntity in _maxLimitFilter)
                 {
-                    ref var linkComponent = ref _characteristicsValueLinkPool.Get(modificationEntity);
+                    ref var linkComponent = ref _characteristicsAspect.CharacteristicLink.Get(modificationEntity);
                     if(!linkComponent.Link.Unpack(_world,out var characteristicValue))
                         continue;
                     if(!characteristicEntity.Equals(characteristicValue)) continue;
                     
-                    ref var modificationComponent = ref _modificationPool.Get(modificationEntity);
+                    ref var modificationComponent = ref _modificationsAspect.Modification.Get(modificationEntity);
                     maxValue += modificationComponent.Counter * modificationComponent.BaseValue;
                 }
                 

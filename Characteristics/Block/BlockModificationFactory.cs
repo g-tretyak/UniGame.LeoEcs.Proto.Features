@@ -1,7 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Block
 {
     using System;
-    using Base.Modification;
+    using Characteristics;
 
     [Serializable]
     public class BlockModificationFactory : DefaultModificationFactory<BlockModificationHandler>{}

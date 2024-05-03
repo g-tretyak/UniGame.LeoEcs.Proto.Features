@@ -8,7 +8,6 @@
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using RealizationSystems;
-    using UniGame.LeoEcs.Shared.Extensions;
 
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
@@ -27,28 +26,31 @@
             ecsSystems.DelHere<CharacteristicChangedComponent<TCharacteristic>>();
             //update characteristic value by source event
             ecsSystems.DelHere<CharacteristicValueChangedEvent<TCharacteristic>>();
-            ecsSystems.Add(new DetectCharacteristicChangedSystem<TCharacteristic>());
+
+            ecsSystems.AddSystem(new CreateCharacteristicModificationSystem<TCharacteristic>());
+            ecsSystems.AddSystem(new DetectCharacteristicChangedSystem<TCharacteristic>());
 
             //create health characteristic
-            ecsSystems.Add(new ChangeTargetCharacteristicMaxLimitationSystem<TCharacteristic>());
-            ecsSystems.Add(new ChangeTargetCharacteristicMinLimitationSystem<TCharacteristic>());
-            ecsSystems.Add(new ChangeTargetCharacteristicValueSystem<TCharacteristic>());
-            ecsSystems.Add(new ChangeTargetCharacteristicBaseSystem<TCharacteristic>());
+            ecsSystems.AddSystem(new ChangeTargetCharacteristicMaxLimitationSystem<TCharacteristic>());
+            ecsSystems.AddSystem(new ChangeTargetCharacteristicMinLimitationSystem<TCharacteristic>());
+            ecsSystems.AddSystem(new ChangeTargetCharacteristicValueSystem<TCharacteristic>());
+            ecsSystems.AddSystem(new ChangeTargetCharacteristicBaseSystem<TCharacteristic>());
             
-            ecsSystems.Add(new CreateCharacteristicValueSystem<TCharacteristic>());
+            ecsSystems.AddSystem(new CreateCharacteristicValueSystem<TCharacteristic>());
             
-            ecsSystems.Add(new AddCharacteristicModificationSystem<TCharacteristic>());
-            ecsSystems.DelHere<AddModificationRequest<TCharacteristic>>();
+            ecsSystems.AddSystem(new AddCharacteristicModificationSystem<TCharacteristic>());
+            ecsSystems.DelHere<CreateModificationRequest<TCharacteristic>>();
             
-            ecsSystems.Add(new ResetTargetCharacteristicSystem<TCharacteristic>());
-            ecsSystems.Add(new ResetTargetCharacteristicMaxLimitSystem<TCharacteristic>());
-            ecsSystems.Add(new ResetTargetCharacteristicModificationsSystem<TCharacteristic>());
+            ecsSystems.AddSystem(new ResetTargetCharacteristicSystem<TCharacteristic>());
+            ecsSystems.AddSystem(new ResetTargetCharacteristicMaxLimitSystem<TCharacteristic>());
+            ecsSystems.AddSystem(new ResetTargetCharacteristicModificationsSystem<TCharacteristic>());
             
-            ecsSystems.Add(new RemoveCharacteristicModificationSystem<TCharacteristic>());
+            ecsSystems.AddSystem(new RemoveCharacteristicModificationSystem<TCharacteristic>());
             ecsSystems.DelHere<RemoveCharacteristicModificationRequest<TCharacteristic>>();
             //convert recalculate health request to recalculate characteristic request
-            ecsSystems.Add(new RecalculateCharacteristicSystem<TCharacteristic>());
+            ecsSystems.AddSystem(new RecalculateCharacteristicSystem<TCharacteristic>());
             
+            ecsSystems.DelHere<CreateModificationRequest<TCharacteristic>>();
             ecsSystems.DelHere<CreateCharacteristicRequest<TCharacteristic>>();
             ecsSystems.DelHere<ResetCharacteristicMaxLimitSelfRequest<TCharacteristic>>();
             ecsSystems.DelHere<ChangeMinLimitSelfRequest<TCharacteristic>>();

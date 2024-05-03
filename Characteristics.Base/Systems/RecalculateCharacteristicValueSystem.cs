@@ -1,11 +1,14 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Systems
 {
     using System;
+    using Aspects;
     using Components;
     using Components.Requests;
-    using Game.Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
+    using LeoEcs.Shared.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
@@ -20,63 +23,37 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public class RecalculateCharacteristicValueSystem : IProtoInitSystem, IProtoRunSystem
+    [ECSDI]
+    public class RecalculateCharacteristicValueSystem : IProtoRunSystem
     {
         private const float HundredPercent = 100.0f;
         
         private ProtoWorld _world;
-        private EcsFilter _recalculateRequestFilter;
+        private CharacteristicsAspect _characteristicsAspect;
+        private ModificationsAspect _modificationsAspect;
         
-        private ProtoPool<CharacteristicValueComponent> _characteristicsPool;
-        
-        private ProtoPool<CharacteristicChangedComponent> _characteristicsChangedPool;
-        private ProtoPool<MinValueComponent> _minPool;
-        private ProtoPool<MaxValueComponent> _maxPool;
-        private ProtoPool<CharacteristicPreviousValueComponent> _previousValuePool;
-        private ProtoPool<PercentModificationsValueComponent> _percentValuePool;
-        private ProtoPool<MaxLimitModificationsValueComponent> _maxLimitValuePool;
-        private ProtoPool<BaseModificationsValueComponent> _baseModificationsValuePool;
-        private ProtoPool<CharacteristicDefaultValueComponent> _defaulValuePool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-
-            _recalculateRequestFilter = _world
-                .Filter<RecalculateCharacteristicSelfRequest>()
-                .Inc<CharacteristicValueComponent>()
-                .Inc<CharacteristicBaseValueComponent>()
-                .Inc<MaxLimitModificationsValueComponent>()
-                .Inc<BaseModificationsValueComponent>()
-                .Inc<PercentModificationsValueComponent>()
-                .Inc<MaxValueComponent>()
-                .End();
-
-            _characteristicsPool = _world.GetPool<CharacteristicValueComponent>();
-            _defaulValuePool = _world.GetPool<CharacteristicDefaultValueComponent>();
-            
-            _minPool = _world.GetPool<MinValueComponent>();
-            _maxPool = _world.GetPool<MaxValueComponent>();
-            
-            _characteristicsChangedPool = _world.GetPool<CharacteristicChangedComponent>();
-            _previousValuePool = _world.GetPool<CharacteristicPreviousValueComponent>();
-            _percentValuePool = _world.GetPool<PercentModificationsValueComponent>();
-            _maxLimitValuePool = _world.GetPool<MaxLimitModificationsValueComponent>();
-            _baseModificationsValuePool = _world.GetPool<BaseModificationsValueComponent>();
-        }
+        private ProtoIt _recalculateRequestFilter = It
+            .Chain<RecalculateCharacteristicSelfRequest>()
+            .Inc<CharacteristicValueComponent>()
+            .Inc<CharacteristicBaseValueComponent>()
+            .Inc<MaxLimitModificationsValueComponent>()
+            .Inc<BaseModificationsValueComponent>()
+            .Inc<PercentModificationsValueComponent>()
+            .Inc<MaxValueComponent>()
+            .End();
 
         public void Run()
         {
             foreach (var characteristicEntity in _recalculateRequestFilter)
             {
-                ref var characteristicComponent = ref _characteristicsPool.Get(characteristicEntity);
-                ref var defaultValueComponent = ref _defaulValuePool.Get(characteristicEntity);
-                ref var minComponent = ref _minPool.Get(characteristicEntity);
-                ref var maxComponent = ref _maxPool.Get(characteristicEntity);
-                ref var previousValueComponent = ref _previousValuePool.Get(characteristicEntity);
-                ref var percentValueComponent = ref _percentValuePool.Get(characteristicEntity);
-                ref var maxLimitValueComponent = ref _maxLimitValuePool.Get(characteristicEntity);
-                ref var baseModificationsValueComponent = ref _baseModificationsValuePool.Get(characteristicEntity);
+                ref var characteristicComponent = ref _characteristicsAspect.Value.Get(characteristicEntity);
+                ref var defaultValueComponent = ref _characteristicsAspect.DefaultValue.Get(characteristicEntity);
+                ref var minComponent = ref _characteristicsAspect.MinValue.Get(characteristicEntity);
+                ref var maxComponent = ref _characteristicsAspect.MaxValue.Get(characteristicEntity);
+                ref var previousValueComponent = ref _characteristicsAspect.PreviousValue.Get(characteristicEntity);
+                ref var percentValueComponent = ref _characteristicsAspect.PercentValue.Get(characteristicEntity);
+                ref var maxLimitValueComponent = ref _characteristicsAspect.MaxLimitValue.Get(characteristicEntity);
+                ref var baseModificationsValueComponent = ref _modificationsAspect.BaseModificationValue.Get(characteristicEntity);
 
                 var previousValue = characteristicComponent.Value;
                 var previousMaxLimit = maxComponent.Value;
@@ -94,7 +71,8 @@
                 previousValueComponent.Value = previousValue;
                 characteristicComponent.Value = newValue;
                 
-                ref var changedComponent = ref _characteristicsChangedPool.GetOrAddComponent(characteristicEntity);
+                ref var changedComponent = ref _characteristicsAspect.Changed
+                    .GetOrAddComponent(characteristicEntity);
                 changedComponent.PreviousValue = previousValue;
                 changedComponent.Value = newValue;
             }

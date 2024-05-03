@@ -1,7 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Speed
 {
     using System;
-    using Base.Modification;
+    using Characteristics;
 
     [Serializable]
     public class SpeedModificationFactory : DefaultModificationFactory<SpeedModificationHandler>{}

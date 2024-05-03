@@ -1,7 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Cooldown.Systems
 {
     using System;
-    using Base.Modification;
+    using Characteristics;
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;

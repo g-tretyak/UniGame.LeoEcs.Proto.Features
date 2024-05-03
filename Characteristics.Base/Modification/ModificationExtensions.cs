@@ -1,11 +1,8 @@
-﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Modification
+﻿namespace UniGame.Ecs.Proto.Characteristics
 {
     using System.Collections.Generic;
     using UnityEngine;
-
-    /// <summary>
-    /// TODO REMOVE
-    /// </summary>
+    
     public static class ModificationExtensions
     {
         private const float HundredPercent = 100.0f;
@@ -35,23 +32,20 @@
         {
             var isModificationContains = modifications.Contains(modification);
             
-            if(!modification.allowedSummation && isModificationContains)
-                return;
+            if(!modification.allowedSummation && isModificationContains) return;
+
+            modification.counter++;
             
-            modification.IncreaseCounter();
-            
-            if (isModificationContains)
-                return;
+            if (isModificationContains) return;
             
             modifications.Add(modification);
         }
 
         public static void RemoveModification(this IList<Modification> modifications, Modification modification)
         {
-            modification.DecreaseCounter();
+            modification.counter--;
             
-            if(!modifications.Contains(modification) || modification.counter > 0)
-                return;
+            if(!modifications.Contains(modification) || modification.counter > 0) return;
 
             modifications.Remove(modification);
         }

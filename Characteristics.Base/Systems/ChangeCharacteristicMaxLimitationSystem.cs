@@ -1,9 +1,11 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Systems
 {
     using System;
+    using Aspects;
     using Components;
     using Components.Requests;
-    using Game.Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
+    using LeoEcs.Shared.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
@@ -21,56 +23,39 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public class ChangeCharacteristicMaxLimitationSystem : IProtoInitSystem, IProtoRunSystem
+    [ECSDI]
+    public class ChangeCharacteristicMaxLimitationSystem : IProtoRunSystem
     {
         private ProtoWorld _world;
-        private EcsFilter _changeRequestFilter;
+        private CharacteristicsAspect _characteristicsAspect;
+        private ModificationsAspect _modificationsAspect;
         
-        private ProtoPool<ChangeMaxLimitRequest> _requestPool;
-        
-        private ProtoPool<MinValueComponent> _minPool;
-        private ProtoPool<MaxValueComponent> _maxPool;
-        private ProtoPool<CharacteristicBaseValueComponent> _baseValuePool;
-        private ProtoPool<RecalculateCharacteristicSelfRequest> _recalculatePool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-
-            _changeRequestFilter = _world
-                .Filter<ChangeMaxLimitRequest>()
-                .End();
-
-            _requestPool = _world.GetPool<ChangeMaxLimitRequest>();
-            _minPool = _world.GetPool<MinValueComponent>();
-            _baseValuePool = _world.GetPool<CharacteristicBaseValueComponent>();
-            _maxPool = _world.GetPool<MaxValueComponent>();
-            _recalculatePool = _world.GetPool<RecalculateCharacteristicSelfRequest>();
-        }
+        private ProtoIt _changeRequestFilter= It
+            .Chain<ChangeMaxLimitRequest>()
+            .End();
 
         public void Run()
         {
-
             foreach (var requestEntity in _changeRequestFilter)
             {
-                ref var requestComponent = ref _requestPool.Get(requestEntity);
+                ref var requestComponent = ref _characteristicsAspect.ChangeMaxLimit.Get(requestEntity);
                 var value = requestComponent.Value;
                 
                 if(!requestComponent.Target.Unpack(_world,out var characteristicEntity))
                     continue;
                 
-                if(!_baseValuePool.Has(characteristicEntity))
+                if(!_characteristicsAspect.BaseValue.Has(characteristicEntity))
                     continue;
                 
-                ref var minComponent = ref _minPool.Get(characteristicEntity);
-                ref var maxComponent = ref _maxPool.Get(characteristicEntity);
-                ref var baseValueComponent = ref _baseValuePool.Get(characteristicEntity);
+                ref var minComponent = ref _characteristicsAspect.MinValue.Get(characteristicEntity);
+                ref var maxComponent = ref _characteristicsAspect.MaxValue.Get(characteristicEntity);
+                ref var baseValueComponent = ref _characteristicsAspect.BaseValue.Get(characteristicEntity);
 
                 maxComponent.Value = value <= minComponent.Value ? minComponent.Value : value;
 
                 baseValueComponent.Value = Mathf.Clamp(baseValueComponent.Value, minComponent.Value, maxComponent.Value);
                 
-                _recalculatePool.GetOrAddComponent(characteristicEntity);
+                _characteristicsAspect.Recalculate.GetOrAddComponent(characteristicEntity);
             }
             
         }

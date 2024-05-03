@@ -1,6 +1,6 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Duration.Systems
 {
-    using Base.Modification;
+    using Characteristics;
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;

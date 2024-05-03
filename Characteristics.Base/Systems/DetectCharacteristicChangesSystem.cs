@@ -1,10 +1,12 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Systems
 {
     using System;
+    using Aspects;
     using Components;
     using Components.Events;
     using Game.Ecs.Core.Components;
-    using Game.Modules.UnioModules.UniGame.LeoEcsLite.LeoEcs.Shared.Components;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
+    using LeoEcs.Shared.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
@@ -12,7 +14,7 @@
 
 
     /// <summary>
-    /// ADD DESCRIPTION HERE
+    /// detect characteristic changes and create event for it
     /// </summary>
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
@@ -22,45 +24,31 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public class DetectCharacteristicChangesSystem : IProtoInitSystem, IProtoRunSystem
+    [ECSDI]
+    public class DetectCharacteristicChangesSystem : IProtoRunSystem
     {
         private ProtoWorld _world;
-        private EcsFilter _changeRequestFilter;
+        private CharacteristicsAspect _characteristicsAspect;
+        private ModificationsAspect _modificationsAspect;
         
-        private ProtoPool<CharacteristicChangedComponent> _changedPool;
-        private ProtoPool<OwnerComponent> _ownerPool;
-        private ProtoPool<CharacteristicPreviousValueComponent> _previousPool;
-        
-        private ProtoPool<CharacteristicValueChangedEvent> _eventPool;
-        
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _changeRequestFilter = _world
-                .Filter<CharacteristicChangedComponent>()
-                .Inc<CharacteristicValueComponent>()
-                .Inc<MinValueComponent>()
-                .Inc<MaxValueComponent>()
-                .Inc<CharacteristicBaseValueComponent>()
-                .End();
-            
-            _changedPool = _world.GetPool<CharacteristicChangedComponent>();
-            _eventPool = _world.GetPool<CharacteristicValueChangedEvent>();
-            _ownerPool = _world.GetPool<OwnerComponent>();
-            _previousPool = _world.GetPool<CharacteristicPreviousValueComponent>();
-        }
+        private ProtoIt _changeRequestFilter= It
+            .Chain<CharacteristicChangedComponent>()
+            .Inc<CharacteristicValueComponent>()
+            .Inc<MinValueComponent>()
+            .Inc<MaxValueComponent>()
+            .Inc<CharacteristicBaseValueComponent>()
+            .End();
 
         public void Run()
         {
             foreach (var changesEntity in _changeRequestFilter)
             {
-                ref var changedComponent = ref _changedPool.Get(changesEntity);
-                ref var previousValue = ref _previousPool.Get(changesEntity);
-                ref var ownerComponent = ref _ownerPool.Get(changesEntity);
+                ref var changedComponent = ref _characteristicsAspect.Changed.Get(changesEntity);
+                ref var previousValue = ref _characteristicsAspect.PreviousValue.Get(changesEntity);
+                ref var ownerComponent = ref _characteristicsAspect.Owner.Get(changesEntity);
                 
                 var eventEntity = _world.NewEntity();
-                ref var eventComponent = ref _eventPool.Add(eventEntity);
+                ref var eventComponent = ref _characteristicsAspect.OnValueChanged.Add(eventEntity);
                 eventComponent.Owner = ownerComponent.Value;
                 eventComponent.Value = changedComponent.Value;
                 eventComponent.PreviousValue = previousValue.Value;

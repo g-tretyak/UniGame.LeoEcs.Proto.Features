@@ -1,7 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.CriticalChance
 {
     using System;
-    using Base.Modification;
+    using Characteristics;
     using CriticalMultiplier;
 
     [Serializable]

@@ -1,8 +1,10 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Systems
 {
     using System;
+    using Aspects;
     using Components;
     using Components.Requests;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
@@ -19,43 +21,36 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public class CheckModificationSourceLifeTimeComponent : IProtoInitSystem, IProtoRunSystem
+    [ECSDI]
+    public class CheckModificationSourceLifeTimeComponent : IProtoRunSystem
     {
         private ProtoWorld _world;
-        private EcsFilter _filter;
-        private ProtoPool<ModificationSourceLinkComponent> _sourceLinkPool;
+        private CharacteristicsAspect _characteristicsAspect;
+        private ModificationsAspect _modificationsAspect;
+        
+        private ProtoIt _filter= It
+            .Chain<ModificationComponent>()
+            .Inc<ModificationSourceTrackComponent>()
+            .Inc<CharacteristicLinkComponent>()
+            .Inc<ModificationSourceLinkComponent>()
+            .End();
+        
         private ProtoPool<CharacteristicLinkComponent> _characteristicsLinkPool;
         private ProtoPool<RecalculateCharacteristicSelfRequest> _recalculateSelfPool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-
-            _filter = _world.Filter<ModificationComponent>()
-                .Inc<ModificationSourceTrackComponent>()
-                .Inc<CharacteristicLinkComponent>()
-                .Inc<ModificationSourceLinkComponent>()
-                .End();
-
-            _sourceLinkPool = _world.GetPool<ModificationSourceLinkComponent>();
-            _characteristicsLinkPool = _world.GetPool<CharacteristicLinkComponent>();
-            _recalculateSelfPool = _world.GetPool<RecalculateCharacteristicSelfRequest>();
-            
-        }
 
         public void Run()
         {
             foreach (var modification in _filter)
             {
-                ref var ownerLinkComponent = ref _sourceLinkPool.Get(modification);
-                if (ownerLinkComponent.Value.Unpack(_world,out var sourceEntity))
-                    continue;
+                ref var ownerLinkComponent = ref _modificationsAspect.SourceLink.Get(modification);
+                if (ownerLinkComponent.Value.Unpack(_world,out var sourceEntity)) continue;
 
-                ref var characteristicsLinkComponent = ref _characteristicsLinkPool.Get(modification);
+                ref var characteristicsLinkComponent = ref _modificationsAspect.CharacteristicLink.Get(modification);
 
                 if (characteristicsLinkComponent.Link.Unpack(_world, out var characteristicEntity))
                 {
-                    ref var recalculateRequest = ref _recalculateSelfPool.GetOrAddComponent(characteristicEntity);
+                    ref var recalculateRequest = ref _characteristicsAspect.Recalculate
+                        .GetOrAddComponent(characteristicEntity);
                 }
                 
                 _world.DelEntity(modification);

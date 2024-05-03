@@ -4,6 +4,8 @@
     using Components;
     using Components.Events;
     using Components.Requests;
+    using Game.Ecs.Core.Components;
+    using LeoEcs.Shared.Components;
     using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
@@ -21,7 +23,7 @@
     public class CharacteristicsAspect : EcsAspect
     {
         //aspects
-        public CharacteristicsModificationsAspect Modifications;
+        public ModificationsAspect Modifications;
         
         
         public ProtoPool<CharacteristicBaseValueComponent> BaseValue;
@@ -30,8 +32,13 @@
         public ProtoPool<CharacteristicDefaultValueComponent> DefaultValue;
         public ProtoPool<CharacteristicValueComponent> Value;
         public ProtoPool<CharacteristicLinkComponent> CharacteristicLink;
-        public ProtoPool<CharacteristicOwnerComponent> Owner;
+        public ProtoPool<OwnerComponent> Owner;
+        public ProtoPool<CharacteristicOwnerComponent> CharacteristicOwner;
         public ProtoPool<CharacteristicPreviousValueComponent> PreviousValue;
+        public ProtoPool<MinValueComponent> MinValue;
+        public ProtoPool<MaxValueComponent> MaxValue;
+        public ProtoPool<PercentModificationsValueComponent> PercentValue;
+        public ProtoPool<MaxLimitModificationsValueComponent> MaxLimitValue;
         
         //requests
         public ProtoPool<ChangeCharacteristicBaseRequest> ChangeBaseValue;
@@ -39,7 +46,8 @@
         public ProtoPool<ChangeMaxLimitRequest> ChangeMaxLimit;
         public ProtoPool<ChangeMinLimitRequest> ChangeMinLimit;
         public ProtoPool<RecalculateCharacteristicSelfRequest> Recalculate;
-        
+        public ProtoPool<ResetCharacteristicRequest> Reset;
+        public ProtoPool<RecalculateModificationSelfRequest> RecalculateModifications;
         
         //events
         public ProtoPool<ResetCharacteristicsEvent> OnCharacteristicsReset;
