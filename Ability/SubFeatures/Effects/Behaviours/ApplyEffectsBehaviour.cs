@@ -8,7 +8,6 @@
     using Proto.Effects.Components;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
-    using UnityEngine.Serialization;
 
     [Serializable]
     public sealed class ApplyEffectsBehaviour : IAbilityBehaviour

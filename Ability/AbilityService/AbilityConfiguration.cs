@@ -6,7 +6,6 @@
     using Sirenix.OdinInspector;
     using UniGame.AddressableTools.Runtime.AssetReferencies;
     using UnityEngine;
-    using UnityEngine.Serialization;
 
 #if UNITY_EDITOR
 #endif
@@ -17,7 +16,6 @@
         [TitleGroup("Specification")]
         [InlineProperty]
         [HideLabel]
-        [FormerlySerializedAs("_specification")] 
         [SerializeField]
         public AbilitySpecification specification;
         
@@ -35,7 +33,6 @@
         public float duration = 0.2f;
         
         [PropertySpace(8)]
-        [FormerlySerializedAs("_abilityBehaviours")] 
         [SerializeReference]
         public List<IAbilityBehaviour> abilityBehaviours = new List<IAbilityBehaviour>();
         

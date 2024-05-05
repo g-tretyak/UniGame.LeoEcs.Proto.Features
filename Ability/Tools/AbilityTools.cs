@@ -34,7 +34,6 @@ namespace UniGame.Ecs.Proto.Ability.Tools
     using UniGame.LeoEcs.Timer.Components;
     using UnityEngine;
     using UnityEngine.AddressableAssets;
-    using ProtoWorldExtensions = UniGame.LeoEcs.Shared.Extensions.ProtoWorldExtensions;
 
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;

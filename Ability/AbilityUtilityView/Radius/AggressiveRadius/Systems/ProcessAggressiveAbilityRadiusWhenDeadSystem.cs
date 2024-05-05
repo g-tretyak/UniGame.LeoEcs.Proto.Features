@@ -1,8 +1,8 @@
-﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Radius.AggressiveRadius.Systems
+﻿namespace UniGame.Ecs.Proto.Ability
 {
     using AbilityUtilityView.Components;
-    using Component;
-    using Components;
+    using AbilityUtilityView.Radius.AggressiveRadius.Components;
+    using AbilityUtilityView.Radius.Component;
     using Game.Ecs.Core.Death.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;

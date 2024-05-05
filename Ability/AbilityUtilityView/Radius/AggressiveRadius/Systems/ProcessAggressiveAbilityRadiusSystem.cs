@@ -1,14 +1,14 @@
-﻿namespace UniGame.Ecs.Proto.Ability.AbilityUtilityView.Radius.AggressiveRadius.Systems
+﻿namespace UniGame.Ecs.Proto.Ability
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Runtime.CompilerServices;
     using AbilityUtilityView.Components;
+    using AbilityUtilityView.Radius.AggressiveRadius.Components;
+    using AbilityUtilityView.Radius.Component;
     using Characteristics.Radius.Component;
     using Common.Components;
-    using Component;
-    using Components;
     using Game.Code.GameLayers.Category;
     using Game.Code.GameLayers.Layer;
     using Game.Ecs.Core;
@@ -220,7 +220,7 @@
                     continue;
 
                 ref var gameLayerComponent = ref layerMaskPool.Get(entity);
-                if(!layerMask.HasFlag(ref gameLayerComponent.Value))
+                if(!layerMask.HasFlag(gameLayerComponent.Value))
                     continue;
                 
                 result.Add(entity);

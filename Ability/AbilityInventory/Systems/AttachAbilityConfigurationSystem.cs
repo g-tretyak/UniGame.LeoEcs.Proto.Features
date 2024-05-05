@@ -15,7 +15,6 @@
     using UniGame.LeoEcs.Shared.Extensions;
     using Unity.Collections;
     using UnityEngine.AddressableAssets;
-    using ProtoWorldExtensions = UniGame.LeoEcs.Shared.Extensions.ProtoWorldExtensions;
 
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;

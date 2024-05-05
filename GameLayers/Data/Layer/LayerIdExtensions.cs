@@ -5,7 +5,7 @@
     public static class LayerIdExtensions
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasFlag(this ref LayerId mask,ref LayerId layer)
+        public static bool HasFlag(this LayerId mask,LayerId layer)
         {
             return (mask & layer) == layer;
         }

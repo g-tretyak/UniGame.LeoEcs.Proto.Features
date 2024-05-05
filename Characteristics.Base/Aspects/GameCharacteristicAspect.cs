@@ -24,6 +24,7 @@
     {
         //components
         public ProtoPool<TCharacteristic> Characteristic;
+        public ProtoPool<CharacteristicLinkComponent<TCharacteristic>> CharacteristicLink;
         public ProtoPool<CharacteristicComponent<TCharacteristic>> Value;
         public ProtoPool<CharacteristicChangedComponent<TCharacteristic>> Changed;
         

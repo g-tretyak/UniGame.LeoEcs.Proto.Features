@@ -18,7 +18,7 @@
     [Serializable]
     public class CriticalAnimationsBehaviour : IAbilityBehaviour
     {
-        public List<AnimationLink> animations = new List<AnimationLink>();
+        public List<AnimationLink> animations = new();
 
         public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
         {

@@ -5,7 +5,6 @@
 	using Components;
 	using Cysharp.Threading.Tasks;
 	using Game.Code.Services.AbilityLoadout.Abstract;
-	using Game.Ecs.Core.Components;
 	using Leopotam.EcsLite;
 	using Leopotam.EcsProto;
 	using Leopotam.EcsProto.QoL;

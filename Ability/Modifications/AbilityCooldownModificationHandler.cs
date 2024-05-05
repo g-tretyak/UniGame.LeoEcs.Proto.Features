@@ -9,7 +9,6 @@
     using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
-    using UnityEngine.Serialization;
 
     [Serializable]
     public sealed class AbilityCooldownModificationHandler : ModificationHandler

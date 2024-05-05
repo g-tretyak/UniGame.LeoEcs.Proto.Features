@@ -10,24 +10,19 @@
     [Serializable]
     public sealed class AbilitySpecification
     {
-        [FormerlySerializedAs("_cooldown")] 
         [SerializeField]
         public float cooldown;
         
-        [FormerlySerializedAs("_cooldownType")] 
         [SerializeField]
         public CooldownType cooldownType = CooldownType.Cooldown;
 
-        [FormerlySerializedAs("_radius")] 
         [SerializeField]
         public float radius;
 
-        [FormerlySerializedAs("_relationshipId")]
         [SerializeField]
         [RelationshipIdMask]
         public RelationshipId relationshipId = (RelationshipId)~0;
 
-        [FormerlySerializedAs("_categoryId")]
         [SerializeField]
         [CategoryIdMask]
         public CategoryId categoryId = (CategoryId)~0;

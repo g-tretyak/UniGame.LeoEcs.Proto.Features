@@ -41,6 +41,7 @@
         public ProtoPool<MaxLimitModificationsValueComponent> MaxLimitValue;
         
         //requests
+        public ProtoPool<ResetCharacteristicMaxLimitSelfRequest> ResetMaxLimit;
         public ProtoPool<ChangeCharacteristicBaseRequest> ChangeBaseValue;
         public ProtoPool<ChangeCharacteristicRequest> ChangeValue;
         public ProtoPool<ChangeMaxLimitRequest> ChangeMaxLimit;
@@ -48,6 +49,7 @@
         public ProtoPool<RecalculateCharacteristicSelfRequest> Recalculate;
         public ProtoPool<ResetCharacteristicRequest> Reset;
         public ProtoPool<RecalculateModificationSelfRequest> RecalculateModifications;
+        public ProtoPool<RemoveModificationRequest> RemoveModification;
         
         //events
         public ProtoPool<ResetCharacteristicsEvent> OnCharacteristicsReset;

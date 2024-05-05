@@ -5,16 +5,20 @@
     using Aspects;
     using Components;
     using Base;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using LeoEcs.Shared.Extensions;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     
 #if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
+    
     [Il2CppSetOption(Option.NullChecks, false)]
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
+    [ECSDI]
     public class CreateCharacteristicModificationSystem<TCharacteristic> : IProtoRunSystem
         where TCharacteristic : struct
     {
@@ -28,7 +32,6 @@
         {
             foreach (var entity in _createFilter)
             {
-                
                 _modificationAspect.CreateModification.Del(entity);
             }
         }
