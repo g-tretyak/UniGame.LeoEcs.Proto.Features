@@ -2,7 +2,7 @@
 {
     using System;
     using Characteristics.Base.Components;
-    using Characteristics.Health.Components;
+    using Characteristics.Health;
     using Game.Ecs.Core.Components;
     using Game.Ecs.Core.Death.Components;
     using Leopotam.EcsLite;

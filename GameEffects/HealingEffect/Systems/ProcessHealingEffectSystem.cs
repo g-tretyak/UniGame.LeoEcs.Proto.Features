@@ -1,7 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.GameEffects.HealingEffect.Systems
 {
-    using Characteristics.Base.Components.Requests.OwnerRequests;
-    using Characteristics.Health.Components;
+    using Characteristics.Base;
+    using Characteristics.Health;
     using Components;
     using Effects.Components;
     using Leopotam.EcsLite;

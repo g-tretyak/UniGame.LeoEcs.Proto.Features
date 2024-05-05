@@ -1,11 +1,11 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.ManaRegeneration.Systems
 {
-	using Base.Components.Requests.OwnerRequests;
+	using Base;
 	using Components;
 	using Game.Ecs.Time.Service;
-	using Leopotam.EcsLite;
 	using Leopotam.EcsProto;
-	using Mana.Components;
+	using Leopotam.EcsProto.QoL;
+	using Mana;
 	using UniGame.LeoEcs.Shared.Extensions;
 	
 #if ENABLE_IL2CPP
@@ -21,35 +21,23 @@
 	[Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 	[Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
-	public class ProcessManaRegenerationSystem : IProtoInitSystem, IProtoRunSystem
+	public class ProcessManaRegenerationSystem : IProtoRunSystem
 	{
 		private ProtoWorld _world;
-		private EcsFilter _filter;
-		private ProtoPool<ManaRegenerationComponent> _manaRegenerationPool;
-		private ProtoPool<ManaRegenerationTimerComponent> _manaRegenerationTimerPool;
-		private ProtoPool<ManaComponent> _manaPool;
-		private ProtoPool<ChangeCharacteristicBaseRequest<ManaComponent>> _manaChangePool;
-
-		public void Init(IProtoSystems systems)
-		{
-			_world = systems.GetWorld();
-			
-			_filter = _world.Filter<ManaRegenerationComponent>()
-				.Inc<ManaRegenerationTimerComponent>()
-				.Inc<ManaComponent>()
-				.End();
-			
-			_manaRegenerationPool = _world.GetPool<ManaRegenerationComponent>();
-			_manaRegenerationTimerPool = _world.GetPool<ManaRegenerationTimerComponent>();
-			_manaChangePool = _world.GetPool<ChangeCharacteristicBaseRequest<ManaComponent>>();
-		}
+		private ManaRegenerationAspect _regenerationAspect;
+		private ManaAspect _manaAspect;
+		
+		private ProtoIt _filter = It.Chain<ManaRegenerationComponent>()
+			.Inc<ManaRegenerationTimerComponent>()
+			.Inc<ManaComponent>()
+			.End();
 
 		public void Run()
 		{
 			foreach (var entity in _filter)
 			{
-				ref var manaRegenerationComponent = ref _manaRegenerationPool.Get(entity);
-				ref var manaRegenerationTimerComponent = ref _manaRegenerationTimerPool.Get(entity);
+				ref var manaRegenerationComponent = ref _regenerationAspect.Characteristic.Get(entity);
+				ref var manaRegenerationTimerComponent = ref _regenerationAspect.RegenerationTimer.Get(entity);
 				
 				if (GameTime.Time < manaRegenerationTimerComponent.LastTickTime)
 					continue;
@@ -58,7 +46,7 @@
 				manaRegenerationTimerComponent.LastTickTime = GameTime.Time + manaRegenerationTimerComponent.TickTime;
 				
 				var requestEntity = _world.NewEntity();
-				ref var request = ref _manaChangePool.Add(requestEntity);
+				ref var request = ref _manaAspect.ChangeBaseValue.Add(requestEntity);
 				
 				request.Value = manaRegeneration;
 				request.Source = entity.PackEntity(_world);

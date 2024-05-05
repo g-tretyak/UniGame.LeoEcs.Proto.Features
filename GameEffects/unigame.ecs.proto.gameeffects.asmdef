@@ -3,10 +3,6 @@
     "rootNamespace": "",
     "references": [
         "unigame.unicore.runtime",
-        "Leopotam.EcsLite",
-        "Leopotam.EcsLite.ExtendedSystems",
-        "Leopotam.EcsLite.Threads",
-        "Leopotam.EcsLite.UnityEditor.Runtime",
         "UniGame.Shared.Runtime",
         "unigame.ecs.proto.Time",
         "unigame.ecs.proto.Effects",
@@ -39,7 +35,9 @@
         "unigame.leoecs.proto.converter.runtime",
         "Leopotam.EcsProto.QoL",
         "unigame.ecs.proto.ability.runtime",
-        "unigame.laeoecs.proto.features"
+        "unigame.laeoecs.proto.features",
+        "unigame.ecs.proto.characteristics.health",
+        "unigame.ecs.proto.characteristics.mana"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

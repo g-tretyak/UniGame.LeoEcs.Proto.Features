@@ -14,6 +14,7 @@
         public void AutoReset(ref BaseDurationComponent c)
         {
             c.Modifications ??= new List<Modification>();
+            c.Modifications.Clear();
         }
     }
 }

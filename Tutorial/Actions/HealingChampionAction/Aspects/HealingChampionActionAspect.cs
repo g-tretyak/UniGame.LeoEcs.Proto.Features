@@ -1,7 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Gameplay.Tutorial.Actions.HealingChampionAction.Aspects
 {
 	using System;
-	using Characteristics.Health.Components;
+	using Characteristics.Health;
 	using Components;
 	using Effects.Components;
 	using Leopotam.EcsProto;

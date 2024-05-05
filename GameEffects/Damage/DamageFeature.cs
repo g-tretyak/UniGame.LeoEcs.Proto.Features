@@ -17,7 +17,6 @@ namespace UniGame.Ecs.Proto.Gameplay.Damage
 
 #if UNITY_EDITOR
     using UniModules.Editor;
-    using UnityEditor;
 #endif
     
     [CreateAssetMenu(menuName = "Proto Features/Gameplay/Damage Feature",fileName = "Damage Feature")]

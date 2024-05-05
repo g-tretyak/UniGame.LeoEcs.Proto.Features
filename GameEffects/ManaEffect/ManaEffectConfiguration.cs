@@ -1,8 +1,8 @@
 ﻿namespace UniGame.Ecs.Proto.GameEffects.ManaEffect
 {
 	using System;
-	using Characteristics.Base.Components.Requests.OwnerRequests;
-	using Characteristics.Mana.Components;
+	using Characteristics.Base;
+	using Characteristics.Mana;
 	using Effects;
 	using Effects.Components;
 	using Leopotam.EcsProto;

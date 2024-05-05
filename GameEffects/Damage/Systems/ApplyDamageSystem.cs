@@ -7,13 +7,12 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using UniGame.Ecs.Proto.Characteristics.Base.Components.Requests.OwnerRequests;
-    using UniGame.Ecs.Proto.Characteristics.Health.Components;
+    using Characteristics.Base;
+    using Characteristics.Health;
     using UniGame.Ecs.Proto.Characteristics.Shield.Components;
      
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
-    using UnityEngine;
 
     /// <summary>
     /// apply damage to target

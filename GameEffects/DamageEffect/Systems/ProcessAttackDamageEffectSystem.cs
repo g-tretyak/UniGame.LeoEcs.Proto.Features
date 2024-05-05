@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.GameEffects.DamageEffect.Systems
 {
     using Characteristics.Attack.Components;
+    using Characteristics.AttackDamage;
     using Components;
     using Effects.Components;
     using Gameplay.CriticalAttackChance.Components;

@@ -1,6 +1,5 @@
 ﻿namespace UniGame.Ecs.Proto.Gameplay.Damage
 {
-    using System.Collections.Generic;
     using Cysharp.Threading.Tasks;
     using Leopotam.EcsProto;
     using UniGame.LeoEcs.Bootstrap.Runtime;

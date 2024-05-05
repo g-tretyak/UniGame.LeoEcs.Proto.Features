@@ -1,4 +1,4 @@
-﻿namespace UniGame.Ecs.Proto.Characteristics.Base.Abstract
+﻿namespace UniGame.Ecs.Proto.Characteristics
 {
     public interface ICharacteristicModification
     {

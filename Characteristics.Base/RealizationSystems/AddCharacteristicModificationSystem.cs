@@ -3,7 +3,7 @@
     using System;
     using Components;
     using Components.Requests;
-    using Components.Requests.OwnerRequests;
+    using Base;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;

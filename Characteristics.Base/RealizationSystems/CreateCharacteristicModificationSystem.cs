@@ -4,7 +4,7 @@
     using System.Runtime.CompilerServices;
     using Aspects;
     using Components;
-    using Components.Requests.OwnerRequests;
+    using Base;
     using LeoEcs.Shared.Extensions;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
@@ -18,7 +18,7 @@
     public class CreateCharacteristicModificationSystem<TCharacteristic> : IProtoRunSystem
         where TCharacteristic : struct
     {
-        private CharacteristicModificationAspect<TCharacteristic> _modificationAspect;
+        private GameCharacteristicAspect<TCharacteristic> _modificationAspect;
         
         private ProtoIt _createFilter = It
             .Chain<CreateModificationRequest<TCharacteristic>>()

@@ -2,7 +2,7 @@
 {
 	using System;
 	using Aspects;
-	using Characteristics.Health.Components;
+	using Characteristics.Health;
 	using Components;
 	using Game.Code.Configuration.Runtime.Effects;
 	using Game.Ecs.Core.Components;
@@ -56,8 +56,8 @@
 				var championEntity = (ProtoEntity)_championFilter.First();
 				var healthComponent = _aspect.Healths.Get(championEntity);
 				ref var healingActionComponent = ref _aspect.HealingChampionAction.Get(actionEntity);
-				var currentHealth = healthComponent.Health;
-				var maxHealth = healthComponent.MaxHealth;
+				var currentHealth = healthComponent.Value;
+				var maxHealth = healthComponent.MaxValue;
 				
 				var healOverMax = healingActionComponent.HealOverMax;
 				var healDuration = healingActionComponent.HealDuration;
