@@ -2,7 +2,7 @@
 {
     using System;
     using Common.Components;
-    using Input.Components.Ability;
+    using Game.Ecs.Input.Components.Requests;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;

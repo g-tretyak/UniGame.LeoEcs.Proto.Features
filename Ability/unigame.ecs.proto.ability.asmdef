@@ -53,7 +53,8 @@
         "GUID:660f252bd0ddbc14a9e036655d68c1cb",
         "GUID:46ef16ae28374c647aa6d30841a9f5cf",
         "GUID:2504b8388af31dd45813b69c15ddf4a5",
-        "GUID:362e8c42c6b7fd048812c5f1b3f9b10d"
+        "GUID:362e8c42c6b7fd048812c5f1b3f9b10d",
+        "GUID:ad4e4e34418e498cb5bd6ddced0f26a9"
     ],
     "defineConstraints": [
         "LEO_ECS_PROTO_ENABLED"

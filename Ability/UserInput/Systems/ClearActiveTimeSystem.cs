@@ -1,19 +1,16 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.UserInput.Systems
 {
     using Common.Components;
-    using Input.Components;
-    using Input.Components.Ability;
+    using Game.Ecs.Input.Components;
+    using Game.Ecs.Input.Components.Requests;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Shared.Extensions;
 
-
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
-#endif
 
-#if ENABLE_IL2CPP
     [Il2CppSetOption(Option.NullChecks, false)]
 	[Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 	[Il2CppSetOption(Option.DivideByZeroChecks, false)]

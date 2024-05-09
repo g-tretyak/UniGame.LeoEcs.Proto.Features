@@ -1,12 +1,15 @@
-﻿namespace UniGame.Ecs.Proto.Input.Aspects
+﻿namespace Game.Ecs.Input.Aspects
 {
     using System;
     using Components;
-    using Components.Direction;
-    using LeoEcs.Bootstrap.Runtime.Abstract;
+    using Components.Requests;
     using Leopotam.EcsProto;
-    using Map.Component;
+    using Leopotam.EcsProto.QoL;
+    using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
+    /// <summary>
+    /// Aspect containing pools for input components.
+    /// </summary>
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 
@@ -17,14 +20,20 @@
     [Serializable]
     public class InputAspect : EcsAspect
     {
-        public ProtoPool<MapMatrixComponent> InputMapMatrix;
-        public ProtoPool<UserInputTargetComponent> InputTarget;
-        public ProtoPool<DirectionBlockComponent> DirectionBlock;
+        //filters
+        public ProtoIt SwitchInputFilter = It
+            .Chain<SwitchInputMapRequest>()
+            .End();
+
+        public ProtoIt InputFilter = It
+            .Chain<InputActionsComponent>()
+            .End();
         
-        //events
-        public ProtoPool<DirectionRawInputEvent> DirectionRawInputEvent;
-        public ProtoPool<DirectionInputEvent> DirectionInputEvent;
-        public ProtoPool<BeginDirectionInputEvent> BeginDirectionInputEvent;
-        public ProtoPool<EndDirectionInputEvent> EndDirectionInputEvent;
+        // Component representing an input actions.
+        public ProtoPool<InputActionsComponent> InputActions;
+        public ProtoPool<UserInputTargetComponent> InputTarget;
+            
+        // Request component used to signal the system to switch to a different input map.
+        public ProtoPool<SwitchInputMapRequest> SwitchInputMap;
     }
 }

@@ -3,8 +3,8 @@
     using Common.Components;
     using Components;
     using Game.Ecs.Core.Death.Components;
-    using Input.Components;
-    using Input.Components.Ability;
+    using Game.Ecs.Input.Components;
+    using Game.Ecs.Input.Components.Requests;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
@@ -54,7 +54,7 @@
                 ref var up = ref _upPool.Get(entity);
                 ref var abilityMap = ref _abilityMapPool.Get(entity);
 
-                if (!abilityMap.AbilityEntities[up.InputId].Unpack(_world, out var abilityEntity))
+                if (!abilityMap.AbilityEntities[up.Id].Unpack(_world, out var abilityEntity))
                     continue;
 
                 if (!_canUpPool.Has(abilityEntity))
@@ -66,14 +66,14 @@
                 if (!_inHandRequestPool.Has(entity))
                 {
                     ref var inHand = ref _inHandRequestPool.Add(entity);
-                    inHand.AbilityCellId = up.InputId;
+                    inHand.AbilityCellId = up.Id;
                 }
                 
                 ref var activateTime = ref _activateTimePool.GetOrAddComponent(abilityEntity);
                 activateTime.Time = up.ActiveTime;
 
                 ref var request = ref _applyRequestPool.Add(entity);
-                request.AbilitySlot = up.InputId;
+                request.AbilitySlot = up.Id;
             }
         }
     }

@@ -1,11 +1,13 @@
-﻿namespace UniGame.Ecs.Proto.Input
+namespace Game.Ecs.Input
 {
-    using LeoEcs.Bootstrap.Runtime;
+    using UniGame.LeoEcs.Bootstrap.Runtime;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Proto Features/Input/Base Input")]
-    public class InputFeatureAsset : EcsFeatureAsset<InputFeature>
+    /// <summary>
+    /// Feature responsible for managing input-related systems.
+    /// </summary>
+    [CreateAssetMenu(menuName = "Proto Features/Features/Input Feature", fileName = "Input Feature")]
+    public class InputFeatureAsset : LeoEcsFeatureAssetT<InputFeature>
     {
-    
     }
 }

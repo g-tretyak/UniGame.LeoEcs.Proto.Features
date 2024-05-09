@@ -11,7 +11,6 @@ namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
     using Game.Code.GameLayers.Relationship;
     using Game.Ecs.Core.Components;
     using GameLayers.Layer.Components;
-    using Input.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Selection;
@@ -56,7 +55,6 @@ namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
             
             _abilityRequestFilter = _world
                 .Filter<ApplyAbilityBySlotSelfRequest>()
-                .Inc<UserInputTargetComponent>()
                 .End();
             
             _filter = _world

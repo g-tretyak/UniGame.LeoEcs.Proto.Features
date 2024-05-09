@@ -1,31 +1,40 @@
-﻿namespace UniGame.Ecs.Proto.Input
+﻿namespace Game.Ecs.Input
 {
-    using Systems;
-    using Components.Ability;
-    using Components.Direction;
+    using System;
+    using Components.Requests;
     using Cysharp.Threading.Tasks;
-    using JetBrains.Annotations;
+    using Data.ActionMap;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using Map.Systems;
+    using Systems;
     using UniGame.LeoEcs.Bootstrap.Runtime;
-    using UniGame.LeoEcs.Shared.Extensions;
+    using UnityEngine;
 
-    [UsedImplicitly]
-    public sealed class InputFeature : EcsFeature
+    /// <summary>
+    /// Feature responsible for managing input-related systems.
+    /// </summary>
+#if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
+
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+#endif
+    [Serializable]
+    public class InputFeature : EcsFeature
     {
+        [SerializeField]
+        private InputActionsMapData inputActionsData;
+        
         protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
-            ecsSystems.Add(new MapSpaceInitializeSystem());
-            ecsSystems.DelHere<DirectionInputEvent>();
-            ecsSystems.Add(new DirectionRawMapConvertSystem());
-
-            ecsSystems.DelHere<AbilityCellVelocityEvent>();
-            ecsSystems.Add(new AbilityVelocityRawConvertSystem());
+            // System responsible for initializing input actions.
+            ecsSystems.AddSystem(new InitInputSystem());
+            // System responsible for switching input maps.
+            ecsSystems.AddSystem(new SwitchInputMapSystem(inputActionsData));
+            // Delete used SwitchInputMapRequest
+            ecsSystems.DelHere<SwitchInputMapRequest>();
             
-            ecsSystems.Add(new ProcessAbilityActiveTimeSystem());
-            ecsSystems.Add(new ClearAbilityInputStateSystem());
-
             return UniTask.CompletedTask;
         }
     }

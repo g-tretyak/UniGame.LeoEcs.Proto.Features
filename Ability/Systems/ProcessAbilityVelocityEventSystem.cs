@@ -3,7 +3,7 @@
     using System;
     using Components;
     using Game.Ecs.Core.Death.Components;
-    using Input.Components.Ability;
+    using Game.Ecs.Input.Components.Evetns;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
@@ -49,7 +49,7 @@
                 ref var velocity = ref _velocityEventPool.Get(entity);
                 ref var map = ref _abilityMapPool.Get(entity);
                 
-                if(!map.AbilityEntities[velocity.AbilityCellId].Unpack(_world, out var abilityEntity))
+                if(!map.AbilityEntities[velocity.Id].Unpack(_world, out var abilityEntity))
                     continue;
 
                 ref var abilityVelocity = ref _abilityVelocityPool.GetOrAddComponent(abilityEntity);
