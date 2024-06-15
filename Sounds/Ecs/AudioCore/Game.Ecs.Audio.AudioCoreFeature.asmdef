@@ -1,0 +1,31 @@
+{
+    "name": "Game.Ecs.Audio.AudioCoreFeature",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:2665a8d13d1b3f18800f46e256720795",
+        "GUID:e0cd26848372d4e5c891c569017e11f1",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:8e4577c9194c10845984cf27eb974fd1",
+        "GUID:a0b431bd9232ee0439a3722ec36414ed",
+        "GUID:9f8e6b2872ac2ca4683e584b9ba21f29",
+        "GUID:209749b816e76d241a52eb0770dbdcb5",
+        "GUID:b9e4029c2cdc84f7d82433cf8a1d0e69",
+        "GUID:4959f7212f824f145bcd491a19d4c84f",
+        "GUID:bd4ea46f2fdce47f0a34f0df46c013f5",
+        "GUID:f28b76e6ba53ea24ca2daf55c1581312",
+        "GUID:0c752da273b17c547ae705acf0f2adf2",
+        "GUID:538ce37c1f5ea7440bb616e95507d01a",
+        "GUID:0b7f3532c915c1a4da89f5b7d0b0e472"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,26 @@
+{
+    "name": "RoyTheunissen.FMODSyntax.Editor",
+    "rootNamespace": "RoyTheunissen.FMODSyntax",
+    "references": [
+        "GUID:f28b76e6ba53ea24ca2daf55c1581312",
+        "GUID:0c752da273b17c547ae705acf0f2adf2",
+        "GUID:aab3caaf43456d6449a3e035348ff798"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.brunomikoski.scriptableobjectcollection",
+            "expression": "2.2.1",
+            "define": "SCRIPTABLE_OBJECT_COLLECTION"
+        }
+    ],
+    "noEngineReferences": false
+}
