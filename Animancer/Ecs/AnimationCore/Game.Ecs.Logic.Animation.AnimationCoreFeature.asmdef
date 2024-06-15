@@ -1,0 +1,26 @@
+{
+    "name": "Game.Ecs.Logic.Animation.AnimationCoreFeature",
+    "rootNamespace": "",
+    "references": [
+        "GUID:209749b816e76d241a52eb0770dbdcb5",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:b9e4029c2cdc84f7d82433cf8a1d0e69",
+        "GUID:8e4577c9194c10845984cf27eb974fd1",
+        "GUID:a0b431bd9232ee0439a3722ec36414ed",
+        "GUID:9f8e6b2872ac2ca4683e584b9ba21f29",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:bd4ea46f2fdce47f0a34f0df46c013f5",
+        "GUID:3e8ef8e63c5d4ca882f789799f6f78ef",
+        "GUID:4c25c05f410a3a447a75c3b0909152ef",
+        "GUID:0b7f3532c915c1a4da89f5b7d0b0e472"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
