@@ -1,0 +1,117 @@
+using System.Collections.Generic;
+using Animancer;
+using Game.Code.Services.Animation;
+using Game.Code.Services.Animation.Data.AnimacerActorList;
+using Game.Code.Services.Animation.Data.AnimationList;
+using Game.Code.Services.Animation.Data.AnimnationsData;
+using Game.Ecs.Animation.AnimationCore.Aspects;
+using Game.Ecs.Animation.AnimationCore.Components;
+using Game.Ecs.Audio.Trading.Aspects;
+using Game.Ecs.Navigation.Components;
+using UnityEngine;
+
+namespace Game.Ecs.Animation.MainCharacterAnimation.Systems
+{
+    using System;
+    using Leopotam.EcsLite;
+    using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+
+    /// <summary>
+    /// 
+    /// </summary>
+#if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
+
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+#endif
+    [Serializable]
+    [ECSDI]
+    public class InitAnimationEventsSystem : IEcsInitSystem, IEcsRunSystem
+    {
+        private EcsWorld _world;
+        private EcsFilter _navMeshAgentFilter;
+        
+        private AnimationCoreAspect _animationCoreAspect;
+        private CharacterAudioAspect _characterAudioAspect;
+        
+        private const string AnimationEventName = "TriggerStepAnimationEvent";
+        private readonly IAnimationService _animationService;
+
+        private AnimationTypeId _animationTypeId;
+        private readonly AnimancerActorTypeId _mainCharacterActorType;
+        private AnimationEntry _animationEntry;
+
+        public InitAnimationEventsSystem(IAnimationService animationService)
+        {
+            _animationTypeId = AnimationTypeId.Walk;
+            _mainCharacterActorType = AnimancerActorTypeId.MainCharacter;
+            _animationService = animationService;
+        }
+
+        public void Init(IEcsSystems systems)
+        {
+            _world = systems.GetWorld();
+            
+            _navMeshAgentFilter = _world
+                .Filter<NavMeshAgentComponent>()
+                .Inc<AnimancerAnimatorComponent>()
+                // .Filter<MarkPlayer To Do: Implement this filter>
+                .End();
+            
+            _animationEntry = _animationService.GetAnimationEntry(_mainCharacterActorType, _animationTypeId);
+        }
+
+        public void Run(IEcsSystems systems)
+        {
+            foreach (var agentEntity in _navMeshAgentFilter)
+            {
+                if (_animationEntry == null) continue;
+
+                ref var animancerAnimatorComponent =
+                    ref _animationCoreAspect.AnimancerAnimator.Get(agentEntity);
+                var animancerComponent = animancerAnimatorComponent.AnimancerComponent;
+                var animationClone = GameObject.Instantiate(_animationEntry.Animation);
+                
+                if (animancerComponent.States.TryGet(_animationEntry.Animation, out var animationState)) continue;
+
+                var state = animancerComponent.Play(animationClone);
+
+                List<int> eventsWithNameIndexes = new List<int>();
+                eventsWithNameIndexes = GetAllIndexes(animationClone.Transition.Events, AnimationEventName);
+
+                foreach (var index in eventsWithNameIndexes)
+                {
+                    state.Events.SetCallback(index,
+                        () => { RequestStepAudio(animancerComponent); });
+                }
+
+                ref var animationEventsComponent = ref _animationCoreAspect.AnimationsEvents.Add(agentEntity);
+                animationEventsComponent.Events = new List<AnimancerEvent.Sequence> { state.Events };
+                animationEventsComponent.AnimationEntries = new List<AnimationEntry> { _animationEntry };
+                
+            }
+        }
+
+        private void RequestStepAudio(AnimancerComponent animancerComponent)
+        {
+            var newEntity = _world.NewEntity();
+            ref var request = ref _characterAudioAspect.PlayCharacterStepAudioRequest.Add(newEntity);
+            request.SourceTransform = animancerComponent.transform;
+        }
+
+        private List<int> GetAllIndexes(AnimancerEvent.Sequence stateEvents, string animationEventName)
+        {
+            var eventsWithNameIndexes = new List<int>();
+            var index = 0;
+
+            while ((index = stateEvents.IndexOf(animationEventName, index)) != -1)
+            {
+                eventsWithNameIndexes.Add(index);
+                index++;
+            }
+            return eventsWithNameIndexes;
+        }
+    }
+}
