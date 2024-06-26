@@ -14,7 +14,9 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [],
+    "defineConstraints": [
+        "ENABLE_FMOD"
+    ],
     "versionDefines": [
         {
             "name": "com.brunomikoski.scriptableobjectcollection",
