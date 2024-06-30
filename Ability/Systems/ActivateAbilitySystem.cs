@@ -63,7 +63,7 @@
                 {
                     ref var ownerComponent = ref _abilityAspect.Owner.Get(abilityEntity);
                     if(!ownerComponent.Value.Unpack(_world,out _)) continue;
-                    if (!ownerComponent.Value.EqualsTo(request.Target)) continue;
+                    if (!ownerComponent.Value.Equals(request.Target)) continue;
                     
                     if (!abilityEntity.Equals(targetAbilityEntity)) continue;
                     

@@ -61,7 +61,7 @@
                     for (var j = 0; j < count; j++)
                     {
                         ref var targetSource = ref underTarget.Entities[j];
-                        if (!targetSource.EqualsTo(packedSource)) continue;
+                        if (!targetSource.Equals(packedSource)) continue;
                         addTarget = false;
                         break;
                     }

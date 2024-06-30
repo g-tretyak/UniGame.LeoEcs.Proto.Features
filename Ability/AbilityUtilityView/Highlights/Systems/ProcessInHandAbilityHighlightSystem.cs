@@ -79,7 +79,7 @@
                     var targetFound = false;
                     foreach (var chosenTargetEntity in chosenTarget.Entities)
                     {
-                        if(!chosenTargetEntity.EqualsTo(packedEntity)) continue;
+                        if(!chosenTargetEntity.Equals(packedEntity)) continue;
                         targetFound = true;
                         break;
                     }

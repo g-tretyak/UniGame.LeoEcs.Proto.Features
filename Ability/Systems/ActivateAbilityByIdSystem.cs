@@ -62,7 +62,7 @@
                 foreach (var abilityEntity in _abilityFilter)
                 {
                     ref var ownerComponent = ref _ownerPool.Get(abilityEntity);
-                    if (!ownerComponent.Value.EqualsTo(request.Target)) continue;
+                    if (!ownerComponent.Value.Equals(request.Target)) continue;
                     
                     ref var abilityId = ref _abilityIdPool.Get(abilityEntity);
                     if (abilityId.AbilityId != request.AbilityId) continue;

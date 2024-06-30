@@ -51,7 +51,7 @@
 				foreach (var viewEntity in _viewFilter)
 				{
 					ref var ownerComponent = ref _ownerPool.Get(viewEntity);
-					if (!ownerComponent.Value.EqualsTo(prepareToDeathEvent.Source))
+					if (!ownerComponent.Value.Equals(prepareToDeathEvent.Source))
 						continue;
 					
 					_destroyRequestPool.TryAdd(viewEntity);

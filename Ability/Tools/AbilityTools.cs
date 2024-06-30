@@ -175,7 +175,7 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             foreach (var abilityEntity in _abilityFilter)
             {
                 ref var ownerComponent = ref _ownerPool.Get(abilityEntity);
-                if (!ownerEntity.EqualsTo(ownerComponent.Value)) continue;
+                if (!ownerEntity.Equals(ownerComponent.Value)) continue;
 
                 ref var abilityIdComponent = ref _abiilityIdPool.Get(abilityEntity);
                 if (abilityId != abilityIdComponent.AbilityId) continue;
