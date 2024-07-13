@@ -7,8 +7,12 @@
     using UnityEngine;
 
     [Serializable]
-    public abstract class AbilitySubFeature : ScriptableObject
+    public abstract class AbilitySubFeature
     {
+        public bool isActive = true;
+        
+        public virtual string FeatureName => GetType().Name;
+        
         public virtual UniTask<IProtoSystems> OnInitializeSystems(IProtoSystems ecsSystems)
         {
             return UniTask.FromResult(ecsSystems);

@@ -13,7 +13,6 @@
     using UserInput.Systems;
 
     [Serializable]
-    [CreateAssetMenu(menuName = "Proto Features/Ability/Target SubFeature",fileName = "Target SubFeature")]
     public sealed class TargetSubFeature : AbilitySubFeature
     {
         public override UniTask<IProtoSystems> OnAfterInHandSystems(IProtoSystems ecsSystems)

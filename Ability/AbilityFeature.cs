@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using AbilityInventory;
     using Common.Components;
     using Common.Systems;
@@ -16,23 +17,29 @@
     using Tools;
     using UniGame.LeoEcs.Bootstrap.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;
+    using UniModules.UniCore.Runtime.Utils;
     using UnityEngine;
 
 #if UNITY_EDITOR
     using UniModules.Editor;
+    using UnityEditor;
 #endif
     
-    [CreateAssetMenu(menuName = "Proto Features/Ability/Ability Feature", fileName = "Ability Feature")]
     [Serializable]
-    public sealed class AbilityFeature : BaseLeoEcsFeature
+    public sealed class AbilityFeature : EcsFeature
     {
-        [InlineEditor]
-        public List<AbilitySubFeature> subFeatures = new List<AbilitySubFeature>();
+        [SerializeReference]
+        [ListDrawerSettings(ListElementLabelName = "@FeatureName")]
+        public List<AbilitySubFeature> abilityFeatures = new();
         
-        public AbilityInventoryFeature inventoryFeature = new AbilityInventoryFeature();
+        public AbilityInventoryFeature inventoryFeature = new();
         
-        public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
+        protected override async UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
+            var subFeatures = abilityFeatures
+                .Where(x => x.isActive)
+                .ToList();
+            
             var world = ecsSystems.GetWorld();
             var abilityTools = new AbilityTools();
 
@@ -152,10 +159,16 @@
         private void Fill()
         {
 #if UNITY_EDITOR
-            var features = AssetEditorTools.GetAssets<AbilitySubFeature>();
-            subFeatures.Clear();
-            subFeatures.AddRange(features);
-            this.SaveAsset();
+            abilityFeatures.Clear();
+            var features = TypeCache.GetTypesDerivedFrom<AbilitySubFeature>();
+            foreach (var featureType in features)
+            {
+                if(featureType.IsInterface || featureType.IsAbstract) continue;
+                if(featureType.HasDefaultConstructor() == false) continue;
+                
+                var feature = featureType.CreateWithDefaultConstructor() as AbilitySubFeature;
+                abilityFeatures.Add(feature);
+            }
 #endif
         }
     }

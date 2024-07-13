@@ -5,11 +5,9 @@
     using Leopotam.EcsProto;
     using Systems;
     using UniGame.LeoEcs.Shared.Extensions;
-    using UnityEngine;
 
     [Serializable]
-    [CreateAssetMenu(menuName = "Proto Features/Ability/Self SubFeature",fileName = "Self SubFeature")]
-    public sealed class SelfSubFeature : AbilitySubFeature
+    public sealed class SelfAbilitySubFeature : AbilitySubFeature
     {
         public override UniTask<IProtoSystems> OnApplyEffectsSystems(IProtoSystems ecsSystems)
         {

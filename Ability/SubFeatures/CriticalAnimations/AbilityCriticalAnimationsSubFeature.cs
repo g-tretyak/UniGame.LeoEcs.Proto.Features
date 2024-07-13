@@ -12,7 +12,6 @@
     /// add critical animations if critical hit exist
     /// </summary>
     [Serializable]
-    [CreateAssetMenu(menuName = "Proto Features/Ability/AbilityCriticalAnimations SubFeature",fileName = "AbilityCriticalAnimations SubFeature")]
     public class AbilityCriticalAnimationsSubFeature : AbilitySubFeature
     {
         private AbilitySequenceTools _abilitySequenceTools;

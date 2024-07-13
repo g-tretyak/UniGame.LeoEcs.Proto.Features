@@ -6,10 +6,8 @@
      
     using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Extensions;
-    using UnityEngine;
 
     [Serializable]
-    [CreateAssetMenu(menuName = "Proto Features/Ability/AreaSubFeature",fileName = "AreaSubFeature")]
     public sealed class AreaSubFeature : AbilitySubFeature
     {
         public override UniTask<IProtoSystems> OnAfterInHandSystems(IProtoSystems ecsSystems)

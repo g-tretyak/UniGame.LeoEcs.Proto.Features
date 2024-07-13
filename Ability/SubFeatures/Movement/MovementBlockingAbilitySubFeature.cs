@@ -11,8 +11,6 @@
     /// add critical animations if critical hit exist
     /// </summary>
     [Serializable]
-    [CreateAssetMenu(menuName = "Proto Features/Ability/MovementBlockingAbility SubFeature",
-        fileName = "MovementBlockingAbility SubFeature")]
     public class MovementBlockingAbilitySubFeature : AbilitySubFeature
     {
 
