@@ -17,8 +17,19 @@
             
             EditorGUI.BeginProperty(position, label, property);
             
-            var propertyValue = property.FindPropertyRelative("_value");
-            var categories = _configuration == null ? Array.Empty<string>() : _configuration.Categories.Where(x=> !string.IsNullOrEmpty(x)).ToArray();
+            var propertyValue = property.FindPropertyRelative(nameof(CategoryId.value));
+            var categories = _configuration == null 
+                ? Array.Empty<string>() 
+                : _configuration.Categories.Where(x=> !string.IsNullOrEmpty(x)).ToArray();
+            
+            if(categories.Length == 0)
+            {
+                EditorGUI.LabelField(position, $"{label} : No categories found. Please create CategoryIdConfiguration.asset");
+            }
+            else
+            {
+                propertyValue.intValue = EditorGUI.MaskField(position, label, propertyValue.intValue, categories);
+            }
             
             propertyValue.intValue = EditorGUI.MaskField(position, label, propertyValue.intValue, categories);
             property.serializedObject.ApplyModifiedProperties();
@@ -28,16 +39,16 @@
         
         private void Initialize()
         {
-            if(_configuration != null)
-                return;
+            if(_configuration != null) return;
 
-            var assetGuid = AssetDatabase.FindAssets($"t:{nameof(CategoryIdConfiguration)}").FirstOrDefault();
-            if(string.IsNullOrEmpty(assetGuid))
-                return;
+            var assetGuid = AssetDatabase
+                .FindAssets($"t:{nameof(CategoryIdConfiguration)}").FirstOrDefault();
+            
+            if(string.IsNullOrEmpty(assetGuid)) return;
 
             var assetPath = AssetDatabase.GUIDToAssetPath(assetGuid);
-            if(string.IsNullOrEmpty(assetPath))
-                return;
+            
+            if(string.IsNullOrEmpty(assetPath)) return;
 
             _configuration = AssetDatabase.LoadAssetAtPath<CategoryIdConfiguration>(assetPath);
         }

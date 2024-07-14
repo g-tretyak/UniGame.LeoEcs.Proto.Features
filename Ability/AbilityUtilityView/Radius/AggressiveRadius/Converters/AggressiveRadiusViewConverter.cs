@@ -22,6 +22,7 @@
         [CategoryIdMask]
         [SerializeField]
         public CategoryId categoryId;
+        
         [LayerIdMask]
         [SerializeField]
         public LayerId layerMask;

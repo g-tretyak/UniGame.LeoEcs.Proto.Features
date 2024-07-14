@@ -17,10 +17,20 @@
             
             EditorGUI.BeginProperty(position, label, property);
             
-            var propertyValue = property.FindPropertyRelative("_value");
-            var relationships = _configuration == null ? Array.Empty<string>() : _configuration.Relationships.Where(x=> !string.IsNullOrEmpty(x)).ToArray();
+            var propertyValue = property.FindPropertyRelative(nameof(RelationshipId.value));
+            var relationships = _configuration == null 
+                ? Array.Empty<string>() 
+                : _configuration.Relationships.Where(x=> !string.IsNullOrEmpty(x)).ToArray();
             
-            propertyValue.intValue = EditorGUI.MaskField(position, label, propertyValue.intValue, relationships);
+            if(relationships.Length == 0)
+            {
+                EditorGUI.LabelField(position, $"{label} : No relationships found. Please create RelationshipIdConfiguration.asset ");
+            }
+            else
+            {
+                propertyValue.intValue = EditorGUI.MaskField(position, label, propertyValue.intValue, relationships);
+            }
+            
             property.serializedObject.ApplyModifiedProperties();
             
             EditorGUI.EndProperty();
