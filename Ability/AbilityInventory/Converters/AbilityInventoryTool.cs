@@ -17,6 +17,7 @@
 	{
 		private ProtoWorld _world;
 		private AbilityMetaAspect _metaAspect;
+		private AbilityInventoryAspect _inventoryAspect;
 
 		public void Init(IProtoSystems systems)
 		{
@@ -32,8 +33,7 @@
 			ref var abilityConfigurationComponent = ref _metaAspect.ConfigurationReference.GetOrAddComponent(entity);
 			ref var visualDescriptionComponent = ref _metaAspect.Visual.GetOrAddComponent(entity);
 			ref var nameComponent = ref _metaAspect.Name.GetOrAddComponent(entity);
-			ref var abilitySlotTypeComponent = ref _metaAspect.Slot.GetOrAddComponent(entity);
-			
+			ref var abilitySlotTypeComponent = ref _inventoryAspect.Slot.GetOrAddComponent(entity);
 			
 			abilityConfigurationComponent.AbilityConfiguration = itemData.configurationReference;
 

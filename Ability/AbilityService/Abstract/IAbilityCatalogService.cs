@@ -6,7 +6,7 @@
 	using Data;
 	using UniGame.GameFlow.Runtime.Interfaces;
 
-	public interface IAbilityLoadoutService : IGameService
+	public interface IAbilityCatalogService : IGameService
 	{
 		int[] AllAbilities { get; }
 		

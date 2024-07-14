@@ -25,11 +25,12 @@
         public ProtoPool<ActiveAbilityComponent> Active;
         public ProtoPool<DefaultAbilityComponent> Default;
         public ProtoPool<UserInputAbilityComponent> Input;
+        public ProtoPool<AbilitySlotComponent> Slot;
         public ProtoPool<AbilityIdComponent> AbilityId;
-        public ProtoPool<AbilitySlotComponent> AbilitySlot;
         public ProtoPool<NameComponent> Name;
         public ProtoPool<IconComponent> Icon;
         public ProtoPool<CategoryIdComponent> Category;
+        public ProtoPool<OwnerLinkComponent> OwnerLink;
         public ProtoPool<DurationComponent> Duration;
         public ProtoPool<AnimationDataLinkComponent> AnimationLink;
         public ProtoPool<RelationshipIdComponent> Relationship;

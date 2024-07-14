@@ -22,6 +22,7 @@
         {
             c.AbilityEntities ??= new List<ProtoPackedEntity>(AbilitiesSlotsCount);
             c.AbilityEntities.Clear();
+            
             for (int i = 0; i < AbilitiesSlotsCount; i++)
             {
                 if (i < c.AbilityEntities.Count)

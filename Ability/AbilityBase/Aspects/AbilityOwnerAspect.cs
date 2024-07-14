@@ -13,7 +13,6 @@
         public ProtoPool<AbilityMapComponent> AbilityMap;
         public ProtoPool<AbilityInProcessingComponent> AbilityInProcessing;
         public ProtoPool<AbilitySlotComponent> Slot;
-        
         //requests
         
         public ProtoPool<ApplyAbilitySelfRequest> ApplyAbility;

@@ -11,13 +11,13 @@
 	using UnityEngine.AddressableAssets;
 
 	[CreateAssetMenu(menuName = "Game/Services/AbilityLoadoutService Source", fileName = "AbilityLoadoutService Source")]
-	public class AbilityLoadoutServiceSource : DataSourceAsset<IAbilityLoadoutService>
+	public class AbilityLoadoutServiceSource : DataSourceAsset<IAbilityCatalogService>
 	{
 		public AssetReferenceT<AbilityDataBase> abilityDatabase;
 		public AssetReferenceT<AbilitySlotsData> abilitySlotMap;
 		public AssetReferenceT<AbilityRarityData> abilityRarityData;
 		
-		protected override async UniTask<IAbilityLoadoutService> CreateInternalAsync(IContext context)
+		protected override async UniTask<IAbilityCatalogService> CreateInternalAsync(IContext context)
 		{
 			var data = new AbilityLoadoutData();
 			

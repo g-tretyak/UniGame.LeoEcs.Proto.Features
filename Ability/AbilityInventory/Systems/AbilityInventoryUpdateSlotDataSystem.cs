@@ -22,7 +22,7 @@
 	[ECSDI]
 	public class AbilityInventoryUpdateSlotDataSystem : IProtoInitSystem, IProtoRunSystem
 	{
-		private readonly IAbilityLoadoutService _abilityService;
+		private readonly IAbilityCatalogService _abilityService;
 		
 		private ProtoWorld _world;
 		private EcsFilter _filter;
@@ -31,7 +31,7 @@
 		private ProtoPool<AbilityIdComponent> _abilityIdPool;
 		private ProtoPool<AbilityEquipChangedEvent> _eventPool;
 
-		public AbilityInventoryUpdateSlotDataSystem(IAbilityLoadoutService abilityLoadoutService)
+		public AbilityInventoryUpdateSlotDataSystem(IAbilityCatalogService abilityLoadoutService)
 		{
 			_abilityService = abilityLoadoutService;
 		}

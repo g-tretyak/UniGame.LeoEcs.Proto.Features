@@ -23,9 +23,9 @@
 	{
 		private ProtoWorld _world;
 		private EcsFilter _filter;
-		private IAbilityLoadoutService _service;
+		private IAbilityCatalogService _service;
 
-		public AbilityInventorySpawnSystem(IAbilityLoadoutService abilityLoadoutAbilityService)
+		public AbilityInventorySpawnSystem(IAbilityCatalogService abilityLoadoutAbilityService)
 		{
 			_service = abilityLoadoutAbilityService;
 		}

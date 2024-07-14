@@ -71,7 +71,7 @@
                 }
 
                 var targetAbilityEntity = (ProtoEntity)targetAbility;
-                ref var slotComponent = ref _abilityAspect.AbilitySlot.Get(targetAbilityEntity);
+                ref var slotComponent = ref _abilityAspect.Slot.Get(targetAbilityEntity);
                 ref var progressComponent = ref _abilityOwnerAspect.AbilityInProcessing.GetOrAddComponent(entity);
                 
                 progressComponent.Ability = targetAbilityEntity.PackEntity(_world);

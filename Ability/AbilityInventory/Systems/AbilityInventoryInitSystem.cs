@@ -18,7 +18,7 @@
 	[ECSDI]
 	public class AbilityInventoryInitSystem : IProtoRunSystem,IProtoInitSystem
 	{
-		private IAbilityLoadoutService _abilityLoadoutService;
+		private IAbilityCatalogService _abilityLoadoutService;
 		private AbilityInventoryAspect _inventoryAspect;
 		private ProtoWorld _world;
 		private EcsFilter _filter;
@@ -26,7 +26,7 @@
 		public void Init(IProtoSystems systems)
 		{
 			_world = systems.GetWorld();
-			_abilityLoadoutService = _world.GetGlobal<IAbilityLoadoutService>();
+			_abilityLoadoutService = _world.GetGlobal<IAbilityCatalogService>();
 
 			_filter = _world
 				.Filter<AbilityInventoryLoadedComponent>()

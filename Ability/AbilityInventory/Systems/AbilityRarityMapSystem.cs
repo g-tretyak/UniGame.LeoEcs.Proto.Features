@@ -23,9 +23,9 @@
 	public class AbilityRarityMapSystem : IProtoInitSystem
 	{
 		private ProtoWorld _world;
-		private IAbilityLoadoutService _service;
+		private IAbilityCatalogService _service;
 
-		public AbilityRarityMapSystem(IAbilityLoadoutService service)
+		public AbilityRarityMapSystem(IAbilityCatalogService service)
 		{
 			_service = service;
 		}

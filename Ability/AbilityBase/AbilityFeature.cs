@@ -15,6 +15,7 @@
     using SubFeatures;
     using Systems;
     using Tools;
+    using UniGame.Core.Runtime.Extension;
     using UniGame.LeoEcs.Bootstrap.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;
     using UniModules.UniCore.Runtime.Utils;
@@ -32,8 +33,10 @@
         [ListDrawerSettings(ListElementLabelName = "@FeatureName")]
         public List<AbilitySubFeature> abilityFeatures = new();
         
-        public AbilityInventoryFeature inventoryFeature = new();
-        
+        [SerializeReference]
+        [ListDrawerSettings(ListElementLabelName = "@FeatureName")]
+        public List<AbilityPluginFeature> abilityPlugins = new();
+
         protected override async UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
             var subFeatures = abilityFeatures
@@ -152,22 +155,40 @@
             foreach (var feature in subFeatures)
                 await feature.OnLastAbilitySystems(ecsSystems);
 
-            await inventoryFeature.InitializeAsync(ecsSystems);
+            foreach (var abilityPlugin in abilityPlugins)
+                await abilityPlugin.InitializeAsync(ecsSystems);
         }
 
         [Button]
         private void Fill()
         {
 #if UNITY_EDITOR
-            abilityFeatures.Clear();
             var features = TypeCache.GetTypesDerivedFrom<AbilitySubFeature>();
+            abilityFeatures.RemoveAll(x => x == null);
+            var typeSet = abilityFeatures.ToDictionary(x => x.GetType());
+
             foreach (var featureType in features)
             {
                 if(featureType.IsInterface || featureType.IsAbstract) continue;
                 if(featureType.HasDefaultConstructor() == false) continue;
+                if(typeSet.ContainsKey(featureType)) continue;
                 
                 var feature = featureType.CreateWithDefaultConstructor() as AbilitySubFeature;
                 abilityFeatures.Add(feature);
+            }
+            
+            var plugins = TypeCache.GetTypesDerivedFrom<AbilityPluginFeature>();
+            abilityPlugins.RemoveAll(x => x == null);
+            var pluginsMap = abilityPlugins.ToDictionary(x => x.GetType());
+
+            foreach (var featureType in plugins)
+            {
+                if(featureType.IsInterface || featureType.IsAbstract) continue;
+                if(featureType.HasDefaultConstructor() == false) continue;
+                if(pluginsMap.ContainsKey(featureType)) continue;
+                
+                var feature = featureType.CreateWithDefaultConstructor() as AbilityPluginFeature;
+                abilityPlugins.Add(feature);
             }
 #endif
         }

@@ -2,7 +2,6 @@
 {
     using System;
     using Cysharp.Threading.Tasks;
-     
     using Leopotam.EcsProto;
     using UnityEngine;
 

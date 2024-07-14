@@ -16,7 +16,7 @@
 	/// <summary>
 	/// Store all abilities and ability loadout. Helps to manage abilities metadata
 	/// </summary>
-	public class AbilityLoadoutService : GameService, IAbilityLoadoutService
+	public class AbilityLoadoutService : GameService, IAbilityCatalogService
 	{
 		private AbilityProfileData _profileData;
 		private AbilityDataBase _abilityDataBase;
