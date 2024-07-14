@@ -31,7 +31,6 @@
                 propertyValue.intValue = EditorGUI.MaskField(position, label, propertyValue.intValue, categories);
             }
             
-            propertyValue.intValue = EditorGUI.MaskField(position, label, propertyValue.intValue, categories);
             property.serializedObject.ApplyModifiedProperties();
             
             EditorGUI.EndProperty();
