@@ -9,7 +9,7 @@
     [Serializable]
     public sealed class InstantlyApplyEffects : IAbilityBehaviour
     {
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             var instantlyPool = world.GetPool<CanInstantlyApplyEffects>();
             instantlyPool.Add(abilityEntity);

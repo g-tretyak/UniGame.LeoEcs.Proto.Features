@@ -10,7 +10,7 @@
     [Serializable]
     public sealed class MovementBlockingBehaviour : IAbilityBehaviour
     {
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             var canBlockPool = world.GetPool<CanBlockMovementComponent>();
             canBlockPool.Add(abilityEntity);

@@ -28,7 +28,7 @@
         [NonSerialized]
         private AbilityTools _tools;
         
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             _tools = world.GetGlobal<AbilityTools>();
 
@@ -38,7 +38,7 @@
 
             counterComponent.Value = 0;
 
-            SequenceBehavior.Compose(world, abilityEntity, isDefault);
+            SequenceBehavior.Compose(world, abilityEntity);
             
             foreach (var animation in animations)
             {

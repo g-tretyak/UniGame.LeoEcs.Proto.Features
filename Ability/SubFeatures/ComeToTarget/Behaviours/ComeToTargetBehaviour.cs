@@ -9,7 +9,7 @@
     [Serializable]
     public sealed class ComeToTargetBehaviour : IAbilityBehaviour
     {
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             var comeToPool = world.GetPool<CanComeToTargetComponent>();
             comeToPool.Add(abilityEntity);

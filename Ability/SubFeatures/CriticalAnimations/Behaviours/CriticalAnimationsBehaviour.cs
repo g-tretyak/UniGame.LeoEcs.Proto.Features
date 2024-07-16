@@ -20,7 +20,7 @@
     {
         public List<AnimationLink> animations = new();
 
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             var tools = world.GetGlobal<AbilityTools>();
             world.GetOrAddComponent<AbilityCriticalAnimationTargetComponent>(abilityEntity);

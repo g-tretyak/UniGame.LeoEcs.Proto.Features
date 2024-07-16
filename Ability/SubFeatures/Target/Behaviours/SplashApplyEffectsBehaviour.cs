@@ -20,7 +20,7 @@
 		[SerializeReference]
 		public List<IEffectConfiguration> otherTargetsEffects = new();
 
-		public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+		public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
 		{
 			var splashPool = world.GetPool<SplashEffectSourceComponent>();
 			ref var splashComponent = ref splashPool.Add(abilityEntity);

@@ -10,7 +10,7 @@
 	public class ManaCostBehaviour : IAbilityBehaviour
 	{
 		public float mana;
-		public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+		public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
 		{
 			ref var manaCostComponent = ref world.AddComponent<ManaCostComponent>(abilityEntity);
 			manaCostComponent.Mana = mana;

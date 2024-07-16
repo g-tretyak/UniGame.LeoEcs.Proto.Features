@@ -23,7 +23,6 @@ namespace UniGame.Ecs.Proto.Ability.Tools
     using Game.Ecs.Time.Service;
     using GameLayers.Category.Components;
     using GameLayers.Relationship.Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using SubFeatures.AbilityAnimation.Components;
@@ -42,17 +41,35 @@ namespace UniGame.Ecs.Proto.Ability.Tools
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
+
     [ECSDI]
     [Serializable]
-    public class AbilityTools : IProtoInitSystem
+    public class AbilityTools : IProtoSystem
     {
         private ProtoEntity _invalidEntity = ProtoEntity.FromIdx(-1);
-        private EcsFilter _abilityFilter;
-        private EcsFilter _abilityInUseFilter;
-        private EcsFilter _existsAbilityFilter;
+        private ProtoEntity _invalidAbility = ProtoEntity.FromIdx(-1);
+
+        private ProtoIt _abilityFilter = It
+            .Chain<AbilityIdComponent>()
+            .Inc<ActiveAbilityComponent>()
+            .Inc<OwnerComponent>()
+            .End();
+
+        private ProtoIt _abilityInUseFilter = It
+            .Chain<AbilityIdComponent>()
+            .Inc<AbilityUsingComponent>()
+            .Inc<ActiveAbilityComponent>()
+            .Inc<OwnerComponent>()
+            .End();
+
+        private ProtoIt _existsAbilityFilter = It
+            .Chain<AbilityIdComponent>()
+            .Inc<OwnerLinkComponent>()
+            .Inc<ActiveAbilityComponent>()
+            .End();
+
         private AbilityOwnerAspect _abilityOwnerAspect;
         private AbilityAspect _abilityAspect;
-        private ProtoEntity _invalidAbility = ProtoEntity.FromIdx(-1);
 
         private ProtoWorld _world;
 
@@ -83,30 +100,6 @@ namespace UniGame.Ecs.Proto.Ability.Tools
         private ProtoPool<AbilityIdComponent> _id;
         private ProtoPool<OwnerLinkComponent> _ownerLink;
         private ProtoPool<CompleteAbilitySelfRequest> _completeAbilityPool;
-        
-        public void Init(IProtoSystems systems)
-        {
-            var world = systems.GetWorld();
-            _world = world;
-            _abilityFilter = world
-                .Filter<AbilityIdComponent>()
-                .Inc<ActiveAbilityComponent>()
-                .Inc<OwnerComponent>()
-                .End();
-
-            _abilityInUseFilter = world
-                .Filter<AbilityIdComponent>()
-                .Inc<AbilityUsingComponent>()
-                .Inc<ActiveAbilityComponent>()
-                .Inc<OwnerComponent>()
-                .End();
-
-            _existsAbilityFilter = _world
-                .Filter<AbilityIdComponent>()
-                .Inc<OwnerLinkComponent>()
-                .Inc<ActiveAbilityComponent>()
-                .End();
-        }
 
         public void BuildAbility(
             ProtoEntity abilityEntity,
@@ -119,24 +112,24 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             ref var abilityIdComponent = ref _id.GetOrAddComponent(abilityEntity);
             ref var ownerComponent = ref _ownerPool.GetOrAddComponent(abilityEntity);
             ref var ownerLinkComponent = ref _ownerLink.GetOrAddComponent(abilityEntity);
-            
+
             ownerLinkComponent.Value = ownerEntity;
             ownerComponent.Value = ownerEntity;
             slotComponent.SlotType = buildData.Slot;
             abilityIdComponent.AbilityId = buildData.AbilityId;
-            
+
             if (buildData.IsUserInput) _input.GetOrAddComponent(abilityEntity);
             if (buildData.IsBlocked) _blocked.GetOrAddComponent(abilityEntity);
-                
+
             //add visual
             if (_visual.Has(abilityEntity))
             {
                 ref var visualComponent = ref _visual.Get(abilityEntity);
-                ComposeAbilityVisualDescription(ref visualComponent,abilityEntity);
+                ComposeAbilityVisualDescription(ref visualComponent, abilityEntity);
             }
-                
+
             ComposeAbilitySpecification(abilityConfiguration.specification, abilityEntity);
-            
+
             var abilityLink = abilityConfiguration.animationLink.reference;
 
             if (abilityConfiguration.useAnimation)
@@ -147,13 +140,14 @@ namespace UniGame.Ecs.Proto.Ability.Tools
                     Debug.LogError($"Missing ability animation link FOR {abilityConfiguration.name}");
                 }
 #endif
-                ComposeAbilityAnimationAsync(_world, ownerEntity,packedAbility,abilityLink).Forget();
+                ComposeAbilityAnimationAsync(_world, ownerEntity, packedAbility, abilityLink).Forget();
             }
             else
             {
                 ref var durationComponent = ref _duration.GetOrAddComponent(abilityEntity);
                 durationComponent.Value = abilityConfiguration.duration;
-                ref var milestonesComponent = ref _world.GetOrAddComponent<AbilityEffectMilestonesComponent>(abilityEntity);
+                ref var milestonesComponent =
+                    ref _world.GetOrAddComponent<AbilityEffectMilestonesComponent>(abilityEntity);
                 milestonesComponent.Milestones = new[]
                 {
                     new EffectMilestone { Time = 0f }
@@ -161,16 +155,17 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             }
 
             foreach (var abilityBehaviour in abilityConfiguration.abilityBehaviours)
-                abilityBehaviour.Compose(_world, abilityEntity, buildData.IsDefault);
+                abilityBehaviour.Compose(_world, abilityEntity);
         }
-        
+
 #if ENABLE_IL2CPP
         [Il2CppSetOption(Option.NullChecks, false)]
         [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetAbilityById(ref ProtoPackedEntity ownerEntity, AbilityId abilityId, out ProtoEntity resultAbility)
+        public bool TryGetAbilityById(ref ProtoPackedEntity ownerEntity, AbilityId abilityId,
+            out ProtoEntity resultAbility)
         {
             foreach (var abilityEntity in _abilityFilter)
             {
@@ -204,7 +199,7 @@ namespace UniGame.Ecs.Proto.Ability.Tools
                 if (abilityIdComponent.AbilityId != abilityId ||
                     !ownerComponent.Value.Equals(targetEntity)) continue;
 
-                return  (int)abilityEntity;
+                return (int)abilityEntity;
             }
 
             return -1;
@@ -218,18 +213,19 @@ namespace UniGame.Ecs.Proto.Ability.Tools
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetActivatedAbility(ProtoEntity ownerEntity)
         {
-	        ref var abilityMap = ref _abilityMapPool.Get(ownerEntity);
-	        foreach (var abilityMapAbilityEntity in abilityMap.AbilityEntities)
-	        { 
-		        if (!abilityMapAbilityEntity.Unpack(_world, out var abilityEntity))
-			        continue;
-		        if (!_abilityInUsePool.Has(abilityEntity))
-			        continue;
-		        if (_completeAbilityPool.Has(abilityEntity))
-			        continue;
-		        return (int)abilityEntity;
-	        }
-	        return -1;
+            ref var abilityMap = ref _abilityMapPool.Get(ownerEntity);
+            foreach (var abilityMapAbilityEntity in abilityMap.AbilityEntities)
+            {
+                if (!abilityMapAbilityEntity.Unpack(_world, out var abilityEntity))
+                    continue;
+                if (!_abilityInUsePool.Has(abilityEntity))
+                    continue;
+                if (_completeAbilityPool.Has(abilityEntity))
+                    continue;
+                return (int)abilityEntity;
+            }
+
+            return -1;
         }
 
 #if ENABLE_IL2CPP
@@ -327,20 +323,20 @@ namespace UniGame.Ecs.Proto.Ability.Tools
         public bool IsAnyAbilityInUse(ProtoEntity entity)
         {
             if (!_abilityMapPool.Has(entity)) return false;
-            
+
             ref var abilityMapComponent = ref _abilityMapPool.Get(entity);
             var abilityMap = abilityMapComponent.AbilityEntities;
-            
+
             for (var i = 0; i < abilityMap.Count; i++)
             {
                 var packedAbility = abilityMap[i];
-                if(!packedAbility.Unpack(_world,out var abilityEntity))
+                if (!packedAbility.Unpack(_world, out var abilityEntity))
                     continue;
 
                 if (_abilityInUsePool.Has(abilityEntity))
                     return true;
             }
-            
+
             return false;
         }
 
@@ -352,17 +348,17 @@ namespace UniGame.Ecs.Proto.Ability.Tools
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetNonDefaultAbilityInUse(ProtoEntity entity)
         {
-            if(!_abilityOwnerAspect.AbilityInProcessing.Has(entity))
+            if (!_abilityOwnerAspect.AbilityInProcessing.Has(entity))
                 return -1;
-            
+
             ref var processingComponent = ref _abilityOwnerAspect
                 .AbilityInProcessing.Get(entity);
 
             if (processingComponent.IsDefault) return -1;
-            
-            if(!processingComponent.Ability.Unpack(_world,out var abilityEntity))
+
+            if (!processingComponent.Ability.Unpack(_world, out var abilityEntity))
                 return -1;
-            
+
             return (int)abilityEntity;
         }
 
@@ -399,15 +395,15 @@ namespace UniGame.Ecs.Proto.Ability.Tools
 
             return requestEntity;
         }
-        
-        
+
+
 #if ENABLE_IL2CPP
         [Il2CppSetOption(Option.NullChecks, false)]
         [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ProtoEntity EquipAbilityByReference(ref ProtoPackedEntity owner, 
+        public ProtoEntity EquipAbilityByReference(ref ProtoPackedEntity owner,
             AbilityConfiguration configuration,
             AbilitySlotId slot, bool isDefault = false)
         {
@@ -463,14 +459,15 @@ namespace UniGame.Ecs.Proto.Ability.Tools
 
             return -1;
         }
-        
+
 #if ENABLE_IL2CPP
         [Il2CppSetOption(Option.NullChecks, false)]
         [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ComposeAbilityVisualDescription(ref AbilityVisualComponent visualDescription, ProtoEntity abilityEntity)
+        public void ComposeAbilityVisualDescription(ref AbilityVisualComponent visualDescription,
+            ProtoEntity abilityEntity)
         {
             ref var visualComponent = ref _visual.GetOrAddComponent(abilityEntity);
             visualComponent.Description = visualDescription.Description;
@@ -480,7 +477,7 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             ref var iconComponent = ref _icon.GetOrAddComponent(abilityEntity);
             ref var descriptionComponent = ref _description.GetOrAddComponent(abilityEntity);
             ref var nameComponent = ref _name.GetOrAddComponent(abilityEntity);
-            
+
             nameComponent.Value = visualDescription.Name;
             descriptionComponent.Description = visualDescription.Description;
             iconComponent.Value = visualDescription.Icon;
@@ -500,7 +497,7 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             ref var abilityCooldownComponent = ref _cooldownState.GetOrAddComponent(abilityEntity);
             ref var cooldownComponent = ref _cooldown.GetOrAddComponent(abilityEntity);
             ref var baseCooldown = ref _baseCooldown.GetOrAddComponent(abilityEntity);
-            
+
             baseCooldown.Value = specification.Cooldown;
             cooldownComponent.Value = specification.Cooldown;
             abilityCooldownComponent.LastTime = GameTime.Time - specification.Cooldown;
@@ -508,7 +505,7 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             relationship.Value = specification.RelationshipId;
             category.Value = specification.CategoryId;
         }
-        
+
 
 #if ENABLE_IL2CPP
         [Il2CppSetOption(Option.NullChecks, false)]
@@ -516,29 +513,29 @@ namespace UniGame.Ecs.Proto.Ability.Tools
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public async UniTask ComposeAbilityAnimationAsync(ProtoWorld world, 
+        public async UniTask ComposeAbilityAnimationAsync(ProtoWorld world,
             ProtoPackedEntity animationTarget,
             ProtoPackedEntity abilityEntity,
             AssetReferenceT<AnimationLink> animationLinkReference)
         {
             var lifetime = world.GetWorldLifeTime();
             var animationLink = await animationLinkReference.LoadAssetTaskAsync(lifetime);
-            ComposeAbilityAnimation(world,ref animationTarget,ref abilityEntity, animationLink);
+            ComposeAbilityAnimation(world, ref animationTarget, ref abilityEntity, animationLink);
         }
-        
-        #if ENABLE_IL2CPP
+
+#if ENABLE_IL2CPP
         [Il2CppSetOption(Option.NullChecks, false)]
         [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ComposeAbilityAnimation(ProtoWorld world, 
+        public void ComposeAbilityAnimation(ProtoWorld world,
             ref ProtoPackedEntity animationTarget,
             ref ProtoPackedEntity ability,
             AnimationLink animationLink)
         {
-            if(!ability.Unpack(world,out var abilityEntity)) return;
-            
+            if (!ability.Unpack(world, out var abilityEntity)) return;
+
             ref var activeAnimationComponent = ref _animation.GetOrAddComponent(abilityEntity);
             ref var durationComponent = ref _duration.GetOrAddComponent(abilityEntity);
 
@@ -547,13 +544,13 @@ namespace UniGame.Ecs.Proto.Ability.Tools
                 ComposeEffectMilestones(world, null, 0.0f, abilityEntity);
                 return;
             }
-            
+
             var animation = animationLink.animation;
             var duration = animationLink.duration;
-            duration = duration <= 0 && animation!=null ? (float)animation.duration : duration;
-                
+            duration = duration <= 0 && animation != null ? (float)animation.duration : duration;
+
             durationComponent.Value = duration;
-                
+
             ref var animationComponent = ref world.GetOrAddComponent<AnimationDataLinkComponent>(abilityEntity);
             ref var wrapModeComponent = ref world.GetOrAddComponent<AnimationWrapModeComponent>(abilityEntity);
             ref var linkToAnimationComponent = ref world.GetOrAddComponent<LinkToAnimationComponent>(abilityEntity);
@@ -561,19 +558,19 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             var animationEntity = _world.NewEntity();
             ref var createAnimationRequest = ref _world
                 .GetOrAddComponent<CreateAnimationLinkSelfRequest>(animationEntity);
-                
+
             var packedAnimation = world.PackEntity(animationEntity);
-                
+
             createAnimationRequest.Data = animationLink;
             createAnimationRequest.Owner = world.PackEntity(abilityEntity);
             createAnimationRequest.Target = animationTarget;
-                
+
             linkToAnimationComponent.Value = packedAnimation;
             activeAnimationComponent.Value = packedAnimation;
-                
+
             animationComponent.AnimationLink = animationLink;
             wrapModeComponent.Value = animationLink.wrapMode;
-                
+
             ComposeEffectMilestones(world, animationLink.milestones, animationLink.Duration, abilityEntity);
         }
 
@@ -583,13 +580,13 @@ namespace UniGame.Ecs.Proto.Ability.Tools
         [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ComposeEffectMilestones(ProtoWorld world, 
-            EffectMilestonesData milestonesInfo, 
+        public void ComposeEffectMilestones(ProtoWorld world,
+            EffectMilestonesData milestonesInfo,
             float duration,
             ProtoEntity abilityEntity)
         {
             if (milestonesInfo == null) return;
-            
+
             ref var effectMilestones = ref world.GetOrAddComponent<AbilityEffectMilestonesComponent>(abilityEntity);
 
             var effects = milestonesInfo.effectMilestones;
@@ -604,7 +601,7 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             }
 
             effectMilestones.Milestones = new EffectMilestone[effects.Count];
-            
+
             for (var i = 0; i < effectMilestones.Milestones.Length; i++)
             {
                 var sourceMilestone = effects[i];
@@ -660,7 +657,7 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             ref var abilityUseRequest = ref abilityInputPool.GetOrAddComponent(entity);
             abilityUseRequest.AbilitySlot = slot;
         }
-        
+
 #if ENABLE_IL2CPP
         [Il2CppSetOption(Option.NullChecks, false)]
         [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
@@ -736,11 +733,11 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             ref var map = ref _abilityOwnerAspect.AbilityMap.Get(entity);
             var count = map.AbilityEntities.Count;
             var isInBounds = slot >= 0 && count > slot;
-            if(!isInBounds) return abilityEntity;
-            
-            return map.AbilityEntities[slot].Unpack(_world, out var ability) 
-                ? ability : abilityEntity;
-        }
+            if (!isInBounds) return abilityEntity;
 
+            return map.AbilityEntities[slot].Unpack(_world, out var ability)
+                ? ability
+                : abilityEntity;
+        }
     }
 }

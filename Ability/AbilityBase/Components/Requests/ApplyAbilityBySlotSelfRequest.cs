@@ -7,6 +7,6 @@
     /// </summary>
     public struct ApplyAbilityBySlotSelfRequest
     {
-        [FormerlySerializedAs("AbilityCellId")] public int AbilitySlot;
+        public int AbilitySlot;
     }
 }

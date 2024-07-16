@@ -18,7 +18,7 @@
     {
         public AbilityId criticalAbilityId;
 
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             var tools = world.GetGlobal<AbilityTools>();
             ref var targetComponent = ref world.GetOrAddComponent<CriticalAbilityTargetComponent>(abilityEntity);

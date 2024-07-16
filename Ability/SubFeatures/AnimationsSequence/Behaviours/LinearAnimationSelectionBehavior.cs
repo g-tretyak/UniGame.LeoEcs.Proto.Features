@@ -19,7 +19,7 @@
     [Serializable]
     public class LinearAnimationSelectionBehavior : IAbilityAnimationBehavior
     {
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             world.GetOrAddComponent<LinearAbilityAnimationSelectionComponent>(abilityEntity);
         }

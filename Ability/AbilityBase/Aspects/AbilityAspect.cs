@@ -64,6 +64,7 @@
         //activate ability
         public ProtoPool<ActivateAbilitySelfRequest> ActivateAbility;
         public ProtoPool<ApplyAbilityRadiusRangeRequest> ApplyRadiusRange;
+        public ProtoPool<ApplyAbilityBySlotSelfRequest> ActivateAbilityBySlot;
         
         //events
         public ProtoPool<AbilityStartUsingSelfEvent> UsingEvent;

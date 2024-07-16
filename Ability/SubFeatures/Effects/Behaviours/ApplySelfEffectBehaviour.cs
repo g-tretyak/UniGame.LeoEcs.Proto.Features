@@ -15,7 +15,7 @@
 		[SerializeReference] 
 		public List<IEffectConfiguration> Effects = new();
 		
-		public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+		public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
 		{
 			var selfEffectsPool = world.GetPool<SelfEffectsComponent>();
 			ref var effectsComponent = ref selfEffectsPool.Add(abilityEntity);

@@ -13,7 +13,7 @@
     public class CriticalAnimationsBehaviour : IAbilityBehaviour
     {
         
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             var tools = world.GetGlobal<AbilityTools>();
         }
