@@ -57,7 +57,7 @@
                 
                 if(_abilityTools.IsAnyAbilityInUse(entity)) continue;
                 
-                foreach (var packedAbilityEntity in abilityMap.AbilityEntities)
+                foreach (var packedAbilityEntity in abilityMap.Abilities)
                 {
                     if(!packedAbilityEntity.Unpack(_world,out var abilityEntity))
                         continue;

@@ -30,7 +30,7 @@
             foreach (var entity in _filter)
             {
                 ref var map = ref mapPool.Get(entity);
-                foreach (var packedEntity in map.AbilityEntities)
+                foreach (var packedEntity in map.Abilities)
                 {
                     if(!packedEntity.Unpack(_world, out var abilityEntity))
                         continue;

@@ -49,7 +49,7 @@
                 ref var velocity = ref _velocityEventPool.Get(entity);
                 ref var map = ref _abilityMapPool.Get(entity);
                 
-                if(!map.AbilityEntities[velocity.Id].Unpack(_world, out var abilityEntity))
+                if(!map.Abilities[velocity.Id].Unpack(_world, out var abilityEntity))
                     continue;
 
                 ref var abilityVelocity = ref _abilityVelocityPool.GetOrAddComponent(abilityEntity);

@@ -6,14 +6,22 @@
     using Ability.SubFeatures.AbilityAnimation.Components;
     using Components;
     using Equip.Components;
+    using Game.Code.Configuration.Runtime.Ability.Description;
+    using Game.Code.Services.AbilityLoadout.Data;
     using Game.Ecs.Core.Components;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
+    using LeoEcs.Shared.Extensions;
     using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
     [Serializable]
+    [ECSDI]
     public class AbilityInventoryAspect : EcsAspect
     {
+        public ProtoWorld world;
+        public AbilityMetaAspect abilityMetaAspect;
+        
         public ProtoPool<AbilityIdComponent> Id;
         public ProtoPool<AbilityEquipComponent> AbilityEquip;
         public ProtoPool<AbilityBuildingComponent> Building;
@@ -42,5 +50,43 @@
         
         //event
         public ProtoPool<AbilityEquipChangedEvent> EquipChanged;
+        
+        
+        public int Convert(AbilityItemData itemData,int entity)
+        {
+            var data = itemData.data;
+			
+            ref var abilityIdComponent = ref abilityMetaAspect.Id.GetOrAddComponent(entity);
+            ref var abilityMetaComponent = ref abilityMetaAspect.Meta.GetOrAddComponent(entity);
+            ref var abilityConfigurationComponent = ref abilityMetaAspect.ConfigurationReference.GetOrAddComponent(entity);
+            ref var visualDescriptionComponent = ref abilityMetaAspect.Visual.GetOrAddComponent(entity);
+            ref var nameComponent = ref abilityMetaAspect.Name.GetOrAddComponent(entity);
+            ref var abilitySlotTypeComponent = ref Slot.GetOrAddComponent(entity);
+			
+            abilityConfigurationComponent.AbilityConfiguration = itemData.configurationReference;
+
+            var visualDescription = itemData.visualDescription;
+            visualDescriptionComponent.Name = visualDescription.Name;
+            visualDescriptionComponent.Description = visualDescription.Description;
+            visualDescriptionComponent.ManaCost = visualDescription.manaCost;
+            visualDescriptionComponent.Icon = visualDescription.icon;
+	
+            nameComponent.Value = visualDescription.Name;
+            abilityMetaComponent.AbilityId = itemData.id;
+            abilityMetaComponent.SlotType = data.slotType;
+            abilityMetaComponent.Hide = data.isHidden;
+            abilityMetaComponent.IsBlocked = data.isBlock;
+			
+            if (data.isHidden)
+                world.AddComponent<AbilityInventoryHideComponent>(entity);
+			
+            if (data.isBlock)
+                abilityMetaAspect.Blocked.Add(entity);
+			
+            abilityIdComponent.AbilityId = (AbilityId)itemData.id;
+            abilitySlotTypeComponent.SlotType = data.slotType;
+
+            return entity;
+        }
     }
 }

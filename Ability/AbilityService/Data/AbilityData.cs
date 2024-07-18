@@ -9,7 +9,7 @@
     {
         [ValueDropdown(nameof(GetAbilitiesSlots))]
         public int slotType;
-        public int unlockLevel;
+
         public bool isDefault;
         public bool isHidden;
         public bool isBlock;

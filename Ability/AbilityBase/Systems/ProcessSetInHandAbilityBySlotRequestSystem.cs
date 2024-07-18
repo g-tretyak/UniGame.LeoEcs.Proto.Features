@@ -55,10 +55,10 @@
                 //     continue;
 
                 var slot = setInHand.AbilityCellId;
-                if(slot < 0 || slot >= abilityMap.AbilityEntities.Count)
+                if(slot < 0 || slot >= abilityMap.Abilities.Count)
                     continue;
                 
-                var packedAbilityEntity = abilityMap.AbilityEntities[slot];
+                var packedAbilityEntity = abilityMap.Abilities[slot];
                 ref var request = ref _requestPool.GetOrAddComponent(entity);
                 request.Value = packedAbilityEntity;
             }

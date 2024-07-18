@@ -201,8 +201,8 @@
 
             ref var map = ref _ownerAspect.AbilityMap.Get(entity);
 
-            if (map.AbilityEntities.Count < minLength || 
-                !map.AbilityEntities[slot].Unpack(_world, out var ability))
+            if (map.Abilities.Count < minLength || 
+                !map.Abilities[slot].Unpack(_world, out var ability))
                 return false;
 
             abilityEntity = ability;

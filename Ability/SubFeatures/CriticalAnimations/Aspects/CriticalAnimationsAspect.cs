@@ -22,11 +22,15 @@
 		public ProtoPool<OwnerComponent> Owner;
 		public ProtoPool<AbilityTargetsComponent> AbilityTargets;
 		public ProtoPool<AbilityAnimationOptionComponent> AbilityAnimationOption;
+		public ProtoPool<CriticalAbilityOwnerComponent> CriticalAbilityOwner;
+		public ProtoPool<AbilityCriticalAnimationTargetComponent> AbilityCriticalAnimationTarget;
+		public ProtoPool<AbilityCriticalAnimationComponent> AbilityCriticalAnimation;
 		
 		// requests
 		public ProtoPool<ApplyAbilitySelfRequest> ApplyAbilitySelfRequest;
 		public ProtoPool<CompleteAbilitySelfRequest> CompleteAbilitySelfRequest;
 		public ProtoPool<RestartAbilityCooldownSelfRequest> RestartAbilityCooldownSelfRequest;
 		public ProtoPool<ResetAbilityCooldownSelfRequest> ResetAbilityCooldownSelfRequest;
+		
 	}
 }

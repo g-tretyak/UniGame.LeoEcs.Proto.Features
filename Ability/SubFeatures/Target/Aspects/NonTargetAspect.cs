@@ -12,6 +12,11 @@
 	public class NonTargetAspect : EcsAspect
 	{
 		public ProtoPool<UntargetableComponent> NonTargetComponent;
+		public ProtoPool<NonTargetAbilityComponent> NonTargetAbilityComponent;
 		public ProtoPool<AbilityTargetsComponent> AbilityTargetsComponent;
+		public ProtoPool<RectangleZoneDetectionComponent> RectangleZoneDetectionComponent;
+		public ProtoPool<CircleZoneDetectionComponent> CircleZoneDetectionComponent;
+		public ProtoPool<ConeZoneDetectionComponent> ConeZoneDetectionComponent;
+		public ProtoPool<EmptyTargetComponent> EmptyTarget;
 	}
 }

@@ -15,6 +15,7 @@
     using UniGame.LeoEcs.Converter.Runtime.Abstract;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
+    using UnityEngine.Serialization;
 
 #if UNITY_EDITOR
     using UniModules.Editor;
@@ -29,13 +30,11 @@
         [OnValueChanged(nameof(UpdateAbilityConfiguration))]
         [OnValueChanged(nameof(ResetDefault))]
         public List<AbilityCell> abilityCells = new List<AbilityCell>();
-        
-        public List<AbilityId> abilityForAgents = new List<AbilityId>();
 
-        [SerializeField] 
         public bool userInput;
 
-        public bool skipEquipRequest = false;
+        public bool equipAbilityOnConvert = true;
+        
         public bool drawGizmos = false;
 
         #endregion
@@ -59,7 +58,7 @@
                 inputComponent.IsUserInput = userInput;
             }
 
-            if (skipEquipRequest) return;
+            if (equipAbilityOnConvert == false) return;
 
             var packedEntity = entity.PackEntity(world);
 

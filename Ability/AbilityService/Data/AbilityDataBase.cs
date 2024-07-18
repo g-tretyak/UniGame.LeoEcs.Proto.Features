@@ -15,7 +15,7 @@
 	/// <summary>
 	/// Ability category
 	/// </summary>
-	[CreateAssetMenu(menuName = "Game/AbilityInventory/Configuration/Ability Database")]
+	[CreateAssetMenu(menuName = "Game/Ability/Ability Database")]
 	public sealed class AbilityDataBase : GameDataCategory
 	{
 		public string id = "Ability";

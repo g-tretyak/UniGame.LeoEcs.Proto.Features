@@ -214,7 +214,7 @@ namespace UniGame.Ecs.Proto.Ability.Tools
         public int GetActivatedAbility(ProtoEntity ownerEntity)
         {
             ref var abilityMap = ref _abilityMapPool.Get(ownerEntity);
-            foreach (var abilityMapAbilityEntity in abilityMap.AbilityEntities)
+            foreach (var abilityMapAbilityEntity in abilityMap.Abilities)
             {
                 if (!abilityMapAbilityEntity.Unpack(_world, out var abilityEntity))
                     continue;
@@ -282,7 +282,7 @@ namespace UniGame.Ecs.Proto.Ability.Tools
         public ProtoEntity GetAbilityBySlot(ProtoEntity ownerEntity, int slotId)
         {
             ref var abilityMapComponent = ref _abilityOwnerAspect.AbilityMap.Get(ownerEntity);
-            var abilityMap = abilityMapComponent.AbilityEntities;
+            var abilityMap = abilityMapComponent.Abilities;
 
             if (slotId < 0 || slotId >= abilityMap.Count)
                 return _invalidAbility;
@@ -304,7 +304,7 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             ref var abilityMap = ref _abilityMapPool.Get(ownerEntity);
             var counter = 0;
 
-            foreach (var abilityPacked in abilityMap.AbilityEntities)
+            foreach (var abilityPacked in abilityMap.Abilities)
             {
                 if (!abilityPacked.Unpack(world, out var targetAbility)) continue;
                 if (abilityEntity.Equals(targetAbility)) return counter;
@@ -325,7 +325,7 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             if (!_abilityMapPool.Has(entity)) return false;
 
             ref var abilityMapComponent = ref _abilityMapPool.Get(entity);
-            var abilityMap = abilityMapComponent.AbilityEntities;
+            var abilityMap = abilityMapComponent.Abilities;
 
             for (var i = 0; i < abilityMap.Count; i++)
             {
@@ -707,7 +707,7 @@ namespace UniGame.Ecs.Proto.Ability.Tools
 
             ref var map = ref abilityMapPool.Get(entity);
 
-            foreach (var mapAbilityEntity in map.AbilityEntities)
+            foreach (var mapAbilityEntity in map.Abilities)
             {
                 if (!mapAbilityEntity.Unpack(world, out var abilityEntityValue)) continue;
                 if (!defaultPool.Has(abilityEntityValue)) continue;
@@ -731,11 +731,11 @@ namespace UniGame.Ecs.Proto.Ability.Tools
             if (!_abilityOwnerAspect.AbilityMap.Has(entity)) return abilityEntity;
 
             ref var map = ref _abilityOwnerAspect.AbilityMap.Get(entity);
-            var count = map.AbilityEntities.Count;
+            var count = map.Abilities.Count;
             var isInBounds = slot >= 0 && count > slot;
             if (!isInBounds) return abilityEntity;
 
-            return map.AbilityEntities[slot].Unpack(_world, out var ability)
+            return map.Abilities[slot].Unpack(_world, out var ability)
                 ? ability
                 : abilityEntity;
         }

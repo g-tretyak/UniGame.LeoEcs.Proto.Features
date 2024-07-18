@@ -18,5 +18,7 @@ namespace UniGame.Ecs.Proto.Ability
         {
             return abilityFeature.InitializeAsync(ecsSystems);
         }
+        
+        
     }
 }

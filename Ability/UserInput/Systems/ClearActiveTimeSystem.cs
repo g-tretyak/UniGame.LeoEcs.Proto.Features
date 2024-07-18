@@ -37,7 +37,7 @@
             foreach (var entity in _filter)
             {
                 ref var abilityMap = ref abilityMapPool.Get(entity);
-                foreach (var packedEntity in abilityMap.AbilityEntities)
+                foreach (var packedEntity in abilityMap.Abilities)
                 {
                     if(!packedEntity.Unpack(_world, out var abilityEntity) || !activateTimePool.Has(abilityEntity))
                         continue;

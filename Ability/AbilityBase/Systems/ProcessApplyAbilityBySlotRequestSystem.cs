@@ -43,11 +43,11 @@
                 ref var request = ref _requestPool.Get(entity);
 
                 var slotId = request.AbilitySlot;
-                if(slotId < 0 || slotId >= abilityMap.AbilityEntities.Count)
+                if(slotId < 0 || slotId >= abilityMap.Abilities.Count)
                     continue;
                 
                 ref var requestEntity = ref _applyAbilitySelfRequestPool.GetOrAddComponent(entity);
-                requestEntity.Value = abilityMap.AbilityEntities[slotId];
+                requestEntity.Value = abilityMap.Abilities[slotId];
             }
         }
     }

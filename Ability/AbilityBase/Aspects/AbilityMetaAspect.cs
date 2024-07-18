@@ -4,11 +4,13 @@
     using Ability.Common.Components;
     using Ability.Components;
     using Components;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
     [Serializable]
+    [ECSDI]
     public class AbilityMetaAspect : EcsAspect
     {
         public ProtoPool<AbilityConfigurationReferenceComponent> ConfigurationReference;

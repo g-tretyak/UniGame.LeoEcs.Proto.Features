@@ -10,7 +10,7 @@ namespace Game.Code.Services.Ability.Data.Arena
     using UnityEditor;
 #endif
 
-    [CreateAssetMenu(fileName = "Ability Catalog", menuName = "Game/Configurations/Arena/Abilities/Ability Catalog", order = -1)]
+    [CreateAssetMenu(fileName = "Ability Catalog", menuName = "Game/Ability/Ability Catalog", order = -1)]
     public class AbilityCatalog : ScriptableObject
     {
         [HideLabel]

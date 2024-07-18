@@ -70,10 +70,10 @@
 
 				if (slotType >= 0)
 				{
-					var abilitySlotEntity = abilityMapComponent.AbilityEntities[slotType];
+					var abilitySlotEntity = abilityMapComponent.Abilities[slotType];
 					if (abilitySlotEntity.Unpack(_world, out var oldAbilityEntity))
 						_removedEntities.Add(oldAbilityEntity);
-					abilityMapComponent.AbilityEntities[slotType] = packedAbility;
+					abilityMapComponent.Abilities[slotType] = packedAbility;
 				}
 
 				_abilityAspect.Active.Add(abilityEntity);

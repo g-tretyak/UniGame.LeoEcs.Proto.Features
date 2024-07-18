@@ -3,11 +3,15 @@
     using System.Collections.Generic;
     using Animations;
     using Description;
-    using Sirenix.OdinInspector;
     using UniGame.AddressableTools.Runtime.AssetReferencies;
     using UnityEngine;
 
+#if ODIN_INSPECTOR
+    using Sirenix.OdinInspector;
+#endif
+    
 #if UNITY_EDITOR
+    using UniModules.Editor;
 #endif
 
     [CreateAssetMenu(fileName = "Ability Configuration", menuName = "Game/Ability/Ability Configuration")]
@@ -36,8 +40,12 @@
         [SerializeReference]
         public List<IAbilityBehaviour> abilityBehaviours = new List<IAbilityBehaviour>();
         
-        [SerializeField]
-        public bool isBlocked;
-        
+        [Button]
+        public void Save()
+        {
+#if UNITY_EDITOR
+            this.SaveAsset();
+#endif
+        }
     }
 }

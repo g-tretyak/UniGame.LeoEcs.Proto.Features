@@ -23,6 +23,7 @@
     public class AreaAspect : EcsAspect
     {
         public ProtoPool<AreaLocalPositionComponent> AreaPosition;
+        public ProtoPool<AreableAbilityComponent> AreableAbility;
         public ProtoPool<AreaRadiusComponent> AreaRadius;
         public ProtoPool<OwnerComponent> Owner;
         public ProtoPool<AbilityTargetsComponent> Targets;

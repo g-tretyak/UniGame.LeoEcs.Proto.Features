@@ -49,7 +49,6 @@
             
             ecsSystems.Add(abilityTools);
             ecsSystems.Add(new ProcessAbilityVelocityEventSystem());
-            ecsSystems.Add(new ApplyAbilityRadiusSystem(abilityTools));
 
             foreach (var feature in subFeatures)
                 await feature.OnInitializeSystems(ecsSystems);
@@ -156,7 +155,7 @@
                 await abilityPlugin.InitializeAsync(ecsSystems);
         }
 
-        [Button]
+        [Button(DirtyOnClick = true)]
         private void Fill()
         {
 #if UNITY_EDITOR

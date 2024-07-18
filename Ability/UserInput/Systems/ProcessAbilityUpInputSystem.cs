@@ -54,7 +54,7 @@
                 ref var up = ref _upPool.Get(entity);
                 ref var abilityMap = ref _abilityMapPool.Get(entity);
 
-                if (!abilityMap.AbilityEntities[up.Id].Unpack(_world, out var abilityEntity))
+                if (!abilityMap.Abilities[up.Id].Unpack(_world, out var abilityEntity))
                     continue;
 
                 if (!_canUpPool.Has(abilityEntity))

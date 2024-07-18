@@ -4,6 +4,7 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
+    using SubFeatures.AbilityAnimation.Aspects;
     using UniGame.Ecs.Proto.Characteristics.Attack.Components;
      
     using Tools;
@@ -21,34 +22,20 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [ECSDI]
-    public class ApplyAbilityRadiusSystem : IProtoInitSystem, IProtoRunSystem
+    public class ApplyAbilityRadiusSystem : IProtoRunSystem
     {
         private AbilityTools _abilityTools;
         private ProtoWorld _world;
-        private EcsFilter _radiusRequestFilter;
-        private EcsFilter _effectFilter;
-
         private AbilityAspect _abilityAspect;
-
-        public ApplyAbilityRadiusSystem(AbilityTools abilityTools)
-        {
-            _abilityTools = abilityTools;
-        }
+        private AbilityRadiusAspect _abilityRadiusAspect;
         
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-
-            _radiusRequestFilter = _world
-                .Filter<ApplyAbilityRadiusRangeRequest>()
-                .End();
-        }
+        private ProtoIt _radiusRequestFilter = It.Chain<ApplyAbilityRadiusRangeRequest>().End();
 
         public void Run()
         {
             foreach (var requestEntity in _radiusRequestFilter)
             {
-                ref var request = ref _abilityAspect.ApplyRadiusRange.Get(requestEntity);
+                ref var request = ref _abilityRadiusAspect.ApplyRadiusRange.Get(requestEntity);
                 
                 if(!request.Target.Unpack(_world,out var targetEntity)) continue;
                 
@@ -60,7 +47,7 @@
                 ref var abilityRadiusComponent = ref _abilityAspect.Radius.Get((ProtoEntity)abilityEntity);
                 abilityRadiusComponent.Value = request.Value;
 
-                _abilityAspect.ApplyRadiusRange.Del(requestEntity);
+                _abilityRadiusAspect.ApplyRadiusRange.Del(requestEntity);
             }
         }
     }

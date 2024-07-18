@@ -22,7 +22,7 @@
 		[TitleGroup("settings")]
 		[InlineProperty]
 		[HideLabel]
-		public AbilityData data = new AbilityData();
+		public AbilityData data = new();
 
 		[TitleGroup("behaviour")]
 		public AssetReferenceT<AbilityConfiguration> configurationReference;
