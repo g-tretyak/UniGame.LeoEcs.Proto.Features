@@ -2,10 +2,9 @@
 {
     using System;
     using Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Extensions;
 
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
@@ -16,20 +15,14 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class DestroyCompletedResourceTaskSystem : IProtoRunSystem,IProtoInitSystem
+    public class DestroyCompletedResourceTaskSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<GameResourceTaskCompleteSelfEvent>()
-                .Inc<GameResourceTaskCompleteComponent>()
-                .End();
-        }
+        
+        private ProtoIt _filter = It
+            .Chain<GameResourceTaskCompleteSelfEvent>()
+            .Inc<GameResourceTaskCompleteComponent>()
+            .End();
         
         public void Run()
         {

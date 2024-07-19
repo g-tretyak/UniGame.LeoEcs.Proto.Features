@@ -3,10 +3,9 @@
     using System;
     using Aspects;
     using Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Extensions;
 
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
@@ -17,21 +16,14 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class ProcessSpawnRequestSystem : IProtoRunSystem,IProtoInitSystem
+    public class ProcessSpawnRequestSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
-
         private GameResourceTaskAspect _taskAspect;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<GameResourceSpawnRequest>()
-                .End();
-        }
+        
+        private ProtoIt _filter = It
+            .Chain<GameResourceSpawnRequest>()
+            .End();
         
         public void Run()
         {
