@@ -9,12 +9,10 @@ namespace UniGame.Ecs.Proto.GameResources.Systems
     using Game.Code.DataBase.Runtime;
     using Game.Code.DataBase.Runtime.Abstract;
     using Game.Ecs.Time.Service;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using UniGame.Core.Runtime;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
     using Object = UnityEngine.Object;
 
@@ -27,31 +25,25 @@ namespace UniGame.Ecs.Proto.GameResources.Systems
 #endif
     [Serializable]
     [ECSDI]
-    public class ProceedGameResourceRequestSystem : IProtoRunSystem, IProtoDestroySystem,IProtoInitSystem
+    public class ProceedGameResourceRequestSystem : IProtoRunSystem, IProtoDestroySystem
     {
         private readonly IGameDatabase _gameDatabase;
         private readonly ILifeTime _lifeTime;
-        private readonly CancellationTokenSource _tokenSource = new CancellationTokenSource();
+        private readonly CancellationTokenSource _tokenSource = new();
         
-        private EcsFilter _filter;
         private ProtoWorld _world;
         private GameResourceTaskAspect _taskAspect;
+        
+        private ProtoItExc _filter = It
+            .Chain<GameResourceHandleComponent>()
+            .Exc<GameResourceResultComponent>()
+            .Exc<GameResourceTaskComponent>()
+            .End();
 
         public ProceedGameResourceRequestSystem(IGameDatabase gameDatabase,ILifeTime lifeTime)
         {
             _gameDatabase = gameDatabase;
             _lifeTime = lifeTime;
-        }
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<GameResourceHandleComponent>()
-                .Exc<GameResourceResultComponent>()
-                .Exc<GameResourceTaskComponent>()
-                .End();
         }
         
         public void Run()

@@ -25,5 +25,8 @@
         
         //requests
         public ProtoPool<GameResourceSpawnRequest> Spawn;
+        
+        //events
+        public ProtoPool<GameResourceSpawnCompleteEvent> SpawnComplete;
     }
 }

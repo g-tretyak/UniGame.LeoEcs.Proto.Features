@@ -3,12 +3,11 @@
     using System;
     using Aspects;
     using Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Shared.Components;
-    using UniGame.LeoEcs.Shared.Extensions;
     using UniGame.LeoEcsLite.LeoEcs.Shared.Components;
     using UnityEngine;
     using Component = UnityEngine.Component;
@@ -22,24 +21,17 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class ApplyPawnGameObjectSystem : IProtoRunSystem,IProtoInitSystem
+    public class ApplyPawnGameObjectSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private GameResourceAspect _resourceAspect;
         
-        public GameResourceAspect _resourceAspect;
-        
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<GameSpawnedResourceComponent>()
-                .Inc<UnityObjectComponent>()
-                .Inc<GameObjectComponent>()
-                .Exc<GameSpawnCompleteComponent>()
-                .End();
-        }
+        private ProtoItExc _filter = It
+            .Chain<GameSpawnedResourceComponent>()
+            .Inc<UnityObjectComponent>()
+            .Inc<GameObjectComponent>()
+            .Exc<GameSpawnCompleteComponent>()
+            .End();
         
         public void Run()
         {
@@ -52,7 +44,7 @@
                     ? component.gameObject
                     : asset as GameObject;
                 
-                if(gameObject == null) continue;
+                if(!gameObject) continue;
 
                 var isSelfTarget = _resourceAspect.Target.Has(entity);
                 var converter = gameObject.GetComponent<ILeoEcsMonoConverter>();
@@ -65,10 +57,6 @@
                 gameObject.ConvertGameObjectToEntity(_world, entity);
                 gameObject.SetActive(true);
             }
-
         }
-
     }
-    
-    
 }
