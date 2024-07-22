@@ -3,8 +3,8 @@
     using System;
     using Aspects;
     using Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
     using UniGame.LeoEcsLite.LeoEcs.Shared.Components;
@@ -18,24 +18,16 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class CompleteGameResourceObjectSystem : IProtoRunSystem,IProtoInitSystem
+    public class CompleteGameResourceObjectSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
-        
         private GameResourceAspect _resourceAspect;
-        private ProtoPool<GameResourceSpawnCompleteEvent> _spawnEventPool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<UnityObjectComponent>()
-                .Inc<GameSpawnedResourceComponent>()
-                .Exc<GameSpawnCompleteComponent>()
-                .End();
-        }
+        
+        private ProtoItExc _filter = It
+            .Chain<UnityObjectComponent>()
+            .Inc<GameSpawnedResourceComponent>()
+            .Exc<GameSpawnCompleteComponent>()
+            .End();
         
         public void Run()
         {
@@ -47,7 +39,7 @@
                 ref var completeComponent = ref _resourceAspect.Complete.Add(entity);
 
                 var eventEntity = _world.NewEntity();
-                ref var eventComponent = ref _spawnEventPool.Add(eventEntity);
+                ref var eventComponent = ref _resourceAspect.SpawnComplete.Add(eventEntity);
                 
                 eventComponent.SpawnedEntity = entity.PackEntity(_world);
                 eventComponent.Resource = objectComponent.Value;
@@ -55,6 +47,5 @@
                 eventComponent.ResourceId = resourceComponent.Value;
             }
         }
-
     }
 }
