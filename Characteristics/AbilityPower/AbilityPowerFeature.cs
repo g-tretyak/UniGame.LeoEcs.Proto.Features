@@ -2,7 +2,9 @@
 {
     using System;
     using Base;
+    using Base.Aspects;
     using Components;
+    using Components.Requests;
     using Cysharp.Threading.Tasks;
     using Feature;
     using Leopotam.EcsProto;
@@ -31,4 +33,12 @@
             return UniTask.CompletedTask;
         }
     }
+    
+    [Serializable]
+    public sealed class AbilityPowerCharacteristicAspect : GameCharacteristicAspect<AbilityPowerComponent>
+    {
+        //requests
+        public ProtoPool<RecalculateAbilityPowerRequest> RecalculateAbilityPowerRequest;
+    }
+    
 }

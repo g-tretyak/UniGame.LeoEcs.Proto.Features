@@ -2,6 +2,7 @@
 {
     using System;
     using Base;
+    using Base.Aspects;
     using Components;
     using Cysharp.Threading.Tasks;
     using Feature;
@@ -26,4 +27,13 @@
             return UniTask.CompletedTask;
         }
     }
+    
+    /// <summary>
+    /// Armor resist aspect
+    /// </summary>
+    [Serializable]
+    public class DodgeCharacteristicAspect : GameCharacteristicAspect<DodgeComponent>
+    {
+    }
+
 }
