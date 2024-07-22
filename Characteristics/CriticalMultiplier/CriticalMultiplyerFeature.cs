@@ -4,6 +4,7 @@
     using Components;
     using Cysharp.Threading.Tasks;
     using Base;
+    using Base.Aspects;
     using Feature;
     using Leopotam.EcsProto;
     using Systems;
@@ -30,5 +31,13 @@
             
             return UniTask.CompletedTask;
         }
+    }
+    
+    /// <summary>
+    /// Armor resist aspect
+    /// </summary>
+    [Serializable]
+    public class CriticalMultiplierCharacteristicAspect : GameCharacteristicAspect<CriticalMultiplierComponent>
+    {
     }
 }

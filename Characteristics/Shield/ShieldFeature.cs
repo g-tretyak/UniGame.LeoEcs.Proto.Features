@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Shield
 {
     using System;
+    using Base.Aspects;
     using Systems;
     using Components;
     using Cysharp.Threading.Tasks;
@@ -25,5 +26,12 @@
             
             return UniTask.CompletedTask;
         }
+    }
+    
+    [Serializable]
+    public sealed class ShieldCharacteristicAspect : GameCharacteristicAspect<ShieldComponent>
+    {
+        //requests
+        public ProtoPool<ChangeShieldRequest> ChangeShieldRequest;
     }
 }

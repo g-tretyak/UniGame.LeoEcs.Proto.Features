@@ -4,6 +4,7 @@
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 
@@ -16,24 +17,18 @@
 #endif
     [Serializable]
     [ECSDI]
-    public sealed class ProcessApplyAbilityBySlotRequestSystem : IProtoRunSystem,IProtoInitSystem
+    public sealed class ProcessApplyAbilityBySlotRequestSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
+        private ProtoIt  _filter = It
+            .Chain<ApplyAbilityBySlotSelfRequest>()
+            .Inc<AbilityMapComponent>()
+            .End();
+        
         private ProtoWorld _world;
         
         private ProtoPool<ApplyAbilityBySlotSelfRequest> _requestPool;
         private ProtoPool<AbilityMapComponent> _abilityMapPool;
         private ProtoPool<ApplyAbilitySelfRequest> _applyAbilitySelfRequestPool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<ApplyAbilityBySlotSelfRequest>()
-                .Inc<AbilityMapComponent>()
-                .End();
-        }
         
         public void Run()
         {
