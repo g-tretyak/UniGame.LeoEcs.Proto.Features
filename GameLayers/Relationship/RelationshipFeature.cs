@@ -9,6 +9,7 @@ namespace UniGame.Ecs.Proto.GameLayers.Relationship
     using UniGame.LeoEcs.Bootstrap.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
+    using Object = UnityEngine.Object;
 
     [Serializable]
     public sealed class RelationshipFeature : LeoEcsSystemAsyncFeature
@@ -22,6 +23,14 @@ namespace UniGame.Ecs.Proto.GameLayers.Relationship
     
         public override UniTask InitializeAsync(IProtoSystems ecsSystems)
         {
+            var protoWorld = ecsSystems.GetWorld();
+            var layerIdConfiguration = Object.Instantiate(_layerIdConfiguration);
+            var relationshipIdMap = Object.Instantiate(_relationshipIdMap);
+
+            protoWorld.SetGlobal(layerIdConfiguration);
+            protoWorld.SetGlobal(relationshipIdMap);
+
+
             ecsSystems.Add(new RelationshipToolsSystem(_layerIdConfiguration, _relationshipIdMap, _selfRelationship));
             
             return UniTask.CompletedTask;

@@ -19,7 +19,7 @@
 
             EditorGUI.BeginProperty(position, label, property);
 
-            var propertyValue = property.FindPropertyRelative("_value");
+            var propertyValue = property.FindPropertyRelative("value");
             propertyValue.intValue = RelationshipField(position, label, propertyValue.intValue, _configuration);
             property.serializedObject.ApplyModifiedProperties();
 
