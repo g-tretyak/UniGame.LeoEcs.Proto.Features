@@ -74,7 +74,6 @@
                 abilityRequest.AbilityId = cell.AbilityId;
                 abilityRequest.AbilitySlot = cell.SlotId;
                 abilityRequest.Owner = packedEntity;
-                abilityRequest.IsUserInput = userInput;
                 abilityRequest.IsDefault = cell.IsDefault || cell.SlotId == defaultCellIType;
                 
                 if (cell.IsDefault)

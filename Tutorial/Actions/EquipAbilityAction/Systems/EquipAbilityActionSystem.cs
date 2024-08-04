@@ -59,7 +59,6 @@
 					ref var request = ref _aspect.EquipAbilityIdRequest.Add(requestEntity);
 					request.AbilityId = abilityId;
 					request.AbilitySlot = slot;
-					request.IsUserInput = true;
 					request.IsDefault = slot == 0;
 					request.Owner = championEntity.PackEntity(_world);
 				}

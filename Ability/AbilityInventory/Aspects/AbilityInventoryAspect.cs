@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.AbilityInventory.Aspects
 {
     using System;
+    using System.Runtime.CompilerServices;
     using Ability.Common.Components;
     using Ability.Components;
     using Ability.SubFeatures.AbilityAnimation.Components;
@@ -12,6 +13,7 @@
     using LeoEcs.Bootstrap.Runtime.Attributes;
     using LeoEcs.Shared.Extensions;
     using Leopotam.EcsProto;
+    using Sirenix.Serialization;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
 
@@ -28,7 +30,6 @@
         public ProtoPool<AbilityBlockedComponent> Blocked;
         public ProtoPool<AbilityVisualComponent> Visual;
         public ProtoPool<AbilitySlotComponent> Slot;
-        public ProtoPool<UserInputAbilityComponent> Input;
         public ProtoPool<OwnerComponent> Owner;
         public ProtoPool<OwnerLinkComponent> OwnerLink;
         public ProtoPool<AbilityActiveAnimationComponent> Animation;
@@ -39,6 +40,10 @@
         public ProtoPool<AbilityInventoryCompleteComponent> Complete;
         public ProtoPool<AbilityValidationFailedComponent> Failed;
         public ProtoPool<AbilityInventoryProfileComponent> ProfileTarget;
+        public ProtoPool<AbilityVisualComponent> BaseVisual;
+        public ProtoPool<IconComponent> Icon;
+        public ProtoPool<NameComponent> Name;
+        public ProtoPool<DescriptionComponent> Description;
 
         //requests
         public ProtoPool<EquipAbilityIdSelfRequest> EquipById;
@@ -87,6 +92,29 @@
             abilitySlotTypeComponent.SlotType = data.slotType;
 
             return entity;
+        }
+        
+#if ENABLE_IL2CPP
+        [Il2CppSetOption(Option.NullChecks, false)]
+        [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+        [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+#endif
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void ComposeAbilityVisualDescription(ref AbilityVisualComponent visualDescription,
+            ProtoEntity abilityEntity)
+        {
+            ref var visualComponent = ref Visual.GetOrAddComponent(abilityEntity);
+            visualComponent.Description = visualDescription.Description;
+            visualComponent.Icon = visualDescription.Icon;
+            visualComponent.Name = visualDescription.Name;
+
+            ref var iconComponent = ref Icon.GetOrAddComponent(abilityEntity);
+            ref var descriptionComponent = ref Description.GetOrAddComponent(abilityEntity);
+            ref var nameComponent = ref Name.GetOrAddComponent(abilityEntity);
+
+            nameComponent.Value = visualDescription.Name;
+            descriptionComponent.Description = visualDescription.Description;
+            iconComponent.Value = visualDescription.Icon;
         }
     }
 }

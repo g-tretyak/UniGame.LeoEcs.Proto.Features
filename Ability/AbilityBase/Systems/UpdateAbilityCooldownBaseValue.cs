@@ -6,6 +6,7 @@
     using Components.Requests;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Tools;
     using UniGame.LeoEcs.Shared.Extensions;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
@@ -22,23 +23,16 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class UpdateAbilityCooldownBaseValue : IProtoInitSystem, IProtoRunSystem
+    public class UpdateAbilityCooldownBaseValue : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
+        private AbilityAspect _abilityTools;
         private ProtoWorld _world;
-        private EcsFilter _filter;
         private AbilityAspect _abilityAspect;
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            
-            _filter = _world
-                .Filter<SetAbilityBaseCooldownSelfRequest>()
-                .Inc<AbilityMapComponent>()
-                .End();
-        }
+        private ProtoIt _filter = It
+            .Chain<SetAbilityBaseCooldownSelfRequest>()
+            .Inc<AbilityMapComponent>()
+            .End();
 
         public void Run()
         {

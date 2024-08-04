@@ -63,7 +63,6 @@
                 equipRequest.AbilityId = abilityCell.AbilityId;
                 equipRequest.AbilitySlot = abilityCell.SlotId;
                 equipRequest.Owner = _world.PackEntity(entity);
-                equipRequest.IsUserInput = false;
                 equipRequest.IsDefault = abilityCell.IsDefault;
                     
                 if (abilityCell.IsDefault)

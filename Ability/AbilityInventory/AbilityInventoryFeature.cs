@@ -37,8 +37,8 @@
 
 			ecsSystems.DelHere<AbilityInventorySaveCompleteEvent>();
 			
-			ecsSystems.Add(new AbilityInventoryUpdateSlotDataSystem(abilityLoadoutService));
-			ecsSystems.Add(new AbilityInventorySpawnSystem(abilityLoadoutService));
+			ecsSystems.Add(new AbilityInventoryUpdateSlotDataSystem());
+			ecsSystems.Add(new AbilityInventorySpawnSystem());
 			
 			ecsSystems.Add(new EquipAbilityByIdToChampionSystem());
 			//try find ability by name and equip it

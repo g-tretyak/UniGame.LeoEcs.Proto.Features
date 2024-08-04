@@ -6,6 +6,7 @@
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -22,29 +23,22 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class EquipAbilityByNameSystem : IProtoInitSystem, IProtoRunSystem
+    public class EquipAbilityByNameSystem : IProtoRunSystem
     {
         private AbilityInventoryAspect _inventoryAspect;
         private AbilityMetaAspect _metaAspect;
 		
         private ProtoWorld _world;
-        private EcsFilter _filter;
-        private EcsFilter _filterRequest;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-			
-            _filter = _world
-                .Filter<AbilityMetaComponent>()
-                .Inc<NameComponent>()
-                .Inc<AbilityIdComponent>()
-                .End();
-			
-            _filterRequest = _world
-                .Filter<EquipAbilityNameSelfRequest>()
-                .End();
-        }
+        
+        private ProtoIt _filter= It
+            .Chain<AbilityMetaComponent>()
+            .Inc<NameComponent>()
+            .Inc<AbilityIdComponent>()
+            .End();
+        
+        private ProtoIt _filterRequest= It
+            .Chain<EquipAbilityNameSelfRequest>()
+            .End();
 
         public void Run()
         {
@@ -62,7 +56,6 @@
 
                     ref var equipByIdRequest = ref _inventoryAspect.EquipById.GetOrAddComponent(abilityEntity);
                     equipByIdRequest.AbilityId = abilityIdComponent.AbilityId;
-                    equipByIdRequest.IsUserInput = requestComponent.IsUserInput;
                     equipByIdRequest.AbilitySlot = requestComponent.AbilitySlot;
                     equipByIdRequest.Owner = requestComponent.Owner;
                     equipByIdRequest.IsDefault = requestComponent.IsDefault;

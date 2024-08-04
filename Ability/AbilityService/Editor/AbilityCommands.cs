@@ -37,39 +37,28 @@
         {
             var abilityMeta = ScriptableObject.CreateInstance<AbilityItemAsset>();
             var abilityConfiguration = ScriptableObject.CreateInstance<AbilityConfiguration>();
-            var animationLink = ScriptableObject.CreateInstance<AnimationLink>();
             var animation = ScriptableObject.CreateInstance<TimelineAsset>();
             
             abilityMeta.name = ZString.Format(AbilityNameTemplate,abilityName,MetaAssetName);
             abilityConfiguration.name = ZString.Format(AbilityNameTemplate,abilityName,ConfigurationAssetName);
-            animationLink.name = ZString.Format(AbilityNameTemplate,abilityName,AnimationLinkAssetName);
             animation.name = ZString.Format(AbilityNameTemplate,abilityName,AnimationAssetName);
 
             abilityMeta = abilityMeta.SaveAsset(abilityFolder, false, false);
             abilityConfiguration = abilityConfiguration.SaveAsset(abilityFolder, false, false);
-            animationLink = animationLink.SaveAsset(abilityFolder, false, false);
             animation = animation.SaveAsset(abilityFolder, false, false);
             
             AssetDatabase.SaveAssets();
             
             abilityMeta.AddToDefaultAddressableGroup();
             abilityConfiguration.AddToDefaultAddressableGroup();
-            animationLink.AddToDefaultAddressableGroup();
             animation.AddToDefaultAddressableGroup();
             
             abilityMeta.data.configurationReference =
                 new AssetReferenceT<AbilityConfiguration>(abilityConfiguration.GetGUID());
-            
-            abilityConfiguration.animationLink = new AddressableValue<AnimationLink>()
-            {
-                reference = new AssetReferenceT<AnimationLink>(animationLink.GetGUID()),
-            };
-            
-            animationLink.animation = animation;
+
 
             abilityMeta.MarkDirty();
             abilityConfiguration.MarkDirty();
-            animationLink.MarkDirty();
             animation.MarkDirty();
             
             UpdateAbilitiesCatalog();
@@ -78,7 +67,6 @@
             {
                 meta = abilityMeta,
                 configuration = abilityConfiguration,
-                animationLink = animationLink,
                 animation = animation
             };
         }

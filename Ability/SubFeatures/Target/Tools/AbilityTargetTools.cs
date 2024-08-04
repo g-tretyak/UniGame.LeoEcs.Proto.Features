@@ -52,10 +52,9 @@
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ClearAbilityTargets(ProtoEntity entity, int slot)
         {
-            if (!TryGetAbility(entity, slot, out var abilityEntity))
-                return;
-
-            ClearAbilityTargets(abilityEntity);
+            var abilityEntity = _abilityAspect.GetAbilityBySlot(entity, slot);
+            if(!abilityEntity.Unpack(_world,out var ability)) return;
+            ClearAbilityTargets(ability);
         }
 
 #if ENABLE_IL2CPP
@@ -81,12 +80,13 @@
 #endif
         public void SetAbilityTarget(ProtoEntity entity, ProtoPackedEntity targetEntity, int slot)
         {
-            if (!TryGetAbility(entity, slot, out var abilityEntity)) return;
+            var abilityEntity = _abilityAspect.GetAbilityBySlot(entity, slot);
+            if(!abilityEntity.Unpack(_world,out var ability)) return;
 
             //set ability target
             ref var targetsComponent = ref _targetAbilityAspect
                 .AbilityTargets
-                .GetOrAddComponent(abilityEntity);
+                .GetOrAddComponent(ability);
             
             targetsComponent.SetEntity(targetEntity);
         }
@@ -98,10 +98,9 @@
 #endif
         public void ActivateAbilityForTarget(ProtoEntity entity, ProtoPackedEntity targetEntity, int slot)
         {
-            if (!TryGetAbility(entity, slot, out var abilityEntity))
-                return;
-
-            ActivateAbilityWithTarget(entity, (ProtoEntity)abilityEntity,ref targetEntity);
+            var abilityEntity = _abilityAspect.GetAbilityBySlot(entity, slot);
+            if(!abilityEntity.Unpack(_world,out var ability)) return;
+            ActivateAbilityWithTarget(entity, ability,ref targetEntity);
         }
         
 #if ENABLE_IL2CPP
@@ -184,31 +183,6 @@
             setInHand.Value = packedAbilityEntity;
             abilityUseRequest.Value = packedAbilityEntity;
         }
-        
-#if ENABLE_IL2CPP
-        [Il2CppSetOption(Option.NullChecks, false)]
-        [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
-        [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-#endif
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetAbility(ProtoEntity entity, int slot, out ProtoEntity abilityEntity)
-        {
-            abilityEntity = default;
-            var minLength = slot + 1;
-
-            if (!_ownerAspect.AbilityMap.Has(entity))
-                return false;
-
-            ref var map = ref _ownerAspect.AbilityMap.Get(entity);
-
-            if (map.Abilities.Count < minLength || 
-                !map.Abilities[slot].Unpack(_world, out var ability))
-                return false;
-
-            abilityEntity = ability;
-            return true;
-        }
-
 
     }
 }

@@ -23,30 +23,14 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class ActivateAbilitySystem : IProtoInitSystem, IProtoRunSystem
+    public class ActivateAbilitySystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
         private ProtoWorld _world;
-
-        private EcsFilter _abilityFilter;
-        private EcsFilter _requestFilter;
         private AbilityAspect _abilityAspect;
         
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            
-            _requestFilter = _world
-                .Filter<ActivateAbilityRequest>()
-                .End();
-
-            _abilityFilter = _world
-                .Filter<ActiveAbilityComponent>()
-                .Inc<AbilityIdComponent>()
-                .Inc<OwnerComponent>()
-                .End();
-        }
+        private ProtoIt _requestFilter= It
+            .Chain<ActivateAbilityRequest>()
+            .End();
 
         public void Run()
         {
@@ -59,7 +43,7 @@
                 if(!request.Ability.Unpack(_world,out var targetAbilityEntity))
                     continue;
 
-                foreach (var abilityEntity in _abilityFilter)
+                foreach (var abilityEntity in _abilityAspect.ActiveAbilityFilter)
                 {
                     ref var ownerComponent = ref _abilityAspect.Owner.Get(abilityEntity);
                     if(!ownerComponent.Value.Unpack(_world,out _)) continue;
@@ -67,7 +51,7 @@
                     
                     if (!abilityEntity.Equals(targetAbilityEntity)) continue;
                     
-                    _abilityTools.ActivateAbility(_world,targetEntity,abilityEntity);
+                    _abilityAspect.ActivateAbility(targetEntity,abilityEntity);
                     
                     break;
                 }

@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.CriticalAnimations.Systems
 {
     using System;
+    using Ability.Aspects;
     using Aspects;
     using Common.Components;
     using Components;
@@ -24,25 +25,18 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class ActivateCriticalAbilitySystem : IProtoInitSystem, IProtoRunSystem
+    public class ActivateCriticalAbilitySystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
+        private AbilityAspect _abilityTools;
         private AbilityTargetTools _targetTools;
         private ProtoWorld _world;
-        private EcsFilter _filter;
         private CriticalAnimationsAspect _aspect;
         
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            _targetTools = _world.GetGlobal<AbilityTargetTools>();
-            
-            _filter = _world
-                .Filter<ApplyAbilitySelfRequest>()
-                .Inc<CriticalAbilityOwnerComponent>()
-                .End();
-        }
+        private ProtoIt _filter= It
+            .Chain<ApplyAbilitySelfRequest>()
+            .Inc<CriticalAbilityOwnerComponent>()
+            .End();
+
 
         public void Run()
         {

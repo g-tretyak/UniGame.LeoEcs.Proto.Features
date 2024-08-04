@@ -26,19 +26,16 @@
 		public List<AbilitySwitcherAssetFeature> features = new List<AbilitySwitcherAssetFeature>();
 
 		#endregion
-		
-		private AbilityTools _abilityTools;
-		
+
 		public override UniTask<IProtoSystems> OnInitializeSystems(IProtoSystems ecsSystems)
 		{
 			var world = ecsSystems.GetWorld();
-			_abilityTools = world.GetGlobal<AbilityTools>();
 			
 			foreach (var abilitySwitcherAssetFeature in features) 
 				abilitySwitcherAssetFeature.InitializeAsync(ecsSystems);
 			
 			// Do ability switch. Await for AbilitySwitcherRequest and switch ability.
-			ecsSystems.Add(new AbilitySwitcherSystem(_abilityTools));
+			ecsSystems.Add(new AbilitySwitcherSystem());
 
 			ecsSystems.DelHere<AbilitySwitcherRequest>();
 			

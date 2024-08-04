@@ -20,16 +20,14 @@
 	public class UsageCounterForAbilitySwitcherFeature : AbilitySwitcherAssetFeature
 	{
 		private AbilitySequenceTools _abilitySequenceTools;
-		private AbilityTools _abilityTools;
 		
 		public override async UniTask InitializeAsync(IProtoSystems ecsSystems)
 		{
 			var world = ecsSystems.GetWorld();
 			_abilitySequenceTools = world.GetGlobal<AbilitySequenceTools>();
-			_abilityTools = world.GetGlobal<AbilityTools>();
 			
 			// Counts usages of ability and switches it to another ability after count of usages.
-			ecsSystems.Add(new UsageCounterForAbilitySwitcherSystem(_abilityTools));
+			ecsSystems.Add(new UsageCounterForAbilitySwitcherSystem());
 		}
 	}
 }

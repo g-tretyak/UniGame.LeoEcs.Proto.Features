@@ -1,9 +1,11 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.Common.Systems
 {
     using System;
+    using Aspects;
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Tools;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -17,9 +19,9 @@
 #endif
     [Serializable]
     [ECSDI]
-    public sealed class ProcessSetInHandAbilityBySlotRequestSystem : IProtoRunSystem,IProtoInitSystem
+    public sealed class ProcessSetInHandAbilityBySlotRequestSystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
+        private AbilityAspect _abilityAspect;
         private EcsFilter _filter;
         private ProtoWorld _world;
         
@@ -27,11 +29,6 @@
         private ProtoPool<SetInHandAbilitySelfRequest> _requestPool;
         private ProtoPool<AbilityMapComponent> _abilityMapPool;
 
-        public ProcessSetInHandAbilityBySlotRequestSystem(AbilityTools abilityTools)
-        {
-            _abilityTools = abilityTools;
-        }
-        
         public void Init(IProtoSystems systems)
         {
             _world = systems.GetWorld();
@@ -48,19 +45,14 @@
             foreach (var entity in _filter)
             {
                 ref var setInHand = ref _setInHandPool.Get(entity);
-                ref var abilityMap = ref _abilityMapPool.Get(entity);
-                
-                // var isAnyAbilityUsing = _abilityTools.IsAnyAbilityInUse(_world, entity);
-                // if(isAnyAbilityUsing)
-                //     continue;
-
                 var slot = setInHand.AbilityCellId;
-                if(slot < 0 || slot >= abilityMap.Abilities.Count)
-                    continue;
                 
-                var packedAbilityEntity = abilityMap.Abilities[slot];
+                var abilityInSlot = _abilityAspect.GetAbilityBySlot(entity, slot);
+                if(!abilityInSlot.Unpack(_world,out var abilityEntity))
+                    continue;
+
                 ref var request = ref _requestPool.GetOrAddComponent(entity);
-                request.Value = packedAbilityEntity;
+                request.Value = abilityInSlot;
             }
         }
     }

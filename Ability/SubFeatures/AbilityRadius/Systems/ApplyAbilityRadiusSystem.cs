@@ -24,7 +24,7 @@
     [ECSDI]
     public class ApplyAbilityRadiusSystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
+        private AbilityAspect _abilityTools;
         private ProtoWorld _world;
         private AbilityAspect _abilityAspect;
         private AbilityRadiusAspect _abilityRadiusAspect;

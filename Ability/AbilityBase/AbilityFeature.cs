@@ -40,21 +40,13 @@
                 .Where(x => x.isActive)
                 .ToList();
             
-            var world = ecsSystems.GetWorld();
-            var abilityTools = new AbilityTools();
-
-            world.SetGlobal(abilityTools);
-            
             ecsSystems.DelHere<AbilityVelocityEvent>();
-            
-            ecsSystems.Add(abilityTools);
-            ecsSystems.Add(new ProcessAbilityVelocityEventSystem());
 
             foreach (var feature in subFeatures)
                 await feature.OnInitializeSystems(ecsSystems);
             
             //setup ability in hand by slot
-            ecsSystems.Add(new ProcessSetInHandAbilityBySlotRequestSystem(abilityTools));
+            ecsSystems.Add(new ProcessSetInHandAbilityBySlotRequestSystem());
             ecsSystems.DelHere<SetInHandAbilityBySlotSelfRequest>();
             
             //handle ApplyAbilityRequest and apply ability by slot
@@ -75,8 +67,6 @@
             ecsSystems.Add(new SetAbilityNotActiveWhenDeadSystem());
             //if non default slot ability in use, discard set in hand request
             ecsSystems.Add(new DiscardSetInHandWhileExecutingAbilitySystem());
-            //if non default slot ability in use and try to run another slot ability -> complete active
-            ecsSystems.Add(new DiscardLowPriorityAbilitySystem());
             ecsSystems.Add(new DiscardAbilityEffectMilestonesSystem());
             
             foreach (var feature in subFeatures)
@@ -89,7 +79,7 @@
             ecsSystems.DelHere<CompleteAbilitySelfRequest>();
 
             //set ability in hand by ability entity
-            ecsSystems.Add(new SetInHandAbilityRequestSystem(abilityTools));
+            ecsSystems.Add(new SetInHandAbilityRequestSystem());
             ecsSystems.DelHere<SetInHandAbilitySelfRequest>();
                 
             //add ability system to update in hand ability state

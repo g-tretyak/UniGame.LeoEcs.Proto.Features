@@ -2,6 +2,7 @@
 {
 	using System;
 	using Ability.Common.Components;
+	using Aspects;
 	using Components;
 	using Game.Code.Services.AbilityLoadout.Abstract;
 	using Leopotam.EcsLite;
@@ -19,27 +20,17 @@
 #endif
 	[Serializable]
 	[ECSDI]
-	public class AbilityInventorySpawnSystem : IProtoInitSystem, IProtoRunSystem
+	public class AbilityInventorySpawnSystem : IProtoRunSystem
 	{
 		private ProtoWorld _world;
-		private EcsFilter _filter;
+		private AbilityInventoryAspect _inventoryAspect;
 		private IAbilityCatalogService _service;
-
-		public AbilityInventorySpawnSystem(IAbilityCatalogService abilityLoadoutAbilityService)
-		{
-			_service = abilityLoadoutAbilityService;
-		}
 		
-		public void Init(IProtoSystems systems)
-		{
-			_world = systems.GetWorld();
-			
-			_filter = _world
-				.Filter<AbilityInventoryProfileComponent>()
-				.Inc<AbilityMapComponent>()
-				.Exc<AbilityInventorySpawnDoneComponent>()
-				.End();
-		}
+		private ProtoItExc _filter= It
+			.Chain<AbilityInventoryProfileComponent>()
+			.Inc<AbilityMapComponent>()
+			.Exc<AbilityInventorySpawnDoneComponent>()
+			.End();
 
 		public void Run()
 		{
@@ -48,12 +39,11 @@
 				foreach (var slotData in _service.AbilitySlotData)
 				{
 					var requestEntity = _world.NewEntity();
-					ref var request = ref _world.GetOrAddComponent<EquipAbilityIdSelfRequest>(requestEntity);
+					ref var request = ref _inventoryAspect.EquipById.GetOrAddComponent(requestEntity);
 					
 					request.AbilityId = slotData.ability;
 					request.AbilitySlot = slotData.slotType;
 					request.Owner = _world.PackEntity(entity);
-					request.IsUserInput = true;
 					request.IsDefault = slotData.slotType == 0;
 				}
 				

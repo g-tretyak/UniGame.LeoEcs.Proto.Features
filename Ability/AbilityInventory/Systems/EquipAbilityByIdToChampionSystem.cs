@@ -1,5 +1,6 @@
 ﻿namespace UniGame.Ecs.Proto.AbilityInventory.Systems
 {
+    using Aspects;
     using Components;
     using Game.Ecs.Core.Components;
     using Leopotam.EcsLite;
@@ -16,49 +17,36 @@
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
     [ECSDI]
-    public class EquipAbilityByIdToChampionSystem : IProtoInitSystem, IProtoRunSystem
+    public class EquipAbilityByIdToChampionSystem : IProtoRunSystem
     {
         private ProtoWorld _world;
-        private EcsFilter _filter;
-        private EcsFilter _championFilter;
+        private AbilityInventoryAspect _inventoryAspect;
 
-        private ProtoPool<EquipAbilityIdToChampionRequest> _requestPool;
-        private ProtoPool<EquipAbilityIdSelfRequest> _equipRequestPool;
+        private ProtoIt _filter= It
+            .Chain<EquipAbilityIdToChampionRequest>()
+            .End();
         
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-			
-            _filter = _world
-                .Filter<EquipAbilityIdToChampionRequest>()
-                .End();
-            
-            _championFilter = _world
-                .Filter<ChampionComponent>()
-                .End();
-
-            _requestPool = _world.GetPool<EquipAbilityIdToChampionRequest>();
-            _equipRequestPool = _world.GetPool<EquipAbilityIdSelfRequest>();
-        }
-
+        private ProtoIt _championFilter= It
+            .Chain<ChampionComponent>()
+            .End();
+        
         public void Run()
         {
             foreach (var request in _filter)
             {
-                ref var requestComponent = ref _requestPool.Get(request);
+                ref var requestComponent = ref _inventoryAspect.EquipToChampion.Get(request);
 				
                 foreach (var entity in _championFilter)
                 {
-                    ref var abilityEquipRequest = ref _equipRequestPool.Add(request);
+                    ref var abilityEquipRequest = ref _inventoryAspect.EquipById
+                        .GetOrAddComponent(request);
 					
                     abilityEquipRequest.AbilityId = requestComponent.AbilityId;
                     abilityEquipRequest.AbilitySlot = requestComponent.AbilitySlot;
-                    abilityEquipRequest.IsUserInput = requestComponent.IsUserInput;
                     abilityEquipRequest.IsDefault = requestComponent.IsDefault;
                     abilityEquipRequest.Owner = _world.PackEntity(entity);
 					
-                    _requestPool.Del(request);
+                    _inventoryAspect.EquipToChampion.Del(request);
                 }
             }
         }

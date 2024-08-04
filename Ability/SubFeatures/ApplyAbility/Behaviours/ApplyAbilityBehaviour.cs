@@ -15,7 +15,6 @@
         
         public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
-            var tools = world.GetGlobal<AbilityTools>();
         }
     }
 

@@ -1,6 +1,7 @@
 namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Systems
 {
     using System;
+    using Ability.Aspects;
     using Ability.Tools;
     using AI.Abstract;
     using AI.Components;
@@ -26,13 +27,12 @@ namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Systems
 #endif
     [Serializable]
     [ECSDI]
-    public class MoveToTargetAiSystem : IAiActionSystem,IProtoInitSystem
+    public class MoveToTargetAiSystem : IAiActionSystem
     {
         public float minSqrDistance = 4f;
         
-        private EcsFilter _filter;
         private ProtoWorld _world;
-        private AbilityTools _abilityTools;
+        private AbilityAspect _abilityTools;
         
         private ProtoPool<TransformPositionComponent> _transformPool;
         private ProtoPool<TransformDirectionComponent> _directionPool;
@@ -42,19 +42,13 @@ namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Systems
         private ProtoPool<ActiveGameViewComponent> _viewPool;
         private ProtoPool<NavMeshAgentComponent> _agentPool;
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            
-            _filter = _world
-                .Filter<MoveToTargetActionComponent>()
-                .Inc<TransformComponent>()
-                .Inc<AiAgentComponent>()
-                .Exc<ImmobilityComponent>()
-                .Exc<DisabledComponent>()
-                .End();
-        }
+        private ProtoItExc _filter = It
+            .Chain<MoveToTargetActionComponent>()
+            .Inc<TransformComponent>()
+            .Inc<AiAgentComponent>()
+            .Exc<ImmobilityComponent>()
+            .Exc<DisabledComponent>()
+            .End();
         
         public void Run()
         {

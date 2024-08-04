@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.Systems
 {
     using System;
+    using Aspects;
     using Common.Components;
     using Components.Requests;
     using Game.Ecs.Core.Components;
@@ -23,34 +24,26 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class ActivateAbilityByIdSystem : IProtoInitSystem, IProtoRunSystem
+    public class ActivateAbilityByIdSystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
+        private AbilityAspect _abilityAspect;
+        
         private ProtoWorld _world;
 
-        private EcsFilter _abilityFilter;
-        private EcsFilter _requestFilter;
+        private ProtoIt _abilityFilter= It
+            .Chain<ActiveAbilityComponent>()
+            .Inc<AbilityIdComponent>()
+            .Inc<OwnerComponent>()
+            .End();
+        
+        private ProtoIt _requestFilter= It
+            .Chain<ActivateAbilityByIdRequest>()
+            .End();
 
         private ProtoPool<OwnerComponent> _ownerPool;
         private ProtoPool<AbilityIdComponent> _abilityIdPool;
         private ProtoPool<ActivateAbilityByIdRequest> _activateRequestPool;
         private ProtoPool<ActivateAbilityRequest> _activateAbilityRequestPool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            
-            _requestFilter = _world
-                .Filter<ActivateAbilityByIdRequest>()
-                .End();
-
-            _abilityFilter = _world
-                .Filter<ActiveAbilityComponent>()
-                .Inc<AbilityIdComponent>()
-                .Inc<OwnerComponent>()
-                .End();
-        }
 
         public void Run()
         {

@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySequence.Systems
 {
     using System;
+    using Ability.Aspects;
     using Aspects;
     using Components;
     using AbilitySequence;
@@ -24,25 +25,18 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class ActivateNextAbilityInSequenceSystem : IProtoInitSystem, IProtoRunSystem
+    public class ActivateNextAbilityInSequenceSystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
-        private ProtoWorld _world;
-        private EcsFilter _requestFilter;
-        
+        private AbilityAspect _abilityTools;
         private AbilitySequenceAspect _aspect;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            
-            _requestFilter = _world
-                .Filter<ActivateNextAbilityInSequenceSelfRequest>()
-                .Inc<AbilitySequenceComponent>()
-                .Inc<AbilitySequenceReadyComponent>()
-                .End();
-        }
+        
+        private ProtoWorld _world;
+        
+        private ProtoIt _requestFilter= It
+            .Chain<ActivateNextAbilityInSequenceSelfRequest>()
+            .Inc<AbilitySequenceComponent>()
+            .Inc<AbilitySequenceReadyComponent>()
+            .End();
 
         public void Run()
         {
@@ -69,7 +63,7 @@
                 ref var activeComponent =  ref _aspect.Active.GetOrAddComponent(entity);
                 activeComponent.Value = activeAbilityEntity;
                 
-                _abilityTools.ActivateAbility(_world,ownerEntity,activeAbilityEntity);
+                _abilityTools.ActivateAbility(ownerEntity,activeAbilityEntity);
             }
         }
     }

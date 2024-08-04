@@ -16,7 +16,6 @@
 	{
 		public int AbilityId;
 		public int AbilitySlot;
-		public bool IsUserInput;
 		public bool IsDefault;
 		public ProtoPackedEntity Owner;
 	}
@@ -31,7 +30,6 @@
 	public struct EquipAbilityReferenceSelfRequest
 	{
 		public int AbilitySlot;
-		public bool IsUserInput;
 		public bool IsDefault;
 		public AbilityConfiguration Reference;
 		public ProtoPackedEntity Owner;

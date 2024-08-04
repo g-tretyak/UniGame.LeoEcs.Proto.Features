@@ -11,7 +11,6 @@
     {
         public AbilityItemAsset meta;
         public AbilityConfiguration configuration;
-        public AnimationLink animationLink;
         public TimelineAsset animation;
     }
 }

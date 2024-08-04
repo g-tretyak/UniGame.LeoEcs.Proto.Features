@@ -5,6 +5,7 @@
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Tools;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -21,32 +22,25 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class DiscardSetInHandWhileExecutingAbilitySystem : IProtoInitSystem, IProtoRunSystem
+    public class DiscardSetInHandWhileExecutingAbilitySystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
-        private EcsFilter _filter;
+        private AbilityAspect _abilityAspect;
+        
         private ProtoWorld _world;
         private AbilityOwnerAspect _abilityOwnerAspect;
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            
-            _filter = _world
-                .Filter<SetInHandAbilitySelfRequest>()
-                .Inc<AbilityMapComponent>()
-                .Inc<AbilityInHandLinkComponent>()
-                .End();
-        }
+        private ProtoIt _filter = It
+            .Chain<SetInHandAbilitySelfRequest>()
+            .Inc<AbilityMapComponent>()
+            .Inc<AbilityInHandLinkComponent>()
+            .End();
         
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                var executingAbility = _abilityTools.GetNonDefaultAbilityInUse(entity);
-                if(executingAbility < 0) continue;
-                
+                var executingAbility = _abilityAspect.GetNonDefaultAbilityInUse(entity);
+                if(!executingAbility.Unpack(_world,out var ability)) continue;
                 _abilityOwnerAspect.SetInHandAbility.Del(entity);
             }
         }

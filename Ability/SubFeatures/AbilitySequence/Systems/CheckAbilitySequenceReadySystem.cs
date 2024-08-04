@@ -1,11 +1,13 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySequence.Systems
 {
     using System;
+    using Ability.Aspects;
     using Ability.Tools;
     using Aspects;
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 
@@ -21,24 +23,16 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class CheckAbilitySequenceReadySystem : IProtoInitSystem, IProtoRunSystem
+    public class CheckAbilitySequenceReadySystem : IProtoRunSystem
     {
-        private AbilityTools _tools;
-        private ProtoWorld _world;
-        private EcsFilter _abilityFilter;
-
+        private AbilityAspect _tools;
         private AbilitySequenceAspect _sequence;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _tools = _world.GetGlobal<AbilityTools>();
-            
-            _abilityFilter = _world
-                .Filter<AbilitySequenceComponent>()
-                .Inc<AbilitySequenceAwaitComponent>()
-                .End();
-        }
+        private ProtoWorld _world;
+        
+        private ProtoIt _abilityFilter= It
+            .Chain<AbilitySequenceComponent>()
+            .Inc<AbilitySequenceAwaitComponent>()
+            .End();
 
         public void Run()
         {

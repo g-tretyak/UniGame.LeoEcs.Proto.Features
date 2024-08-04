@@ -32,13 +32,12 @@ namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
 #endif
     [Serializable]
     [ECSDI]
-    public class SelectAbilityTargetsPlannerSystem : IProtoRunSystem , IProtoInitSystem
+    public class SelectAbilityTargetsPlannerSystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
+        private AbilityAspect _abilityTools;
         private AbilityTargetTools _targetTools;
         
         private ProtoWorld _world;
-        private EcsFilter _filter;
         private AbilityAiActionAspect _targetAspect;
         private AbilityOwnerAspect _abilityOwnerAspect;
         private TargetSelectionSystem _targetSelection;
@@ -47,31 +46,23 @@ namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
         private ProtoPool<AbilityAiActionTargetComponent> _targetPool;
         private ProtoEntity[] _resultSelection = new ProtoEntity[TargetSelectionData.MaxTargets];
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _targetSelection = _world.GetGlobal<TargetSelectionSystem>();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            _targetTools = _world.GetGlobal<AbilityTargetTools>();
-            
-            _filter = _world
-                .Filter<AiAgentComponent>()
-                .Inc<AbilityByDefaultComponent>()
-                .Inc<TransformPositionComponent>()
-                .Inc<LayerIdComponent>()
-                .Inc<ActivateAbilityPlannerComponent>()
-                .Exc<AbilityAiActionTargetComponent>()
-                .Exc<DisabledComponent>()
-                .Exc<PrepareToDeathComponent>()
-                .End();
-        }
+        private ProtoItExc _filter= It
+            .Chain<AiAgentComponent>()
+            .Inc<AbilityByDefaultComponent>()
+            .Inc<TransformPositionComponent>()
+            .Inc<LayerIdComponent>()
+            .Inc<ActivateAbilityPlannerComponent>()
+            .Exc<AbilityAiActionTargetComponent>()
+            .Exc<DisabledComponent>()
+            .Exc<PrepareToDeathComponent>()
+            .End();
 
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                if(_abilityTools.GetNonDefaultAbilityInUse(entity) >= 0) continue;
+                var abilityInUse = _abilityTools.GetNonDefaultAbilityInUse(entity);
+                if(abilityInUse.Unpack(_world,out var abilityInUseEntity)) continue;
                 
                 ref var defaultAbilityComponent = ref _targetAspect.DefaultAbility.Get(entity);
                 var abilityFilters = defaultAbilityComponent.FilterData;

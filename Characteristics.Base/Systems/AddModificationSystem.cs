@@ -47,12 +47,12 @@
                     continue;
 
                 if (!requestComponent.Source.Unpack(_world, out var targetSourceEntity))
-                    targetSourceEntity = ProtoEntity.FromIdx(-1);
+                    targetSourceEntity = (ProtoEntity)(-1);
 
                 //check is target is characteristic entity
                 if(!_characteristicsAspect.Value.Has(targetCharacteristicEntity)) continue;
                 
-                var foundedCharacteristicEntity = ProtoEntity.FromIdx(-1);
+                var foundedCharacteristicEntity = (ProtoEntity)(-1);
 
                 foreach (var modificationEntity in _modificationsFilter)
                 {

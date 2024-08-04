@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySwitcher.Systems
 {
 	using System;
+	using Ability.Aspects;
 	using Aspects;
 	using Components;
 	using Leopotam.EcsLite;
@@ -22,25 +23,15 @@
 #endif
 	[Serializable]
 	[ECSDI]
-	public class AbilitySwitcherSystem : IProtoInitSystem, IProtoRunSystem
+	public class AbilitySwitcherSystem : IProtoRunSystem
 	{
 		private ProtoWorld _world;
 		private AbilitySwitcherAspect _aspect;
-		private EcsFilter _filter;
-		private AbilityTools _abilityTools;
+		private AbilityAspect _abilityTools;
 		
-		public AbilitySwitcherSystem(AbilityTools abilityTools)
-		{
-			_abilityTools = abilityTools;
-		}
-
-		public void Init(IProtoSystems systems)
-		{
-			_world = systems.GetWorld();
-			_filter = _world
-				.Filter<AbilitySwitcherRequest>()
-				.End();
-		}
+		private ProtoIt _filter= It
+			.Chain<AbilitySwitcherRequest>()
+			.End();
 
 		public void Run()
 		{
@@ -59,7 +50,7 @@
 				ref var completeRequest = ref _aspect.CompleteAbilitySelfRequest.GetOrAddComponent(oldAbilityEntity);
 				ref var restartAbilityCooldown = ref _aspect.RestartAbilityCooldownSelfRequest.GetOrAddComponent(oldAbilityEntity);
 				
-				_abilityTools.ActivateAbility(_world,ownerEntity, newAbilityEntity);
+				_abilityTools.ActivateAbility(ownerEntity, newAbilityEntity);
 			}
 		}
 	}

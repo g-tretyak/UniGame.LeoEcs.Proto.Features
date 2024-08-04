@@ -1,10 +1,9 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.Common.Components
 {
     using System;
-    using System.Collections.Generic;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using Sirenix.OdinInspector;
+    using Unity.Collections;
 
     /// <summary>
     /// Компонент со ссылками на доступные умения у сущности.
@@ -12,14 +11,15 @@
     [Serializable]
     public struct AbilityMapComponent : IProtoAutoReset<AbilityMapComponent>
     {
-        [InlineProperty]
-        [ListDrawerSettings]
-        public List<ProtoPackedEntity> Abilities;
+        public NativeHashMap<int,ProtoPackedEntity> AbilitySlots;
+        public NativeHashSet<ProtoPackedEntity> Abilities;
 
         public void AutoReset(ref AbilityMapComponent c)
         {
-            c.Abilities ??= new List<ProtoPackedEntity>();
-            c.Abilities.Clear();
+            if (AbilitySlots.IsCreated)
+                AbilitySlots.Dispose();
+            if (Abilities.IsCreated)
+                Abilities.Dispose();
         }
     }
 }

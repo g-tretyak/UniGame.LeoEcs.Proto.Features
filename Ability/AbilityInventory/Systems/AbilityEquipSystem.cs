@@ -24,29 +24,20 @@
 #endif
 	[Serializable]
 	[ECSDI]
-	public class AbilityEquipSystem : IProtoInitSystem, IProtoRunSystem
+	public class AbilityEquipSystem : IProtoRunSystem
 	{
-		private AbilityTools _abilityTools;
 		private AbilityInventoryAspect _inventoryAspect;
 		private AbilityAspect _abilityAspect;
 		private AbilityOwnerAspect _abilityOwnerAspect;
 		
 		private ProtoWorld _world;
-		private EcsFilter _filter;
-		
 		private List<ProtoEntity> _removedEntities = new List<ProtoEntity>();
 
-		public void Init(IProtoSystems systems)
-		{
-			_world = systems.GetWorld();
-			_abilityTools = _world.GetGlobal<AbilityTools>();
-			
-			_filter = _world
-				.Filter<AbilityInventoryCompleteComponent>()
-				.Inc<EquipAbilitySelfRequest>()
-				.Inc<AbilityBuildingComponent>()
-				.End();
-		}
+		private ProtoIt _filter= It
+			.Chain<AbilityInventoryCompleteComponent>()
+			.Inc<EquipAbilitySelfRequest>()
+			.Inc<AbilityBuildingComponent>()
+			.End();
 
 		public void Run()
 		{
@@ -58,7 +49,7 @@
 				ref var ownerComponent = ref _inventoryAspect.Owner.Get(abilityEntity);
 
 				var isUserInput  = requestComponent.IsUserInput;
-				ref var slotType = ref requestComponent.AbilitySlot;
+				ref var slotId = ref requestComponent.AbilitySlot;
 				ref var isDefault = ref requestComponent.IsDefault;
 				ref var abilityId = ref requestComponent.AbilityId;
 				var packedAbility =  _world.PackEntity(abilityEntity);
@@ -67,30 +58,30 @@
 					continue;
 				
 				ref var abilityMapComponent = ref _abilityOwnerAspect.AbilityMap.Get(ownerAbilityEntity);
-
-				if (slotType >= 0)
+				ref var slots = ref abilityMapComponent.AbilitySlots;
+				if (slotId >= 0)
 				{
-					var abilitySlotEntity = abilityMapComponent.Abilities[slotType];
+					slots.TryGetValue(slotId,out var abilitySlotEntity);
 					if (abilitySlotEntity.Unpack(_world, out var oldAbilityEntity))
 						_removedEntities.Add(oldAbilityEntity);
-					abilityMapComponent.Abilities[slotType] = packedAbility;
+					slots[slotId] = packedAbility;
+					abilityMapComponent.Abilities.Remove(abilitySlotEntity);
 				}
 
+				abilityMapComponent.Abilities.Add(packedAbility);
+				
 				_abilityAspect.Active.Add(abilityEntity);
 
 				if (isDefault)
 				{
 					_abilityAspect.Default.GetOrAddComponent(abilityEntity);
-					_abilityTools.ChangeInHandAbility(_world,ownerAbilityEntity,abilityEntity);
+					_abilityAspect.ChangeInHandAbility(ownerAbilityEntity,abilityEntity);
 				}
-				
-				if (isUserInput)
-					_abilityAspect.Input.GetOrAddComponent(abilityEntity);
 
 				var eventEntity = _world.NewEntity();
 				ref var abilityEquipChangedEvent = ref _inventoryAspect.EquipChanged.Add(eventEntity);
 				abilityEquipChangedEvent.AbilityId = abilityId;
-				abilityEquipChangedEvent.AbilitySlot = slotType;
+				abilityEquipChangedEvent.AbilitySlot = slotId;
 				abilityEquipChangedEvent.Owner = ownerComponent.Value;
 				abilityEquipChangedEvent.AbilityEntity = packedAbility;
 				

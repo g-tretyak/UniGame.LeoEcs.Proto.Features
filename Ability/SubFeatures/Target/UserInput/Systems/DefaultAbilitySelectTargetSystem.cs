@@ -25,9 +25,8 @@
 #endif
     [Serializable]
     [ECSDI]
-    public sealed class DefaultAbilitySelectTargetSystem : IProtoRunSystem,IProtoInitSystem
+    public sealed class DefaultAbilitySelectTargetSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
 
         private TargetAbilityAspect _targetAspect;
@@ -38,20 +37,14 @@
         private EntityFloatComparer _comparer = new();
         private SortedDictionary<float,int> _sortedDistances = new();
         
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<UserInputAbilityComponent>()
-                .Inc<TargetableAbilityComponent>()
-                .Inc<AbilityInHandComponent>()
-                .Inc<DefaultAbilityComponent>()
-                .Inc<OwnerComponent>()
-                .Inc<SelectedTargetsComponent>()
-                .Exc<PrepareToDeathComponent>()
-                .End();
-        }
+        private ProtoItExc _filter= It
+            .Chain<TargetableAbilityComponent>()
+            .Inc<AbilityInHandComponent>()
+            .Inc<DefaultAbilityComponent>()
+            .Inc<OwnerComponent>()
+            .Inc<SelectedTargetsComponent>()
+            .Exc<PrepareToDeathComponent>()
+            .End();
 
         public void Run()
         {

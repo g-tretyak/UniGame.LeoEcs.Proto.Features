@@ -2,27 +2,25 @@
 {
     using Common.Components;
     using Components;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Target.Components;
     using UniGame.LeoEcs.Shared.Extensions;
 
-    public sealed class ComeToTargetByUserInputSystem : IProtoRunSystem,IProtoInitSystem
+    [ECSDI]
+    public sealed class ComeToTargetByUserInputSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _filter = _world.Filter<AbilityTargetsOutsideEvent>()
-                .Inc<CanComeToTargetComponent>()
-                .Inc<UserInputAbilityComponent>()
-                .Inc<AbilityInHandComponent>()
-                .Inc<AbilityTargetsComponent>()
-                .End();
-        }
-        
+        private ProtoIt _filter= It
+            .Chain<AbilityTargetsOutsideEvent>()
+            .Inc<CanComeToTargetComponent>()
+            .Inc<AbilityInHandComponent>()
+            .Inc<AbilityTargetsComponent>()
+            .End();
+
         public void Run()
         {
             var updatePool = _world.GetPool<UpdateComePointComponent>();

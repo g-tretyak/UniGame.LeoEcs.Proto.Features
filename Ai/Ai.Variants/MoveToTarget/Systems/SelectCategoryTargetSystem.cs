@@ -1,6 +1,7 @@
 namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Systems
 {
     using System;
+    using Ability.Aspects;
     using Ability.Tools;
     using Characteristics.Radius.Component;
     using Components;
@@ -9,6 +10,7 @@ namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Systems
     using Game.Ecs.Core.Death.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Selection;
     using TargetSelection;
     using UniGame.Ecs.Proto.GameLayers.Layer.Components;
@@ -26,10 +28,9 @@ namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Systems
 #endif
     [Serializable]
     [ECSDI]
-    public class SelectCategoryTargetSystem : IProtoRunSystem,IProtoInitSystem
+    public class SelectCategoryTargetSystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
-        private EcsFilter _filter;
+        private AbilityAspect _abilityTools;
         private ProtoWorld _world;
         private TargetSelectionSystem _targetSelection;
         
@@ -39,31 +40,24 @@ namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Systems
         private ProtoPool<TransformPositionComponent> _positionPool;
         private ProtoPool<LayerIdComponent> _layerPool;
 
+        private ProtoItExc _filter= It
+            .Chain<MoveByCategoryComponent>()
+            .Inc<MoveToTargetPlannerComponent>()
+            .Inc<MoveToGoalComponent>()
+            .Inc<TransformPositionComponent>()
+            .Inc<LayerIdComponent>()
+            .Exc<DisabledComponent>()
+            .End();
+        
         private ProtoEntity[] _selection = new ProtoEntity[TargetSelectionData.MaxTargets];
-        
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            _targetSelection = _world.GetGlobal<TargetSelectionSystem>();
-            
-            _filter = _world
-                .Filter<MoveByCategoryComponent>()
-                .Inc<MoveToTargetPlannerComponent>()
-                .Inc<MoveToGoalComponent>()
-                .Inc<TransformPositionComponent>()
-                .Inc<LayerIdComponent>()
-                .Exc<DisabledComponent>()
-                .End();
-        }
-        
+
         public void Run()
         {
             foreach (var entity in _filter)
             {
                 ref var plannerComponent = ref _moveToTargetPlannerPool.Get(entity);
 
-                if (!_abilityTools.TryGetInHandAbility(_world,entity, out var ability))
+                if (!_abilityTools.TryGetInHandAbility(entity, out var ability))
                     continue;
 
                 ref var transformComponent = ref _positionPool.Get(entity);

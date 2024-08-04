@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.UserInput.Systems
 {
     using System;
+    using Aspects;
     using Common.Components;
     using Game.Ecs.Input.Components.Requests;
     using Leopotam.EcsLite;
@@ -19,28 +20,20 @@
 #endif
     [Serializable]
     [ECSDI]
-    public sealed class RestoreDefaultInHandAbilitySystem : IProtoRunSystem, IProtoInitSystem
+    public sealed class RestoreDefaultInHandAbilitySystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
-        
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private AbilityAspect _abilityTools;
         
         private ProtoPool<AbilityMapComponent> _abilityMapPool;
         private ProtoPool<AbilityInHandLinkComponent> _abilityInHandLinkPool;
         private ProtoPool<DefaultAbilityComponent> _defaultAbilityPool;
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            
-            _filter = _world
-                .Filter<AbilityMapComponent>()
-                .Inc<AbilityInHandLinkComponent>()
-                .Exc<AbilityUpInputRequest>()
-                .End();
-        }
+        private ProtoItExc _filter = It
+            .Chain<AbilityMapComponent>()
+            .Inc<AbilityInHandLinkComponent>()
+            .Exc<AbilityUpInputRequest>()
+            .End();
 
         public void Run()
         {
@@ -63,7 +56,7 @@
                         continue;
                     if (!_defaultAbilityPool.Has(abilityEntity)) continue;
                     
-                    _abilityTools.ChangeInHandAbility(_world, entity,abilityEntity);
+                    _abilityTools.ChangeInHandAbility(entity,abilityEntity);
                     
                     break;
                 }

@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.Common.Systems
 {
     using System;
+    using Aspects;
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
@@ -23,7 +24,8 @@
             .Chain<ApplyAbilityBySlotSelfRequest>()
             .Inc<AbilityMapComponent>()
             .End();
-        
+
+        private AbilityAspect _abilityAspect;
         private ProtoWorld _world;
         
         private ProtoPool<ApplyAbilityBySlotSelfRequest> _requestPool;
@@ -34,15 +36,14 @@
         {
             foreach (var entity in _filter)
             {
-                ref var abilityMap = ref _abilityMapPool.Get(entity);
                 ref var request = ref _requestPool.Get(entity);
-
                 var slotId = request.AbilitySlot;
-                if(slotId < 0 || slotId >= abilityMap.Abilities.Count)
-                    continue;
                 
+                var packedAbility = _abilityAspect.GetAbilityBySlot(entity, slotId);
+                if(!packedAbility.Unpack(_world, out var abilityEntity))
+                    continue;
                 ref var requestEntity = ref _applyAbilitySelfRequestPool.GetOrAddComponent(entity);
-                requestEntity.Value = abilityMap.Abilities[slotId];
+                requestEntity.Value = packedAbility;
             }
         }
     }
