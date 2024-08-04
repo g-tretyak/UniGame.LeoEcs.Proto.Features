@@ -20,35 +20,23 @@
 #endif
 	[Serializable]
 	[ECSDI]
-	public class AbilityInventoryUpdateSlotDataSystem : IProtoInitSystem, IProtoRunSystem
+	public class AbilityInventoryUpdateSlotDataSystem : IProtoRunSystem
 	{
-		private readonly IAbilityLoadoutService _abilityService;
+		private readonly IAbilityCatalogService _abilityService;
 		
 		private ProtoWorld _world;
-		private EcsFilter _filter;
-		private EcsFilter _eventFilter;
 		
 		private ProtoPool<AbilityIdComponent> _abilityIdPool;
 		private ProtoPool<AbilityEquipChangedEvent> _eventPool;
 
-		public AbilityInventoryUpdateSlotDataSystem(IAbilityLoadoutService abilityLoadoutService)
-		{
-			_abilityService = abilityLoadoutService;
-		}
-
-		public void Init(IProtoSystems systems)
-		{
-			_world = systems.GetWorld();
-				
-			_filter = _world
-				.Filter<AbilityInventoryComponent>()
-				.Exc<AbilityInventorySaveCompleteEvent>()
-				.End();
-
-			_eventFilter = _world
-				.Filter<AbilityEquipChangedEvent>()
-				.End();
-		}
+		private ProtoItExc _filter= It
+			.Chain<AbilityInventoryComponent>()
+			.Exc<AbilityInventorySaveCompleteEvent>()
+			.End();
+		
+		private ProtoIt _eventFilter= It
+			.Chain<AbilityEquipChangedEvent>()
+			.End();
 
 		public void Run()
 		{

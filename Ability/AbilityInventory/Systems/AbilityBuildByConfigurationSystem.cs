@@ -7,6 +7,7 @@
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 
@@ -22,36 +23,31 @@
 #endif
     [ECSDI]
     [Serializable]
-    public class AbilityBuildByConfigurationSystem : IProtoInitSystem, IProtoRunSystem
+    public class AbilityBuildByConfigurationSystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
+        private AbilityAspect _abilityTools;
         private ProtoWorld _world;
-        private EcsFilter _filter;
         
         private AbilityInventoryAspect _inventoryAspect;
         private AbilityAspect _ability;
         
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            
-            _filter = _world
-                .Filter<EquipAbilitySelfRequest>()
-                .Inc<AbilityConfigurationComponent>()
-                .Inc<AbilityEquipComponent>()
-                .Inc<AbilityBuildingComponent>()
-                .Exc<AbilityLoadingComponent>()
-                .Exc<AbilityInventoryCompleteComponent>()
-                .End();
-        }
+        private ProtoItExc _filter= It
+            .Chain<EquipAbilitySelfRequest>()
+            .Inc<AbilityConfigurationComponent>()
+            .Inc<AbilityEquipComponent>()
+            .Inc<AbilityBuildingComponent>()
+            .Exc<AbilityLoadingComponent>()
+            .Exc<AbilityInventoryCompleteComponent>()
+            .End();
 
         public void Run()
         {
             foreach (var abilityEntity in _filter)
             {
-                ref var requestComponent = ref _inventoryAspect.Equip.GetOrAddComponent(abilityEntity);
-                ref var configurationDataComponent = ref _inventoryAspect.Configuration.GetOrAddComponent(abilityEntity);
+                ref var requestComponent = ref _inventoryAspect.Equip
+                    .GetOrAddComponent(abilityEntity);
+                ref var configurationDataComponent = ref _inventoryAspect.Configuration
+                    .GetOrAddComponent(abilityEntity);
 
                 var abilityConfiguration = configurationDataComponent.Value;
 
@@ -59,9 +55,7 @@
                 {
                     AbilityId = requestComponent.AbilityId,
                     Slot = requestComponent.AbilitySlot,
-                    IsUserInput = requestComponent.IsUserInput,
                     IsDefault = requestComponent.IsDefault,
-                    IsBlocked = requestComponent.IsBlocked,
                 };
 
                 _abilityTools.BuildAbility(abilityEntity,

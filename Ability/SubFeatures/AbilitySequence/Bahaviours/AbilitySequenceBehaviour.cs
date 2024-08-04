@@ -26,7 +26,7 @@
         
         #endregion
 
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             var sequenceTools = world.GetGlobal<AbilitySequenceTools>();
             

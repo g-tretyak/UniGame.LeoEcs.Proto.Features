@@ -17,7 +17,7 @@
         [SerializeField]
         private GameObject _areaView;
         
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             var targetsPool = world.GetPool<AbilityTargetsComponent>();
             targetsPool.Add(abilityEntity);
@@ -35,10 +35,8 @@
             
             var upPool = world.GetPool<CanApplyWhenUpInputComponent>();
             
-            if(!isDefault && !upPool.Has(abilityEntity))
-            {
+            if(!upPool.Has(abilityEntity))
                 upPool.Add(abilityEntity);
-            }
         }
 
         public void DrawGizmos(GameObject target)

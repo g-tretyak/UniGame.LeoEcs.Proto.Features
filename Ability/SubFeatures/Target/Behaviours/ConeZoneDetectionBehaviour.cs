@@ -15,7 +15,7 @@
 		public float angle;
 		public float distance;
 		
-		public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+		public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
 		{
 			var zoneDetectionPool = world.GetPool<ConeZoneDetectionComponent>();
 			ref var zoneDetectionComponent = ref zoneDetectionPool.Add(abilityEntity);

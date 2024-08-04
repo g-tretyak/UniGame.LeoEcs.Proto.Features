@@ -90,6 +90,16 @@
         {
 #if UNITY_EDITOR
             var abilityDatabase = AssetEditorTools.GetAsset<AbilityDataBase>();
+            if (abilityDatabase == null)
+            {
+                yield return new ValueDropdownItem<AbilityId>()
+                {
+                    Value = AbilityId.None,
+                    Text = "None. Ability database is missing."
+                };
+                yield break;    
+            }
+            
             foreach (var abilityRecord in abilityDatabase.abilities)
             {
                 var asset = abilityRecord.ability.EditorValue;

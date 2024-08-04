@@ -1,6 +1,7 @@
 namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
 {
     using System;
+    using Ability.Aspects;
     using Ability.Common.Components;
     using Ability.SubFeatures.Target.Tools;
     using Ability.Tools;
@@ -13,6 +14,7 @@ namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
     using GameLayers.Layer.Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Selection;
     using TargetSelection;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
@@ -30,49 +32,40 @@ namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
 #endif
     [Serializable]
     [ECSDI]
-    public class SelectAbilityTargetsByRangePlannerSystem : IProtoRunSystem , IProtoInitSystem
+    public class SelectAbilityTargetsByRangePlannerSystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
+        private AbilityAspect _abilityTools;
         private AbilityTargetTools _targetTools;
         private TargetSelectionSystem _targetSelection;
         
         private AbilityAiActionAspect _targetAspect;
         
         private ProtoWorld _world;
-        private EcsFilter _filter;
-        private EcsFilter _abilityRequestFilter;
         
         private ProtoPool<AbilityAiActionTargetComponent> _targetPool;
 
         private ProtoEntity[] _selection = new ProtoEntity[TargetSelectionData.MaxTargets];
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _targetSelection = _world.GetGlobal<TargetSelectionSystem>();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            _targetTools = _world.GetGlobal<AbilityTargetTools>();
-            
-            _abilityRequestFilter = _world
-                .Filter<ApplyAbilityBySlotSelfRequest>()
-                .End();
-            
-            _filter = _world
-                .Filter<AiAgentComponent>()
-                .Inc<AbilityByRangeComponent>()
-                .Inc<TransformPositionComponent>()
-                .Inc<LayerIdComponent>()
-                .Inc<ActivateAbilityPlannerComponent>()
-                .Exc<AbilityAiActionTargetComponent>()
-                .Exc<PrepareToDeathComponent>()
-                .End();
-        }
+        private ProtoItExc _filter= It
+            .Chain<AiAgentComponent>()
+            .Inc<AbilityByRangeComponent>()
+            .Inc<TransformPositionComponent>()
+            .Inc<LayerIdComponent>()
+            .Inc<ActivateAbilityPlannerComponent>()
+            .Exc<AbilityAiActionTargetComponent>()
+            .Exc<PrepareToDeathComponent>()
+            .End();
+        
+        private ProtoIt _abilityRequestFilter= It
+            .Chain<ApplyAbilityBySlotSelfRequest>()
+            .End();
 
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                if(_abilityTools.GetNonDefaultAbilityInUse(entity) >= 0 ) continue;
+                var abilityInUse = _abilityTools.GetNonDefaultAbilityInUse(entity);
+                if(abilityInUse.Unpack(_world,out var ability)) continue;
                 
                 ref var radiusComponent = ref _targetAspect.ByRangeAbility.Get(entity);
                 ref var rangeComponent = ref _targetAspect.ByRangeAbility.Get(entity);
@@ -92,40 +85,41 @@ namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
                     {
                         if(!entity.Equals(abilityRequestEntity)) continue;
                         var requestAbility =_abilityTools.GetAbilityBySlot(entity, abilitySlot);
-                        abilityEntity = (int)requestAbility < 0 ? abilityEntity : requestAbility;
+                        if(requestAbility.Unpack(_world,out var newAbility))
+                            abilityEntity = requestAbility;
                         break;
                     }
 
-                    if((int)abilityEntity < 0) continue;
+                    if(!abilityEntity.Unpack(_world,out var targetAbility)) continue;
                     
                     var abilityTargetEntity = SelectAbilityTarget(
                         entity,
-                        ref abilityEntity,
+                        ref targetAbility,
                         ref abilityFilter,
                         sqrRadius,sqrMinDistance);
 
                     if (abilityTargetEntity.Equals(TargetSelectionData.EmptyResult))
                     {
-                        _targetTools.ClearAbilityTargets(abilityEntity);
+                        _targetTools.ClearAbilityTargets(targetAbility);
                         continue;
                     }
 
                     var packedTarget = abilityTargetEntity.PackEntity(_world);
                     
-                    _targetTools.SetAbilityTarget(abilityEntity,packedTarget,abilitySlot);
+                    _targetTools.SetAbilityTarget(targetAbility,packedTarget,abilitySlot);
                     
-                    var cooldownPassed = _abilityTools.IsAbilityCooldownPassed(abilityEntity);
+                    var cooldownPassed = _abilityTools.IsAbilityCooldownPassed(targetAbility);
                     
                     //проверяем кулдаун абилки, если он не прошел - игнорируем
                     if (targetFound || !cooldownPassed) continue;
                     
-                    ref var activeTargetComponent = ref _targetAspect.ActiveTarget.GetOrAddComponent(abilityEntity);
+                    ref var activeTargetComponent = ref _targetAspect.ActiveTarget.GetOrAddComponent(targetAbility);
                     activeTargetComponent.Value = packedTarget;
                     
                     targetFound = true;
                     ref var targetComponent = ref _targetPool.Add(entity);
                         
-                    targetComponent.Ability = abilityEntity.PackEntity(_world);
+                    targetComponent.Ability = targetAbility.PackEntity(_world);
                     targetComponent.AbilityCellId = abilitySlot;
                     targetComponent.AbilityTarget = packedTarget;
                 }

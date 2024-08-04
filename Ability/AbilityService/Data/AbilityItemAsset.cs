@@ -9,7 +9,7 @@
 	using UniModules.Editor;
 #endif
 	
-	[CreateAssetMenu(menuName = "Game/Configurations/Ability Item",fileName = nameof(AbilityItemAsset))]
+	[CreateAssetMenu(menuName = "Game/Ability/Ability Item",fileName = nameof(AbilityItemAsset))]
 	public class AbilityItemAsset : ScriptableObject, IUnique
 	{
 		public const string AbilityItemGroupName = "Ability Info";

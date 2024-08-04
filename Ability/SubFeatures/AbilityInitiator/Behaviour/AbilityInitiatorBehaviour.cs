@@ -21,7 +21,7 @@ namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilityInitiator.Behaviour
         public AbilityCell targetAbility;
         public EcsEntityConverter entityConfiguration;
 
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             //get entity of unit with ability
             var ownerUnitComponent = world.GetComponent<OwnerComponent>(abilityEntity);

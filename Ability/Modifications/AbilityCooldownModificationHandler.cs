@@ -35,10 +35,10 @@
                 return;
 
             ref var abilityMap = ref abilityMapPool.Get(destinationEntity);
-            if(abilityId < 0 || abilityId >= abilityMap.AbilityEntities.Count)
+            if(abilityId < 0 || abilityId >= abilityMap.Abilities.Count)
                 return;
-            
-            var ability = abilityMap.AbilityEntities[abilityId];
+
+            abilityMap.AbilitySlots.TryGetValue(abilityId, out var ability);
             if(!ability.Unpack(world, out var abilityEntity))
                 return;
             
@@ -59,10 +59,10 @@
                 return;
 
             ref var abilityMap = ref abilityMapPool.Get(destinationEntity);
-            if(abilityId < 0 || abilityId >= abilityMap.AbilityEntities.Count)
+            if(abilityId < 0 || abilityId >= abilityMap.Abilities.Count)
                 return;
             
-            var ability = abilityMap.AbilityEntities[abilityId];
+            abilityMap.AbilitySlots.TryGetValue(abilityId, out var ability);
             if(!ability.Unpack(world, out var abilityEntity))
                 return;
             

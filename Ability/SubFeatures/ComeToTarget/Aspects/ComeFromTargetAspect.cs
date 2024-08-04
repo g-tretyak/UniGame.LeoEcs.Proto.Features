@@ -25,5 +25,6 @@
         public ProtoPool<ComePointComponent> Point;
         public ProtoPool<RevokeComeToEndOfRequest> Revoke;
         public ProtoPool<DestroyComponent> Dead;
+        public ProtoPool<CanComeToTargetComponent> CanComeToTarget;
     }
 }

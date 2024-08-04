@@ -5,6 +5,7 @@
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 
@@ -20,22 +21,16 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class EquipAbilityReferenceSystem : IProtoInitSystem, IProtoRunSystem
+    public class EquipAbilityReferenceSystem : IProtoRunSystem
     {
 	    private AbilityInventoryAspect _inventoryAspect;
 	    private int _generatedAbilityId = int.MaxValue;
 	    
 	    private ProtoWorld _world;
-	    private EcsFilter _filterRequest;
-
-	    public void Init(IProtoSystems systems)
-	    {
-		    _world = systems.GetWorld();
-
-		    _filterRequest = _world
-			    .Filter<EquipAbilityReferenceSelfRequest>()
-			    .End();
-	    }
+	    
+	    private ProtoIt _filterRequest= It
+		    .Chain<EquipAbilityReferenceSelfRequest>()
+		    .End();
 
 	    public void Run()
 	    {
@@ -46,7 +41,6 @@
 			    ref var configurationComponent = ref _inventoryAspect.Configuration.GetOrAddComponent(request);
 
 			    abilityEquipRequest.AbilityId = _generatedAbilityId;
-			    abilityEquipRequest.IsUserInput = requestComponent.IsUserInput;
 			    abilityEquipRequest.AbilitySlot = requestComponent.AbilitySlot;
 			    abilityEquipRequest.Target = requestComponent.Owner;
 			    abilityEquipRequest.IsDefault = requestComponent.IsDefault;

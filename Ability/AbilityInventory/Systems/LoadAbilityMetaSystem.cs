@@ -26,8 +26,7 @@
     [ECSDI]
     public class LoadAbilityMetaSystem : IProtoRunSystem,IProtoInitSystem
     {
-        private IAbilityLoadoutService _abilityLoadoutService;
-        private AbilityInventoryTool _converter;
+        private IAbilityCatalogService _abilityLoadoutService;
         private AbilityMetaAspect _metaAspect;
         private AbilityInventoryAspect _inventoryAspect;
         
@@ -43,8 +42,7 @@
         {
             _world = systems.GetWorld();
             _lifeTime = _world.GetWorldLifeTime();
-            _abilityLoadoutService = _world.GetGlobal<IAbilityLoadoutService>();
-            _converter = _world.GetGlobal<AbilityInventoryTool>();
+            _abilityLoadoutService = _world.GetGlobal<IAbilityCatalogService>();
             
             _loadingAbilities = new NativeHashSet<int>(
                     _abilityLoadoutService.AllAbilities.Length, 
@@ -66,7 +64,7 @@
             foreach (var itemData in _abilityItems)
             {
                 var entity = _world.NewEntity();
-                _converter.Convert(itemData, (int)entity);
+                _inventoryAspect.Convert(itemData, (int)entity);
             }
             
             _abilityItems.Clear();

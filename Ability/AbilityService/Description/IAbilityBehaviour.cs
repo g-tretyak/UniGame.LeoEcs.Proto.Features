@@ -5,6 +5,6 @@
 
     public interface IAbilityBehaviour
     {
-        void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault);
+        void Compose(ProtoWorld world, ProtoEntity abilityEntity);
     }
 }

@@ -11,7 +11,7 @@
     [Serializable]
     public sealed class ToTargetBehaviour : IAbilityBehaviour
     {
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             var selectablePool = world.GetPool<SelectableAbilityComponent>();
             selectablePool.Add(abilityEntity);
@@ -30,7 +30,7 @@
             
             var upPool = world.GetPool<CanApplyWhenUpInputComponent>();
             
-            if(!isDefault && !upPool.Has(abilityEntity))
+            if(!upPool.Has(abilityEntity))
             {
                 upPool.Add(abilityEntity);
             }

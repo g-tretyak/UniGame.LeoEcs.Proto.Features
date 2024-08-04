@@ -18,6 +18,7 @@
 	public class TargetAbilityAspect : EcsAspect
 	{
 		public ProtoPool<SoloTargetComponent> SoloTarget;
+		public ProtoPool<CanInstantlyApplyEffects> CanInstantlyApplyEffects;
 		public ProtoPool<MultipleTargetsComponent> MultipleTargets;
 		public ProtoPool<AbilityTargetsComponent> AbilityTargets;
 		public ProtoPool<SplashEffectSourceComponent> SplashApplyEffects;
@@ -26,6 +27,7 @@
 		public ProtoPool<PrepareToDeathComponent> PrepareToDeath;
 		public ProtoPool<DisabledComponent> Disabled;
 		public ProtoPool<SelectedTargetsComponent> SelectedTargets;
+		public ProtoPool<TargetableAbilityComponent> TargetableAbility;
 		
 		public ProtoPool<TransformComponent> Transform;
 		public ProtoPool<TransformPositionComponent> Position;
@@ -37,5 +39,8 @@
 		
 		//requests
 		public ProtoPool<RotateToPointSelfRequest> RotateTo;
+		
+		//events
+		public ProtoPool<AbilityTargetsOutsideEvent> AbilityTargetsOutsideEvent;
 	}
 }

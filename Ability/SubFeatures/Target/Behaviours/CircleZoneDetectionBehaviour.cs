@@ -15,7 +15,7 @@
 		public Vector2 offset;
 		public float radius;
 		
-		public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+		public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
 		{
 			var zoneDetectionPool = world.GetPool<CircleZoneDetectionComponent>();
             ref var zoneDetectionComponent = ref zoneDetectionPool.Add(abilityEntity);

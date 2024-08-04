@@ -31,42 +31,37 @@
     [ECSDI]
     public class SelectAbilityTargetsDataPlannerSystem : IProtoRunSystem , IProtoInitSystem
     {
-        private AbilityTools _abilityTools;
+        private AbilityAspect _abilityTools;
         private TargetSelectionSystem _targetSelection;
         private AbilityAiActionAspect _aiActionAspect;
         private AbilityOwnerAspect _abilityOwnerAspect;
         private NativeHashSet<int> _entitySet;
 
         private ProtoWorld _world;
-        private EcsFilter _filter;
         private ILifeTime _lifeTime;
 
         private ProtoPackedEntity[] _selection = new ProtoPackedEntity[TargetSelectionData.MaxTargets];
 
+        private ProtoItExc _filter= It
+            .Chain<AiAgentComponent>()
+            .Inc<AbilityByRangeComponent>()
+            .Inc<ActivateAbilityPlannerComponent>()
+            .Exc<AbilityAiActionTargetComponent>()
+            .Exc<PrepareToDeathComponent>()
+            .End();
+        
         public void Init(IProtoSystems systems)
         {
-            _world = systems.GetWorld();
-            _lifeTime = _world.GetWorldLifeTime();
             _entitySet = new NativeHashSet<int>(10, Allocator.Persistent)
                 .AddTo(_lifeTime);
-            
-            _targetSelection = _world.GetGlobal<TargetSelectionSystem>();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-
-            _filter = _world
-                .Filter<AiAgentComponent>()
-                .Inc<AbilityByRangeComponent>()
-                .Inc<ActivateAbilityPlannerComponent>()
-                .Exc<AbilityAiActionTargetComponent>()
-                .Exc<PrepareToDeathComponent>()
-                .End();
         }
 
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                if(_abilityTools.GetNonDefaultAbilityInUse(entity) >= 0 ) continue;
+                var abilityInUse = _abilityTools.GetNonDefaultAbilityInUse(entity);
+                if(abilityInUse.Unpack(_world,out var ability)) continue;
                 
                 _entitySet.Clear();
                 
@@ -85,14 +80,14 @@
                     _entitySet.Add(abilitySlot);
                     
                     var abilityEntity = _abilityTools.GetAbilityBySlot(entity, abilitySlot);
-                    if((int)abilityEntity <= 0) continue;
+                    if(!abilityEntity.Unpack(_world,out var targetAbility)) continue;
                     
                     ref var dataComponent = ref _aiActionAspect
                         .AbilityRangeData
-                        .GetOrAddComponent(abilityEntity);
+                        .GetOrAddComponent(targetAbility);
 
-                    ref var filterComponent = ref _aiActionAspect.Relationship.Get(abilityEntity);
-                    ref var categoryIdComponent = ref _aiActionAspect.Category.Get(abilityEntity);
+                    ref var filterComponent = ref _aiActionAspect.Relationship.Get(targetAbility);
+                    ref var categoryIdComponent = ref _aiActionAspect.Category.Get(targetAbility);
 
                     var entityPosition = (float3)entityTransformComponent.Value.position;
 

@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.AbilityInventory
 {
 	using System;
+	using Ability.SubFeatures;
 	using Components;
 	using Converters;
 	using Cysharp.Threading.Tasks;
@@ -12,20 +13,17 @@
 	using Systems;
 	using UniGame.Context.Runtime.Extension;
 	using UniGame.Core.Runtime;
-	using UniGame.LeoEcs.Bootstrap.Runtime;
 	using UniGame.LeoEcs.Shared.Extensions;
 
 	[Serializable]
-	public class AbilityInventoryFeature : EcsFeature
+	public class AbilityInventoryFeature : AbilityPluginFeature
 	{
-		public AbilityCatalog abilityCatalog;
-		
 		protected override async UniTask OnInitializeAsync(IProtoSystems ecsSystems)
 		{
 			var context = ecsSystems.GetShared<IContext>();
 			var world = ecsSystems.GetWorld();
 			
-			var abilityLoadoutService = await context.ReceiveFirstAsync<IAbilityLoadoutService>();
+			var abilityLoadoutService = await context.ReceiveFirstAsync<IAbilityCatalogService>();
 			var inventoryTool = new AbilityInventoryTool();
 
 			world.SetGlobal(inventoryTool);
@@ -39,8 +37,8 @@
 
 			ecsSystems.DelHere<AbilityInventorySaveCompleteEvent>();
 			
-			ecsSystems.Add(new AbilityInventoryUpdateSlotDataSystem(abilityLoadoutService));
-			ecsSystems.Add(new AbilityInventorySpawnSystem(abilityLoadoutService));
+			ecsSystems.Add(new AbilityInventoryUpdateSlotDataSystem());
+			ecsSystems.Add(new AbilityInventorySpawnSystem());
 			
 			ecsSystems.Add(new EquipAbilityByIdToChampionSystem());
 			//try find ability by name and equip it

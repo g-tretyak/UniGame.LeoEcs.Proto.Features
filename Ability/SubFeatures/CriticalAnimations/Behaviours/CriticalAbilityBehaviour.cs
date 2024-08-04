@@ -18,23 +18,23 @@
     {
         public AbilityId criticalAbilityId;
 
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
-            var tools = world.GetGlobal<AbilityTools>();
-            ref var targetComponent = ref world.GetOrAddComponent<CriticalAbilityTargetComponent>(abilityEntity);
-            targetComponent.Value = criticalAbilityId;
-            
-            ref var ownerComponent = ref world.GetComponent<OwnerComponent>(abilityEntity);
-            if (!ownerComponent.Value.Unpack(world, out var ownerEntity))
-            {
-#if UNITY_EDITOR
-                Debug.LogError($"CriticalAbilityBehaviour for {abilityEntity} owner entity {ownerEntity} not exists");
-#endif
-                return;
-            }
-
-            world.GetOrAddComponent<CriticalAbilityOwnerComponent>(ownerEntity);
-            tools.EquipAbilityById(ref ownerComponent.Value, ref criticalAbilityId);
+            Debug.LogError("TODO CriticalAbilityBehaviour should be fixed");
+//             ref var targetComponent = ref world.GetOrAddComponent<CriticalAbilityTargetComponent>(abilityEntity);
+//             targetComponent.Value = criticalAbilityId;
+//             
+//             ref var ownerComponent = ref world.GetComponent<OwnerComponent>(abilityEntity);
+//             if (!ownerComponent.Value.Unpack(world, out var ownerEntity))
+//             {
+// #if UNITY_EDITOR
+//                 Debug.LogError($"CriticalAbilityBehaviour for {abilityEntity} owner entity {ownerEntity} not exists");
+// #endif
+//                 return;
+//             }
+//
+//             world.GetOrAddComponent<CriticalAbilityOwnerComponent>(ownerEntity);
+//             tools.EquipAbilityById(ref ownerComponent.Value, ref criticalAbilityId);
         }
     }
 }

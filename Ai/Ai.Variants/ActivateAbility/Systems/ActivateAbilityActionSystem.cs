@@ -5,6 +5,7 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
+    using UniGame.Ecs.Proto.Ability.Aspects;
     using UniGame.Ecs.Proto.Ability.SubFeatures.Target.Tools;
     using UniGame.Ecs.Proto.Ability.Tools;
     using UniGame.Ecs.Proto.AI.Abstract;
@@ -24,27 +25,19 @@
 #endif
     [ECSDI]
     [Serializable]
-    public sealed class ActivateAbilityActionSystem : IAiActionSystem,IProtoInitSystem
+    public sealed class ActivateAbilityActionSystem : IAiActionSystem
     {
-        private AbilityTools _abilityTools;
+        private AbilityAspect _abilityTools;
         private AbilityTargetTools _targetTools;
-        private EcsFilter _filter;
         private ProtoWorld _world;
         
         private ProtoPool<ActivateAbilityActionComponent> _activateAbilityPool;
         private ProtoPool<OwnerComponent> _ownerPool;
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            _targetTools = _world.GetGlobal<AbilityTargetTools>();
-            
-            _filter = _world
-                .Filter<AiAgentComponent>()
-                .Inc<ActivateAbilityActionComponent>()
-                .End();
-        }
+        private ProtoIt _filter= It
+            .Chain<AiAgentComponent>()
+            .Inc<ActivateAbilityActionComponent>()
+            .End();
         
         public void Run()
         {

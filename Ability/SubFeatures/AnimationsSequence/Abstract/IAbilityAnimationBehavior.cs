@@ -5,6 +5,6 @@
 
     public interface IAbilityAnimationBehavior
     {
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault);
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity);
     }
 }

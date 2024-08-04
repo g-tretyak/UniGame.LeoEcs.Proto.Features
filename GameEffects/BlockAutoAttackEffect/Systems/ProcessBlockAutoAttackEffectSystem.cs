@@ -22,29 +22,20 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
 	[ECSDI]
-	public class ProcessBlockAutoAttackEffectSystem : IProtoInitSystem, IProtoRunSystem
+	public class ProcessBlockAutoAttackEffectSystem : IProtoRunSystem
 	{
 		private ProtoWorld _world;
-		private EcsFilter _filter;
 		private AbilityAspect _abilityAspect;
 		private AbilityOwnerAspect _abilityOwnerAspect;
 		private EffectAspect _effectAspect;
 		
 		private ProtoPool<BlockAutoAttackEffectReadyComponent> _blockAttackEffectReadyPool;
 		private ProtoPool<BlockAutoAttackEffectComponent> _blockAttackEffectPool;
-		private AbilityTools _abilityTools;
 
-		public void Init(IProtoSystems systems)
-		{
-			_world = systems.GetWorld();
-			_abilityTools = _world.GetGlobal<AbilityTools>();
-			
-			_filter = _world
-				.Filter<BlockAutoAttackEffectComponent>()
-				.Exc<BlockAutoAttackEffectReadyComponent>()
-				.End();
-			
-		}
+		private ProtoItExc _filter= It
+			.Chain<BlockAutoAttackEffectComponent>()
+			.Exc<BlockAutoAttackEffectReadyComponent>()
+			.End();
 
 		public void Run()
 		{
@@ -54,7 +45,7 @@
 				if (!effectComponent.Destination.Unpack(_world, out var target))
 					continue;
 
-				var abilityEntity = _abilityTools.TryGetAbility(target, 0);
+				var abilityEntity = _abilityAspect.TryGetAbility(target, 0);
 				if ((int)abilityEntity < 0) continue;
 				
 				_blockAttackEffectReadyPool.Add(entity);

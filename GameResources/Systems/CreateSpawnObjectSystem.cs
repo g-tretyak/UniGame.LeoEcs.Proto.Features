@@ -64,7 +64,7 @@
                     ? component.gameObject
                     : instance as GameObject;
 
-                var pawnEntity = ProtoEntity.FromIdx(-1);
+                var pawnEntity = (ProtoEntity)(-1);
                 if (targetComponent.Value.Unpack(_world, out var target))
                     pawnEntity = target;
 

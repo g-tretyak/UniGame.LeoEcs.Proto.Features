@@ -18,9 +18,8 @@
 	[Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 	[Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
-    public sealed class ProcessAbilityUpInputSystem : IProtoRunSystem,IProtoInitSystem
+    public sealed class ProcessAbilityUpInputSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
         private ProtoPool<SetInHandAbilityBySlotSelfRequest> _inHandRequestPool;
         private ProtoPool<AbilityUpInputRequest> _upPool;
@@ -29,23 +28,12 @@
         private ProtoPool<ApplyAbilityBySlotSelfRequest> _applyRequestPool;
         private ProtoPool<AbilityActiveTimeComponent> _activateTimePool;
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _filter = _world
-                .Filter<AbilityUpInputRequest>()
-                .Inc<UserInputTargetComponent>()
-                .Inc<AbilityMapComponent>()
-                .Exc<DisabledComponent>()
-                .End();
-            
-            _inHandRequestPool = _world.GetPool<SetInHandAbilityBySlotSelfRequest>();
-            _upPool = _world.GetPool<AbilityUpInputRequest>();
-            _abilityMapPool = _world.GetPool<AbilityMapComponent>();
-            _canUpPool = _world.GetPool<CanApplyWhenUpInputComponent>();
-            _applyRequestPool = _world.GetPool<ApplyAbilityBySlotSelfRequest>();
-            _activateTimePool = _world.GetPool<AbilityActiveTimeComponent>();
-        }
+        private ProtoItExc _filter= It
+            .Chain<AbilityUpInputRequest>()
+            .Inc<UserInputTargetComponent>()
+            .Inc<AbilityMapComponent>()
+            .Exc<DisabledComponent>()
+            .End();
 
         public void Run()
         {
@@ -54,14 +42,12 @@
                 ref var up = ref _upPool.Get(entity);
                 ref var abilityMap = ref _abilityMapPool.Get(entity);
 
-                if (!abilityMap.AbilityEntities[up.Id].Unpack(_world, out var abilityEntity))
+                if(!abilityMap.AbilitySlots.TryGetValue(up.Id, out var slot))
                     continue;
-
-                if (!_canUpPool.Has(abilityEntity))
-                    continue;
-
-                if (_applyRequestPool.Has(entity))
-                    continue;
+                
+                if (!slot.Unpack(_world, out var abilityEntity)) continue;
+                if (!_canUpPool.Has(abilityEntity)) continue;
+                if (_applyRequestPool.Has(entity)) continue;
                 
                 if (!_inHandRequestPool.Has(entity))
                 {

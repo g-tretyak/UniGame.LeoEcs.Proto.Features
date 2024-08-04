@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySwitcher.Switchers.UsageCounterForAbilitySwitcher.Systems
 {
 	using System;
+	using Ability.Aspects;
 	using AbilitySwitcher.Components;
 	using Aspects;
 	using Components;
@@ -25,31 +26,21 @@
 #endif
 	[Serializable]
 	[ECSDI]
-	public class UsageCounterForAbilitySwitcherSystem : IProtoInitSystem, IProtoRunSystem
+	public class UsageCounterForAbilitySwitcherSystem : IProtoRunSystem
 	{
 		private ProtoWorld _world;
 		private UsageCounterForAbilitySwitcherAspect _aspect;
-		private EcsFilter _abilityFilter;
-		private EcsFilter _usageCounterFilter;
-		private AbilityTools _abilityTools;
+		private AbilityAspect _abilityTools;
 
-		public UsageCounterForAbilitySwitcherSystem(AbilityTools abilityTools)
-		{
-			_abilityTools = abilityTools;
-		}
+		private ProtoIt _abilityFilter = It
+			.Chain<ApplyAbilitySelfRequest>()
+			.End();
 		
-		public void Init(IProtoSystems systems)
-		{
-			_world = systems.GetWorld();
-			_abilityFilter = _world
-				.Filter<ApplyAbilitySelfRequest>()
-				.End();
-			_usageCounterFilter = _world
-				.Filter<UsageCounterForAbilitySwitcherComponent>()
-				.Inc<AbilitySwitcherComponent>()
-				.Exc<AbilityUsingComponent>()
-				.End();
-		}
+		private ProtoItExc _usageCounterFilter= It
+			.Chain<UsageCounterForAbilitySwitcherComponent>()
+			.Inc<AbilitySwitcherComponent>()
+			.Exc<AbilityUsingComponent>()
+			.End();
 
 		public void Run()
 		{

@@ -15,7 +15,7 @@
         public Vector2 offset;
         public Vector2 size;
         
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             var zoneDetectionPool = world.GetPool<RectangleZoneDetectionComponent>();
             ref var zoneDetectionComponent = ref zoneDetectionPool.Add(abilityEntity);

@@ -68,7 +68,7 @@
 
                     playableDirector.SetRootSpeed(1);
                     
-                    foreach (var ability in abilityComponent.AbilityEntities)
+                    foreach (var ability in abilityComponent.Abilities)
                     {
                         ref var request = ref _removePauseAbilityRequestPool.Add(_world.NewEntity());
                         request.AbilityEntity = ability;
@@ -76,7 +76,7 @@
                     continue;
                 }
                 
-                foreach (var ability in abilityComponent.AbilityEntities)
+                foreach (var ability in abilityComponent.Abilities)
                 {
                     ref var request = ref _pauseAbilityRequestPool.Add(_world.NewEntity());
                     request.AbilityEntity = ability;

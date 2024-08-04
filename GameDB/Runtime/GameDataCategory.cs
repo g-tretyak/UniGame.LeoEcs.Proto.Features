@@ -12,8 +12,9 @@
     {
         public string category;
         
-        [InlineEditor()]
-        public GameResourceLocation resourceLocation;
+        [InlineProperty()]
+        [SerializeReference]
+        public IGameResourceLocation resourceLocation = new AddressableResourceLocation();
 
         public virtual string Category => category;
 

@@ -9,7 +9,7 @@
     [Serializable]
     public sealed class NonTargetAbilityBehaviour : IAbilityBehaviour
     {
-        public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+        public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
             world.AddComponent<NonTargetAbilityComponent>(abilityEntity);
         }

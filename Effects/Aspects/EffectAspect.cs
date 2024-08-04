@@ -12,6 +12,8 @@
     public class EffectAspect : EcsAspect
     {
         public ProtoPool<EffectComponent> Effect;
+        public ProtoPool<EffectsComponent> Effects;
+        public ProtoPool<SelfEffectsComponent> SelfEffects;
         public ProtoPool<EffectsListComponent> List;
         public ProtoPool<OwnerComponent> Owner;
         public ProtoPool<AbilityPowerComponent> Power;

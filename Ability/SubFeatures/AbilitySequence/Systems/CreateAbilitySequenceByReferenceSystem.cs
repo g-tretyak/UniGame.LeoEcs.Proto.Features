@@ -1,12 +1,14 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySequence.Systems
 {
     using System;
+    using Ability.Aspects;
     using Ability.Tools;
     using Aspects;
     using AbilitySequence;
     using Game.Code.Services.AbilityLoadout.Data;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.AddressableTools.Runtime;
     using UniGame.Core.Runtime;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
@@ -24,26 +26,18 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class CreateAbilitySequenceByReferenceSystem : IProtoInitSystem, IProtoRunSystem
+    public class CreateAbilitySequenceByReferenceSystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
         private ProtoWorld _world;
-        private EcsFilter _createRequestFilter;
         private ILifeTime _worldLifeTime;
         
+        private AbilityAspect _abilityTools;
         private AbilitySequenceAspect _aspect;
         
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _worldLifeTime = _world.GetWorldLifeTime();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            
-            _createRequestFilter = _world
-                .Filter<CreateAbilitySequenceReferenceSelfRequest>()
-                .Exc<CreateAbilitySequenceSelfRequest>()
-                .End();
-        }
+        private ProtoItExc _createRequestFilter = It
+            .Chain<CreateAbilitySequenceReferenceSelfRequest>()
+            .Exc<CreateAbilitySequenceSelfRequest>()
+            .End();
 
         public void Run()
         {

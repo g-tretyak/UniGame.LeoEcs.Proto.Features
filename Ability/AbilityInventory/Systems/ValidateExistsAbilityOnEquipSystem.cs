@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.AbilityInventory.Systems
 {
     using System;
+    using Ability.Aspects;
     using Ability.Common.Components;
     using Ability.Tools;
     using Aspects;
@@ -24,25 +25,18 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class ValidateExistsAbilityOnEquipSystem : IProtoInitSystem, IProtoRunSystem
+    public class ValidateExistsAbilityOnEquipSystem : IProtoRunSystem
     {
-        private AbilityTools _abilityTools;
+        private AbilityAspect _abilityTools;
         private AbilityInventoryAspect _inventoryAspect;
         private ProtoWorld _world;
-        private EcsFilter _filterRequest;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _abilityTools = _world.GetGlobal<AbilityTools>();
-            
-            _filterRequest = _world
-                .Filter<EquipAbilitySelfRequest>()
-                .Inc<AbilityIdComponent>()
-                .Inc<OwnerComponent>()
-                .Exc<AbilityValidationFailedComponent>()
-                .End();
-        }
+        
+        private ProtoItExc _filterRequest= It
+            .Chain<EquipAbilitySelfRequest>()
+            .Inc<AbilityIdComponent>()
+            .Inc<OwnerComponent>()
+            .Exc<AbilityValidationFailedComponent>()
+            .End();
 
         public void Run()
         {
@@ -58,11 +52,10 @@
                 }
 
                 var existsAbility = _abilityTools.GetExistsAbility(abilityId, ref requestComponent.Target);
-                if (existsAbility > 0)
-                {
-                    _inventoryAspect.Failed.GetOrAddComponent(requestEntity);
-                    continue;
-                }
+                if (existsAbility <= 0) continue;
+                
+                _inventoryAspect.Failed.GetOrAddComponent(requestEntity);
+                continue;
             }
         }
     }

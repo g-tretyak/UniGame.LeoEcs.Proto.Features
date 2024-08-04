@@ -20,7 +20,7 @@
 		public IAbilitySwitcherConfiguration configuration;
 
 		#endregion
-		public void Compose(ProtoWorld world, ProtoEntity abilityEntity, bool isDefault)
+		public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
 		{
 			world.AddComponent<AbilitySwitcherComponent>(abilityEntity);
 			configuration.Compose(world, abilityEntity);
