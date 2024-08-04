@@ -1,13 +1,10 @@
 ﻿namespace Game.Code.GameLayers.Relationship
 {
     using System;
-    using UnityEngine;
-    using UnityEngine.Serialization;
 
     [Serializable]
     public struct RelationshipId
     {
-        [SerializeField]
         public int value;
 
         public static implicit operator int(RelationshipId v)
