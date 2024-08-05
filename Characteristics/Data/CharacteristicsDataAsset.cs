@@ -30,6 +30,7 @@ namespace UniGame.Proto.Features.Characteristics
     public class CharacteristicsDataAsset : ScriptableObject
     {
         private const string GenerationPath = "Assets/UniGame.Generated/Characteristics";
+        private const string GenerationFeaturePath = "Features";
         private const string ReplaceKey = "CHARACTERISTIC_FEATURE";
         private const string FeatureFileName = "CHARACTERISTIC_FEATUREFeature.cs";
         
@@ -45,9 +46,6 @@ namespace UniGame.Proto.Features.Characteristics
             try
             {
                 AssetDatabase.StartAssetEditing();
-                
-                if (Directory.Exists(GenerationPath));
-                    FileUtil.DeleteFileOrDirectory(GenerationPath);
                 
                 GenerateStaticProperties(this);
                 GenerateCharacteristicsFeatures(this);
@@ -108,9 +106,13 @@ namespace UniGame.Proto.Features.Characteristics
         {
             var monoType = typeof(CHARACTERISTIC_FEATUREFeature);
             var monoScript = monoType.GetScriptAsset();
-            var outputPath = GenerationPath.FixDirectoryPath();
+            var outputPath = GenerationPath.CombinePath(GenerationFeaturePath).FixDirectoryPath();
             var text = monoScript.text;
 
+            if (!Directory.Exists(outputPath))
+                Directory.CreateDirectory(outputPath);
+            RemoveDirectoryContent(outputPath);
+            
             foreach (var item in dataAsset.Types)
             {
                 var result = text.Replace(ReplaceKey, item.Name);
@@ -118,6 +120,23 @@ namespace UniGame.Proto.Features.Characteristics
                 var filePath = outputPath.CombinePath(fileName);
                 using var writer = new StreamWriter(filePath, false, Encoding.UTF8);
                 writer.WriteLine(result);
+            }
+        }
+        
+        public static void RemoveDirectoryContent(string folder)
+        {
+            if (!Directory.Exists(folder)) return;
+            
+            var di = new DirectoryInfo(folder);
+            
+            foreach (var file in di.GetFiles())
+            {
+                file.Delete(); 
+            }
+            
+            foreach (var dir in di.GetDirectories())
+            {
+                dir.Delete(true); 
             }
         }
         
