@@ -2,6 +2,7 @@
 {
     using System;
     using Base;
+    using Base.Aspects;
     using Components;
     using Cysharp.Threading.Tasks;
     using Leopotam.EcsProto;
@@ -31,5 +32,13 @@
 
             return UniTask.CompletedTask;
         }
+    }
+    
+    [Serializable]
+    public sealed class AttackSpeedCharacteristicAspect : GameCharacteristicAspect<AttackSpeedComponent>
+    {
+        public ProtoPool<AttackSpeedComponent> AttackSpeedComponent;
+        public ProtoPool<AttackAbilityIdComponent> AttackAbilityIdComponent;
+        public ProtoPool<AttackSpeedCooldownTypeComponent> CooldownTypeComponent;
     }
 }

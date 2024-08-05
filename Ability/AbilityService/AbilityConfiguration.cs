@@ -17,8 +17,6 @@
     [CreateAssetMenu(fileName = "Ability Configuration", menuName = "Game/Ability/Ability Configuration")]
     public sealed class AbilityConfiguration : ScriptableObject
     {
-        public float duration = 0.2f;
-        
         [PropertySpace(8)]
         [SerializeReference]
         public List<IAbilityBehaviour> abilityBehaviours = new List<IAbilityBehaviour>();
