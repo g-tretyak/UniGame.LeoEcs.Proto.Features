@@ -1,13 +1,16 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Dodge.Systems
 {
     using System;
+    using Aspects;
     using Base.Components;
     using Components;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
-    using UniGame.LeoEcs.Shared.Extensions;
+    using Leopotam.EcsProto.QoL;
 
-
+    /// <summary>
+    /// System used to recalculate the dodge value for entities.
+    /// </summary>
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 
@@ -16,34 +19,24 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public sealed class RecalculateDodgeSystem : IProtoRunSystem,IProtoInitSystem
+    [ECSDI]
+    public sealed class RecalculateDodgeSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private DodgeCharacteristicAspect _aspect;
         
-        private ProtoPool<CharacteristicComponent<DodgeComponent>> _characteristicPool;
-        private ProtoPool<DodgeComponent> _valuePool;
+        private ProtoIt _filter = It
+            .Chain<CharacteristicChangedComponent<DodgeComponent>>()
+            .Inc<CharacteristicComponent<DodgeComponent>>()
+            .Inc<DodgeComponent>()
+            .End();
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<CharacteristicChangedComponent<DodgeComponent>>()
-                .Inc<CharacteristicComponent<DodgeComponent>>()
-                .Inc<DodgeComponent>()
-                .End();
-
-            _characteristicPool = _world.GetPool<CharacteristicComponent<DodgeComponent>>();
-            _valuePool = _world.GetPool<DodgeComponent>();
-        }
-        
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var characteristicComponent = ref _characteristicPool.Get(entity);
-                ref var valueComponent = ref _valuePool.Get(entity);
+                ref var characteristicComponent = ref _aspect.DodgeDodgeCharacteristic.Get(entity);
+                ref var valueComponent = ref _aspect.Dodge.Get(entity);
                 valueComponent.Value = characteristicComponent.Value;
             }
         }

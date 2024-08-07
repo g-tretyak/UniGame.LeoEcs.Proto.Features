@@ -1,42 +1,49 @@
 ﻿namespace UniGame.Ecs.Proto.GameEffects.HealingEffect.Systems
 {
-    using Characteristics.Base;
-    using Characteristics.Health;
+    using System;
+    using Aspects;
+    using Characteristics.Health.Aspects;
     using Components;
+    using Effects.Aspects;
     using Effects.Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Extensions;
 
+    /// <summary>
+    /// System that processes healing effect.
+    /// </summary>
+#if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
+
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+#endif
+    [Serializable]
     [ECSDI]
-    public sealed class ProcessHealingEffectSystem : IProtoRunSystem,IProtoInitSystem
+    public sealed class ProcessHealingEffectSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
-        
-        private ProtoPool<EffectComponent> effectPool;
-        private ProtoPool<HealingEffectComponent> healingPool;
-        private ProtoPool<ChangeCharacteristicBaseRequest<HealthComponent>> changeHealthPool;
+        private HealthAspect _healthAspect;
+        private EffectAspect _effectAspect;
+        private HealingEffectAspect _healingEffectAspect;
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _filter = _world.Filter<EffectComponent>()
-                .Inc<ApplyEffectSelfRequest>()
-                .Inc<HealingEffectComponent>()
-                .End();
-        }
-        
+        private ProtoIt _filter = It
+            .Chain<EffectComponent>()
+            .Inc<ApplyEffectSelfRequest>()
+            .Inc<HealingEffectComponent>()
+            .End();
+
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var effect = ref effectPool.Get(entity);
-                ref var healing = ref healingPool.Get(entity);
+                ref var effect = ref _effectAspect.Effect.Get(entity);
+                ref var healing = ref _healingEffectAspect.HealingEffect.Get(entity);
 
                 var healthRequestEntity = _world.NewEntity();
-                ref var healthRequest = ref changeHealthPool.Add(healthRequestEntity);
+                ref var healthRequest = ref _healthAspect.ChangeBase.Add(healthRequestEntity);
                 healthRequest.Source = effect.Source;
                 healthRequest.Target = effect.Destination;
                 healthRequest.Value = healing.Value;

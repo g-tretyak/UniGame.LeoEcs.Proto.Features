@@ -2,7 +2,7 @@
 {
 	using System;
 	using Aspects;
-	using Characteristics.Health;
+	using Characteristics.Health.Components;
 	using Components;
 	using Game.Code.Configuration.Runtime.Effects;
 	using Game.Ecs.Core.Components;

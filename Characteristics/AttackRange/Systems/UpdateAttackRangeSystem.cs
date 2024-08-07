@@ -1,12 +1,12 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.CriticalChance.Systems
 {
     using System;
+    using Aspects;
     using Components;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.Ecs.Proto.Characteristics.Base.Components;
-    using UniGame.LeoEcs.Shared.Extensions;
-
 
     /// <summary>
     /// update value of attack speed characteristic
@@ -19,34 +19,24 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public sealed class UpdateAttackRangeChangedSystem : IProtoRunSystem,IProtoInitSystem
+    [ECSDI]
+    public sealed class UpdateAttackRangeChangedSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private AttackRangeAspect _aspect;
         
-        private ProtoPool<CharacteristicComponent<AttackRangeComponent>> _characteristicPool;
-        private ProtoPool<AttackRangeComponent> _valuePool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<CharacteristicChangedComponent<AttackRangeComponent>>()
-                .Inc<CharacteristicComponent<AttackRangeComponent>>()
-                .Inc<AttackRangeComponent>()
-                .End();
-
-            _characteristicPool = _world.GetPool<CharacteristicComponent<AttackRangeComponent>>();
-            _valuePool = _world.GetPool<AttackRangeComponent>();
-        }
+        private ProtoIt _filter = It
+            .Chain<CharacteristicChangedComponent<AttackRangeComponent>>()
+            .Inc<CharacteristicComponent<AttackRangeComponent>>()
+            .Inc<AttackRangeComponent>()
+            .End();
         
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var characteristicComponent = ref _characteristicPool.Get(entity);
-                ref var valueComponent = ref _valuePool.Get(entity);
+                ref var characteristicComponent = ref _aspect.Characteristic.Get(entity);
+                ref var valueComponent = ref _aspect.AttackRange.Get(entity);
                 valueComponent.Value = characteristicComponent.Value;
             }
         }

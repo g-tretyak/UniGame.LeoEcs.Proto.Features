@@ -1,12 +1,12 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.CriticalChance.Systems
 {
     using System;
+    using Aspects;
     using Components;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.Ecs.Proto.Characteristics.Base.Components;
-    using UniGame.LeoEcs.Shared.Extensions;
-
 
     /// <summary>
     /// update value of attack speed characteristic
@@ -19,34 +19,24 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public sealed class UpdateCriticalChanceChangedSystem : IProtoRunSystem,IProtoInitSystem
+    [ECSDI]
+    public sealed class UpdateCriticalChanceChangedSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private CriticalChanceAspect _aspect;
         
-        private ProtoPool<CharacteristicComponent<CriticalChanceComponent>> _characteristicPool;
-        private ProtoPool<CriticalChanceComponent> _valuePool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<CharacteristicChangedComponent<CriticalChanceComponent>>()
-                .Inc<CharacteristicComponent<CriticalChanceComponent>>()
-                .Inc<CriticalChanceComponent>()
-                .End();
-
-            _characteristicPool = _world.GetPool<CharacteristicComponent<CriticalChanceComponent>>();
-            _valuePool = _world.GetPool<CriticalChanceComponent>();
-        }
+        private ProtoIt _filter = It
+            .Chain<CharacteristicChangedComponent<CriticalChanceComponent>>()
+            .Inc<CharacteristicComponent<CriticalChanceComponent>>()
+            .Inc<CriticalChanceComponent>()
+            .End();
         
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var characteristicComponent = ref _characteristicPool.Get(entity);
-                ref var valueComponent = ref _valuePool.Get(entity);
+                ref var characteristicComponent = ref _aspect.CriticalChanceCharacteristic.Get(entity);
+                ref var valueComponent = ref _aspect.CriticalChance.Get(entity);
                 valueComponent.Value = characteristicComponent.Value;
             }
         }

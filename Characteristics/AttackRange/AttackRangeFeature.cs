@@ -6,7 +6,6 @@
     using Leopotam.EcsProto;
     using Base;
     using Feature;
-     
     using Systems;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
@@ -14,13 +13,13 @@
     /// <summary>
     /// - recalculate attack speed characteristic
     /// </summary>
-    [CreateAssetMenu(menuName = "Proto Features/Characteristics/AttackRange Feature",fileName = "AttackRange Feature")]
-    public sealed class CriticalChanceFeature : CharacteristicFeature<CriticalChanceEcsFeature>
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/AttackRange Feature")]
+    public sealed class AttackRangeFeature : CharacteristicFeature<AttackRangeEcsFeature>
     {
     }
     
     [Serializable]
-    public sealed class CriticalChanceEcsFeature : CharacteristicEcsFeature
+    public sealed class AttackRangeEcsFeature : CharacteristicEcsFeature
     {
         protected override UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {

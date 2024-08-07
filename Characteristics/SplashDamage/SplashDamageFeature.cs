@@ -2,7 +2,6 @@
 {
     using System;
     using Base;
-    using Base.Aspects;
     using Components;
     using Cysharp.Threading.Tasks;
     using Feature;
@@ -31,10 +30,5 @@
 
             return UniTask.CompletedTask;
         }
-    }
-    
-    [Serializable]
-    public sealed class SplashDamageAspect : GameCharacteristicAspect<SplashDamageComponent>
-    {
     }
 }

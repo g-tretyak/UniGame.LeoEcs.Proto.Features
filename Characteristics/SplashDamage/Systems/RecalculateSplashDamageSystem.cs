@@ -1,51 +1,42 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.SplashDamage.Systems
 {
+    using System;
+    using Aspects;
     using Base.Components;
     using Components;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
-    using UniGame.LeoEcs.Shared.Extensions;
-
-#if ENABLE_IL2CPP
-    using Unity.IL2CPP.CompilerServices;
-#endif
+    using Leopotam.EcsProto.QoL;
 
     /// <summary>
     /// Recalculates Splash Damage value.
     /// </summary>
 #if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
+
     [Il2CppSetOption(Option.NullChecks, false)]
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
-    public class RecalculateSplashDamageSystem : IProtoInitSystem, IProtoRunSystem
+    [Serializable]
+    [ECSDI]
+    public class RecalculateSplashDamageSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private SplashDamageAspect _aspect;
         
-        private ProtoPool<CharacteristicComponent<SplashDamageComponent>> _characteristicPool;
-        private ProtoPool<SplashDamageComponent> _valuePool;
+        private ProtoIt _filter = It
+            .Chain<CharacteristicChangedComponent<SplashDamageComponent>>()
+            .Inc<CharacteristicComponent<SplashDamageComponent>>()
+            .Inc<SplashDamageComponent>()
+            .End();
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<CharacteristicChangedComponent<SplashDamageComponent>>()
-                .Inc<CharacteristicComponent<SplashDamageComponent>>()
-                .Inc<SplashDamageComponent>()
-                .End();
-
-            _characteristicPool = _world.GetPool<CharacteristicComponent<SplashDamageComponent>>();
-            _valuePool = _world.GetPool<SplashDamageComponent>();
-        }
-        
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var characteristicComponent = ref _characteristicPool.Get(entity);
-                ref var valueComponent = ref _valuePool.Get(entity);
+                ref var characteristicComponent = ref _aspect.SplashDamageCharacteristic.Get(entity);
+                ref var valueComponent = ref _aspect.SplashDamage.Get(entity);
                 valueComponent.Value = characteristicComponent.Value;
             }
         }

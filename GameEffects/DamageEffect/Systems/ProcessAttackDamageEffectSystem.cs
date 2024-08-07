@@ -1,7 +1,10 @@
 ﻿namespace UniGame.Ecs.Proto.GameEffects.DamageEffect.Systems
 {
     using Characteristics.AttackDamage;
+    using Characteristics.AttackDamage.Aspects;
+    using Characteristics.AttackDamage.Components;
     using Components;
+    using Effects.Aspects;
     using Effects.Components;
     using Gameplay.CriticalAttackChance.Components;
     using Gameplay.Damage.Components.Request;
@@ -16,6 +19,8 @@
     {
         private EcsFilter _filter;
         private ProtoWorld _world;
+        private EffectAspect _effectAspect;
+        private AttackDamageAspect _attackDamageAspect;
         private ProtoPool<EffectComponent> _effectPool;
         private ProtoPool<AttackDamageComponent> _attackDamagePool;
         private ProtoPool<CriticalAttackMarkerComponent> _criticalChancePool;

@@ -2,7 +2,7 @@
 {
 	using System;
 	using Characteristics.Base;
-	using Characteristics.Mana;
+	using Characteristics.Mana.Components;
 	using Effects;
 	using Effects.Components;
 	using Leopotam.EcsProto;

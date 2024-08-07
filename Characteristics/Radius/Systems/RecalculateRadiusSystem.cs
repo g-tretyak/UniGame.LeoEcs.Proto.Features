@@ -1,41 +1,41 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Radius.Systems
 {
+    using System;
     using Base.Components;
     using Component;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
-    using UniGame.LeoEcs.Shared.Extensions;
+    using Leopotam.EcsProto.QoL;
 
+    /// <summary>
+    /// System that recalculates the radius value for entities.
+    /// </summary>
+#if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
 
-    public sealed class RecalculateRadiusSystem : IProtoRunSystem,IProtoInitSystem
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+#endif
+    [Serializable]
+    [ECSDI]
+    public sealed class RecalculateRadiusSystem : IProtoRunSystem
     {
-        
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private RadiusCharacteristicAspect _aspect;
         
-        private ProtoPool<CharacteristicComponent<RadiusComponent>> _characteristicPool;
-        private ProtoPool<RadiusComponent> _characteristicComponentPool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<CharacteristicChangedComponent<RadiusComponent>>()
-                .Inc<CharacteristicComponent<RadiusComponent>>()
-                .Inc<RadiusComponent>()
-                .End();
-
-            _characteristicPool = _world.GetPool<CharacteristicComponent<RadiusComponent>>();
-            _characteristicComponentPool = _world.GetPool<RadiusComponent>();
-        }
+        private ProtoIt _filter = It
+            .Chain<CharacteristicChangedComponent<RadiusComponent>>()
+            .Inc<CharacteristicComponent<RadiusComponent>>()
+            .Inc<RadiusComponent>()
+            .End();
         
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var characteristicComponent = ref _characteristicPool.Get(entity);
-                ref var characteristicValueComponent = ref _characteristicComponentPool.Get(entity);
+                ref var characteristicComponent = ref _aspect.RadiusCharacteristic.Get(entity);
+                ref var characteristicValueComponent = ref _aspect.Radius.Get(entity);
                 characteristicValueComponent.Value = characteristicComponent.Value;
             }
         }

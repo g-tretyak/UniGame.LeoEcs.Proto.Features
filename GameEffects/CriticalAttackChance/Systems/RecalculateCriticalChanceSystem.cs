@@ -1,12 +1,12 @@
 ﻿namespace UniGame.Ecs.Proto.Gameplay.CriticalAttackChance.Systems
 {
     using System;
-    using Components;
-    using Leopotam.EcsLite;
+    using Aspects;
+    using Characteristics.CriticalChance.Aspects;
+    using Components.Requests;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.Ecs.Proto.Characteristics.CriticalChance.Components;
-     
-    using Requests;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
     using Random = UnityEngine.Random;
@@ -23,38 +23,30 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class RecalculateCriticalChanceSystem : IProtoInitSystem, IProtoRunSystem
+    public class RecalculateCriticalChanceSystem : IProtoRunSystem
     {
         private ProtoWorld _world;
-        private EcsFilter _damageFilter;
-        
-        private ProtoPool<CriticalChanceComponent> _criticalChancePool;
-        private ProtoPool<CriticalAttackMarkerComponent> _criticalMarkerPool;
-        private ProtoPool<RecalculateCriticalChanceSelfRequest> _recalculaltePool;
-        
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
+        private CriticalAttackChanceAspect _criticalAttackChanceAspect;
+        private CriticalChanceAspect _criticalChanceAspect;
 
-            _damageFilter = _world
-                .Filter<RecalculateCriticalChanceSelfRequest>()
-                .Inc<CriticalChanceComponent>()
-                .End();
-        }
+        private ProtoIt _damageFilter = It
+            .Chain<RecalculateCriticalChanceSelfRequest>()
+            .Inc<CriticalChanceComponent>()
+            .End();
 
         public void Run()
         {
             foreach (var sourceEntity in _damageFilter)
             {
-                _criticalMarkerPool.TryRemove(sourceEntity);
-                _recalculaltePool.TryRemove(sourceEntity);
+                _criticalAttackChanceAspect.CriticalAttackMarker.TryRemove(sourceEntity);
+                _criticalAttackChanceAspect.Recalculate.TryRemove(sourceEntity);
 
-                ref var criticalChance = ref _criticalChancePool.Get(sourceEntity);
+                ref var criticalChance = ref _criticalChanceAspect.CriticalChance.Get(sourceEntity);
                 var isCritical = Random.Range(0.0f, 100.0f) < criticalChance.Value;
-                
-                if(!isCritical) continue;
-                
-                _criticalMarkerPool.GetOrAddComponent(sourceEntity);
+
+                if (!isCritical) continue;
+
+                _criticalAttackChanceAspect.CriticalAttackMarker.GetOrAddComponent(sourceEntity);
             }
         }
     }

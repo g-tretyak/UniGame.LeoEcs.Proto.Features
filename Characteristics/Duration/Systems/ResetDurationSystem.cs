@@ -1,38 +1,44 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Duration.Systems
 {
+    using System;
+    using Aspects;
     using Base.Components.Events;
     using Components;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
-    using UniGame.LeoEcs.Shared.Extensions;
+    using Leopotam.EcsProto.QoL;
 
+    /// <summary>
+    /// System for resetting the duration of entities.
+    /// </summary>
+#if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
 
-    public sealed class ResetDurationSystem : IProtoRunSystem,IProtoInitSystem
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+#endif
+    [Serializable]
+    [ECSDI]
+    public sealed class ResetDurationSystem : IProtoRunSystem
     {
-        
-        private EcsFilter _filter;
         private ProtoWorld _world;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _filter = _world.Filter<BaseDurationComponent>()
-                .Inc<ResetCharacteristicsEvent>()
-                .End();
-        }
+        private DurationAspect _aspect;
+        
+        private ProtoIt _filter = It
+            .Chain<BaseDurationComponent>()
+            .Inc<ResetCharacteristicsEvent>()
+            .End();
         
         public void Run()
         {
-            var baseDurationPool = _world.GetPool<BaseDurationComponent>();
-            var requestPool = _world.GetPool<RecalculateDurationRequest>();
-
             foreach (var entity in _filter)
             {
-                ref var baseDuration = ref baseDurationPool.Get(entity);
+                ref var baseDuration = ref _aspect.BaseDuration.Get(entity);
                 baseDuration.Modifications.Clear();
                 
-                if (!requestPool.Has(entity))
-                    requestPool.Add(entity);
+                if (!_aspect.RecalculateDuration.Has(entity))
+                    _aspect.RecalculateDuration.Add(entity);
             }
         }
     }

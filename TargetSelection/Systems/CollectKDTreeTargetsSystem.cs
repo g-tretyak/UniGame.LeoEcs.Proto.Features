@@ -2,7 +2,7 @@
 {
     using System;
     using Aspects;
-    using Characteristics.Health;
+    using Characteristics.Health.Components;
     using Components;
     using DataStructures.ViliWonka.KDTree;
     using Game.Ecs.Core.Components;

@@ -1,14 +1,14 @@
 ﻿namespace UniGame.Ecs.Proto.Gameplay.Dodge.Systems
 {
+    using System;
+    using Aspects;
+    using Characteristics.Dodge.Aspects;
+    using Damage.Aspects;
     using Damage.Components.Request;
-    using Events;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using UniGame.Ecs.Proto.Characteristics.Dodge.Components;
-     
-    using UniGame.LeoEcs.Shared.Extensions;
-    using UnityEngine;
+    using Random = UnityEngine.Random;
 
     /// <summary>
     /// Add an empty target to an ability
@@ -20,55 +20,52 @@
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
-    public class CheckDamageDodgeSystem : IProtoInitSystem, IProtoRunSystem
+    [Serializable]
+    [ECSDI]
+    public class CheckDamageDodgeSystem : IProtoRunSystem
     {
         private readonly int _minDodge;
         private readonly int _maxDodge;
-        
-        private EcsFilter _filter;
+
         private ProtoWorld _world;
-        private ProtoPool<ApplyDamageRequest> _requestPool;
-        private ProtoPool<DodgeComponent> _dodgePool;
+        private DamageAspect _damageAspect;
+        private DodgeAspect _dodgeAspect;
+        private DodgeCharacteristicAspect _dodgeCharacteristicAspect;
+
+        private ProtoIt _filter = It
+            .Chain<ApplyDamageRequest>()
+            .End();
 
         public CheckDamageDodgeSystem(int minDodge = 0, int maxDodge = 100)
         {
             _minDodge = minDodge;
             _maxDodge = maxDodge;
         }
-        
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _filter = _world.Filter<ApplyDamageRequest>().End();
-            
-            _requestPool = _world.GetPool<ApplyDamageRequest>();
-            _dodgePool = _world.GetPool<DodgeComponent>();
-        }
 
         public void Run()
         {
             foreach (var requestEntity in _filter)
             {
-                ref var request = ref _requestPool.Get(requestEntity);
-                if(!request.Destination.Unpack(_world, out var destinationEntity))
+                ref var request = ref _damageAspect.ApplyDamage.Get(requestEntity);
+                if (!request.Destination.Unpack(_world, out var destinationEntity))
                     continue;
-                
-                if(!_dodgePool.Has(destinationEntity))
+
+                if (!_dodgeCharacteristicAspect.Dodge.Has(destinationEntity))
                     continue;
-                
-                ref var dodgeComponent = ref _dodgePool.Get(destinationEntity);
+
+                ref var dodgeComponent = ref _dodgeCharacteristicAspect.Dodge.Get(destinationEntity);
                 var dodgeChance = dodgeComponent.Value;
                 var chance = Random.Range(_minDodge, _maxDodge);
                 var isDodge = chance < dodgeChance;
-                
-                if(!isDodge) continue;
+
+                if (!isDodge) continue;
 
                 var eventEntity = _world.NewEntity();
-                ref var missedEvent = ref _world.AddComponent<MissedEvent>(eventEntity);
+                ref var missedEvent = ref _dodgeAspect.Missed.Add(eventEntity);
                 missedEvent.Source = request.Source;
                 missedEvent.Destination = request.Destination;
-                
-                _requestPool.Del(requestEntity);
+
+                _damageAspect.ApplyDamage.Del(requestEntity);
             }
         }
     }

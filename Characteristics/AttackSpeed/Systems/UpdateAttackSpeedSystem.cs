@@ -1,12 +1,12 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.AttackSpeed.Systems
 {
     using System;
+    using Aspects;
     using Components;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.Ecs.Proto.Characteristics.Base.Components;
-    using UniGame.LeoEcs.Shared.Extensions;
-
 
     /// <summary>
     /// update value of attack speed characteristic
@@ -19,35 +19,25 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public sealed class UpdateAttackSpeedChangedSystem : IProtoRunSystem,IProtoInitSystem
+    [ECSDI]
+    public sealed class UpdateAttackSpeedChangedSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private AttackSpeedCharacteristicAspect _aspect;
         
-        private ProtoPool<CharacteristicComponent<AttackSpeedComponent>> _characteristicPool;
-        private ProtoPool<AttackSpeedComponent> _attackSpeed;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<CharacteristicChangedComponent<AttackSpeedComponent>>()
-                .Inc<CharacteristicComponent<AttackSpeedComponent>>()
-                .Inc<AttackSpeedComponent>()
-                .Inc<AttackSpeedCooldownTypeComponent>()
-                .End();
-
-            _characteristicPool = _world.GetPool<CharacteristicComponent<AttackSpeedComponent>>();
-            _attackSpeed = _world.GetPool<AttackSpeedComponent>();
-        }
+        private ProtoIt _filter = It
+            .Chain<CharacteristicChangedComponent<AttackSpeedComponent>>()
+            .Inc<CharacteristicComponent<AttackSpeedComponent>>()
+            .Inc<AttackSpeedComponent>()
+            .Inc<AttackSpeedCooldownTypeComponent>()
+            .End();
         
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var characteristicComponent = ref _characteristicPool.Get(entity);
-                ref var attackSpeedComponent = ref _attackSpeed.Get(entity);
+                ref var characteristicComponent = ref _aspect.AttackSpeedCharacteristic.Get(entity);
+                ref var attackSpeedComponent = ref _aspect.AttackSpeed.Get(entity);
                 attackSpeedComponent.Value = characteristicComponent.Value;
             }
         }

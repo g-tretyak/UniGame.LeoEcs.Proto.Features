@@ -1,13 +1,12 @@
 ﻿namespace UniGame.Ecs.Proto.Gameplay.CriticalAttackChance.Systems
 {
     using System;
-    using Damage.Components;
-    using Leopotam.EcsLite;
+    using Aspects;
+    using Characteristics.CriticalChance.Aspects;
+    using Damage.Aspects;
+    using Damage.Components.Events;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using UniGame.Ecs.Proto.Characteristics.CriticalChance.Components;
-     
-    using Requests;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 
@@ -23,34 +22,27 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class DetectAttackDamageEventSystem : IProtoInitSystem, IProtoRunSystem
+    public class DetectAttackDamageEventSystem : IProtoRunSystem
     {
         private ProtoWorld _world;
-        private EcsFilter _damageFilter;
-
-        private ProtoPool<MadeDamageEvent> _damagePool;
-        private ProtoPool<CriticalChanceComponent> _criticalComponent;
-        private ProtoPool<RecalculateCriticalChanceSelfRequest> _recalculaltePool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-
-            _damageFilter = _world
-                .Filter<MadeDamageEvent>()
-                .End();
-        }
-
+        private CriticalAttackChanceAspect _criticalAttackChanceAspect;
+        private CriticalChanceAspect _criticalChanceAspect;
+        private DamageAspect _damageAspect;
+        
+        private ProtoIt _damageFilter = It
+            .Chain<MadeDamageEvent>()
+            .End();
+        
         public void Run()
         {
             foreach (var entity in _damageFilter)
             {
-                ref var eventComponent = ref _damagePool.Get(entity);
+                ref var eventComponent = ref _damageAspect.MadeDamage.Get(entity);
                 if(!eventComponent.Source.Unpack(_world,out var sourceEntity))continue;
                 
-                if(!_criticalComponent.Has(sourceEntity))continue;
+                if(!_criticalChanceAspect.CriticalChance.Has(sourceEntity))continue;
 
-                _recalculaltePool.GetOrAddComponent(sourceEntity);
+                _criticalAttackChanceAspect.Recalculate.GetOrAddComponent(sourceEntity);
             }
         }
     }

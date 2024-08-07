@@ -2,6 +2,7 @@
 {
 	using System;
 	using Characteristics.Health;
+	using Characteristics.Health.Components;
 	using Components;
 	using Effects.Components;
 	using Leopotam.EcsProto;

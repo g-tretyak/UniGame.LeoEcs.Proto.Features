@@ -1,32 +1,40 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Shield.Systems
 {
+    using System;
+    using Aspects;
     using Base.Components.Events;
     using Components;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
-    using UniGame.LeoEcs.Shared.Extensions;
+    using Leopotam.EcsProto.QoL;
 
+    /// <summary>
+    /// System that resets the shield of entities.
+    /// </summary>
+#if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
 
-    public sealed class ResetShieldSystem : IProtoRunSystem,IProtoInitSystem
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+#endif
+    [Serializable]
+    [ECSDI]
+    public sealed class ResetShieldSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private ShieldCharacteristicAspect _aspect;
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _filter = _world.Filter<ShieldComponent>()
-                .Inc<ResetCharacteristicsEvent>()
-                .End();
-        }
+        private ProtoIt _filter = It
+            .Chain<ShieldComponent>()
+            .Inc<ResetCharacteristicsEvent>()
+            .End();
         
         public void Run()
         {
-            var shieldPool = _world.GetPool<ShieldComponent>();
-            
             foreach (var entity in _filter)
             {
-                shieldPool.Del(entity);
+                _aspect.Shield.Del(entity);
             }
         }
     }

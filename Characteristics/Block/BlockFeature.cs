@@ -4,9 +4,8 @@
     using Components;
     using Cysharp.Threading.Tasks;
     using Leopotam.EcsProto;
-    using UniGame.Ecs.Proto.Characteristics.Base;
-    using UniGame.Ecs.Proto.Characteristics.Feature;
-     
+    using Base;
+    using Feature;
     using Systems;
     using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
@@ -15,7 +14,7 @@
     public sealed class BlockFeature : CharacteristicFeature<BlockEcsFeature>
     {
     }
-    
+
     [Serializable]
     public sealed class BlockEcsFeature : CharacteristicEcsFeature
     {

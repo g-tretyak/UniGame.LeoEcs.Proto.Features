@@ -2,14 +2,12 @@
 {
     using System;
     using Base;
-    using Base.Aspects;
     using Components;
     using Cysharp.Threading.Tasks;
+    using Feature;
+    using LeoEcs.Shared.Extensions;
     using Leopotam.EcsProto;
-    using UniGame.Ecs.Proto.Characteristics.Feature;
-     
     using Systems;
-    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     /// <summary>
@@ -32,13 +30,5 @@
 
             return UniTask.CompletedTask;
         }
-    }
-    
-    [Serializable]
-    public sealed class AttackSpeedCharacteristicAspect : GameCharacteristicAspect<AttackSpeedComponent>
-    {
-        public ProtoPool<AttackSpeedComponent> AttackSpeedComponent;
-        public ProtoPool<AttackAbilityIdComponent> AttackAbilityIdComponent;
-        public ProtoPool<AttackSpeedCooldownTypeComponent> CooldownTypeComponent;
     }
 }

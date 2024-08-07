@@ -1,12 +1,9 @@
 namespace UniGame.Ecs.Proto.Gameplay.Damage
 {
     using System.Collections.Generic;
-    using Characteristics.Dodge.Components.Events;
-    using Components;
+    using Components.Events;
     using Components.Request;
     using Cysharp.Threading.Tasks;
-    using Events;
-    
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using Sirenix.OdinInspector;

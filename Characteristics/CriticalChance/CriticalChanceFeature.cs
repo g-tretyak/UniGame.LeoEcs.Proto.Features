@@ -13,11 +13,11 @@
     /// <summary>
     /// - recalculate attack speed characteristic
     /// </summary>
-    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Critical Chance Feature",fileName = "Critical Chance")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Critical Chance Feature")]
     public sealed class CriticalChanceFeature : CharacteristicFeature<CriticalChanceEcsFeature>
     {
     }
-    
+
     [Serializable]
     public sealed class CriticalChanceEcsFeature : CharacteristicEcsFeature
     {
@@ -27,7 +27,7 @@
             ecsSystems.AddCharacteristic<CriticalChanceComponent>();
             //update attack speed value
             ecsSystems.Add(new UpdateCriticalChanceChangedSystem());
-            
+
             return UniTask.CompletedTask;
         }
     }

@@ -4,7 +4,6 @@
     using Components;
     using Cysharp.Threading.Tasks;
     using Base;
-    using Base.Aspects;
     using Feature;
     using Leopotam.EcsProto;
     using Systems;
@@ -14,7 +13,7 @@
     /// <summary>
     /// - recalculate attack speed characteristic
     /// </summary>
-    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Critical Multiplier Feature",fileName = "Critical Multiplier")]
+    [CreateAssetMenu(menuName = "Proto Features/Characteristics/Critical Multiplier Feature")]
     public sealed class CriticalMultiplierFeature : CharacteristicFeature<CriticalMultiplierEcsFeature>
     {
     }
@@ -31,13 +30,5 @@
             
             return UniTask.CompletedTask;
         }
-    }
-    
-    /// <summary>
-    /// Armor resist aspect
-    /// </summary>
-    [Serializable]
-    public class CriticalMultiplierCharacteristicAspect : GameCharacteristicAspect<CriticalMultiplierComponent>
-    {
     }
 }

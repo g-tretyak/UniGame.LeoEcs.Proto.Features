@@ -1,12 +1,12 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.CriticalMultiplier.Systems
 {
     using System;
+    using Aspects;
     using Components;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.Ecs.Proto.Characteristics.Base.Components;
-    using UniGame.LeoEcs.Shared.Extensions;
-
 
     /// <summary>
     /// update value of attack speed characteristic
@@ -19,34 +19,24 @@
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
     [Serializable]
-    public sealed class UpdateCriticalChanceChangedSystem : IProtoRunSystem,IProtoInitSystem
+    [ECSDI]
+    public sealed class UpdateCriticalChanceChangedSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private CriticalMultiplierCharacteristicAspect _aspect;
         
-        private ProtoPool<CharacteristicComponent<CriticalMultiplierComponent>> _characteristicPool;
-        private ProtoPool<CriticalMultiplierComponent> _valuePool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<CharacteristicChangedComponent<CriticalMultiplierComponent>>()
-                .Inc<CharacteristicComponent<CriticalMultiplierComponent>>()
-                .Inc<CriticalMultiplierComponent>()
-                .End();
-
-            _characteristicPool = _world.GetPool<CharacteristicComponent<CriticalMultiplierComponent>>();
-            _valuePool = _world.GetPool<CriticalMultiplierComponent>();
-        }
+        private ProtoIt _filter = It
+            .Chain<CharacteristicChangedComponent<CriticalMultiplierComponent>>()
+            .Inc<CharacteristicComponent<CriticalMultiplierComponent>>()
+            .Inc<CriticalMultiplierComponent>()
+            .End();
         
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var characteristicComponent = ref _characteristicPool.Get(entity);
-                ref var valueComponent = ref _valuePool.Get(entity);
+                ref var characteristicComponent = ref _aspect.CriticalMultiplierCharacteristic.Get(entity);
+                ref var valueComponent = ref _aspect.CriticalMultiplier.Get(entity);
                 valueComponent.Value = characteristicComponent.Value;
             }
         }

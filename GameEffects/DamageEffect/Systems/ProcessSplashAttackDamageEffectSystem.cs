@@ -1,75 +1,70 @@
 ﻿namespace UniGame.Ecs.Proto.GameEffects.DamageEffect.Systems
 {
-    using Characteristics.AttackDamage;
-    using Characteristics.CriticalMultiplier.Components;
-    using Characteristics.SplashDamage.Components;
+    using System;
+    using Characteristics.AttackDamage.Aspects;
+    using Characteristics.CriticalMultiplier.Aspects;
+    using Characteristics.SplashDamage.Aspects;
     using Components;
+    using Effects.Aspects;
     using Effects.Components;
-    using Gameplay.CriticalAttackChance.Components;
-    using Gameplay.Damage.Components.Request;
-    using Leopotam.EcsLite;
+    using Gameplay.CriticalAttackChance.Aspects;
+    using Gameplay.Damage.Aspects;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Extensions;
-
-#if ENABLE_IL2CPP
-    using Unity.IL2CPP.CompilerServices;
-#endif
 
     /// <summary>
     /// deal part of attack damage based on SplashDamageComponent
     /// </summary>
 #if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
+
     [Il2CppSetOption(Option.NullChecks, false)]
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
+    [Serializable]
     [ECSDI]
-    public sealed class ProcessSplashAttackDamageEffectSystem : IProtoRunSystem, IProtoInitSystem
+    public sealed class ProcessSplashAttackDamageEffectSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
-        private ProtoPool<EffectComponent> _effectPool;
-        private ProtoPool<AttackDamageComponent> _attackDamagePool;
-        private ProtoPool<SplashDamageComponent> _splashDamagePool;
-        private ProtoPool<CriticalAttackMarkerComponent> _criticalMarkerPool;
-        private ProtoPool<CriticalMultiplierComponent> _criticalMultiplierPool;
-        private ProtoPool<ApplyDamageRequest> _requestPool;
+        private DamageAspect _damageAspect;
+        private EffectAspect _effectAspect;
+        private AttackDamageAspect _attackDamageAspect;
+        private SplashDamageAspect _splashDamageAspect;
+        private CriticalAttackChanceAspect _criticalAttackChanceAspect;
+        private CriticalMultiplierCharacteristicAspect _criticalMultiplierCharacteristicAspect;
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _filter = _world
-                .Filter<EffectComponent>()
-                .Inc<ApplyEffectSelfRequest>()
-                .Inc<SplashAttackDamageEffectComponent>()
-                .End();
-        }
+        private ProtoIt _filter = It
+            .Chain<EffectComponent>()
+            .Inc<ApplyEffectSelfRequest>()
+            .Inc<SplashAttackDamageEffectComponent>()
+            .End();
 
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var effect = ref _effectPool.Get(entity);
+                ref var effect = ref _effectAspect.Effect.Get(entity);
 
-                if (!effect.Source.Unpack(_world, out var sourceEntity) || !_splashDamagePool.Has(sourceEntity))
+                if (!effect.Source.Unpack(_world, out var sourceEntity) ||
+                    !_splashDamageAspect.SplashDamage.Has(sourceEntity))
                     continue;
 
-                ref var splashDamage = ref _splashDamagePool.Get(sourceEntity);
+                ref var splashDamage = ref _splashDamageAspect.SplashDamage.Get(sourceEntity);
                 if (splashDamage.Value == 0) continue;
-                ref var attackDamage = ref _attackDamagePool.Get(sourceEntity);
+                ref var attackDamage = ref _attackDamageAspect.AttackDamage.Get(sourceEntity);
 
                 var damage = attackDamage.Value;
 
                 var requestEntity = _world.NewEntity();
-                ref var request = ref _requestPool.Add(requestEntity);
-                
+                ref var request = ref _damageAspect.ApplyDamage.Add(requestEntity);
+
                 request.Source = effect.Source;
                 request.Effector = _world.PackEntity(entity);
                 request.Destination = effect.Destination;
-                var criticalMultiplier = _criticalMarkerPool.Has(sourceEntity)
-                    ? 1 + _criticalMultiplierPool.Get(sourceEntity).Value / 100
+                var criticalMultiplier = _criticalAttackChanceAspect.CriticalAttackMarker.Has(sourceEntity)
+                    ? 1 + _criticalMultiplierCharacteristicAspect.CriticalMultiplier.Get(sourceEntity).Value / 100
                     : 1;
                 request.Value = damage * criticalMultiplier * splashDamage.Value / 100;
             }

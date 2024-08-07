@@ -2,7 +2,7 @@
 {
     using System;
     using Systems;
-    using Components;
+    using Components.Requests;
     using Cysharp.Threading.Tasks;
     using Feature;
     using Leopotam.EcsProto;

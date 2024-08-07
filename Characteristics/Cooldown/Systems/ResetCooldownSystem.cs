@@ -1,13 +1,16 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Cooldown.Systems
 {
     using System;
+    using Aspects;
     using Base.Components.Events;
     using Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Extensions;
 
+    /// <summary>
+    /// System for resetting cooldowns on entities.
+    /// </summary>
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 
@@ -15,38 +18,27 @@
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
-    [ECSDI]
     [Serializable]
-    public sealed class ResetCooldownSystem : IProtoRunSystem,IProtoInitSystem
+    [ECSDI]
+    public sealed class ResetCooldownSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private CooldownAspect _aspect;
         
-        private ProtoPool<BaseCooldownComponent> _baseCooldownPool;
-        private ProtoPool<RecalculateCooldownSelfRequest> _requestPool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<BaseCooldownComponent>()
-                .Inc<ResetCharacteristicsEvent>()
-                .End();
-            
-           _baseCooldownPool = _world.GetPool<BaseCooldownComponent>();
-           _requestPool = _world.GetPool<RecalculateCooldownSelfRequest>();
-        }
+        private ProtoIt _filter = It
+            .Chain<BaseCooldownComponent>()
+            .Inc<ResetCharacteristicsEvent>()
+            .End();
         
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var baseCooldown = ref _baseCooldownPool.Get(entity);
+                ref var baseCooldown = ref _aspect.BaseCooldown.Get(entity);
                 baseCooldown.Modifications.Clear();
                 
-                if (!_requestPool.Has(entity))
-                    _requestPool.Add(entity);
+                if (!_aspect.RecalculateCooldown.Has(entity))
+                    _aspect.RecalculateCooldown.Add(entity);
             }
         }
     }

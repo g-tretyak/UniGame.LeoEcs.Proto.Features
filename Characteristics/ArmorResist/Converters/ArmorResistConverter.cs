@@ -1,7 +1,6 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.ArmorResist.Converters
 {
 	using System;
-	using System.Threading;
 	using Base.Components.Requests;
 	using Components;
 	using Leopotam.EcsProto;
@@ -9,8 +8,8 @@
 	using UniGame.LeoEcs.Converter.Runtime;
 	using UniGame.LeoEcs.Shared.Extensions;
 	using UnityEngine;
-	using UnityEngine.Serialization;
 
+	
 	[Serializable]
 	public class ArmorResistConverter : LeoEcsConverter
 	{

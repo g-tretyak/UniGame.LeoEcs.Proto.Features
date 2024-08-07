@@ -2,7 +2,6 @@
 {
     using System;
     using Base;
-    using Base.Aspects;
     using Systems;
     using Component;
     using Cysharp.Threading.Tasks;
@@ -25,10 +24,5 @@
             ecsSystems.Add(new RecalculateRadiusSystem());
             return UniTask.CompletedTask;
         }
-    }
-    
-    [Serializable]
-    public sealed class RadiusCharacteristicAspect : GameCharacteristicAspect<RadiusComponent>
-    {
     }
 }

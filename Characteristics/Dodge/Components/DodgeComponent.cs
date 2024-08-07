@@ -2,7 +2,6 @@ namespace UniGame.Ecs.Proto.Characteristics.Dodge.Components
 {
     using System;
     
-
     /// <summary>
     /// Значение параметра здоровья цели.
     /// </summary>

@@ -1,17 +1,12 @@
 ﻿namespace UniGame.Ecs.Proto.Gameplay.ArmorResist.Systems
 {
 	using System;
-	using System.Linq;
-	using Aspects;
+	using Characteristics.ArmorResist.Aspects;
+	using Damage.Aspects;
 	using Damage.Components.Request;
-	using Leopotam.EcsLite;
+	using GameEffects.DamageEffect.DamageTypes.Aspects;
 	using Leopotam.EcsProto;
 	using Leopotam.EcsProto.QoL;
-	using UniGame.Core.Runtime.Extension;
-	using UniGame.LeoEcs.Shared.Extensions;
-	using UniGame.Runtime.ObjectPool.Extensions;
-	using UnityEngine;
-	using UnityEngine.Pool;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 
 	/// <summary>
@@ -26,34 +21,31 @@
 #endif
 	[Serializable]
 	[ECSDI]
-	public class RecalculatedDamageArmorResistSystem : IProtoInitSystem, IProtoRunSystem
+	public class RecalculatedDamageArmorResistSystem : IProtoRunSystem
 	{
 		private ProtoWorld _world;
-		private EcsFilter _filter;
-		private ArmorResistAspect _aspect;
-
-		public void Init(IProtoSystems systems)
-		{
-			_world = systems.GetWorld();
-			_filter = _world
-				.Filter<ApplyDamageRequest>()
-				.End();
-		}
+		private ArmorResistAspect _armorResistAspect;
+		private DamageTypesAspect _damageTypesAspect;
+		private DamageAspect _damageAspect;
+		
+		private ProtoIt _filter = It
+			.Chain<ApplyDamageRequest>()
+			.End();
 
 		public void Run()
 		{
 			foreach (var entity in _filter)
 			{
-				ref var request = ref _aspect.ApplyDamageRequest.Get(entity);
+				ref var request = ref _damageAspect.ApplyDamage.Get(entity);
 				if (!request.Effector.Unpack(_world, out var effectorEntity))
 					continue;
-				if (!_aspect.PhysicsDamage.Has(effectorEntity))
+				if (!_damageTypesAspect.PhysicsDamage.Has(effectorEntity))
 					continue;
 				if (!request.Destination.Unpack(_world, out var destinationEntity))
 					continue;
-				if (!_aspect.ArmorResist.Has(destinationEntity))
+				if (!_armorResistAspect.ArmorResist.Has(destinationEntity))
 					continue;
-				ref var armorResistComponent = ref _aspect.ArmorResist.Get(destinationEntity);
+				ref var armorResistComponent = ref _armorResistAspect.ArmorResist.Get(destinationEntity);
 				var damage = request.Value;
 				var resist = armorResistComponent.Value / 100f;
 				request.Value = damage - damage * resist;

@@ -1,14 +1,18 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Cooldown.Systems
 {
     using System;
+    using Aspects;
     using Characteristics;
     using Components;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Abstract;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Extensions;
     using UniGame.LeoEcs.Timer.Components;
 
+    /// <summary>
+    /// System that recalculates the cooldown value of entities.
+    /// </summary>
 #if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 
@@ -16,32 +20,26 @@
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
-    [ECSDI]
     [Serializable]
-    public sealed class RecalculateCooldownSystem : IProtoRunSystem,IProtoInitSystem
+    [ECSDI]
+    public sealed class RecalculateCooldownSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private TimerAspect _timerAspect;
+        private CooldownAspect _cooldownAspect;
         
-        private ProtoPool<CooldownComponent> cooldownPool;
-        private ProtoPool<BaseCooldownComponent> baseCooldownPool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _filter = _world
-                .Filter<RecalculateCooldownSelfRequest>()
-                .Inc<BaseCooldownComponent>()
-                .Inc<CooldownComponent>()
-                .End();
-        }
+        private ProtoIt _filter = It
+            .Chain<RecalculateCooldownSelfRequest>()
+            .Inc<BaseCooldownComponent>()
+            .Inc<CooldownComponent>()
+            .End();
         
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var baseCooldown = ref baseCooldownPool.Get(entity);
-                ref var cooldown = ref cooldownPool.Get(entity);
+                ref var baseCooldown = ref _cooldownAspect.BaseCooldown.Get(entity);
+                ref var cooldown = ref _timerAspect.Cooldown.Get(entity);
 
                 cooldown.Value = baseCooldown.Modifications.Apply(baseCooldown.Value);
             }

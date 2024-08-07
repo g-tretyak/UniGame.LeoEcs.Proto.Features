@@ -1,18 +1,13 @@
 ﻿namespace UniGame.Ecs.Proto.Gameplay.Damage.Systems
 {
     using System;
-    using Components;
+    using Aspects;
     using Components.Request;
-    using Events;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using Characteristics.Base;
-    using Characteristics.Health;
-    using UniGame.Ecs.Proto.Characteristics.Shield.Components;
-     
+    using Characteristics.Health.Aspects;
+    using Characteristics.Shield.Aspects;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
     /// apply damage to target
@@ -26,35 +21,29 @@
 #endif
     [Serializable]
     [ECSDI]
-    public sealed class ApplyDamageSystem : IProtoRunSystem,IProtoInitSystem
+    public sealed class ApplyDamageSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
-        private ProtoPool<ApplyDamageRequest> _requestPool;
-        private ProtoPool<ChangeCharacteristicBaseRequest<HealthComponent>> _changeHealthPool;
-        private ProtoPool<ChangeShieldRequest> _changeShieldPool;
-        private ProtoPool<ShieldComponent> _shieldPool;
-        private ProtoPool<MadeDamageEvent> _madeDamagePool;
-        private ProtoPool<CriticalDamageEvent> _criticalDamagePool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _filter = _world.Filter<ApplyDamageRequest>().End();
-        }
+        private DamageAspect _damageAspect;
+        private HealthAspect _healthAspect;
+        private ShieldCharacteristicAspect _shieldCharacteristicAspect;
+        
+        private ProtoIt _filter = It
+            .Chain<ApplyDamageRequest>()
+            .End();
 
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var request = ref _requestPool.Get(entity);
+                ref var request = ref _damageAspect.ApplyDamage.Get(entity);
                 if (!request.Destination.Unpack(_world, out var destinationEntity))
                     continue;
 
                 var healthDamage = request.Value;
                 
                 var healthRequestEntity = _world.NewEntity();
-                ref var healthRequest = ref _changeHealthPool.Add(healthRequestEntity);
+                ref var healthRequest = ref _healthAspect.ChangeBase.Add(healthRequestEntity);
                 healthRequest.Source = request.Source;
                 healthRequest.Target = request.Destination;
                 healthRequest.Value = -healthDamage;
@@ -62,7 +51,7 @@
                 request.Source.Unpack(_world, out var sourceEntity);
                 
                 var eventEntity = _world.NewEntity();
-                ref var madeDamage = ref _madeDamagePool.Add(eventEntity);
+                ref var madeDamage = ref _damageAspect.MadeDamage.Add(eventEntity);
                 madeDamage.Value = request.Value;
                 madeDamage.Source = request.Source;
                 madeDamage.Destination = request.Destination;
@@ -70,7 +59,7 @@
 
                 if (!request.IsCritical) continue;
                 
-                ref var criticalEventComponent = ref _criticalDamagePool.Add(eventEntity);
+                ref var criticalEventComponent = ref _damageAspect.CriticalDamage.Add(eventEntity);
                 criticalEventComponent.Value = request.Value;
                 criticalEventComponent.Source = request.Source;
                 criticalEventComponent.Destination = request.Destination;

@@ -4,7 +4,6 @@ namespace UniGame.Ecs.Proto.Characteristics.CriticalChance.Converters
     using Components;
     using Leopotam.EcsProto;
     using UniGame.Ecs.Proto.Characteristics.Base.Components.Requests;
-     
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Converter.Runtime.Abstract;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -12,6 +11,16 @@ namespace UniGame.Ecs.Proto.Characteristics.CriticalChance.Converters
     using UnityEngine;
     using Random = UnityEngine.Random;
 
+    /// <summary>
+    /// Converter a GameObject in a ProtoWorld.
+    /// </summary>
+#if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
+
+    [Il2CppSetOption(Option.NullChecks, false)]
+    [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
+    [Il2CppSetOption(Option.DivideByZeroChecks, false)]
+#endif
     [Serializable]
     public class AttackRangeComponentConverter : LeoEcsConverter,ILeoEcsGizmosDrawer
     {

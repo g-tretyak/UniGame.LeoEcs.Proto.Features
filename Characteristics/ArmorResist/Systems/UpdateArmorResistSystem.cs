@@ -4,10 +4,9 @@
 	using Aspects;
 	using Base.Components;
 	using Components;
-	using Leopotam.EcsLite;
 	using Leopotam.EcsProto;
+	using Leopotam.EcsProto.QoL;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-	using UniGame.LeoEcs.Shared.Extensions;
 
 	/// <summary>
 	/// Update armor resist value by characteristic value.
@@ -21,22 +20,17 @@
 #endif
 	[Serializable]
 	[ECSDI]
-	public class UpdateArmorResistSystem : IProtoInitSystem, IProtoRunSystem
+	public class UpdateArmorResistSystem : IProtoRunSystem
 	{
 		private ProtoWorld _world;
-		private EcsFilter _filter;
 		private ArmorResistAspect _aspect;
 
-		public void Init(IProtoSystems systems)
-		{
-			_world = systems.GetWorld();
-			_filter = _world
-				.Filter<CharacteristicChangedComponent<ArmorResistComponent>>()
-				.Inc<CharacteristicComponent<ArmorResistComponent>>()
-				.Inc<ArmorResistComponent>()
-				.End();
-		}
-
+		private ProtoIt _filter = It
+			.Chain<CharacteristicChangedComponent<ArmorResistComponent>>()
+			.Inc<CharacteristicComponent<ArmorResistComponent>>()
+			.Inc<ArmorResistComponent>()
+			.End();
+		
 		public void Run()
 		{
 			foreach (var entity in _filter)

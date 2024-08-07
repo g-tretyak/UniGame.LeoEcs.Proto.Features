@@ -1,45 +1,42 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Block.Systems
 {
     using System;
+    using Aspects;
     using Components;
-    using Leopotam.EcsLite;
+    using LeoEcs.Bootstrap.Runtime.Attributes;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using UniGame.Ecs.Proto.Characteristics.Base.Components;
-    using UniGame.LeoEcs.Shared.Extensions;
+
+    /// <summary>
+    /// update value of attack speed characteristic
+    /// </summary>
+#if ENABLE_IL2CPP
     using Unity.IL2CPP.CompilerServices;
 
-    [Serializable]
     [Il2CppSetOption(Option.NullChecks, false)]
     [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-    public sealed class RecalculateBlockSystem : IProtoRunSystem,IProtoInitSystem
+#endif
+    [Serializable]
+    [ECSDI]
+    public sealed class RecalculateBlockSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
+        private BlockAspect _aspect;
         
-        private ProtoPool<CharacteristicComponent<BlockComponent>> _characteristicPool;
-        private ProtoPool<BlockComponent> _valuePool;
-
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            
-            _filter = _world
-                .Filter<CharacteristicChangedComponent<BlockComponent>>()
-                .Inc<CharacteristicComponent<BlockComponent>>()
-                .Inc<BlockComponent>()
-                .End();
-
-            _characteristicPool = _world.GetPool<CharacteristicComponent<BlockComponent>>();
-            _valuePool = _world.GetPool<BlockComponent>();
-        }
+        private ProtoIt _filter = It
+            .Chain<CharacteristicChangedComponent<BlockComponent>>()
+            .Inc<CharacteristicComponent<BlockComponent>>()
+            .Inc<BlockComponent>()
+            .End();
         
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var characteristicComponent = ref _characteristicPool.Get(entity);
-                ref var valueComponent = ref _valuePool.Get(entity);
+                ref var characteristicComponent = ref _aspect.BlockCharacteristic.Get(entity);
+                ref var valueComponent = ref _aspect.Block.Get(entity);
                 valueComponent.Value = characteristicComponent.Value;
             }
         }

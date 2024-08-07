@@ -1,9 +1,8 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.Shield
 {
     using System;
-    using Base.Aspects;
     using Systems;
-    using Components;
+    using Components.Requests;
     using Cysharp.Threading.Tasks;
     using Feature;
     using Leopotam.EcsProto;
@@ -12,7 +11,10 @@
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "Proto Features/Characteristics/Shield Feature")]
-    public sealed class ShieldFeature : CharacteristicFeature<ShieldEcsFeature> {}
+    public sealed class ShieldFeature : CharacteristicFeature<ShieldEcsFeature>
+    {
+        
+    }
     
     [Serializable]
     public sealed class ShieldEcsFeature : CharacteristicEcsFeature
@@ -26,12 +28,5 @@
             
             return UniTask.CompletedTask;
         }
-    }
-    
-    [Serializable]
-    public sealed class ShieldCharacteristicAspect : GameCharacteristicAspect<ShieldComponent>
-    {
-        //requests
-        public ProtoPool<ChangeShieldRequest> ChangeShieldRequest;
     }
 }

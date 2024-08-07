@@ -1,13 +1,12 @@
 ﻿namespace UniGame.Ecs.Proto.Gameplay.Damage.Systems
 {
     using System;
-    using Characteristics.Shield.Components;
+    using Aspects;
+    using Characteristics.Shield.Aspects;
     using Components.Request;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Extensions;
     using UnityEngine;
 
     /// <summary>
@@ -22,36 +21,32 @@
 #endif
     [Serializable]
     [ECSDI]
-    public sealed class CheckDamageShieldSystem : IProtoRunSystem,IProtoInitSystem
+    public sealed class CheckDamageShieldSystem : IProtoRunSystem
     {
-        private EcsFilter _filter;
         private ProtoWorld _world;
-        private ProtoPool<ApplyDamageRequest> _requestPool;
-        private ProtoPool<ChangeShieldRequest> _changeShieldPool;
-        private ProtoPool<ShieldComponent> _shieldPool;
+        private DamageAspect _damageAspect;
+        private ShieldCharacteristicAspect _shieldCharacteristicAspect;
 
-        public void Init(IProtoSystems systems)
-        {
-            _world = systems.GetWorld();
-            _filter = _world.Filter<ApplyDamageRequest>().End();
-        }
+        private ProtoIt _filter = It
+            .Chain<ApplyDamageRequest>()
+            .End();
 
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var request = ref _requestPool.Get(entity);
+                ref var request = ref _damageAspect.ApplyDamage.Get(entity);
                 if (!request.Destination.Unpack(_world, out var destinationEntity))
                     continue;
 
-                if (!_shieldPool.Has(destinationEntity)) continue;
-                
-                ref var shield = ref _shieldPool.Get(destinationEntity);
+                if (!_shieldCharacteristicAspect.Shield.Has(destinationEntity)) continue;
+
+                ref var shield = ref _shieldCharacteristicAspect.Shield.Get(destinationEntity);
                 var shieldValue = shield.Value;
                 var shieldDamage = Mathf.Min(shieldValue, request.Value);
 
                 var shieldRequestEntity = _world.NewEntity();
-                ref var shieldRequest = ref _changeShieldPool.Add(shieldRequestEntity);
+                ref var shieldRequest = ref _shieldCharacteristicAspect.ChangeShield.Add(shieldRequestEntity);
                 shieldRequest.Source = request.Source;
                 shieldRequest.Destination = request.Destination;
                 shieldRequest.Value = -shieldDamage;

@@ -36,7 +36,7 @@
         private ProtoPool<MaxValueComponent> _maxValuePool;
         private ProtoPool<CharacteristicBaseValueComponent> _baseValuePool;
         private ProtoPool<OwnerComponent> _ownerPool;
-        private ProtoPool<CharacteristicOwnerComponent> _characteristicsOwnerPool;
+        private ProtoPool<CharacteristicOwnerComponent<TCharacteristic>> _characteristicsOwnerPool;
         private ProtoPool<CharacteristicComponent<TCharacteristic>> _characteristicValuePool;
         private ProtoPool<CharacteristicDefaultValueComponent> _defaultValuePool;
         private ProtoPool<CharacteristicPreviousValueComponent> _previousValuePool;
@@ -58,7 +58,7 @@
             
             _characteristicLinkPool = _world.GetPool<CharacteristicLinkComponent<TCharacteristic>>();
             _ownerChangedPool = _world.GetPool<CharacteristicChangedComponent<TCharacteristic>>();
-            _characteristicsOwnerPool = _world.GetPool<CharacteristicOwnerComponent>();
+            _characteristicsOwnerPool = _world.GetPool<CharacteristicOwnerComponent<TCharacteristic>>();
             
             _characteristicPool = _world.GetPool<CharacteristicValueComponent>();
             _minValuePool = _world.GetPool<MinValueComponent>();

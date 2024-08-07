@@ -13,6 +13,8 @@
     {
         private EcsFilter _filter;
         private ProtoWorld _world;
+        
+        
         private ProtoPool<DamageEffectRequestCompleteComponent> _damageEffectRequestCompletePool;
         private ProtoPool<EffectComponent> _effectPool;
         private ProtoPool<DamageEffectComponent> _damagePool;

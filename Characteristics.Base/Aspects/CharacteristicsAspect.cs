@@ -33,7 +33,6 @@
         public ProtoPool<CharacteristicValueComponent> Value;
         public ProtoPool<CharacteristicLinkComponent> CharacteristicLink;
         public ProtoPool<OwnerComponent> Owner;
-        public ProtoPool<CharacteristicOwnerComponent> CharacteristicOwner;
         public ProtoPool<CharacteristicPreviousValueComponent> PreviousValue;
         public ProtoPool<MinValueComponent> MinValue;
         public ProtoPool<MaxValueComponent> MaxValue;

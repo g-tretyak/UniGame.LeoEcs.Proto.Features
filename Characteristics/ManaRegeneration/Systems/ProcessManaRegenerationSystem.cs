@@ -1,33 +1,36 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.ManaRegeneration.Systems
 {
-	using Base;
+	using System;
+	using Aspects;
 	using Components;
 	using Game.Ecs.Time.Service;
+	using LeoEcs.Bootstrap.Runtime.Attributes;
 	using Leopotam.EcsProto;
 	using Leopotam.EcsProto.QoL;
-	using Mana;
+	using Mana.Aspects;
+	using Mana.Components;
 	using UniGame.LeoEcs.Shared.Extensions;
-	
-#if ENABLE_IL2CPP
-    using Unity.IL2CPP.CompilerServices;
-#endif
-	
 
 	/// <summary>
-	/// Regenerate mana.
+	/// System for processing mana regeneration.
 	/// </summary>
 #if ENABLE_IL2CPP
+    using Unity.IL2CPP.CompilerServices;
+
     [Il2CppSetOption(Option.NullChecks, false)]
 	[Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 	[Il2CppSetOption(Option.DivideByZeroChecks, false)]
 #endif
+	[Serializable]
+	[ECSDI]
 	public class ProcessManaRegenerationSystem : IProtoRunSystem
 	{
 		private ProtoWorld _world;
 		private ManaRegenerationAspect _regenerationAspect;
 		private ManaAspect _manaAspect;
 		
-		private ProtoIt _filter = It.Chain<ManaRegenerationComponent>()
+		private ProtoIt _filter = It
+			.Chain<ManaRegenerationComponent>()
 			.Inc<ManaRegenerationTimerComponent>()
 			.Inc<ManaComponent>()
 			.End();
