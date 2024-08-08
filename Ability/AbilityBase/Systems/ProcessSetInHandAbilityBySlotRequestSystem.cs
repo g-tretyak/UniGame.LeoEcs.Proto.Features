@@ -19,7 +19,7 @@
 #endif
     [Serializable]
     [ECSDI]
-    public sealed class ProcessSetInHandAbilityBySlotRequestSystem : IProtoRunSystem
+    public sealed class ProcessSetInHandAbilityBySlotRequestSystem : IProtoInitSystem, IProtoRunSystem
     {
         private AbilityAspect _abilityAspect;
         private EcsFilter _filter;
