@@ -16,6 +16,7 @@
     using Sirenix.Serialization;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
+    using Unity.IL2CPP.CompilerServices;
 
     [Serializable]
     [ECSDI]

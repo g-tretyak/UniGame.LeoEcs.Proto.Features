@@ -1,4 +1,4 @@
-﻿namespace UniGame.Ecs.Proto.Effects.Aspects
+namespace UniGame.Ecs.Proto.Effects.Aspects
 {
     using System;
     using Characteristics.AbilityPower.Components;
@@ -24,6 +24,27 @@
         public ProtoPool<DelayedEffectComponent> Delayed;
         public ProtoPool<CompletedDelayedEffectComponent> CompletedDelayed;
         
+        // Components
+        //---Generated Begin---
+        public ProtoPool<CompletedDelayedEffectComponent> CompletedDelayedEffectComponent;
+        public ProtoPool<DelayedEffectComponent> DelayedEffectComponent;
+        public ProtoPool<EffectComponent> EffectComponent;
+        public ProtoPool<EffectDurationComponent> EffectDurationComponent;
+        public ProtoPool<EffectGlobalRootMarkerComponent> EffectGlobalRootMarkerComponent;
+        public ProtoPool<EffectParentComponent> EffectParentComponent;
+        public ProtoPool<EffectPeriodicityComponent> EffectPeriodicityComponent;
+        public ProtoPool<EffectRootComponent> EffectRootComponent;
+        public ProtoPool<EffectRootIdComponent> EffectRootIdComponent;
+        public ProtoPool<EffectRootTargetComponent> EffectRootTargetComponent;
+        public ProtoPool<EffectRootTransformsComponent> EffectRootTransformsComponent;
+        public ProtoPool<EffectsComponent> EffectsComponent;
+        public ProtoPool<EffectShowCompleteComponent> EffectShowCompleteComponent;
+        public ProtoPool<EffectsListComponent> EffectsListComponent;
+        public ProtoPool<EffectsRootDataComponent> EffectsRootDataComponent;
+        public ProtoPool<EffectViewComponent> EffectViewComponent;
+        public ProtoPool<EffectViewDataComponent> EffectViewDataComponent;
+        public ProtoPool<SelfEffectsComponent> SelfEffectsComponent;
+
         
         //optional
         public ProtoPool<EffectViewComponent> View;
@@ -34,10 +55,18 @@
         public ProtoPool<TransformPositionComponent> Position;
         public ProtoPool<TransformComponent> Transform;
         
-        //Events
+        // Events
+        //---Generated Begin---
         public ProtoPool<EffectAppliedSelfEvent> EffectAppliedSelfEvent;
 
-        //requests
+        // Requests
+        //---Generated Begin---
+        public ProtoPool<ApplyEffectSelfRequest> ApplyEffectSelfRequest;
+        public ProtoPool<CreateEffectSelfRequest> CreateEffectSelfRequest;
+        public ProtoPool<DestroyEffectSelfRequest> DestroyEffectSelfRequest;
+        public ProtoPool<DestroyEffectViewSelfRequest> DestroyEffectViewSelfRequest;
+        public ProtoPool<RemoveEffectRequest> RemoveEffectRequest;
+
         public ProtoPool<CreateEffectSelfRequest> Create;
         public ProtoPool<DestroyEffectViewSelfRequest> DestroyView;
         public ProtoPool<DestroyEffectSelfRequest> DestroyEffect;

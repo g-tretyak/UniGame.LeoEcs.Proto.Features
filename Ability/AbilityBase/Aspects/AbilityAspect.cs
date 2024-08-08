@@ -1,4 +1,4 @@
-﻿namespace UniGame.Ecs.Proto.Ability.Aspects
+namespace UniGame.Ecs.Proto.Ability.Aspects
 {
     using System;
     using System.Runtime.CompilerServices;
@@ -19,13 +19,16 @@
     using Game.Ecs.Time.Service;
     using GameLayers.Category.Components;
     using GameLayers.Relationship.Components;
+    using LeoEcs.Bootstrap.Runtime;
     using LeoEcs.Shared.Extensions;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
+    using SubFeatures.AbilityAnimation.Components;
     using Tools;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
     using UniGame.LeoEcs.Timer.Components;
+    using Unity.IL2CPP.CompilerServices;
 
     [Serializable]
     public class AbilityAspect : EcsAspect
@@ -34,6 +37,35 @@
         
         public ProtoWorld World;
         
+        // Components
+        //---Generated Begin---
+        public ProtoPool<AbilityActiveAnimationComponent> AbilityActiveAnimationComponent;
+        public ProtoPool<AbilityActiveTimeComponent> AbilityActiveTimeComponent;
+        public ProtoPool<AbilityAnimationComponent> AbilityAnimationComponent;
+        public ProtoPool<AbilityBlockedComponent> AbilityBlockedComponent;
+        public ProtoPool<AbilityCategoryComponent> AbilityCategoryComponent;
+        public ProtoPool<AbilityConfigurationComponent> AbilityConfigurationComponent;
+        public ProtoPool<AbilityEffectMilestonesComponent> AbilityEffectMilestonesComponent;
+        public ProtoPool<AbilityEquippedComponent> AbilityEquippedComponent;
+        public ProtoPool<AbilityEvaluationComponent> AbilityEvaluationComponent;
+        public ProtoPool<AbilityIdComponent> AbilityIdComponent;
+        public ProtoPool<AbilityInHandComponent> AbilityInHandComponent;
+        public ProtoPool<AbilityInHandLinkComponent> AbilityInHandLinkComponent;
+        public ProtoPool<AbilityInProcessingComponent> AbilityInProcessingComponent;
+        public ProtoPool<AbilityInputComponent> AbilityInputComponent;
+        public ProtoPool<AbilityLevelComponent> AbilityLevelComponent;
+        public ProtoPool<AbilityLinkComponent> AbilityLinkComponent;
+        public ProtoPool<AbilityMapComponent> AbilityMapComponent;
+        public ProtoPool<AbilityMetaComponent> AbilityMetaComponent;
+        public ProtoPool<AbilityPauseComponent> AbilityPauseComponent;
+        public ProtoPool<AbilitySlotComponent> AbilitySlotComponent;
+        public ProtoPool<AbilityUnlockComponent> AbilityUnlockComponent;
+        public ProtoPool<AbilityUsingComponent> AbilityUsingComponent;
+        public ProtoPool<ActiveAbilityComponent> ActiveAbilityComponent;
+        public ProtoPool<DefaultAbilityComponent> DefaultAbilityComponent;
+        public ProtoPool<DefaultAbilityTargetSlotComponent> DefaultAbilityTargetSlotComponent;
+        public ProtoPool<PassiveAbilityComponent> PassiveAbilityComponent;
+
         public ProtoPool<AbilityUnlockComponent> Unlock;
         public ProtoPool<OwnerComponent> Owner;
         public ProtoPool<ActiveAbilityComponent> Active;
@@ -67,7 +99,30 @@
         //is ability in use
         public ProtoPool<AbilityUsingComponent> AbilityUsing;
         
-        //requests
+        // Requests
+        //---Generated Begin---
+        public ProtoPool<AbilityValidationSelfRequest> AbilityValidationSelfRequest;
+        public ProtoPool<ActivateAbilityByIdRequest> ActivateAbilityByIdRequest;
+        public ProtoPool<ActivateAbilityRequest> ActivateAbilityRequest;
+        public ProtoPool<ActivateAbilitySelfRequest> ActivateAbilitySelfRequest;
+        public ProtoPool<ApplyAbilityByIdSelfRequest> ApplyAbilityByIdSelfRequest;
+        public ProtoPool<ApplyAbilityBySlotSelfRequest> ApplyAbilityBySlotSelfRequest;
+        public ProtoPool<ApplyAbilityEffectsSelfRequest> ApplyAbilityEffectsSelfRequest;
+        public ProtoPool<ApplyAbilitySelfRequest> ApplyAbilitySelfRequest;
+        public ProtoPool<CompleteAbilitySelfRequest> CompleteAbilitySelfRequest;
+        public ProtoPool<CreateAbilityRequest> CreateAbilityRequest;
+        public ProtoPool<EquipAbilityIdSelfRequest> EquipAbilityIdSelfRequest;
+        public ProtoPool<EquipAbilityIdToChampionRequest> EquipAbilityIdToChampionRequest;
+        public ProtoPool<EquipAbilityNameSelfRequest> EquipAbilityNameSelfRequest;
+        public ProtoPool<EquipAbilitySelfRequest> EquipAbilitySelfRequest;
+        public ProtoPool<PauseAbilityRequest> PauseAbilityRequest;
+        public ProtoPool<RemovePauseAbilityRequest> RemovePauseAbilityRequest;
+        public ProtoPool<ResetAbilityCooldownSelfRequest> ResetAbilityCooldownSelfRequest;
+        public ProtoPool<RestartAbilityCooldownSelfRequest> RestartAbilityCooldownSelfRequest;
+        public ProtoPool<SetAbilityBaseCooldownSelfRequest> SetAbilityBaseCooldownSelfRequest;
+        public ProtoPool<SetInHandAbilityBySlotSelfRequest> SetInHandAbilityBySlotSelfRequest;
+        public ProtoPool<SetInHandAbilitySelfRequest> SetInHandAbilitySelfRequest;
+
         
         public ProtoPool<ApplyAbilityEffectsSelfRequest> ApplyAbilityEffects;
         public ProtoPool<ActivateAbilityRequest> ActivateAbilityOnTarget;
@@ -89,7 +144,11 @@
         public ProtoPool<PauseAbilityRequest> PauseAbility;
         public ProtoPool<RemovePauseAbilityRequest> RemovePauseAbility;
         
-        //events
+        // Events
+        //---Generated Begin---
+        public ProtoPool<AbilityCompleteSelfEvent> AbilityCompleteSelfEvent;
+        public ProtoPool<AbilityStartUsingSelfEvent> AbilityStartUsingSelfEvent;
+
         public ProtoPool<AbilityStartUsingSelfEvent> UsingEvent;
         public ProtoPool<AbilityCompleteSelfEvent> CompleteEvent;
         public ProtoPool<AbilityVelocityEvent> AbilityVelocityEvent;
@@ -247,7 +306,7 @@
             ref var targetInHandComponent = ref AbilityInHandLink.Get(entity);
             var abilityEntity = targetInHandComponent.AbilityEntity;
 
-            if (abilityEntity.Unpack(world, out var previousAbility))
+            if (abilityEntity.Unpack(World, out var previousAbility))
             {
                 if (previousAbility.Equals(newAbility))
                     return;
@@ -258,7 +317,7 @@
             if (!InHand.Has(newAbility))
                 InHand.Add(newAbility);
 
-            abilityEntity = world.PackEntity(newAbility);
+            abilityEntity = World.PackEntity(newAbility);
             targetInHandComponent.AbilityEntity = abilityEntity;
         }
 
@@ -312,7 +371,7 @@
             foreach (var abilityPair in abilityMap.AbilitySlots)
             {
                 ref var abilityPacked = ref abilityPair.Value;
-                if (!abilityPacked.Unpack(world, out var targetAbility)) continue;
+                if (!abilityPacked.Unpack(World, out var targetAbility)) continue;
                 if (abilityEntity.Equals(targetAbility)) return abilityPair.Key;
             }
 
@@ -560,7 +619,7 @@
         {
             if (milestonesInfo == null) return;
 
-            ref var effectMilestones = ref world.GetOrAddComponent<AbilityEffectMilestonesComponent>(abilityEntity);
+            ref var effectMilestones = ref World.GetOrAddComponent<AbilityEffectMilestonesComponent>(abilityEntity);
 
             var effects = milestonesInfo.effectMilestones;
             if (effects.Count == 0)
@@ -591,11 +650,11 @@
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ActivateAbility(ProtoEntity entity, ProtoEntity abilityEntity)
         {
-            var packedAbilityEntity = world.PackEntity(abilityEntity);
-            ref var setInHand = ref world.GetOrAddComponent<SetInHandAbilitySelfRequest>(entity);
+            var packedAbilityEntity = World.PackEntity(abilityEntity);
+            ref var setInHand = ref World.GetOrAddComponent<SetInHandAbilitySelfRequest>(entity);
             setInHand.Value = packedAbilityEntity;
 
-            ref var abilityUseRequest = ref world.GetOrAddComponent<ApplyAbilitySelfRequest>(entity);
+            ref var abilityUseRequest = ref World.GetOrAddComponent<ApplyAbilitySelfRequest>(entity);
             abilityUseRequest.Value = packedAbilityEntity;
         }
 
@@ -607,10 +666,10 @@
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ActivateAbility( ProtoEntity abilityEntity)
         {
-            if (!world.HasComponent<OwnerComponent>(abilityEntity)) return;
+            if (!World.HasComponent<OwnerComponent>(abilityEntity)) return;
 
-            ref var ownerComponent = ref world.GetComponent<OwnerComponent>(abilityEntity);
-            if (!ownerComponent.Value.Unpack(world, out var ownerEntity)) return;
+            ref var ownerComponent = ref World.GetComponent<OwnerComponent>(abilityEntity);
+            if (!ownerComponent.Value.Unpack(World, out var ownerEntity)) return;
 
             ActivateAbility(ownerEntity, abilityEntity);
         }
@@ -623,10 +682,10 @@
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ActivateAbilitySlot( int entity, int slot)
         {
-            ref var setInHand = ref world.GetOrAddComponent<SetInHandAbilityBySlotSelfRequest>(entity);
+            ref var setInHand = ref World.GetOrAddComponent<SetInHandAbilityBySlotSelfRequest>(entity);
             setInHand.AbilityCellId = slot;
 
-            var abilityInputPool = world.GetPool<ApplyAbilityBySlotSelfRequest>();
+            var abilityInputPool = World.GetPool<ApplyAbilityBySlotSelfRequest>();
             ref var abilityUseRequest = ref abilityInputPool.GetOrAddComponent(entity);
             abilityUseRequest.AbilitySlot = slot;
         }
@@ -653,12 +712,12 @@
         public bool TryGetInHandAbility( ProtoEntity entity, out ProtoEntity abilityEntity)
         {
             abilityEntity = _invalidEntity;
-            var abilityInHandPool = world.GetPool<AbilityInHandLinkComponent>();
+            var abilityInHandPool = World.GetPool<AbilityInHandLinkComponent>();
             if (!abilityInHandPool.Has(entity))
                 return false;
 
             ref var inHandAbility = ref abilityInHandPool.Get(entity);
-            if (!inHandAbility.AbilityEntity.Unpack(world, out var ability))
+            if (!inHandAbility.AbilityEntity.Unpack(World, out var ability))
                 return false;
 
             abilityEntity = ability;
@@ -673,8 +732,8 @@
         public bool TryGetDefaultAbility(ProtoEntity entity, out ProtoEntity abilityEntity)
         {
             abilityEntity = _invalidEntity;
-            var abilityMapPool = world.GetPool<AbilityMapComponent>();
-            var defaultPool = world.GetPool<DefaultAbilityComponent>();
+            var abilityMapPool = World.GetPool<AbilityMapComponent>();
+            var defaultPool = World.GetPool<DefaultAbilityComponent>();
 
             if (!abilityMapPool.Has(entity)) return false;
 
@@ -683,7 +742,7 @@
             foreach (var abilityPair in map.AbilitySlots)
             {
                 ref var mapAbilityEntity = ref abilityPair.Value;
-                if (!mapAbilityEntity.Unpack(world, out var abilityEntityValue)) continue;
+                if (!mapAbilityEntity.Unpack(World, out var abilityEntityValue)) continue;
                 if (!defaultPool.Has(abilityEntityValue)) continue;
                 abilityEntity = abilityEntityValue;
                 return true;

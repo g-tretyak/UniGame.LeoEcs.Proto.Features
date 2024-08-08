@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Characteristics.ManaRegeneration.Components
 {
     using System;
+    using Unity.IL2CPP.CompilerServices;
 
     /// <summary>
     /// ManaRegeneration characteristic component
