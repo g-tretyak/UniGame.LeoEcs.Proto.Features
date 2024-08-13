@@ -3,7 +3,6 @@
     using System;
     using Aspects;
     using Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
@@ -28,21 +27,17 @@
         private AbilityAspect _abilityAspect;
         private ProtoWorld _world;
         
-        private ProtoPool<ApplyAbilityBySlotSelfRequest> _requestPool;
-        private ProtoPool<AbilityMapComponent> _abilityMapPool;
-        private ProtoPool<ApplyAbilitySelfRequest> _applyAbilitySelfRequestPool;
-        
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var request = ref _requestPool.Get(entity);
+                ref var request = ref _abilityAspect.ApplyAbilityBySlotSelfRequest.Get(entity);
                 var slotId = request.AbilitySlot;
                 
                 var packedAbility = _abilityAspect.GetAbilityBySlot(entity, slotId);
                 if(!packedAbility.Unpack(_world, out var abilityEntity))
                     continue;
-                ref var requestEntity = ref _applyAbilitySelfRequestPool.GetOrAddComponent(entity);
+                ref var requestEntity = ref _abilityAspect.ApplyAbilitySelfRequest.GetOrAddComponent(entity);
                 requestEntity.Value = packedAbility;
             }
         }

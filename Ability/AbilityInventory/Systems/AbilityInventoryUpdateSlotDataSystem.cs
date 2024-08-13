@@ -2,6 +2,7 @@
 {
 	using System;
 	using Ability.Common.Components;
+	using Aspects;
 	using Components;
 	using Cysharp.Threading.Tasks;
 	using Game.Code.Services.AbilityLoadout.Abstract;
@@ -23,11 +24,9 @@
 	public class AbilityInventoryUpdateSlotDataSystem : IProtoRunSystem
 	{
 		private readonly IAbilityCatalogService _abilityService;
+		private AbilityInventoryAspect _abilityInventoryAspect;
 		
 		private ProtoWorld _world;
-		
-		private ProtoPool<AbilityIdComponent> _abilityIdPool;
-		private ProtoPool<AbilityEquipChangedEvent> _eventPool;
 
 		private ProtoItExc _filter= It
 			.Chain<AbilityInventoryComponent>()
@@ -42,7 +41,7 @@
 		{
 			foreach (var eventEntity in _eventFilter)
 			{
-				ref var eventComponent = ref _eventPool.Get(eventEntity);
+				ref var eventComponent = ref _abilityInventoryAspect.EquipChanged.Get(eventEntity);
 				if(!eventComponent.Owner.Unpack(_world,out var ownerEntity))
 					continue;
 

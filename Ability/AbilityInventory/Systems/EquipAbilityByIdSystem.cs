@@ -36,7 +36,7 @@
 			foreach (var abilityEntity in _filterRequest)
 			{
 				ref var requestComponent = ref _inventoryAspect.EquipById.Get(abilityEntity);
-				ref var abilityEquipRequest = ref _world.AddComponent<EquipAbilitySelfRequest>(abilityEntity);
+				ref var abilityEquipRequest = ref _inventoryAspect.Equip.Add(abilityEntity);
 				abilityEquipRequest.AbilityId = requestComponent.AbilityId;
 				abilityEquipRequest.AbilitySlot = requestComponent.AbilitySlot;
 				abilityEquipRequest.Target = requestComponent.Owner;

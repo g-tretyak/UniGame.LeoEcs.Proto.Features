@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.Common.Systems
 {
     using System;
+    using Aspects;
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
@@ -21,9 +22,8 @@
     {
         private EcsFilter _filter;
         private ProtoWorld _world;
-        private ProtoPool<AbilityEffectMilestonesComponent> _milestonesPool;
-        private ProtoPool<AbilityEvaluationComponent> _evaluationPool;
-        private ProtoPool<ApplyAbilityEffectsSelfRequest> _requestPool;
+
+        private AbilityAspect _abilityAspect;
 
         public void Init(IProtoSystems systems)
         {
@@ -38,8 +38,8 @@
         {
             foreach (var entity in _filter)
             {
-                ref var milestones = ref _milestonesPool.Get(entity);
-                ref var evaluation = ref _evaluationPool.Get(entity);
+                ref var milestones = ref _abilityAspect.AbilityEffectMilestonesComponent.Get(entity);
+                ref var evaluation = ref _abilityAspect.AbilityEvaluationComponent.Get(entity);
 
                 var evaluationTime = evaluation.EvaluateTime;
                 for (var i = 0; i < milestones.Milestones.Length; i++)
@@ -52,7 +52,7 @@
                         continue;
 
                     milestone.IsApplied = true;
-                    _requestPool.Add(entity);
+                    _abilityAspect.ApplyAbilityEffectsSelfRequest.Add(entity);
                 }
             }
         }

@@ -40,7 +40,7 @@
             foreach (var effectEntity in _filter)
             {
                 ref var request = ref _effectAspect.Create.Get(effectEntity);
-                ref var effectComponent = ref _effectAspect.Effect.Add(effectEntity);
+                ref var effectComponent = ref _effectAspect.Effect.GetOrAdd(effectEntity);
                 
                 request.Destination.Unpack(_world,out var destinationEntity);
                 

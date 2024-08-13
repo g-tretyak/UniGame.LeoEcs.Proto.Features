@@ -1,7 +1,6 @@
 ﻿namespace UniGame.Ecs.Proto.GameEffects.RetargetEffect.Aspects
 {
 	using System;
-	using Ability.SubFeatures.Target.Components;
 	using Components;
 	using Leopotam.EcsProto;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Abstract;
@@ -15,6 +14,6 @@
 		// Stores the duration of the retarget effect
 		public ProtoPool<RetargetComponent> RetargetComponent;
 		// Marks the target as untargetable
-		public ProtoPool<UntargetableComponent> UntargetableComponent;
+		//public ProtoPool<UntargetableComponent> UntargetableComponent;
 	}
 }

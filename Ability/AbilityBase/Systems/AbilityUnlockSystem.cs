@@ -1,5 +1,6 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.Systems
 {
+	using Aspects;
 	using Components;
 	using Leopotam.EcsLite;
 	using Leopotam.EcsProto;
@@ -21,28 +22,26 @@
 	{
 		private ProtoWorld _world;
 		private EcsFilter _eventFilter;
-		private ProtoPool<AbilityUnlockEvent> _abilityUnlockEventPool;
-		private ProtoPool<AbilityUnlockComponent> _abilityUnlockPool;
+
+		private AbilityAspect _abilityAspect;
 
 		public void Init(IProtoSystems systems)
 		{
 			_world = systems.GetWorld();
 			_eventFilter = _world.Filter<AbilityUnlockEvent>()
 				.End();
-			_abilityUnlockEventPool = _world.GetPool<AbilityUnlockEvent>();
-			_abilityUnlockPool = _world.GetPool<AbilityUnlockComponent>();
 		}
 
 		public void Run()
 		{
 			foreach (var entity in _eventFilter)
 			{
-				ref var unlockEvent = ref _abilityUnlockEventPool.Get(entity);
+				ref var unlockEvent = ref _abilityAspect.AbilityUnlockEvent.Get(entity);
 				if (!unlockEvent.Ability.Unpack(_world, out var abilityEntity))
 					continue;
-				if (_abilityUnlockPool.Has(abilityEntity))
+				if (_abilityAspect.AbilityUnlockComponent.Has(abilityEntity))
 					continue;
-				_abilityUnlockPool.Add(abilityEntity);
+				_abilityAspect.AbilityUnlockComponent.Add(abilityEntity);
 			}
 		}
 	}

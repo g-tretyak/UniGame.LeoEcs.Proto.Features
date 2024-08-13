@@ -8,7 +8,6 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using SubFeatures.Target.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 
@@ -26,7 +25,7 @@
         private EcsFilter _filter;
         private ProtoWorld _world;
         
-        private ProtoPool<AbilityTargetsComponent> _abilityTargetPool;
+        //private ProtoPool<AbilityTargetsComponent> _abilityTargetPool;
         private ProtoPool<OwnerComponent> _ownerPool;
         private ProtoPool<VisibleUtilityViewComponent> _visiblePool;
         private ProtoPool<ShowHighlightRequest> _showHighlightPool;
@@ -36,11 +35,11 @@
         {
             _world = systems.GetWorld();
             _filter = _world.Filter<AbilityInHandComponent>()
-                .Inc<AbilityTargetsComponent>()
+                //.Inc<AbilityTargetsComponent>()
                 .Inc<OwnerComponent>()
                 .End();
             
-            _abilityTargetPool = _world.GetPool<AbilityTargetsComponent>();
+            //_abilityTargetPool = _world.GetPool<AbilityTargetsComponent>();
             _ownerPool = _world.GetPool<OwnerComponent>();
             _visiblePool = _world.GetPool<VisibleUtilityViewComponent>();
             _showHighlightPool = _world.GetPool<ShowHighlightRequest>();
@@ -59,7 +58,7 @@
                 if(!_visiblePool.Has(ownerEntity))
                     continue;
                 
-                ref var chosenTarget = ref _abilityTargetPool.Get(entity);
+                /*ref var chosenTarget = ref _abilityTargetPool.Get(entity);
                 var count = chosenTarget.Count;
 
                 for (int i = 0; i < count; i++)
@@ -91,7 +90,7 @@
                 
                     hideRequest.Source = _world.PackEntity(entity);
                     hideRequest.Destination = packedEntity;
-                }
+                }*/
             }
         }
     }

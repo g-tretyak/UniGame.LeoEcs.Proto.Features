@@ -1,17 +1,12 @@
 ﻿namespace UniGame.Ecs.Proto.GameEffects.RetargetEffect.Systems
 {
 	using System;
-	using System.Linq;
-	using Ability.SubFeatures.Target.Components;
 	using Aspects;
 	using Components;
 	using Leopotam.EcsLite;
 	using Leopotam.EcsProto;
-	using UniGame.Core.Runtime.Extension;
 	using UniGame.LeoEcs.Shared.Extensions;
-	using UniGame.Runtime.ObjectPool.Extensions;
 	using UnityEngine;
-	using UnityEngine.Pool;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 
 	/// <summary>
@@ -37,7 +32,7 @@
 			_world = systems.GetWorld();
 			_filter = _world
 				.Filter<RetargetComponent>()
-				.Inc<UntargetableComponent>()
+				//.Inc<UntargetableComponent>()
 				.End();
 		}
 
@@ -48,7 +43,7 @@
 				ref var retargetComponent = ref _aspect.RetargetComponent.Get(entity);
 				if (retargetComponent.Value > Time.time)
 					continue;
-				_aspect.UntargetableComponent.Del(entity);
+				//_aspect.UntargetableComponent.Del(entity);
 				_aspect.RetargetComponent.Del(entity);
 			}
 		}

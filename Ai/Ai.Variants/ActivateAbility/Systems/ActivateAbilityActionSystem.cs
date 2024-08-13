@@ -2,17 +2,12 @@
 {
     using System;
     using Ecs.Core.Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using UniGame.Ecs.Proto.Ability.Aspects;
-    using UniGame.Ecs.Proto.Ability.SubFeatures.Target.Tools;
-    using UniGame.Ecs.Proto.Ability.Tools;
     using UniGame.Ecs.Proto.AI.Abstract;
     using UniGame.Ecs.Proto.AI.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Extensions;
-
     /// <summary>
     /// Show and Hides HealthBars based on UnderTheTargetComponent 
     /// </summary>
@@ -28,7 +23,7 @@
     public sealed class ActivateAbilityActionSystem : IAiActionSystem
     {
         private AbilityAspect _abilityTools;
-        private AbilityTargetTools _targetTools;
+        //private AbilityTargetTools _targetTools;
         private ProtoWorld _world;
         
         private ProtoPool<ActivateAbilityActionComponent> _activateAbilityPool;
@@ -54,7 +49,7 @@
                 //проверяем кулдаун абилки, если он не прошел - игнорируем
                 if (!cooldownPassed) continue;
                 
-                _targetTools.ActivateAbilityForTarget(entity,target, slot);
+                //_targetTools.ActivateAbilityForTarget(entity,target, slot);
             }
         }
     }

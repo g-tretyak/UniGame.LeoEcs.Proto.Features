@@ -3,13 +3,9 @@
     using System;
     using Aspects;
     using Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using Tools;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Extensions;
-
     /// <summary>
     /// initialize ui equip view with link to its data
     /// </summary>

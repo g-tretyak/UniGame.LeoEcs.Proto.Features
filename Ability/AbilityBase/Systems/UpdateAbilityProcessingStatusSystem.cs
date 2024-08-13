@@ -31,7 +31,6 @@
         private AbilityAspect _abilityAspect;
         private AbilityOwnerAspect _abilityOwnerAspect;
         
-        
         public void Init(IProtoSystems systems)
         {
             _world = systems.GetWorld();

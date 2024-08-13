@@ -2,14 +2,12 @@ namespace UniGame.Ecs.Proto.GameAi.MoveToTarget.Systems
 {
     using System;
     using Ability.Aspects;
-    using Ability.Tools;
     using AI.Abstract;
     using AI.Components;
     using Components;
     using Effects;
     using Game.Ecs.Core.Death.Components;
     using Gameplay.LevelProgress.Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using Movement.Components;

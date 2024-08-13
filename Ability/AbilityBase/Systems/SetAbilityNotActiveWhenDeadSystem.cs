@@ -1,5 +1,6 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.Common.Systems
 {
+    using Aspects;
     using Components;
     using Game.Ecs.Core.Components;
     using Leopotam.EcsLite;
@@ -12,6 +13,8 @@
     {
         private EcsFilter _filter;
         private ProtoWorld _world;
+
+        private AbilityAspect _abilityAspect;
         
         public void Init(IProtoSystems systems)
         {
@@ -24,19 +27,16 @@
         
         public void Run()
         {
-            var mapPool = _world.GetPool<AbilityMapComponent>();
-            var activePool = _world.GetPool<ActiveAbilityComponent>();
-
             foreach (var entity in _filter)
             {
-                ref var map = ref mapPool.Get(entity);
+                ref var map = ref _abilityAspect.AbilityMap.Get(entity);
                 foreach (var packedEntity in map.Abilities)
                 {
                     if(!packedEntity.Unpack(_world, out var abilityEntity))
                         continue;
                     
-                    if(activePool.Has(abilityEntity))
-                        activePool.Del(abilityEntity);
+                    if(_abilityAspect.Active.Has(abilityEntity))
+                        _abilityAspect.Active.Del(abilityEntity);
                 }
             }
         }

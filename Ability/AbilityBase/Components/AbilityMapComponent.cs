@@ -17,9 +17,14 @@
         public void AutoReset(ref AbilityMapComponent c)
         {
             if (AbilitySlots.IsCreated)
+            {
                 AbilitySlots.Dispose();
+            }
+
             if (Abilities.IsCreated)
+            {
                 Abilities.Dispose();
+            }
         }
     }
 }

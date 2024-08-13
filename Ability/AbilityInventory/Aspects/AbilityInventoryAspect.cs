@@ -1,4 +1,4 @@
-﻿namespace UniGame.Ecs.Proto.AbilityInventory.Aspects
+namespace UniGame.Ecs.Proto.AbilityInventory.Aspects
 {
     using System;
     using System.Runtime.CompilerServices;
@@ -12,6 +12,7 @@
     using Game.Ecs.Core.Components;
     using LeoEcs.Bootstrap.Runtime.Attributes;
     using LeoEcs.Shared.Extensions;
+    using LeoEcs.Timer.Components;
     using Leopotam.EcsProto;
     using Sirenix.Serialization;
     using UniGame.LeoEcs.Shared.Components;
@@ -25,6 +26,23 @@
         public ProtoWorld world;
         public AbilityMetaAspect abilityMetaAspect;
         
+        // Components
+        //---Generated Begin---
+        public ProtoPool<AbilityBuildingComponent> AbilityBuildingComponent;
+        public ProtoPool<AbilityBuildingProcessingComponent> AbilityBuildingProcessingComponent;
+        public ProtoPool<AbilityEquipComponent> AbilityEquipComponent;
+        public ProtoPool<AbilityInventoryCompleteComponent> AbilityInventoryCompleteComponent;
+        public ProtoPool<AbilityInventoryComponent> AbilityInventoryComponent;
+        public ProtoPool<AbilityInventoryHideComponent> AbilityInventoryHideComponent;
+        public ProtoPool<AbilityInventoryLoadedComponent> AbilityInventoryLoadedComponent;
+        public ProtoPool<AbilityInventoryProfileComponent> AbilityInventoryProfileComponent;
+        public ProtoPool<AbilityInventorySpawnDoneComponent> AbilityInventorySpawnDoneComponent;
+        public ProtoPool<AbilityLoadingComponent> AbilityLoadingComponent;
+        public ProtoPool<AbilityMetaLinkComponent> AbilityMetaLinkComponent;
+        public ProtoPool<AbilityRarityMapComponent> AbilityRarityMapComponent;
+        public ProtoPool<AbilityValidationFailedComponent> AbilityValidationFailedComponent;
+        public ProtoPool<AbilityVisualComponent> AbilityVisualComponent;
+
         public ProtoPool<AbilityIdComponent> Id;
         public ProtoPool<AbilityEquipComponent> AbilityEquip;
         public ProtoPool<AbilityBuildingComponent> Building;
@@ -45,8 +63,13 @@
         public ProtoPool<IconComponent> Icon;
         public ProtoPool<NameComponent> Name;
         public ProtoPool<DescriptionComponent> Description;
+        public ProtoPool<AbilityInventoryComponent> Inventory;
+        public ProtoPool<AbilityInventorySpawnDoneComponent> SpawnDone;
 
-        //requests
+        // Requests
+        //---Generated Begin---
+        public ProtoPool<LoadAbilityMetaRequest> LoadAbilityMetaRequest;
+
         public ProtoPool<EquipAbilityIdSelfRequest> EquipById;
         public ProtoPool<EquipAbilityIdToChampionRequest> EquipToChampion;
         public ProtoPool<EquipAbilityNameSelfRequest> EquipByName;
@@ -54,8 +77,9 @@
         public ProtoPool<EquipAbilitySelfRequest> Equip;
         public ProtoPool<LoadAbilityMetaRequest> LoadMeta;
         
-        //event
+        // Events
         public ProtoPool<AbilityEquipChangedEvent> EquipChanged;
+        public ProtoPool<AbilityInventorySaveCompleteEvent> AbilityInventorySaved;
         
         
         public int Convert(AbilityItemData itemData,int entity)

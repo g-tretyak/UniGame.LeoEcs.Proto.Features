@@ -6,7 +6,6 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using Tools;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Extensions;
 
@@ -24,10 +23,6 @@
         private AbilityAspect _abilityAspect;
         private EcsFilter _filter;
         private ProtoWorld _world;
-        
-        private ProtoPool<SetInHandAbilityBySlotSelfRequest> _setInHandPool;
-        private ProtoPool<SetInHandAbilitySelfRequest> _requestPool;
-        private ProtoPool<AbilityMapComponent> _abilityMapPool;
 
         public void Init(IProtoSystems systems)
         {
@@ -44,14 +39,14 @@
         {
             foreach (var entity in _filter)
             {
-                ref var setInHand = ref _setInHandPool.Get(entity);
+                ref var setInHand = ref _abilityAspect.SetInHandAbilityBySlotSelfRequest.Get(entity);
                 var slot = setInHand.AbilityCellId;
                 
                 var abilityInSlot = _abilityAspect.GetAbilityBySlot(entity, slot);
                 if(!abilityInSlot.Unpack(_world,out var abilityEntity))
                     continue;
 
-                ref var request = ref _requestPool.GetOrAddComponent(entity);
+                ref var request = ref _abilityAspect.SetInHandAbilitySelfRequest.GetOrAddComponent(entity);
                 request.Value = abilityInSlot;
             }
         }

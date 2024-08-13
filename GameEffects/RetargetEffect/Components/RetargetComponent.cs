@@ -1,8 +1,6 @@
 ﻿namespace UniGame.Ecs.Proto.GameEffects.RetargetEffect.Components
 {
 	using System;
-	using UnityEngine.Serialization;
-
 	/// <summary>
 	/// Stores the duration of the retarget effect
 	/// </summary>

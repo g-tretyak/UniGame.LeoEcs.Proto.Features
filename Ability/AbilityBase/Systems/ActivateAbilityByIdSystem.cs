@@ -5,10 +5,8 @@
     using Common.Components;
     using Components.Requests;
     using Game.Ecs.Core.Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using Tools;
     using UniGame.LeoEcs.Shared.Extensions;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 
@@ -40,27 +38,22 @@
             .Chain<ActivateAbilityByIdRequest>()
             .End();
 
-        private ProtoPool<OwnerComponent> _ownerPool;
-        private ProtoPool<AbilityIdComponent> _abilityIdPool;
-        private ProtoPool<ActivateAbilityByIdRequest> _activateRequestPool;
-        private ProtoPool<ActivateAbilityRequest> _activateAbilityRequestPool;
-
         public void Run()
         {
             foreach (var requestEntity in _requestFilter)
             {
-                ref var request = ref _activateRequestPool.Get(requestEntity);
+                ref var request = ref _abilityAspect.ActivateAbilityByIdRequest.Get(requestEntity);
                 if(!request.Target.Unpack(_world,out var targetEntity)) continue;
 
                 foreach (var abilityEntity in _abilityFilter)
                 {
-                    ref var ownerComponent = ref _ownerPool.Get(abilityEntity);
+                    ref var ownerComponent = ref _abilityAspect.Owner.Get(abilityEntity);
                     if (!ownerComponent.Value.Equals(request.Target)) continue;
                     
-                    ref var abilityId = ref _abilityIdPool.Get(abilityEntity);
+                    ref var abilityId = ref _abilityAspect.AbilityId.Get(abilityEntity);
                     if (abilityId.AbilityId != request.AbilityId) continue;
 
-                    ref var activateRequest = ref _activateAbilityRequestPool.GetOrAddComponent(requestEntity);
+                    ref var activateRequest = ref _abilityAspect.ActivateAbilityRequest.GetOrAddComponent(requestEntity);
                     activateRequest.Ability = _world.PackEntity(abilityEntity);
                     activateRequest.Target = request.Target;
                     

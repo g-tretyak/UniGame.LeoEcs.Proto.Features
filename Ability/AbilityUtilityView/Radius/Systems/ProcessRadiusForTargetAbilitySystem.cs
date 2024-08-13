@@ -10,7 +10,6 @@
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using SubFeatures.Selection.Components;
-    using SubFeatures.Target.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -42,8 +41,8 @@
             _world = systems.GetWorld();
             
             _filter = _world
-                .Filter<TargetableAbilityComponent>()
-                .Inc<AbilityInHandComponent>()
+                .Filter<AbilityInHandComponent>()
+                //.Inc<TargetableAbilityComponent>()
                 .Inc<SelectedTargetsComponent>()
                 .Inc<OwnerComponent>()
                 .Inc<RadiusComponent>()

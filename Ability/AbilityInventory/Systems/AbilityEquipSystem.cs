@@ -11,7 +11,7 @@
 	using Leopotam.EcsProto.QoL;
 	using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 	using UniGame.LeoEcs.Shared.Extensions;
-
+	using Unity.Collections;
 	/// <summary>
 	/// Equip ability to slot
 	/// </summary>

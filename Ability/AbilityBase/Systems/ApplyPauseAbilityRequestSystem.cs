@@ -1,5 +1,6 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.Common.Systems
 {
+    using Aspects;
     using Components;
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
@@ -21,26 +22,24 @@
     {
         private ProtoWorld _world;
         private EcsFilter _filter;
-        private ProtoPool<PauseAbilityRequest> _pauseAbilityRequestPool;
-        private ProtoPool<AbilityPauseComponent> _pauseAbilityPool;
+
+        private AbilityAspect _abilityAspect;
 
         public void Init(IProtoSystems systems)
         {
             _world = systems.GetWorld();
             _filter = _world.Filter<PauseAbilityRequest>()
                 .End();
-            _pauseAbilityRequestPool = _world.GetPool<PauseAbilityRequest>();
-            _pauseAbilityPool = _world.GetPool<AbilityPauseComponent>();
         }
 
         public void Run()
         {
             foreach (var entity in _filter)
             {
-                ref var pauseAbilityRequest = ref _pauseAbilityRequestPool.Get(entity);
+                ref var pauseAbilityRequest = ref _abilityAspect.PauseAbilityRequest.Get(entity);
                 if (!pauseAbilityRequest.AbilityEntity.Unpack(_world, out var abilityEntity))
                     continue;
-                _pauseAbilityPool.TryAdd(abilityEntity);
+                _abilityAspect.Pause.TryAdd(abilityEntity);
             }
         }
     }

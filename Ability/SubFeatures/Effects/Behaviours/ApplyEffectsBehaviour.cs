@@ -17,8 +17,7 @@
         
         public void Compose(ProtoWorld world, ProtoEntity abilityEntity)
         {
-            var effectsPool = world.GetPool<EffectsComponent>();
-            ref var effectsComponent = ref effectsPool.Add(abilityEntity);
+            ref var effectsComponent = ref world.GetOrAddComponent<EffectsComponent>(abilityEntity);
             effectsComponent.Effects.AddRange(effects);
         }
     }

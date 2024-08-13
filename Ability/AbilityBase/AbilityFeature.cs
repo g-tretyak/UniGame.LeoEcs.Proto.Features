@@ -13,7 +13,6 @@
     using Sirenix.OdinInspector;
     using SubFeatures;
     using Systems;
-    using Tools;
     using UniGame.LeoEcs.Bootstrap.Runtime;
     using UniGame.LeoEcs.Shared.Extensions;
     using UniModules.UniCore.Runtime.Utils;
@@ -28,11 +27,11 @@
     {
         [SerializeReference]
         [ListDrawerSettings(ListElementLabelName = "@FeatureName")]
-        public List<AbilitySubFeature> abilityFeatures = new();
+        public List<AbilitySubFeature> abilityFeatures;
         
         [SerializeReference]
         [ListDrawerSettings(ListElementLabelName = "@FeatureName")]
-        public List<AbilityPluginFeature> abilityPlugins = new();
+        public List<AbilityPluginFeature> abilityPlugins;
 
         protected override async UniTask OnInitializeAsync(IProtoSystems ecsSystems)
         {
@@ -43,7 +42,9 @@
             ecsSystems.DelHere<AbilityVelocityEvent>();
 
             foreach (var feature in subFeatures)
+            {
                 await feature.OnInitializeSystems(ecsSystems);
+            }
             
             //setup ability in hand by slot
             ecsSystems.Add(new ProcessSetInHandAbilityBySlotRequestSystem());
@@ -56,21 +57,21 @@
             //activate ability by id with request ActivateAbilityByIdRequest, take it in hand and use
             ecsSystems.Add(new ActivateAbilityByIdSystem());
             ecsSystems.Add(new ActivateAbilitySystem());
-            
+
             foreach (var feature in subFeatures)
+            {
                 await feature.OnStartSystems(ecsSystems);
-            
-            ecsSystems.Add(new StartAbilityCooldownAbilitySystem());
-            ecsSystems.Add(new ResetAbilityCooldownAbilitySystem());
-            ecsSystems.Add(new CooldownRevokeAbilityRequestSystem());
-            ecsSystems.Add(new UpdateAbilityCooldownBaseValue());
+            }
+
             ecsSystems.Add(new SetAbilityNotActiveWhenDeadSystem());
             //if non default slot ability in use, discard set in hand request
             ecsSystems.Add(new DiscardSetInHandWhileExecutingAbilitySystem());
             ecsSystems.Add(new DiscardAbilityEffectMilestonesSystem());
-            
+
             foreach (var feature in subFeatures)
+            {
                 await feature.OnCompleteAbilitySystems(ecsSystems);
+            }
 
             //remove event after whole loop
             ecsSystems.DelHere<AbilityCompleteSelfEvent>();
@@ -84,21 +85,29 @@
                 
             //add ability system to update in hand ability state
             foreach (var feature in subFeatures)
+            {
                 await feature.OnAfterInHandSystems(ecsSystems);
+            }
             
             //additional actions before apply ability
             foreach (var feature in subFeatures)
+            {
                 await feature.OnBeforeApplyAbility(ecsSystems);
+            }
             
             //apply ability by request, ability must be in hand and owned by entity
             ecsSystems.Add(new ApplyAbilityRequestSystem());
             ecsSystems.DelHere<ApplyAbilitySelfRequest>();
 
             foreach (var feature in subFeatures)
+            {
                 await feature.OnRevokeSystems(ecsSystems);
+            }
 
             foreach (var feature in subFeatures)
+            {
                 await feature.OnUtilitySystems(ecsSystems);
+            }
             
             //activate ability execution
             ecsSystems.DelHere<AbilityStartUsingSelfEvent>();
@@ -110,12 +119,16 @@
             
             //include on activate systems
             foreach (var feature in subFeatures)
+            {
                 await feature.OnActivateSystems(ecsSystems);
+            }
             
             ecsSystems.Add(new EvaluateAbilitySystem());
-            
+
             foreach (var feature in subFeatures)
+            {
                 await feature.OnEvaluateAbilitySystem(ecsSystems);
+            }
 
             ecsSystems.DelHere<ApplyAbilityEffectsSelfRequest>();
             ecsSystems.Add(new CreateApplyAbilityEffectsRequestSystem());
@@ -127,22 +140,30 @@
             
             ecsSystems.DelHere<RemovePauseAbilityRequest>();
             ecsSystems.DelHere<AbilityUnlockEvent>();
-            
+
             foreach (var feature in subFeatures)
+            {
                 await feature.OnPreparationApplyEffectsSystems(ecsSystems);
-            
+            }
+
             foreach (var feature in subFeatures)
+            {
                 await feature.OnApplyEffectsSystems(ecsSystems);
+            }
 
             //remove ability activation request
             ecsSystems.DelHere<ActivateAbilityByIdRequest>();
             ecsSystems.DelHere<ActivateAbilityRequest>();
-            
+
             foreach (var feature in subFeatures)
+            {
                 await feature.OnLastAbilitySystems(ecsSystems);
+            }
 
             foreach (var abilityPlugin in abilityPlugins)
+            {
                 await abilityPlugin.InitializeAsync(ecsSystems);
+            }
         }
 
         [Button(DirtyOnClick = true)]

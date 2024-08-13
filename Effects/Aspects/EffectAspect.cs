@@ -12,7 +12,6 @@ namespace UniGame.Ecs.Proto.Effects.Aspects
     public class EffectAspect : EcsAspect
     {
         public ProtoPool<EffectComponent> Effect;
-        public ProtoPool<EffectsComponent> Effects;
         public ProtoPool<SelfEffectsComponent> SelfEffects;
         public ProtoPool<EffectsListComponent> List;
         public ProtoPool<OwnerComponent> Owner;
@@ -62,7 +61,6 @@ namespace UniGame.Ecs.Proto.Effects.Aspects
         // Requests
         //---Generated Begin---
         public ProtoPool<ApplyEffectSelfRequest> ApplyEffectSelfRequest;
-        public ProtoPool<CreateEffectSelfRequest> CreateEffectSelfRequest;
         public ProtoPool<DestroyEffectSelfRequest> DestroyEffectSelfRequest;
         public ProtoPool<DestroyEffectViewSelfRequest> DestroyEffectViewSelfRequest;
         public ProtoPool<RemoveEffectRequest> RemoveEffectRequest;

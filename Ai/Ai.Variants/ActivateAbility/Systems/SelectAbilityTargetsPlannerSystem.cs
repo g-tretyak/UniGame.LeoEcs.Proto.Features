@@ -3,8 +3,6 @@ namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
     using System;
     using System.Runtime.CompilerServices;
     using Ability.Aspects;
-    using Ability.SubFeatures.Target.Tools;
-    using Ability.Tools;
     using AI.Components;
     using Components;
     using Game.Code.Ai.ActivateAbility;
@@ -13,7 +11,6 @@ namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
     using Game.Ecs.Core.Components;
     using Game.Ecs.Core.Death.Components;
     using GameLayers.Layer.Components;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using Selection;
@@ -35,7 +32,7 @@ namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
     public class SelectAbilityTargetsPlannerSystem : IProtoRunSystem
     {
         private AbilityAspect _abilityTools;
-        private AbilityTargetTools _targetTools;
+        //private AbilityTargetTools _targetTools;
         
         private ProtoWorld _world;
         private AbilityAiActionAspect _targetAspect;
@@ -88,13 +85,13 @@ namespace UniGame.Ecs.Proto.GameAi.ActivateAbility
                     
                     if ((int)abilityTargetEntity < 0)
                     {
-                        _targetTools.ClearAbilityTargets(abilityEntity);
+                        //_targetTools.ClearAbilityTargets(abilityEntity);
                         continue;
                     }
 
                     var packedTarget = _world.PackEntity(abilityTargetEntity);
    
-                    _targetTools.SetAbilityTarget(abilityEntity,packedTarget,slot);
+                   // _targetTools.SetAbilityTarget(abilityEntity,packedTarget,slot);
                     
                     var cooldownPassed = _abilityTools.IsAbilityCooldownPassed(abilityEntity);
                     

@@ -1,4 +1,4 @@
-namespace UniGame.Ecs.Proto.Ability.Aspects
+﻿namespace UniGame.Ecs.Proto.Ability.Aspects
 {
     using System;
     using System.Runtime.CompilerServices;
@@ -19,7 +19,6 @@ namespace UniGame.Ecs.Proto.Ability.Aspects
     using Game.Ecs.Time.Service;
     using GameLayers.Category.Components;
     using GameLayers.Relationship.Components;
-    using LeoEcs.Bootstrap.Runtime;
     using LeoEcs.Shared.Extensions;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
@@ -60,12 +59,10 @@ namespace UniGame.Ecs.Proto.Ability.Aspects
         public ProtoPool<AbilityPauseComponent> AbilityPauseComponent;
         public ProtoPool<AbilitySlotComponent> AbilitySlotComponent;
         public ProtoPool<AbilityUnlockComponent> AbilityUnlockComponent;
-        public ProtoPool<AbilityUsingComponent> AbilityUsingComponent;
-        public ProtoPool<ActiveAbilityComponent> ActiveAbilityComponent;
         public ProtoPool<DefaultAbilityComponent> DefaultAbilityComponent;
         public ProtoPool<DefaultAbilityTargetSlotComponent> DefaultAbilityTargetSlotComponent;
         public ProtoPool<PassiveAbilityComponent> PassiveAbilityComponent;
-
+        
         public ProtoPool<AbilityUnlockComponent> Unlock;
         public ProtoPool<OwnerComponent> Owner;
         public ProtoPool<ActiveAbilityComponent> Active;
@@ -93,6 +90,7 @@ namespace UniGame.Ecs.Proto.Ability.Aspects
         public ProtoPool<AbilityMapComponent> AbilityMap;
         public ProtoPool<AbilityEquippedComponent> AbilityEquipped;
         public ProtoPool<AbilityBlockedComponent> Blocked;
+        public ProtoPool<AbilityTargetsComponent> Targets;
         
         public ProtoPool<AbilityEvaluationComponent> Evaluate;
         
@@ -114,7 +112,6 @@ namespace UniGame.Ecs.Proto.Ability.Aspects
         public ProtoPool<EquipAbilityIdSelfRequest> EquipAbilityIdSelfRequest;
         public ProtoPool<EquipAbilityIdToChampionRequest> EquipAbilityIdToChampionRequest;
         public ProtoPool<EquipAbilityNameSelfRequest> EquipAbilityNameSelfRequest;
-        public ProtoPool<EquipAbilitySelfRequest> EquipAbilitySelfRequest;
         public ProtoPool<PauseAbilityRequest> PauseAbilityRequest;
         public ProtoPool<RemovePauseAbilityRequest> RemovePauseAbilityRequest;
         public ProtoPool<ResetAbilityCooldownSelfRequest> ResetAbilityCooldownSelfRequest;
@@ -147,7 +144,6 @@ namespace UniGame.Ecs.Proto.Ability.Aspects
         // Events
         //---Generated Begin---
         public ProtoPool<AbilityCompleteSelfEvent> AbilityCompleteSelfEvent;
-        public ProtoPool<AbilityStartUsingSelfEvent> AbilityStartUsingSelfEvent;
 
         public ProtoPool<AbilityStartUsingSelfEvent> UsingEvent;
         public ProtoPool<AbilityCompleteSelfEvent> CompleteEvent;
@@ -194,6 +190,9 @@ namespace UniGame.Ecs.Proto.Ability.Aspects
             ref var abilityIdComponent = ref AbilityId.GetOrAddComponent(abilityEntity);
             ref var ownerComponent = ref Owner.GetOrAddComponent(abilityEntity);
             ref var ownerLinkComponent = ref OwnerLink.GetOrAddComponent(abilityEntity);
+            ref var cooldownComponent = ref Cooldown.GetOrAddComponent(abilityEntity);
+            ref var cooldownStateComponent = ref CooldownState.GetOrAddComponent(abilityEntity);
+            ref var durationComponent = ref world.GetOrAddComponent<DurationComponent>(abilityEntity);
 
             ownerLinkComponent.Value = ownerEntity;
             ownerComponent.Value = ownerEntity;

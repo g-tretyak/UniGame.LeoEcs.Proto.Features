@@ -4,18 +4,19 @@
     using System.Collections.Generic;
     using System.Linq;
     using AbilityInventory.Components;
+    using Characteristics.Duration.Components;
     using Common.Components;
     using Components;
     using Game.Code.Configuration.Runtime.Ability;
-    using Game.Code.Configuration.Runtime.Ability.Description;
     using Game.Code.Services.AbilityLoadout.Data;
     using Leopotam.EcsProto;
+    using Leopotam.EcsProto.QoL;
     using Sirenix.OdinInspector;
     using UniGame.LeoEcs.Converter.Runtime;
     using UniGame.LeoEcs.Converter.Runtime.Abstract;
     using UniGame.LeoEcs.Shared.Extensions;
+    using Unity.Collections;
     using UnityEngine;
-    using UnityEngine.Serialization;
 
 #if UNITY_EDITOR
     using UniModules.Editor;
@@ -59,6 +60,11 @@
             }
 
             if (equipAbilityOnConvert == false) return;
+            
+            ref var abilitySlots = ref mapComponent.AbilitySlots;
+            ref var abilities = ref mapComponent.Abilities;
+            abilitySlots = new NativeHashMap<int, ProtoPackedEntity>(10, Allocator.Persistent);
+            abilities = new NativeHashSet<ProtoPackedEntity>(10, Allocator.Persistent);
 
             var packedEntity = entity.PackEntity(world);
 

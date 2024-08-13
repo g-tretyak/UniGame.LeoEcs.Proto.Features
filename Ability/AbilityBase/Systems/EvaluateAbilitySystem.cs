@@ -1,6 +1,7 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.Common.Systems
 {
     using System;
+    using Aspects;
     using Characteristics.Duration.Components;
     using Components;
     using Leopotam.EcsLite;
@@ -23,10 +24,8 @@
     {
         private EcsFilter _filter;
         private ProtoWorld _world;
-        private ProtoPool<DurationComponent> _durationPool;
-        private ProtoPool<CooldownComponent> _cooldownPool;
-        private ProtoPool<AbilityEvaluationComponent> _evaluationPool;
-        private ProtoPool<CompleteAbilitySelfRequest> _completeAbilityPool;
+
+        private AbilityAspect _abilityAspect;
 
         public void Init(IProtoSystems systems)
         {
@@ -44,10 +43,10 @@
         {
             foreach (var entity in _filter)
             {
-                ref var durationComponent = ref _durationPool.Get(entity);
-                ref var cooldownComponent = ref _cooldownPool.Get(entity);
+                ref var durationComponent = ref _abilityAspect.Duration.Get(entity);
+                ref var cooldownComponent = ref _abilityAspect.Cooldown.Get(entity);
 
-                ref var evaluationComponent = ref _evaluationPool.GetOrAddComponent(entity);
+                ref var evaluationComponent = ref _abilityAspect.AbilityEvaluationComponent.GetOrAddComponent(entity);
                 
                 var currentTime = evaluationComponent.EvaluateTime;
                 var delta = durationComponent.Value - currentTime;
@@ -58,7 +57,7 @@
                     continue;
                 }
                 
-                _completeAbilityPool.Add(entity);
+                _abilityAspect.CompleteAbilitySelfRequest.Add(entity);
             }
         }
     }

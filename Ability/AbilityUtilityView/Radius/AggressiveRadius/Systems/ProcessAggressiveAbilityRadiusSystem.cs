@@ -19,7 +19,6 @@
     using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using SubFeatures.Target.Components;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
     using UniGame.LeoEcs.Shared.Components;
     using UniGame.LeoEcs.Shared.Extensions;
@@ -47,7 +46,7 @@
         private ProtoPool<AggressiveRadiusViewStateComponent> _statePool;
         private ProtoPool<AbilityInHandLinkComponent> _abilityInHandLinkPool;
         private ProtoPool<RadiusComponent> _radiusPool;
-        private ProtoPool<AbilityTargetsComponent> _chosenPool;
+        //private ProtoPool<AbilityTargetsComponent> _chosenPool;
         private ProtoPool<EntityAvatarComponent> _avatarPool;
         private ProtoPool<ShowRadiusRequest> _showRadiusPool;
         private ProtoPool<HideRadiusRequest> _hideRadiusPool;
@@ -128,11 +127,11 @@
                         radiusView = viewData.NoTargetRadiusView;
                     }
 
-                    var hasChosenTargets = _chosenPool.Has(abilityEntity);
+                    //var hasChosenTargets = _chosenPool.Has(abilityEntity);
                     var chosenTargetCount = 0;
                     var isChosenUs = false;
 
-                    if (hasChosenTargets)
+                    /*if (hasChosenTargets)
                     {
                         ref var chosenTargets = ref _chosenPool.Get(abilityEntity);
                         chosenTargetCount = chosenTargets.Count;
@@ -153,7 +152,7 @@
                             radiusView = viewData.HasTargetRadiusView;
                         else
                             radiusView = viewData.NoTargetRadiusView;
-                    }
+                    }*/
                     
                     var showRequestEntity = _world.NewEntity();
                     ref var showRequest = ref _showRadiusPool.Add(showRequestEntity);
