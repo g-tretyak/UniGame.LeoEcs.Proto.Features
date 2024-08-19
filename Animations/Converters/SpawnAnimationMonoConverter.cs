@@ -133,8 +133,8 @@
         private async UniTask ActivateAnimationAsync(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
             var lifeTime = target.GetAssetLifeTime();
-            var animation = spawnAnimation
-                .LoadAssetForCompletion(lifeTime);
+            var animation = await spawnAnimation
+                .LoadAssetTaskAsync(lifeTime);
             
             CreateAnimationEntity(animation,target,world,entity);
 

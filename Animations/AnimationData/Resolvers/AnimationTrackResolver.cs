@@ -2,10 +2,13 @@
 {
     using System;
     using System.Linq;
+    using Cysharp.Threading.Tasks;
     using PlayableBindings;
     using UniGame.AddressableTools.Runtime;
+    using UniGame.Core.Runtime;
     using UniModules.UniGame.Core.Runtime.DataFlow.Extensions;
     using UnityEngine;
+    using UnityEngine.AddressableAssets;
     using UnityEngine.Playables;
     using UnityEngine.Timeline;
 
@@ -30,10 +33,18 @@
                     continue;
                 }
 #endif
-                var lifeTime = director.gameObject.GetAssetLifeTime();
-                clipAsset.clip = targetClip.Animation.LoadAssetForCompletion(lifeTime);
+                LoadClipAsync(clipAsset,targetClip.Animation, director.gameObject.GetAssetLifeTime()).Forget();
             }
             
+        }
+        
+        private async UniTask LoadClipAsync(
+            AnimationPlayableAsset clipAsset,
+            AssetReference assetReference,
+            ILifeTime lifeTime)
+        {
+            clipAsset.clip = await assetReference
+                .LoadAssetTaskAsync<AnimationClip>(lifeTime);
         }
     }
 }

@@ -1,18 +1,18 @@
 ﻿namespace UniGame.Ecs.Proto.Ability.SubFeatures.AbilitySequence.Systems
 {
     using System;
+    using System.Collections.Generic;
     using Ability.Aspects;
-    using Ability.Tools;
     using Aspects;
     using AbilitySequence;
+    using Cysharp.Threading.Tasks;
+    using Game.Code.Services.Ability;
     using Game.Code.Services.AbilityLoadout.Data;
-    using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
     using UniGame.AddressableTools.Runtime;
     using UniGame.Core.Runtime;
     using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
-    using UniGame.LeoEcs.Shared.Extensions;
 
     /// <summary>
     /// create ability sequence
@@ -30,10 +30,10 @@
     {
         private ProtoWorld _world;
         private ILifeTime _worldLifeTime;
-        
+
         private AbilityAspect _abilityTools;
         private AbilitySequenceAspect _aspect;
-        
+
         private ProtoItExc _createRequestFilter = It
             .Chain<CreateAbilitySequenceReferenceSelfRequest>()
             .Exc<CreateAbilitySequenceSelfRequest>()
@@ -46,7 +46,7 @@
                 ref var requestComponent = ref _aspect.CreateByReference.Get(requestEntity);
                 var reference = requestComponent.Reference;
                 var sequence = reference.sequence;
-                
+
                 if (sequence.Count <= 0) continue;
 
                 ref var createSequenceRequest = ref _aspect
@@ -55,22 +55,37 @@
 
                 createSequenceRequest.Owner = requestComponent.Owner;
                 createSequenceRequest.Name = reference.name;
+                var abilities = createSequenceRequest.Abilities;
+                var owner = requestComponent.Owner;
+
+                var tasks = sequence
+                    .Select(x => AddAbilityToSequence(x, abilities, owner));
                 
-                foreach (var configurationValue in sequence)
-                {
-                    //load configuration sync
-                    var configuration = configurationValue
-                        .reference
-                        .LoadAssetInstanceForCompletion(_worldLifeTime, true);
-                    
-                    var abilityEntity = _abilityTools
-                        .EquipAbilityByReference(ref requestComponent.Owner, configuration, AbilitySlotId.EmptyAbilitySlot);
-                    
-                    createSequenceRequest.Abilities.Add(abilityEntity);
-                }
-                
-                _aspect.CreateById.Del(requestEntity);
+                ExecuteInOrder(tasks,requestEntity).Forget();
             }
+        }
+
+        private async UniTask ExecuteInOrder(IEnumerable<UniTask> tasks, ProtoEntity entity)
+        {
+            foreach (var task in tasks)
+                await task;
+            _aspect.CreateById.Del(entity);
+        }
+
+        private async UniTask AddAbilityToSequence(
+            AbilityConfigurationValue value,
+            List<ProtoEntity> abilities,
+            ProtoPackedEntity owner)
+        {
+            //load configuration sync
+            var configuration = await value
+                .reference
+                .LoadAssetInstanceTaskAsync(_worldLifeTime, true);
+
+            var abilityEntity = _abilityTools
+                .EquipAbilityByReference(ref owner, configuration, AbilitySlotId.EmptyAbilitySlot);
+
+            abilities.Add(abilityEntity);
         }
     }
 }

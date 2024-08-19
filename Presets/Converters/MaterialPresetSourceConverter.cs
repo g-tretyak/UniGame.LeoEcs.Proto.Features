@@ -46,8 +46,8 @@
             ref var activePresetSource = ref world.GetOrAddComponent<ActivePresetSourceComponent>(entity);
 
             var worldLifeTime = world.GetWorldLifeTime();
-            var material = materialReference.LoadAssetInstanceForCompletion(worldLifeTime);
-            dataComponent.Value = material;
+            // var material = materialReference.LoadAssetInstanceForCompletion(worldLifeTime);
+            // dataComponent.Value = material;
             idComponent.Value = targetId.GetHashCode();
             durationComponent.Value = duration;
         }

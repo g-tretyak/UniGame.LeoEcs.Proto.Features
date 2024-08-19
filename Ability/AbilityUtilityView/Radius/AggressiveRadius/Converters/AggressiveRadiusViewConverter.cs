@@ -2,6 +2,8 @@
 {
     using System;
     using Components;
+    using Core.Runtime;
+    using Cysharp.Threading.Tasks;
     using Game.Code.GameLayers.Category;
     using Game.Code.GameLayers.Layer;
     using Leopotam.EcsProto;
@@ -27,24 +29,46 @@
         [SerializeField]
         public LayerId layerMask;
         
+        private ProtoWorld _world;
+        private ProtoEntity _entity;
+        private GameObject _noTargetRadiusView;
+        private GameObject _targetCloseRadiusView;
+        private GameObject _hasTargetRadiusView;
+        
         public override void Apply(GameObject target, ProtoWorld world, ProtoEntity entity)
         {
 #if !UNITY_EDITOR
             return;
 #endif
-            var lifeTime = target.GetAssetLifeTime();
-            var radiusViewPool = world.GetPool<AggressiveRadiusViewDataComponent>();
-            ref var radiusView = ref radiusViewPool.Add(entity);
+            _world = world;
+            _entity = entity;
             
-            radiusView.NoTargetRadiusView = noTargetView.LoadAssetInstanceForCompletion(lifeTime,true);
-            radiusView.TargetCloseRadiusView = targetCloseView.LoadAssetInstanceForCompletion(lifeTime,true);
-            radiusView.HasTargetRadiusView = hasTargetView.LoadAssetInstanceForCompletion(lifeTime,true);
+            var lifeTime = target.GetAssetLifeTime();
+            LoadViewAsync(lifeTime).Forget();
+        }
+        
+        private async UniTask LoadViewAsync(ILifeTime lifeTime)
+        {
+            _noTargetRadiusView  = await noTargetView.LoadAssetInstanceTaskAsync(lifeTime,true);
+            _targetCloseRadiusView = await targetCloseView.LoadAssetInstanceTaskAsync(lifeTime,true);
+            _hasTargetRadiusView = await hasTargetView.LoadAssetInstanceTaskAsync(lifeTime,true);
+            OnApply();
+        }
+
+        private void OnApply()
+        {
+            var radiusViewPool = _world.GetPool<AggressiveRadiusViewDataComponent>();
+            ref var radiusView = ref radiusViewPool.Add(_entity);
+            
+            radiusView.NoTargetRadiusView = _noTargetRadiusView;
+            radiusView.TargetCloseRadiusView = _targetCloseRadiusView;
+            radiusView.HasTargetRadiusView = _hasTargetRadiusView;
 
             radiusView.CategoryId = categoryId;
             radiusView.LayerMask = layerMask;
 
-            var viewStatePool = world.GetPool<AggressiveRadiusViewStateComponent>();
-            viewStatePool.Add(entity);
+            var viewStatePool = _world.GetPool<AggressiveRadiusViewStateComponent>();
+            viewStatePool.Add(_entity);
         }
     }
 }
