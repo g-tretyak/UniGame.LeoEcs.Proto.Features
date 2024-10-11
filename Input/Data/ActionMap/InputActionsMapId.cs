@@ -3,7 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Sirenix.OdinInspector;
+    //using Sirenix.OdinInspector;
+    using Alchemy.Inspector;
+    using TriInspector;
     using UnityEngine;
 
 #if UNITY_EDITOR

@@ -1,13 +1,18 @@
 ﻿namespace UniGame.Ecs.Proto.Tools.Converters
 {
     using Game.Code.Animations;
-    using Sirenix.OdinInspector;
+    //using Sirenix.OdinInspector;
+    using Alchemy.Inspector;
+    using TriInspector;
     using UnityEngine;
     using UnityEngine.Playables;
+    using InlineEditorAttribute = Alchemy.Inspector.InlineEditorAttribute;
+    using ButtonAttribute = Alchemy.Inspector.ButtonAttribute;
+    using EnableIfAttribute = Alchemy.Inspector.EnableIfAttribute;
 
 #if UNITY_EDITOR
 #endif
-    
+
     public class TimeLineAnimationBaker : MonoBehaviour
     {
         [PropertySpace(8)]
@@ -19,21 +24,21 @@
 
         public bool IsDataAvailable => director !=null && animationLink != null && animationLink.animation != null;
         
-        [ButtonGroup]
+        [Button]
         [EnableIf(nameof(IsDataAvailable))]
         public void Bake()
         {
             AnimationTool.BakeAnimationLink(director, animationLink);
         }
 
-        [ButtonGroup]
+        [Button]
         [EnableIf(nameof(IsDataAvailable))]
         public void Apply()
         {
             AnimationTool.ApplyBindings(director, animationLink);
         }
 
-        [ButtonGroup]
+        [Button]
         [EnableIf(nameof(IsDataAvailable))]
         public void ClearTimeline()
         {

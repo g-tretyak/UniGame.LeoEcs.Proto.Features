@@ -3,10 +3,10 @@
     using System;
     using Aspects;
     using Data.ActionMap;
-    using Leopotam.EcsLite;
+    //using Leopotam.EcsLite;
     using Leopotam.EcsProto;
     using Leopotam.EcsProto.QoL;
-    using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
+    //using UniGame.LeoEcs.Bootstrap.Runtime.Attributes;
 
     /// <summary>
     /// System responsible for switching input maps.
@@ -20,13 +20,13 @@
 #endif
     [Serializable]
     [ECSDI]
-    public class SwitchInputMapSystem : IEcsRunSystem
+    public class SwitchInputMapSystem : IProtoRunSystem
     {
         private ProtoWorld _world;
         private InputAspect _inputAspect;
         
-        private EcsFilter _requestFilter;
-        private EcsFilter _inputFilter;
+        //private EcsFilter _requestFilter;
+        //private EcsFilter _inputFilter;
         
         private InputActionsMapData _inputActionsData;
 

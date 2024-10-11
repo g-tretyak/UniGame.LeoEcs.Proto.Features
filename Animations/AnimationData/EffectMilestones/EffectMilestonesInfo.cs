@@ -1,7 +1,10 @@
 ﻿namespace Game.Code.Animations.EffectMilestones
 {
-    using Sirenix.OdinInspector;
+    //using Sirenix.OdinInspector;
+    using Alchemy.Inspector;
+    using TriInspector;
     using UnityEngine;
+    using HideLabelAttribute = Alchemy.Inspector.HideLabelAttribute;
 
     [CreateAssetMenu(fileName = "Effect Milestones Info", menuName = "Game/Configurations/Ability/Effect Milestones Info")]
     public sealed class EffectMilestonesInfo : ScriptableObject

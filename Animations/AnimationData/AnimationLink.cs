@@ -1,15 +1,21 @@
 ﻿namespace Game.Code.Animations
 {
     using EffectMilestones;
-    using Sirenix.OdinInspector;
+    //using Sirenix.OdinInspector;
+    using Alchemy.Inspector;
+    using TriInspector;
     using UnityEngine;
     using UnityEngine.Playables;
     using UnityEngine.Serialization;
+    using OnValueChangedAttribute = Alchemy.Inspector.OnValueChangedAttribute;
+    using HideLabelAttribute = Alchemy.Inspector.HideLabelAttribute;
+    using ShowIfAttribute = Alchemy.Inspector.ShowIfAttribute;
+    using ButtonAttribute = TriInspector.ButtonAttribute;
 
 #if UNITY_EDITOR
     using UniModules.Editor;
 #endif
-    
+
     [CreateAssetMenu(fileName = "Animation Link", menuName = "Game/Animation/Animation Link")]
     public sealed class AnimationLink : ScriptableObject
     {
@@ -41,8 +47,8 @@
         public bool showCommands = true;
         
         public float Duration => duration <= 0 && animation!=null ? (float)animation.duration : duration ;
-        
-        [ButtonGroup()]
+
+        [Button(nameof(BakeMilestones))]
         [ShowIf(nameof(showCommands))]
         public void BakeMilestones()
         {
@@ -51,8 +57,8 @@
             this.MarkDirty();
 #endif
         }
-        
-        [ButtonGroup]
+
+        [Button(nameof(Clear))]
         [ShowIf(nameof(showCommands))]
         public void Clear()
         {
@@ -64,7 +70,7 @@
         }
 
 
-        [Button(SdfIconType.DoorOpen)]
+        [Button(nameof(OpenEditor))]
         [ShowIf(nameof(showCommands))]
         public void OpenEditor()
         {

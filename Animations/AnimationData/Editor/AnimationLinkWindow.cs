@@ -2,14 +2,19 @@
 {
     using Animations;
     using JetBrains.Annotations;
-    using Sirenix.OdinInspector;
-    using Sirenix.OdinInspector.Editor;
+    //using Sirenix.OdinInspector;
+    //using Sirenix.OdinInspector.Editor;
     using UnityEditor;
     using UnityEngine;
     using UnityEngine.Playables;
+    using Alchemy.Inspector;
+    using TriInspector;
+    using ButtonAttribute = Alchemy.Inspector.ButtonAttribute;
+    using EnableIfAttribute = Alchemy.Inspector.EnableIfAttribute;
+    using InlineEditorAttribute = Alchemy.Inspector.InlineEditorAttribute;
 
     [UsedImplicitly]
-    public sealed class AnimationLinkWindow : OdinEditorWindow
+    public sealed class AnimationLinkWindow : EditorWindow
     {
         [InlineEditor]
         public AnimationLink animationLink;
@@ -46,31 +51,33 @@
         
         public bool DataExists => playableDirector != null && animationLink != null;
 
-        [Button(ButtonSizes.Large,Icon = SdfIconType.Building)]
+        [Button]
         [EnableIf(nameof(DataExists))]
         public void Bake()
         {
+            if (playableDirector == null) return;
             AnimationTool.BakeAnimationLink(playableDirector, animationLink);
         }
         
-        [Button(ButtonSizes.Large,Icon =SdfIconType.Command)]
+        [Button]
         [EnableIf(nameof(DataExists))]
         public void ApplyToDirector()
         {
+            if (playableDirector == null) return;
             AnimationTool.ApplyBindings(playableDirector, animationLink);
         }
 
-        protected override void OnImGUI()
-        {
-            base.OnImGUI();
+        //protected override void OnImGUI()
+        //{
+        //    base.OnImGUI();
             
-            if (playableDirector == null && Selection.activeGameObject != null)
-            {
-                var target = Selection.activeGameObject;
-                var director = target.GetComponent<PlayableDirector>();
-                playableDirector = director;
-            }
-        }
+        //    if (playableDirector == null && Selection.activeGameObject != null)
+        //    {
+        //        var target = Selection.activeGameObject;
+        //        var director = target.GetComponent<PlayableDirector>();
+        //        playableDirector = director;
+        //    }
+        //}
         
     }
 }

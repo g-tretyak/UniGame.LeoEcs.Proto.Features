@@ -2,7 +2,8 @@
 {
     using System;
     using System.Runtime.CompilerServices;
-    using Sirenix.OdinInspector;
+    //using Sirenix.OdinInspector;
+    using TriInspector;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "Game/Maps/Input ActionMaps Map", fileName = "Input ActionMaps Map")]
